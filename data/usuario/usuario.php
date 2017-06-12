@@ -74,7 +74,9 @@
 					$data = 3; /// error al guardar
 				}
 
-				$sql = "insert into claves values ('$id_c','$id','$_POST[txt_5]')";
+				$contrasenia = md5($_POST['txt_6']);
+
+				$sql = "insert into claves values ('$id_c','$id','$contrasenia')";
 				$guardar = guardarSql($conexion,$sql);
 				if($guardar == 'true') {
 					$data = 0; ////datos guardados

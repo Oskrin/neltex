@@ -2,6 +2,12 @@ $(document).on("ready",inicio);
 
 /*--*/
 function inicio (){
+	function recargar() {
+	  setTimeout(function() {
+	    location.reload();
+	  }, 2000);  
+	}
+
 	$("#reload").click(function (){
 		actualizar_form();
 	});
@@ -955,7 +961,8 @@ function guardar_datos(valores,tipo,p){
 	    success: function(data){				    
 	    	if( data == 0 ){
 	    		alert('Datos Agregados Correctamente');	
-	    		limpiar_form(p);	
+	    		limpiar_form(p);
+	    		recargar();	
 	    		$('#table').trigger('reloadGrid');					
 	    	}else{
 	    		if( data == 1 ){	    		
