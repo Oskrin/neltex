@@ -962,7 +962,7 @@ function guardar_datos(valores,tipo,p){
 	    	if( data == 0 ){
 	    		alert('Datos Agregados Correctamente');	
 	    		limpiar_form(p);
-	    		recargar();	
+	    		// recargar();	
 	    		$('#table').trigger('reloadGrid');					
 	    	}else{
 	    		if( data == 1 ){	    		

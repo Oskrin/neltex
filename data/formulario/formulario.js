@@ -1,5 +1,9 @@
 $(document).on("ready",inicio);
 
+function myFunction() {
+    window.open("formulario_xml.php");
+}
+
 function recargar() {
   setTimeout(function() {
     location.reload();
@@ -259,10 +263,8 @@ function inicio () {
             $(grid_selector).jqGrid( 'setGridWidth', $("#myModal .modal-dialog").width()-30);
             
         })
-         function methodoxml(id) {
-                    // window.open("formulario.php?id="+id); 
-                    console.log('test');
-                }
+        
+
         //cambiar el tamaño de la barra lateral collapse/expand
         var parent_column = $(grid_selector).closest('[class*="col-"]');
         $(document).on('settings.ace.jqGrid' , function(ev, event_name, collapsed) {
@@ -312,7 +314,7 @@ function inicio () {
                 var ids = jQuery(grid_selector).jqGrid('getDataIDs');
                 for(var i = 0;i < ids.length;i++) {
                     var id = ids[i];
-                    xml = "<a onclick=methodoxml() title='Descargar XML'><i class='fa fa-file-code-o' style='cursor:pointer; cursor: hand'> XML</i></a>";                    
+                    xml = "<a onclick='myFunction()' title='Descargar XML'><i class='fa fa-file-code-o' style='cursor:pointer; cursor: hand'> XML</i></a>";                    
                     jQuery(grid_selector).jqGrid('setRowData',ids[i],{xml: xml});
                 }       
             },

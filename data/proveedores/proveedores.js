@@ -49,7 +49,7 @@ function inicio (){
 
 	$('#btn_guardar_pais').on('click', function() {
 		$.ajax({
-		    url: "usuario.php",
+		    url: "proveedores.php",
 		    data: {guardar_pais:'guardar_pais', txt_pais: $("#txt_pais").val()}, 	    	    	    
 		    type: "POST",				
 		    success: function(data) {	    	
@@ -74,7 +74,7 @@ function inicio (){
 
 	$('#btn_guardar_provincia').on('click', function() {
 		$.ajax({
-		    url: "usuario.php",
+		    url: "proveedores.php",
 		    data: {guardar_provincia:'guardar_provincia', txt_provincia: $("#txt_provincia").val(), id: $("#cmb_pais").val()}, 	    	    	    
 		    type: "POST",				
 		    success: function(data) {	    	
@@ -102,7 +102,7 @@ function inicio (){
 
 	$('#btn_guardar_ciudad').on('click', function() {
 		$.ajax({
-		    url: "usuario.php",
+		    url: "proveedores.php",
 		    data: {guardar_ciudad:'guardar_ciudad', txt_ciudad: $("#txt_ciudad").val(), id: $("#cmb_provincia").val()}, 	    	    	    
 		    type: "POST",				
 		    success: function(data) {	    	
