@@ -10,7 +10,9 @@
 	$id = unique($fecha_larga);		
 	$id_compras = unique($fecha_larga);		
 	$id_ret_fuente = unique($fecha_larga);		
-	$id_ret_iva = unique($fecha_larga);			
+	$id_ret_iva = unique($fecha_larga);
+	error_reporting(0);
+				
 	if($_POST['tipo'] == "g"){		
 		$repetidos = repetidos_1($conexion,"identificacion",strtoupper($_POST["txt_2"]),"proveedor","g","","","tipo_documento",$_POST['txt_1']);	
 		if( $repetidos == 'true'){
