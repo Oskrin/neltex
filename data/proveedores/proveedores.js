@@ -1,9 +1,10 @@
 $(document).on("ready",inicio);
-function inicio (){	
+
+function inicio () {	
 	var boton_click ="";
 	// inicializacion de formato txt_ telefono1
-	$('#txt_4').mask('(999) 999-999');
-	$('#txt_5').mask('(999) 999-9999');
+	// $('#txt_4').mask('(999) 999-999');
+	// $('#txt_5').mask('(999) 999-9999');
 	$(".chosen-select").chosen({allow_single_deselect: true}); // works
 	/*funcion inicial de la imagen y  buscadores del select no topar plz*/	
 	if(!ace.vars['touch']) {
@@ -30,8 +31,7 @@ function inicio (){
 			$("#txt_17").css({'width': $("#txt_3").parent().width() - 22});
 		});
 
-
-		$('#chosen-multiple-style .btn').on('click', function(e){
+		$('#chosen-multiple-style .btn').on('click', function(e) {
 			var target = $(this).find('input[type=radio]');
 			var which = parseInt(target.val());
 			if(which == 2) $('#form-field-select-4').addClass('tag-input-style');
@@ -62,13 +62,13 @@ function inicio (){
 		    		carga_ubicaciones("txt_9","txt_10","txt_11");//pais provincia ciudad 
 		    		carga_ubicaciones("cmb_pais");    		
 		    	} else {
-		    		if( data == 1 ) {	    		
-		    			alert('El País ya existe. Ingrese otra')	;
+		    		if(data == 1) {	    		
+		    			alert('El País ya existe. Ingrese otra');
 		    			$("#txt_pais").val("");
 		    			$("#txt_pais").focus();
 		    		}
 		    	}
-			},		
+			}		
 		});
 	});
 
@@ -78,7 +78,7 @@ function inicio (){
 		    data: {guardar_provincia:'guardar_provincia', txt_provincia: $("#txt_provincia").val(), id: $("#cmb_pais").val()}, 	    	    	    
 		    type: "POST",				
 		    success: function(data) {	    	
-		    	if( data == 2 ) {
+		    	if(data == 2) {
 		    		$("#txt_9").html("");
 		    		$("#txt_10").html("");
 		    		$("#txt_11").html("");  
@@ -90,13 +90,13 @@ function inicio (){
 		    		carga_ubicaciones("txt_9","txt_10","txt_11");//pais provincia ciudad
 		    		carga_ubicaciones("cmb_pais2","cmb_provincia");  	    		
 		    	} else {
-		    		if( data == 1 ) {	    		
-		    			alert('La Provincia ya existe. Ingrese otra')	;
+		    		if(data == 1) {	    		
+		    			alert('La Provincia ya existe. Ingrese otra');
 		    			$("#txt_provincia").val("");
 		    			$("#txt_provincia").focus();
 		    		}
 		    	}
-			},		
+			}		
 		});
 	});
 
@@ -115,13 +115,13 @@ function inicio (){
 		    		$('#modal_ciudad').modal('hide');
 		    		carga_ubicaciones("txt_9","txt_10","txt_11");//pais provincia ciudad 	    		
 		    	} else {
-		    		if( data == 1 ) {	    		
-		    			alert('La Ciudad ya existe. Ingrese otra')	;
+		    		if(data == 1) {	    		
+		    			alert('La Ciudad ya existe. Ingrese otra');
 		    			$("#txt_ciudad").val("");
 		    			$("#txt_ciudad").focus();
 		    		}
 		    	}
-			},		
+			}		
 		});
 	});
 
@@ -129,38 +129,46 @@ function inicio (){
 	carga_ubicaciones("cmb_pais2","cmb_provincia");
 
 	/*-----------------------*/
-	$("input").on("keyup click",function (e){//campos requeridos		
-		comprobarCamposRequired(e.currentTarget.form.id)
+	$("input").on("keyup click",function(e) {//campos requeridos		
+		comprobarCamposRequired(e.currentTarget.form.id);
 	});	
 	/*----procesos ci ruc pass-----*/
-	$("#txt_1").change(function (){
+	$("#txt_1").change(function() {
 		documentos("0");
 	});
-	$("#txt_2").keyup(function(){
-		ci_ruc_pass("txt_2",$("#txt_2").val(),$("#txt_1").val())
+
+	$("#txt_2").keyup(function() {
+		ci_ruc_pass("txt_2",$("#txt_2").val(),$("#txt_1").val());
 	});
+
 	/*--cargar combos dependientes--*/    
 	carga_ubicaciones("txt_9","txt_10","txt_11");//pais provincia ciudad
-	$("#txt_9").change(function(){
+
+	$("#txt_9").change(function() {
 		change_pais("txt_9","txt_10","txt_11");
 	});
-	$("#txt_10").change(function(){
+
+	$("#txt_10").change(function() {
 		change_provincia("txt_9","txt_10","txt_11");
 	});
-    $("#btn_agr_ret_fuente").on('click',function(){
+
+    $("#btn_agr_ret_fuente").on('click',function() {
     	boton_click = "txt_20";
     });
-    $("#btn_ret_iva").on('click',function(){
+
+    $("#btn_ret_iva").on('click',function() {
     	boton_click = "txt_21";
     });	
+
     /*procesos de guardar buscar modificar limpiar actualizar*/    		
 	$("#btn_0").on("click",guardar_proveedores);
 	$("#btn_1").on("click",limpiar_form);
 	$("#btn_2").on("click",actualizar_form);
-	$("#btn_4").on("click",function (){		
+
+	$("#btn_4").on("click",function() {		
 		var resp = "";		
 		resp =atras($("#txt_0").val(),"proveedores","secuencia.php");
-		if(resp[0] != false){			
+		if(resp[0] != false) {			
 			$("#txt_0").val(resp[0][0]);
 			$("#txt_1").val(resp[0][1]);
 			$("#txt_1").trigger("chosen:updated"); 	
@@ -187,6 +195,7 @@ function inicio (){
 			$("#txt_22").trigger("chosen:updated"); 
 			$("#txt_23").val(resp[0][19]);		
 			$("#txt_23").trigger("chosen:updated"); 
+
 			$.ajax({        
 		        type: "POST",
 		        dataType: 'json',        
@@ -197,12 +206,11 @@ function inicio (){
 		            for (var i = 0; i < response.length; i=i+3) {       
 		            	if(response[i] == resp[0][20]){
 							$("#txt_24").append("<option value ="+response[i]+" selected>"+response[i+1]+" "+response[i+2]+"</option>");				
-		            	}
-						else{
+		            	} else {
 							$("#txt_24").append("<option value ="+response[i]+">"+response[i+1]+" "+response[i+2]+"</option>");				
-						}     				            	            	
-						
-		            }   
+						}     				            	            		
+		            }
+
 		            $("#txt_24").trigger("chosen:updated");                                          
 		        }
 	    	}); 
@@ -237,12 +245,12 @@ function inicio (){
 						            for (var i = 0; i < response.length; i=i+2) {            				            	
 						            	if(response[i] == pais){
 											$("#txt_9").append("<option value ="+response[i]+" selected>"+response[i+1]+"</option>");            																																
-						            	}
-										else{
+						            	} else {
 											$("#txt_9").append("<option value ="+response[i]+">"+response[i+1]+"</option>");            																																
 										}
 						            }   
 						            $("#txt_9").trigger("chosen:updated"); 
+
 						            $.ajax({        
 								        type: "POST",
 								        dataType: 'json',        
@@ -252,12 +260,12 @@ function inicio (){
 								            for (var i = 0; i < response.length; i=i+2) {            				            	
 								            	if(response[i] == prov){
 													$("#txt_10").append("<option value ="+response[i]+" selected>"+response[i+1]+"</option>");            																																
-								            	}
-												else{
+								            	} else {
 													$("#txt_10").append("<option value ="+response[i]+">"+response[i+1]+"</option>");            																																
 												}
 								            }   
 								            $("#txt_10").trigger("chosen:updated"); 
+
 								            $.ajax({        
 										        type: "POST",
 										        dataType: 'json',        
@@ -267,36 +275,33 @@ function inicio (){
 										            for (var i = 0; i < response.length; i=i+2) {            				            	
 										            	if(response[i] == resp[0][7]){
 															$("#txt_11").append("<option value ="+response[i]+" selected>"+response[i+1]+"</option>");            																																
-										            	}
-														else{
+										            	} else {
 															$("#txt_11").append("<option value ="+response[i]+">"+response[i+1]+"</option>");            																																
 														}
 										            }   
-										            $("#txt_11").trigger("chosen:updated"); 
-										                                         
+										            $("#txt_11").trigger("chosen:updated");                                 
 										        }
-										    });	      
-								                                         
+										    });	                                    
 								        }
-								    });/**/		                            
+								    });	                            
 						        }
-						    });/**/							    
+						    });						    
 				        }                   
 				    });
 		        }                   
 		    });	
-		}else{
+		} else {
 			alert("Sin registros anteriores");
 		}		
 	    comprobarCamposRequired("form_proveedores");		    	            
 	    $("#btn_0").text("");
-        $("#btn_0").append("<span class='glyphicon glyphicon-log-in'></span> Modificar");     	            
-        /**/
+        $("#btn_0").append("<span class='glyphicon glyphicon-log-in'></span> Modificar");
 	});
-	$("#btn_5").on("click",function (){		
+
+	$("#btn_5").on("click",function() {		
 		var resp = "";		
 		resp =adelante($("#txt_0").val(),"proveedores","secuencia.php");		
-		if(resp[0] != false){			
+		if(resp[0] != false) {			
 			$("#txt_0").val(resp[0][0]);
 			$("#txt_1").val(resp[0][1]);
 			$("#txt_1").trigger("chosen:updated"); 	
@@ -323,6 +328,7 @@ function inicio (){
 			$("#txt_22").trigger("chosen:updated"); 
 			$("#txt_23").val(resp[0][19]);		
 			$("#txt_23").trigger("chosen:updated"); 
+
 			$.ajax({        
 		        type: "POST",
 		        dataType: 'json',        
@@ -331,13 +337,11 @@ function inicio (){
 		        	$("#txt_24").empty();	        	
 		        	$("#txt_24").append("<option value=''>  </option>");				
 		            for (var i = 0; i < response.length; i=i+3) {       
-		            	if(response[i] == resp[0][20]){
+		            	if(response[i] == resp[0][20]) {
 							$("#txt_24").append("<option value ="+response[i]+" selected>"+response[i+1]+" "+response[i+2]+"</option>");				
-		            	}
-						else{
+		            	} else {
 							$("#txt_24").append("<option value ="+response[i]+">"+response[i+1]+" "+response[i+2]+"</option>");				
-						}     				            	            	
-						
+						}
 		            }   
 		            $("#txt_24").trigger("chosen:updated");                                          
 		        }
@@ -373,12 +377,12 @@ function inicio (){
 						            for (var i = 0; i < response.length; i=i+2) {            				            	
 						            	if(response[i] == pais){
 											$("#txt_9").append("<option value ="+response[i]+" selected>"+response[i+1]+"</option>");            																																
-						            	}
-										else{
+						            	} else {
 											$("#txt_9").append("<option value ="+response[i]+">"+response[i+1]+"</option>");            																																
 										}
 						            }   
 						            $("#txt_9").trigger("chosen:updated"); 
+
 						            $.ajax({        
 								        type: "POST",
 								        dataType: 'json',        
@@ -386,14 +390,14 @@ function inicio (){
 								        success: function(response) {         			        	
 								        	$("#txt_10").html("");
 								            for (var i = 0; i < response.length; i=i+2) {            				            	
-								            	if(response[i] == prov){
+								            	if(response[i] == prov) {
 													$("#txt_10").append("<option value ="+response[i]+" selected>"+response[i+1]+"</option>");            																																
-								            	}
-												else{
+								            	} else {
 													$("#txt_10").append("<option value ="+response[i]+">"+response[i+1]+"</option>");            																																
 												}
-								            }   
+								            }
 								            $("#txt_10").trigger("chosen:updated"); 
+
 								            $.ajax({        
 										        type: "POST",
 										        dataType: 'json',        
@@ -401,27 +405,24 @@ function inicio (){
 										        success: function(response) {         			        	
 										        	$("#txt_11").html("");
 										            for (var i = 0; i < response.length; i=i+2) {            				            	
-										            	if(response[i] == resp[0][7]){
+										            	if(response[i] == resp[0][7]) {
 															$("#txt_11").append("<option value ="+response[i]+" selected>"+response[i+1]+"</option>");            																																
-										            	}
-														else{
+										            	} else {
 															$("#txt_11").append("<option value ="+response[i]+">"+response[i+1]+"</option>");            																																
 														}
 										            }   
-										            $("#txt_11").trigger("chosen:updated"); 
-										                                         
+										            $("#txt_11").trigger("chosen:updated");                                
 										        }
-										    });	      
-								                                         
+										    });                               
 								        }
-								    });/**/		                            
+								    });		                            
 						        }
-						    });/**/							    
+						    });						    
 				        }                   
 				    });
 		        }                   
 		    });	
-		}else{
+		} else {
 			alert("Sin registros superiores");
 		}		
 	    comprobarCamposRequired("form_proveedores");		    	            
@@ -429,6 +430,7 @@ function inicio (){
 	    $("#btn_0").append("<span class='glyphicon glyphicon-log-in'></span> Modificar");     	            
         /**/
 	});
+
      /*jqgrid*/   
     jQuery(function($) {
 	    var grid_selector = "#table";
@@ -549,18 +551,16 @@ function inicio (){
 			        	$("#txt_24").empty();	        	
 			        	$("#txt_24").append("<option value=''>  </option>");				
 			            for (var i = 0; i < response.length; i=i+3) {       
-			            	if(response[i] == ret.txt_24){
+			            	if(response[i] == ret.txt_24) {
 								$("#txt_24").append("<option value ="+response[i]+" selected>"+response[i+1]+" "+response[i+2]+"</option>");				
-			            	}
-							else{
+			            	} else {
 								$("#txt_24").append("<option value ="+response[i]+">"+response[i+1]+" "+response[i+2]+"</option>");				
-							}     				            	            	
-							
-			            }   
-			            $("#txt_24").trigger("chosen:updated");                                          
+							}	
+			            }
+			            $("#txt_24").trigger("chosen:updated");                                         
 			        }
 		    	}); 
-	            //
+	            
 	            $("#txt_26").val(ret.txt_26);	            	                	            	            	            
 	            $("#txt_25").val(ret.txt_25);	            	            
 	            $("#txt_25").trigger("chosen:updated");      
@@ -590,14 +590,14 @@ function inicio (){
 							        success: function(response) {         			        	
 							        	$("#txt_9").html("");
 							            for (var i = 0; i < response.length; i=i+2) {            				            	
-							            	if(response[i] == pais){
+							            	if(response[i] == pais) {
 												$("#txt_9").append("<option value ="+response[i]+" selected>"+response[i+1]+"</option>");            																																
-							            	}
-											else{
+							            	} else {
 												$("#txt_9").append("<option value ="+response[i]+">"+response[i+1]+"</option>");            																																
 											}
 							            }   
 							            $("#txt_9").trigger("chosen:updated"); 
+
 							            $.ajax({        
 									        type: "POST",
 									        dataType: 'json',        
@@ -607,12 +607,12 @@ function inicio (){
 									            for (var i = 0; i < response.length; i=i+2) {            				            	
 									            	if(response[i] == prov){
 														$("#txt_10").append("<option value ="+response[i]+" selected>"+response[i+1]+"</option>");            																																
-									            	}
-													else{
+									            	} else {
 														$("#txt_10").append("<option value ="+response[i]+">"+response[i+1]+"</option>");            																																
 													}
 									            }   
-									            $("#txt_10").trigger("chosen:updated"); 
+									            $("#txt_10").trigger("chosen:updated");
+
 									            $.ajax({        
 											        type: "POST",
 											        dataType: 'json',        
@@ -622,25 +622,21 @@ function inicio (){
 											            for (var i = 0; i < response.length; i=i+2) {            				            	
 											            	if(response[i] == ret.txt_11){
 																$("#txt_11").append("<option value ="+response[i]+" selected>"+response[i+1]+"</option>");            																																
-											            	}
-															else{
+											            	} else {
 																$("#txt_11").append("<option value ="+response[i]+">"+response[i+1]+"</option>");            																																
 															}
 											            }   
-											            $("#txt_11").trigger("chosen:updated"); 
-											                                         
+											            $("#txt_11").trigger("chosen:updated");                                 
 											        }
-											    });	      
-									                                         
+											    });                              
 									        }
-									    });/**/		                            
+									    });		                            
 							        }
-							    });/**/							    
+							    });							    
 					        }                   
 					    });
 			        }                   
 			    });			    	            
-	            /**/
 	            $('#myModal').modal('hide');
 	            comprobarCamposRequired("form_proveedores");  
 	            $("#btn_0").text("");
@@ -751,9 +747,6 @@ function inicio (){
 	        form.find('input[name=sdate]').datepicker({format:'yyyy-mm-dd' , autoclose:true})
 	        
 	        form.find('input[name=stock]').addClass('ace ace-switch ace-switch-5').after('<span class="lbl"></span>');
-	        //don't wrap inside a label element, the checkbox value won't be submitted (POST'ed)
-	        //.addClass('ace ace-switch ace-switch-5').wrap('<label class="inline" />').after('<span class="lbl"></span>');
-
 	                
 	        //update buttons classes
 	        var buttons = form.next().find('.EditButton .fm-button');
@@ -780,6 +773,7 @@ function inicio (){
 	        form.find('.add-group').addClass('btn btn-xs btn-success');
 	        form.find('.delete-group').addClass('btn btn-xs btn-danger');
 	    }
+
 	    function style_search_form(form) {
 	        var dialog = form.closest('.ui-jqdialog');
 	        var buttons = dialog.find('.EditTable')
@@ -804,43 +798,9 @@ function inicio (){
 	        style_edit_form(form);
 	    }
 
-
-
-	    //it causes some flicker when reloading or navigating grid
-	    //it may be possible to have some custom formatter to do this as the grid is being created to prevent this
-	    //or go back to default browser checkbox styles for the grid
-	    function styleCheckbox(table) {
-	        /**
-	                    $(table).find('input:checkbox').addClass('ace')
-	                    .wrap('<label />')
-	                    .after('<span class="lbl align-top" />')
-
-
-	                    $('.ui-jqgrid-labels th[id*="_cb"]:first-child')
-	                    .find('input.cbox[type=checkbox]').addClass('ace')
-	                    .wrap('<label />').after('<span class="lbl align-top" />');
-	         */
-	    }
+	    function styleCheckbox(table) {}
 	    
-
-	    //unlike navButtons icons, action icons in rows seem to be hard-coded
-	    //you can change them like this in here if you want
-	    function updateActionIcons(table) {
-	        /**
-	                    var replacement = 
-	                    {
-	                            'ui-ace-icon fa fa-pencil' : 'ace-icon fa fa-pencil blue',
-	                            'ui-ace-icon fa fa-trash-o' : 'ace-icon fa fa-trash-o red',
-	                            'ui-icon-disk' : 'ace-icon fa fa-check green',
-	                            'ui-icon-cancel' : 'ace-icon fa fa-times red'
-	                    };
-	                    $(table).find('.ui-pg-div span.ui-icon').each(function(){
-	                            var icon = $(this);
-	                            var $class = $.trim(icon.attr('class').replace('ui-icon', ''));
-	                            if($class in replacement) icon.attr('class', 'ui-icon '+replacement[$class]);
-	                    })
-	         */
-	    }
+	    function updateActionIcons(table) {}
 	    
 	    //replace icons with FontAwesome icons like above
 	    function updatePagerIcons(table) {

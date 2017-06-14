@@ -65,7 +65,7 @@
 									<div class="widget-body">
 										<div class="widget-main">
 											<div class="row">
-												<form class="form-horizontal" role="form" rol="form" action="" method="POST" id="form_cliente">												
+												<form class="form-horizontal" role="form" rol="form" action="" method="POST" id="form_cliente">	
 													<div class="row">
 														<div class="col-xs-12">															
 															<div class="col-sm-6">
@@ -75,41 +75,41 @@
 																		<select class="chosen-select form-control" id="txt_1" name="txt_1" data-placeholder="País">
 																			<option value="Cedula">Cédula</option>	
 																			<option value="RUC">RUC</option>	
-																			<option value="Pasaporte">Pasaporte</option>																				
+																			<option value="Pasaporte">Pasaporte</option>									
 																		</select>						
-																		<input type="hidden" id="txt_0" name="txt_0" />											
+																		<input type="hidden" id="txt_0" name="txt_0" />	
 																	</div>
 																</div>
 
 																<div class="form-group has-error">
-																	<label class="col-sm-4 control-label no-padding-right" for="txt_2"> RUC/C.I.:</label>
+																	<label class="col-sm-4 control-label no-padding-right" for="txt_2"> RUC/C.I. (*):</label>
 																	<div class="col-sm-8">
-																		<input type="text" id="txt_2" name="txt_2"  placeholder="Identificación" class="form-control" data-toggle="tooltip" data-original-title="" required pattern="[0-9]{10,10}" maxlength="10" minlength="10" />																																																						
+																		<input type="text" id="txt_2" name="txt_2"  placeholder="Identificación" class="form-control" data-toggle="tooltip" data-original-title="" required pattern="[0-9]{10,10}" maxlength="10" minlength="10" />	
 																	</div>
 																</div>
 
 																<div class="form-group has-error">
-																	<label class="col-sm-4 control-label no-padding-right" for="txt_3"> Nombres : </label>
+																	<label class="col-sm-4 control-label no-padding-right" for="txt_3"> Nombres y Apellidos (*): </label>
 																	<div class="col-sm-8">
 																		<input type="text" id="txt_3" name="txt_3" placeholder="Nombres Completo" class="form-control" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9 ]{1,}" data-toggle="tooltip" data-original-title="Nombres completos"  />
 																	</div>
 																</div>
 
 																<div class="form-group">
-																	<label class="col-sm-4 control-label no-padding-right" for="txt_4"> Teléfono: </label>
+																	<label class="col-sm-4 control-label no-padding-right" for="txt_4"> Teléfono Fijo: </label>
 																	<div class="col-sm-8">
 																		<span class="block input-icon input-icon-right">
-																			<input type="text" id="txt_4" name="txt_4" placeholder="Teléfono" class="form-control" onkeydown="return validarNumeros(event)" />
+																			<input type="text" id="txt_4" name="txt_4" placeholder="Teléfono" class="form-control" onkeydown="return validarNumeros(event)" maxlength="7" />
 																			<i class="ace-icon fa fa-phone fa-flip-horizontal"></i>
 	                                                                    </span>
 																	</div>
 																</div>
 
 																<div class="form-group">
-																	<label class="col-sm-4 control-label no-padding-right" for="txt_5"> Celular: </label>																	
+																	<label class="col-sm-4 control-label no-padding-right" for="txt_5"> Celular: </label>													
 																	<div class="col-sm-8">
 																		<span class="block input-icon input-icon-right">
-																			<input type="text" id="txt_5" name="txt_5" placeholder="Celular" class="form-control" onkeydown="return validarNumeros(event)"/>
+																			<input type="text" id="txt_5" name="txt_5" placeholder="Celular" class="form-control" onkeydown="return validarNumeros(event)" maxlength="10" />
 																			<i class="ace-icon fa fa-mobile fa-flip-horizontal"></i>
 	                                                                    </span>
 																	</div>
@@ -134,7 +134,6 @@
 																			</span>
 																			<input type="text" id="txt_7" name="txt_7" class="form-control" placeholder="Cupo de Credito" onkeydown="return validarNumeros(event)" />
 																		</div>
-
 																	</div>																	
 																</div>													
 															</div>
@@ -168,8 +167,8 @@
 																	<div class="col-sm-1 btn btn-sm btn-primary" id="" data-toggle="modal" href="#modal_provincia" >...</div>
 																</div>
 
-																<div class="form-group">
-																	<label class="col-sm-4 control-label no-padding-right" for="txt_11"> Ciudad: </label>
+																<div class="form-group has-error">
+																	<label class="col-sm-4 control-label no-padding-right" for="txt_11"> Ciudad (*): </label>
 																	<div class="col-sm-6">
 																		<select class="chosen-select form-control" id="txt_11" name="txt_11" data-placeholder="Ciudad">
 																		</select>
@@ -178,7 +177,7 @@
 																</div>
 
 																<div class="form-group has-error">
-																	<label class="col-sm-4 control-label no-padding-right" for="txt_12"> Dirección: </label>
+																	<label class="col-sm-4 control-label no-padding-right" for="txt_12"> Dirección (*): </label>
 																	<div class="col-sm-8">
 																		<input type="text" id="txt_12" name="txt_12" placeholder="Dirección" class="form-control"  required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9 ]{1,}" data-toggle="tooltip" data-original-title="Ingrese la dirección del cliente" />
 																	</div>

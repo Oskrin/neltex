@@ -107,36 +107,40 @@
 																				<div class="col-xs-12">													
 																					<div class="col-sm-6">
 																						<div class="form-group has-error">
-																							<label class="col-sm-4 control-label no-padding-right" for="txt_1"> RUC. Empresa:</label>
+																							<label class="col-sm-4 control-label no-padding-right" for="txt_1"> RUC. Empresa (*):</label>
 																							<div class="col-sm-8">
 																								<input type="text" id="txt_1" name="txt_1"  placeholder="RUC. Empresa" class="form-control" data-toggle="tooltip" data-original-title="Agregue el nro de CI en caso de ser extranjero seleccione la casilla Extranjero" required pattern="[0-9]{13}" />
 																								<input type="hidden" id="txt_o" name="txt_o" />
 																							</div>
-																						</div>																
+																						</div>
+
 																						<div class="form-group has-error">
-																							<label class="col-sm-4 control-label no-padding-right" for="txt_2">Propietario:</label>
+																							<label class="col-sm-4 control-label no-padding-right" for="txt_2">Propietario (*):</label>
 																							<div class="col-sm-8">
 																								<input type="text" id="txt_2" name="txt_2" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9 ]{1,}" placeholder="Propietario" class="form-control" />
 																							</div>
 																						</div>
+
 																						<div class="form-group ">
-																							<label class="col-sm-4 control-label no-padding-right" for="txt_3">Teléfono:</label>
+																							<label class="col-sm-4 control-label no-padding-right" for="txt_3">Teléfono Fijo:</label>
 																							<div class="col-sm-8">
 																								<span class="block input-icon input-icon-right">
-							                                                                    	<input type="text" id="txt_3" name="txt_3" placeholder="Teléfono" class="form-control" />
+							                                                                    	<input type="text" id="txt_3" name="txt_3" placeholder="Teléfono" class="form-control" onkeydown="return validarNumeros(event)" maxlength="7" />
 							                                                                    	<i class="ace-icon fa fa-phone fa-flip-horizontal"></i>
-							                                                                    </span>																		
+							                                                                    </span>	
 																							</div>
 																						</div>
+
 																						<div class="form-group">
 																							<label class="col-sm-4 control-label no-padding-right" for="txt_4">Celular:</label>
 																							<div class="col-sm-8">	
 																								<span class="block input-icon input-icon-right">
-																									<input type="text" id="txt_4" name="txt_4" placeholder="Celular" class="form-control" />
-																									<i class="ace-icon fa fa-mobile fa-flip-horizontal"></i>					
-																								</span>																																																						
+																									<input type="text" id="txt_4" name="txt_4" placeholder="Celular" class="form-control" onkeydown="return validarNumeros(event)" maxlength="10" />
+																									<i class="ace-icon fa fa-mobile fa-flip-horizontal"></i>
+																								</span>										
 																							</div>
 																						</div>
+
 																						<div class="form-group">
 																							<label class="col-sm-4 control-label no-padding-right" for="txt_5">Correo:</label>
 																							<div class="col-sm-8">
@@ -145,9 +149,9 @@
 																							  	<i class="ace-icon fa fa-envelope"></i>
 																							  </span>
 																							</div>
-																						</div>																																													
+																						</div>																																	
 																						<div class="form-group">
-																							<label class="col-sm-4 control-label no-padding-right" for="txt_6">Sitio Web:</label>																							
+																							<label class="col-sm-4 control-label no-padding-right" for="txt_6">Sitio Web:</label>											
 																							<div class="col-sm-8">
 																							  <span class="block input-icon input-icon-right ">
 																							  	<input type="text" id="txt_6" name="txt_6" placeholder="Sitio Web" class="form-control" />
@@ -155,39 +159,45 @@
 																							  </span>
 																							</div>
 																						</div>
+
 																						<div class="form-group">
 																							<label class="col-sm-4 control-label no-padding-right" for="txt_7">Fax:</label>
 																							<div class="col-sm-8">
 																								<input type="text" id="txt_7" name="txt_7" placeholder="Fax" class="form-control" data-toggle="tooltip" data-original-title=""  />
 																							</div>
 																						</div>
+
 																						<div class="form-group">
 																							<label class="col-sm-4 control-label no-padding-right" for="txt_8">Representante Legal:</label>
 																							<div class="col-sm-8">
 																								<input type="text" id="txt_8" name="txt_8" placeholder="Representante Legal" class="form-control" pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9]{1,}" data-toggle="tooltip" data-original-title="Representante Legal"  />
 																							</div>
-																						</div>																				
+																						</div>		
 																					</div>
+
 																					<div class="col-sm-6">
 																						<div class="form-group has-error">
-																							<label class="col-sm-4 control-label " for="txt_12">Nombre Empresa</label>
+																							<label class="col-sm-4 control-label " for="txt_12">Nombre Empresa (*):</label>
 																							<div class="col-sm-8">
 																								<input type="text" id="txt_12" name="txt_12"  placeholder="Nombre Empresa" class="form-control" data-toggle="tooltip" data-original-title="Nombre Empresa" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9 ]{1,}" />
 																							</div>
 																						</div>
+
 																						<div class="form-group has-error">
-																							<label class="col-sm-4 control-label " for="txt_13">Slogan</label>
+																							<label class="col-sm-4 control-label " for="txt_13">Slogan (*):</label>
 																							<div class="col-sm-8">
 																								<input type="text" id="txt_13" name="txt_13"  placeholder="Slogan" class="form-control" data-toggle="tooltip" data-original-title="Nombre Slogan" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9 ]{1,}" />
 																							</div>
 																						</div>
+
 																						<div class="form-group">
 																							<label class="col-sm-4 control-label no-padding-right" for="txt_9">Pais:</label>
 																							<div class="col-sm-8">
 																								<select class="chosen-select form-control" id="txt_9" name="txt_9" data-placeholder="País">
-																								</select>																	
+																								</select>				
 																							</div>
 																						</div>
+
 																						<div class="form-group">
 																							<label class="col-sm-4 control-label no-padding-right" for="txt_10">Provincia:</label>
 																							<div class="col-sm-8">
@@ -195,19 +205,22 @@
 																								</select>
 																							</div>
 																						</div>
-																						<div class="form-group ">
-																							<label class="col-sm-4 control-label no-padding-right" for="txt_11">Ciudad:</label>
+
+																						<div class="form-group has-error">
+																							<label class="col-sm-4 control-label no-padding-right" for="txt_11">Ciudad (*):</label>
 																							<div class="col-sm-8">
 																								<select class="chosen-select form-control" id="txt_11" name="txt_11" data-placeholder="Ciudad">
 																								</select>
 																							</div>
 																						</div>
+
 																						<div class="form-group has-error">
-																							<label class="col-sm-4 control-label no-padding-right" for="txt_14">Dirección:</label>
+																							<label class="col-sm-4 control-label no-padding-right" for="txt_14">Dirección (*):</label>
 																							<div class="col-sm-8">
 																								<input type="text" id="txt_14" name="txt_14" placeholder="Dirección" class="form-control" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9 ]{1,}" data-toggle="tooltip" data-original-title="Nombres completos"  />
 																							</div>
-																						</div>	
+																						</div>
+
 																						<div class="form-group">
 																							<label class="col-sm-4 control-label no-padding-right" for="txt_15">Ascesor Legal:</label>
 																							<div class="col-sm-8">
@@ -221,114 +234,123 @@
 																							</div>
 																						</div>
 																					</div>
-																				</div>
-																																
+																				</div>												
 																			</div>										
 																		</div>
 
 																		<div id="detal" class="tab-pane fade">
 																			<div class="row">
-																			<div class="col-xs-12">	
-																				<div class="col-sm-2">
-																					<div class="form-group">
-																						<div class="col-xs-12">
-																							<div class="col-xs-12">																									
-																								<span class="profile-picture">
-																									<img id="avatar" name="avatar" class="editable img-responsive" alt="Empresa x" src="img/default.png" accept="image/*"/>
-																								</span>
-																							</div>																																														
+																				<div class="col-xs-12">	
+																					<div class="col-sm-2">
+																						<div class="form-group">
+																							<div class="col-xs-12">
+																								<div class="col-xs-12">														
+																									<span class="profile-picture">
+																										<img id="avatar" name="avatar" class="editable img-responsive" alt="Empresa x" src="img/default.png" accept="image/*"/>
+																									</span>
+																								</div>	
+																							</div>
+																						</div>				
+																					</div>
+
+																					<div class="col-sm-5">
+																						<div class="form-group">
+																							<label class="col-sm-4 control-label no-padding-right" for="txt_21">RUC. Contador:</label>
+																							<div class="col-sm-8">
+																								<input type="text" id="txt_21" name="txt_21" placeholder="RUC. Contador" class="form-control" pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9]{1,}" data-toggle="tooltip" data-original-title="Digite la contraseña del usuario mínimo 5 carácteres"/>
+																							</div>
+																						</div>																					
+																						<div class="form-group">
+																							<label class="col-sm-4 control-label no-padding-right" for="txt_18">Autorizacion Factura:</label>
+																							<div class="col-sm-8">
+																								<input type="text" id="txt_18" name="txt_18" placeholder="Autorizacion Factura" class="form-control" pattern="[0-9]{1,}" data-toggle="tooltip" data-original-title="Autorizacion Factura"  />
+																							</div>
 																						</div>
-																					</div>																					
-																				</div>
-																				<div class="col-sm-5">
-																					<div class="form-group ">
-																						<label class="col-sm-4 control-label no-padding-right" for="txt_21">RUC. Contador:</label>
-																						<div class="col-sm-8">
-																							<input type="text" id="txt_21" name="txt_21" placeholder="RUC. Contador" class="form-control" pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9]{1,}" data-toggle="tooltip" data-original-title="Digite la contraseña del usuario mínimo 5 carácteres"/>
+
+																						<div class="form-group">
+																							<label class="col-sm-4 control-label no-padding-right" for="txt_22">Serie Retención:</label>
+																							<div class="col-sm-8">
+																								<input type="text" id="txt_22" name="txt_22" placeholder="Serie Retención" class="form-control" pattern="[0-9]{1,}" data-toggle="tooltip" data-original-title="Autorizacion Factura"  />
+																							</div>
 																						</div>
-																					</div>																					
-																					<div class="form-group">
-																						<label class="col-sm-4 control-label no-padding-right" for="txt_18">Autorizacion Factura:</label>
-																						<div class="col-sm-8">
-																							<input type="text" id="txt_18" name="txt_18" placeholder="Autorizacion Factura" class="form-control" pattern="[0-9]{1,}" data-toggle="tooltip" data-original-title="Autorizacion Factura"  />
+
+																						<div class="form-group">
+																							<label class="col-sm-4 control-label no-padding-right" for="txt_23">Autorización Retención:</label>
+																							<div class="col-sm-8">
+																								<input type="text" id="txt_23" name="txt_23" placeholder="Autorización Retención" class="form-control" pattern="[0-9]{1,}" data-toggle="tooltip" data-original-title="Autorizacion Factura"  />
+																							</div>
+																						</div>						
+																						<div class="form-group">
+																							<label class="col-sm-4 control-label no-padding-right" for="txt_19">Modo Costeo:</label>
+																							<div class="col-sm-8">										
+																								<select class="form-control" id="txt_19" name="txt_19" data-placeholder="Modo Costeo">
+																									<option value="PROCESOS">PROCESOS</option>
+																									<option value="ORDENES DE PRODUCCION">ORDENES DE PRODUCCION</option>
+																								</select>	
+																							</div>
+																						</div>																					
+																						<div class="form-group">
+																							<label class="col-sm-4 control-label no-padding-right" for="txt_20">Comentario:</label>
+																							<div class="col-sm-8">
+																								<textarea class="form-control" name="txt_20" id="txt_20" placeholder="Comentario"></textarea>
+																							</div>
 																						</div>
-																					</div>		
-																					<div class="form-group">
-																						<label class="col-sm-4 control-label no-padding-right" for="txt_22">Serie Retención</label>
-																						<div class="col-sm-8">
-																							<input type="text" id="txt_22" name="txt_22" placeholder="Serie Retención" class="form-control" pattern="[0-9]{1,}" data-toggle="tooltip" data-original-title="Autorizacion Factura"  />
+																					</div>
+
+																					<div class="col-sm-5">					
+																						<div class="form-group ">
+																							<label class="col-sm-4 control-label no-padding-right" for="txt_17">Contador:</label>
+																							<div class="col-sm-8">
+																								<input type="text" id="txt_17" name="txt_17" placeholder="Contador" class="form-control" pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9]{1,}" data-toggle="tooltip" data-original-title="Digite la contraseña del usuario mínimo 5 carácteres"/>
+																							</div>
 																						</div>
-																					</div>			
-																					<div class="form-group">
-																						<label class="col-sm-4 control-label no-padding-right" for="txt_23">Autorización Retención</label>
-																						<div class="col-sm-8">
-																							<input type="text" id="txt_23" name="txt_23" placeholder="Autorización Retención" class="form-control" pattern="[0-9]{1,}" data-toggle="tooltip" data-original-title="Autorizacion Factura"  />
+
+																						<div class="form-group">
+																							<label class="col-sm-4 control-label no-padding-right" for="txt_24">Serie Nota Crédito</label>
+																							<div class="col-sm-8">
+																								<input type="text" id="txt_24" name="txt_24" placeholder="Serie Nota de Crédito" class="form-control" pattern="[0-9]{1,}" data-toggle="tooltip" data-original-title="Autorizacion Factura"  />
+																							</div>
 																						</div>
-																					</div>																																									
-																					<div class="form-group">
-																						<label class="col-sm-4 control-label no-padding-right" for="txt_19">Modo Costeo:</label>
-																						<div class="col-sm-8">																								
-																							<select class="form-control" id="txt_19" name="txt_19" data-placeholder="Modo Costeo">																								
-																								<option value="PROCESOS">PROCESOS</option>
-																								<option value="ORDENES DE PRODUCCION">ORDENES DE PRODUCCION</option>
-																							</select>	
+
+																						<div class="form-group">
+																							<label class="col-sm-4 control-label no-padding-right" for="txt_25">Autorización Nota Crédito:</label>
+																							<div class="col-sm-8">
+																								<input type="text" id="txt_25" name="txt_25" placeholder="Autorización Nota Crédito" class="form-control" pattern="[0-9]{1,}" data-toggle="tooltip" data-original-title="Autorizacion Factura"  />
+																							</div>
+																						</div>	
+
+																						<div class="form-group">
+																							<label class="col-sm-4 control-label no-padding-right" for="form-field-1">Inicio Factura:</label>
+																							<div class="col-sm-8">
+																								<input type="text" id="spinner1" name="spinner1" required pattern="[0-9]{1,}"/>	
+																							</div>
 																						</div>
-																					</div>																					
-																					<div class="form-group">
-																						<label class="col-sm-4 control-label no-padding-right" for="txt_20">Comentario</label>
-																						<div class="col-sm-8">
-																							<textarea class="form-control" name="txt_20" id="txt_20" placeholder="Comentario"></textarea>
+
+																						<div class="form-group">
+																							<label class="col-sm-4 control-label no-padding-right">Item´s factura</label>
+																							<div class="col-sm-8">
+																								<input type="text" id="spinner2"  name="spinner2" class="form-control" data-toggle="tooltip" data-original-title="Item´s factura" required pattern="[0-9]{1,}" />						
+																							</div>
+																						</div>
+
+																						<div class="form-group">
+																							<label class="col-sm-4 control-label no-padding-right">Año Contable</label>
+																							<div class="col-sm-8">
+																								<input type="text" id="spinner3" name="spinner3"  class="form-control input-Slarge" data-toggle="tooltip" data-original-title="Año Contable" required pattern="[0-9]{1,}" />
+																							</div>
+																						</div>
+
+																						<div class="form-group">
+																							<label class="col-sm-4 control-label no-padding-right" for="form-field-1">Activo:</label>
+																							<div class="col-xs-8">
+																								<label>
+																									<input name="switch-field-1" id="switch-field-1" class="ace ace-switch ace-switch-5" type="checkbox" checked="">
+																									<span class="lbl"></span>
+																								</label>
+																							</div>
 																						</div>
 																					</div>
 																				</div>
-																				<div class="col-sm-5">																					
-																					<div class="form-group ">
-																						<label class="col-sm-4 control-label no-padding-right" for="txt_17">Contador:</label>
-																						<div class="col-sm-8">
-																							<input type="text" id="txt_17" name="txt_17" placeholder="Contador" class="form-control" pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9]{1,}" data-toggle="tooltip" data-original-title="Digite la contraseña del usuario mínimo 5 carácteres"/>
-																						</div>
-																					</div>
-																					<div class="form-group">
-																						<label class="col-sm-4 control-label no-padding-right" for="txt_24">Serie Nota Crédito</label>
-																						<div class="col-sm-8">
-																							<input type="text" id="txt_24" name="txt_24" placeholder="Serie Nota de Crédito" class="form-control" pattern="[0-9]{1,}" data-toggle="tooltip" data-original-title="Autorizacion Factura"  />
-																						</div>
-																					</div>			
-																					<div class="form-group">
-																						<label class="col-sm-4 control-label no-padding-right" for="txt_25">Autorización Nota Crédito</label>
-																						<div class="col-sm-8">
-																							<input type="text" id="txt_25" name="txt_25" placeholder="Autorización Nota Crédito" class="form-control" pattern="[0-9]{1,}" data-toggle="tooltip" data-original-title="Autorizacion Factura"  />
-																						</div>
-																					</div>			
-																					<div class="form-group">
-																						<label class="col-sm-4 control-label no-padding-right" for="form-field-1">Inicio Factura:</label>
-																						<div class="col-sm-8">
-																							<input type="text" id="spinner1" name="spinner1" required pattern="[0-9]{1,}"/>	
-																						</div>
-																					</div>
-																					<div class="form-group">
-																						<label class="col-sm-4 control-label no-padding-right">Item´s factura</label>
-																						<div class="col-sm-8">
-																							<input type="text" id="spinner2"  name="spinner2" class="form-control" data-toggle="tooltip" data-original-title="Item´s factura" required pattern="[0-9]{1,}" />																		
-																						</div>
-																					</div>	
-																					<div class="form-group">
-																						<label class="col-sm-4 control-label no-padding-right">Año Contable</label>
-																						<div class="col-sm-8">
-																							<input type="text" id="spinner3" name="spinner3"  class="form-control input-Slarge" data-toggle="tooltip" data-original-title="Año Contable" required pattern="[0-9]{1,}" />
-																						</div>
-																					</div>
-																					<div class="form-group">
-																						<label class="col-sm-4 control-label no-padding-right" for="form-field-1">Activo:</label>
-																						<div class="col-xs-8">
-																							<label>
-																								<input name="switch-field-1" id="switch-field-1" class="ace ace-switch ace-switch-5" type="checkbox" checked="">
-																								<span class="lbl"></span>
-																							</label>
-																						</div>
-																					</div>
-																				</div>
-																			</div>
 																			</div>	
 																		</div>											
 																	</div>
@@ -336,6 +358,7 @@
 															</div>
 														</div>
 													</div>
+
 													<h3 class="header smaller lighter green"></h3>
 													<div class="center">													 
 														<button type="submit" class="btn btn-primary" id="btn_0">

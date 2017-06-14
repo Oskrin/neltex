@@ -87,14 +87,14 @@
 																			<span class="profile-picture">
 																				<img id="avatar" name="avatar" class="editable img-responsive" alt="Empresa x" src="img/defaul.png" accept="image/*"/>
 																			</span>
-																		</div>																																														
+																		</div>					
 																	</div>
 																</div>
 															</div>
 
 															<div class="col-sm-5">
 																<div class="form-group has-error">
-																	<label class="col-sm-3 control-label no-padding-right" for="txt_1"> C.I./RUC:</label>
+																	<label class="col-sm-3 control-label no-padding-right" for="txt_1"> C.I./RUC (*):</label>
 																	<div class="col-sm-9">
 																		<input type="text" id="txt_1" name="txt_1"  placeholder="Identificación" class="col-xs-10 col-sm-5" data-toggle="tooltip" data-original-title="Agregue el nro de CI en caso de ser extranjero seleccione la casilla Extranjero" required pattern="[0-9]{1,}" maxlength="10" />
 																		<input type="hidden" id="txt_o" name="txt_o" />
@@ -106,44 +106,43 @@
 																				</label>
 																			</div>
 																		</span>
-
 																	</div>
 																</div>
 
 																<div class="form-group has-error">
-																	<label class="col-sm-3 control-label no-padding-right" for="txt_13"> Nombres: </label>
+																	<label class="col-sm-3 control-label no-padding-right" for="txt_2"> Nombres y Apellidos (*): </label>
 																	<div class="col-sm-9">
 																		<input type="text" id="txt_2" name="txt_2" placeholder="Nombres Completo" class="form-control" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9 ]{1,}" data-toggle="tooltip" data-original-title="Nombres completos"  />
 																	</div>
 																</div>																								
 																<div class="form-group">
-																	<label class="col-xs-12 col-sm-3 control-label no-padding-right" for="txt_3"> Teléfono: </label>
+																	<label class="col-xs-12 col-sm-3 control-label no-padding-right" for="txt_3"> Teléfono Fijo: </label>
 																	<div class="col-xs-12 col-sm-9">
 																		<span class="block input-icon input-icon-right">
-	                                                                    	<input type="text" id="txt_3"  name="txt_3" placeholder="Teléfono" class="form-control " onkeydown="return validarNumeros(event)" />
+	                                                                    	<input type="text" id="txt_3" name="txt_3" placeholder="Teléfono" class="form-control" onkeydown="return validarNumeros(event)" maxlength="7" />
 	                                                                    	<i class="ace-icon fa fa-phone fa-flip-horizontal"></i>
 	                                                                    </span>																		
 																	</div>
 																</div>
 
 																<div class="form-group has-error">
-																	<label class="col-sm-3 control-label no-padding-right" for="txt_13"> Usuario: </label>
+																	<label class="col-sm-3 control-label no-padding-right" for="txt_13"> Usuario (*): </label>
 																	<div class="col-sm-9">
 																		<input type="text" id="txt_13" name="txt_13" placeholder="Nombre de usuario" class="form-control" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9]{1,}" data-toggle="tooltip" data-original-title="Nombres de usuario"  />
 																	</div>
 																</div>	
 
 																<div class="form-group has-error">
-																	<label class="col-sm-3 control-label no-padding-right" for="txt_5"> Password: </label>
+																	<label class="col-sm-3 control-label no-padding-right" for="txt_5"> Contraseña (*): </label>
 																	<div class="col-sm-9">
-																		<input type="password" id="txt_5" name="txt_5" placeholder="Password" class="form-control" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9]{6,}" data-toggle="tooltip" data-original-title="Digite la contraseña del usuario mínimo 5 carácteres"/>
+																		<input type="password" id="txt_5" name="txt_5" placeholder="Contraseña" class="form-control" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9]{6,}" data-toggle="tooltip" data-original-title="Digite la contraseña del usuario mínimo 5 carácteres"/>
 																	</div>
 																</div>
 
 																<div class="form-group has-error">
-																	<label class="col-sm-3 control-label no-padding-right" for="txt_6"> Repetir: </label>
+																	<label class="col-sm-3 control-label no-padding-right" for="txt_6"> Confirmar Contraseña (*): </label>
 																	<div class="col-sm-9">
-																		<input type="password" id="txt_6" name="txt_6" placeholder="Repetir Password" class="form-control" data-toggle="tooltip" data-original-title="Repita la contraseña ingresada"/>
+																		<input type="password" id="txt_6" name="txt_6" placeholder="Confirmar Contraseña" class="form-control" data-toggle="tooltip" data-original-title="Repita la contraseña ingresada"/>
 																	</div>
 																</div>
 															</div>
@@ -153,7 +152,7 @@
 																	<label class="col-sm-3 control-label no-padding-right" for="txt_7"> Celular: </label>																	
 																	<div class="col-sm-9">	
 																		<span class="block input-icon input-icon-right">
-																			<input type="text" id="txt_7" name="txt_7" placeholder="Celular" class="form-control" onkeydown="return validarNumeros(event)" />
+																			<input type="text" id="txt_7" name="txt_7" placeholder="Celular" class="form-control" onkeydown="return validarNumeros(event)" maxlength="10" />
 																			<i class="ace-icon fa fa-mobile fa-flip-horizontal"></i>					
 																		</span>													
 																	</div>
@@ -196,7 +195,7 @@
 																</div>
 
 																<div class="form-group has-error">
-																	<label class="col-sm-3 control-label no-padding-right" for="txt_11"> Ciudad: </label>
+																	<label class="col-sm-3 control-label no-padding-right" for="txt_11"> Ciudad (*): </label>
 																	<div class="col-sm-7">
 																		<select class="chosen-select form-control" id="txt_11" name="txt_11" data-placeholder="Ciudad" >
 																		</select>
@@ -205,7 +204,7 @@
 																</div>
 
 																<div class="form-group has-error">
-																	<label class="col-sm-3 control-label no-padding-right" for="txt_12"> Dirección: </label>
+																	<label class="col-sm-3 control-label no-padding-right" for="txt_12"> Dirección (*): </label>
 																	<div class="col-sm-9">
 																		<input type="text" id="txt_12" name="txt_12" placeholder="Dirección" class="form-control" required />
 																	</div>

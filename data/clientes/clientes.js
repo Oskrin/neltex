@@ -1,8 +1,8 @@
 $(document).on("ready",inicio);
 function inicio (){	
 	/*funcion inicial de la imagen y  buscadores del select no topar plz*/	
-	$('#txt_4').mask('(999) 999-999');
-	$('#txt_5').mask('(999) 999-9999');
+	// $('#txt_4').mask('(999) 999-999');
+	// $('#txt_5').mask('(999) 999-9999');
 	$('.chosen-select').chosen({allow_single_deselect:true}); 
 	$(window)
 	.off('resize.chosen')
@@ -35,7 +35,7 @@ function inicio (){
 		    data: {guardar_pais:'guardar_pais', txt_pais: $("#txt_pais").val()}, 	    	    	    
 		    type: "POST",				
 		    success: function(data) {	    	
-		    	if( data == 2 ) {	
+		    	if(data == 2) {	
 		    		$("#txt_9").html("");
 		    		$("#cmb_pais").html("");	        		
 		    		alert('Datos Agregados Correctamente');
@@ -43,14 +43,14 @@ function inicio (){
 		    		$('#modal_pais').modal('hide');
 		    		carga_ubicaciones("txt_9","txt_10","txt_11");//pais provincia ciudad 
 		    		carga_ubicaciones("cmb_pais");    		
-		    	}else{
+		    	} else {
 		    		if( data == 1 ) {	    		
 		    			alert('El País ya existe. Ingrese otra')	;
 		    			$("#txt_pais").val("");
 		    			$("#txt_pais").focus();
 		    		}
 		    	}
-			},		
+			}		
 		});
 	});
 
@@ -60,7 +60,7 @@ function inicio (){
 		    data: {guardar_provincia:'guardar_provincia', txt_provincia: $("#txt_provincia").val(), id: $("#cmb_pais").val()}, 	    	    	    
 		    type: "POST",				
 		    success: function(data) {	    	
-		    	if( data == 2 ) {
+		    	if(data == 2) {
 		    		$("#txt_9").html("");
 		    		$("#txt_10").html("");
 		    		$("#txt_11").html("");  
@@ -72,8 +72,8 @@ function inicio (){
 		    		carga_ubicaciones("txt_9","txt_10","txt_11");//pais provincia ciudad
 		    		carga_ubicaciones("cmb_pais2","cmb_provincia");  	    		
 		    	} else {
-		    		if( data == 1 ) {	    		
-		    			alert('La Provincia ya existe. Ingrese otra')	;
+		    		if(data == 1) {	    		
+		    			alert('La Provincia ya existe. Ingrese otra');
 		    			$("#txt_provincia").val("");
 		    			$("#txt_provincia").focus();
 		    		}
@@ -88,7 +88,7 @@ function inicio (){
 		    data: {guardar_ciudad:'guardar_ciudad', txt_ciudad: $("#txt_ciudad").val(), id: $("#cmb_provincia").val()}, 	    	    	    
 		    type: "POST",				
 		    success: function(data) {	    	
-		    	if( data == 2 ) {  
+		    	if(data == 2) {  
 		    		$("#txt_9").html("");
 		    		$("#txt_10").html("");
 		    		$("#txt_11").html(""); 	 		
@@ -97,8 +97,8 @@ function inicio (){
 		    		$('#modal_ciudad').modal('hide');
 		    		carga_ubicaciones("txt_9","txt_10","txt_11");//pais provincia ciudad 	    		
 		    	} else {
-		    		if( data == 1 ) {	    		
-		    			alert('La Ciudad ya existe. Ingrese otra')	;
+		    		if(data == 1) {	    		
+		    			alert('La Ciudad ya existe. Ingrese otra');
 		    			$("#txt_ciudad").val("");
 		    			$("#txt_ciudad").focus();
 		    		}
@@ -110,24 +110,25 @@ function inicio (){
 	carga_ubicaciones("cmb_pais");
 	carga_ubicaciones("cmb_pais2","cmb_provincia");
 
-	/*-----------------------*/
-	$("input").on("keyup click",function (e){//campos requeridos		
-		comprobarCamposRequired(e.currentTarget.form.id)
-
+	$("input").on("keyup click", function(e) {	
+		comprobarCamposRequired(e.currentTarget.form.id);
 	});	
-	/*----procesos ci ruc pass-----*/
-	$("#txt_1").change(function (){
+
+	$("#txt_1").change(function() {
 		documentos("0");
 	});
-	$("#txt_2").keyup(function(){
-		ci_ruc_pass("txt_2",$("#txt_2").val(),$("#txt_1").val())
+
+	$("#txt_2").keyup(function() {
+		ci_ruc_pass("txt_2",$("#txt_2").val(),$("#txt_1").val());
 	});
-	/*--cargar combos dependientes--*/    
+
 	carga_ubicaciones("txt_9","txt_10","txt_11");//pais provincia ciudad
-	$("#txt_9").change(function(){
+
+	$("#txt_9").change(function() {
 		change_pais("txt_9","txt_10","txt_11");
 	});
-	$("#txt_10").change(function(){
+
+	$("#txt_10").change(function() {
 		change_provincia("txt_9","txt_10","txt_11");
 	});
     
@@ -136,10 +137,10 @@ function inicio (){
 	$("#btn_1").on("click",limpiar_form);
 	$("#btn_2").on("click",actualizar_form);
 	
-	$("#btn_4").on("click",function (){		
+	$("#btn_4").on("click", function() {		
 		var resp = "";		
 		resp =atras($("#txt_0").val(),"clientes","secuencia.php");		
-		if(resp[0] != false){
+		if(resp[0] != false) {
 			$("#txt_0").val(resp[0][0]);
 			$("#txt_1").val(resp[0][1]);
 			$("#txt_1").trigger("chosen:updated"); 
@@ -154,20 +155,20 @@ function inicio (){
 			$("#txt_7").val(resp[0][12]);		
 			$("#txt_6").val(resp[0][10]);		
 		    documentos("1");
-		    /**/
+
 	        var prov = 0;
 	        var pais = 0;
-	        $.ajax({/*obtnengo el id de provincia*/
+	        $.ajax({
 		        type: "POST",		        
 		        url: "../carga_ubicaciones.php?tipo=0&id="+resp[0][7]+"&fun=5",        
 		        success: function(response) {         
 		        	prov = response;
-		        	$.ajax({/*obtnengo el id del pais*/
+		        	$.ajax({
 				        type: "POST",			        
 				        url: "../carga_ubicaciones.php?tipo=0&id="+prov+"&fun=6",        
 				        success: function(response) {         
 				        	pais = response;						        	
-				        	/*cambio los combos*/
+
 						    $.ajax({        
 						        type: "POST",
 						        dataType: 'json',        
@@ -175,14 +176,14 @@ function inicio (){
 						        success: function(response) {         			        	
 						        	$("#txt_9").html("");
 						            for (var i = 0; i < response.length; i=i+2) {            				            	
-						            	if(response[i] == pais){
+						            	if(response[i] == pais) {
 											$("#txt_9").append("<option value ="+response[i]+" selected>"+response[i+1]+"</option>");            																																
-						            	}
-										else{
+						            	} else {
 											$("#txt_9").append("<option value ="+response[i]+">"+response[i+1]+"</option>");            																																
 										}
 						            }   
 						            $("#txt_9").trigger("chosen:updated"); 
+
 						            $.ajax({        
 								        type: "POST",
 								        dataType: 'json',        
@@ -190,14 +191,14 @@ function inicio (){
 								        success: function(response) {         			        	
 								        	$("#txt_10").html("");
 								            for (var i = 0; i < response.length; i=i+2) {            				            	
-								            	if(response[i] == prov){
+								            	if(response[i] == prov) {
 													$("#txt_10").append("<option value ="+response[i]+" selected>"+response[i+1]+"</option>");            																																
-								            	}
-												else{
+								            	} else {
 													$("#txt_10").append("<option value ="+response[i]+">"+response[i+1]+"</option>");            																																
 												}
 								            }   
-								            $("#txt_10").trigger("chosen:updated"); 
+								            $("#txt_10").trigger("chosen:updated");
+
 								            $.ajax({        
 										        type: "POST",
 										        dataType: 'json',        
@@ -207,37 +208,33 @@ function inicio (){
 										            for (var i = 0; i < response.length; i=i+2) {            				            	
 										            	if(response[i] == resp[0][7]){
 															$("#txt_11").append("<option value ="+response[i]+" selected>"+response[i+1]+"</option>");            																																
-										            	}
-														else{
+										            	} else {
 															$("#txt_11").append("<option value ="+response[i]+">"+response[i+1]+"</option>");            																																
 														}
 										            }   
-										            $("#txt_11").trigger("chosen:updated"); 
-										                                         
+										            $("#txt_11").trigger("chosen:updated");                               
 										        }
-										    });	      
-								                                         
+										    });                               
 								        }
-								    });/**/		                            
+								    });		                            
 						        }
-						    });/**/							    
+						    });						    
 				        }                   
 				    });
 		        }                   
 		    });	
-		}else{
+		} else {
 			alert("Sin registros anteriores");
 		}		
 	    comprobarCamposRequired("form_cliente");		    	            
 	    $("#btn_0").text("");
 	    $("#btn_0").append("<span class='glyphicon glyphicon-log-in'></span> Modificar");     	            
-        /**/
 	});
 
-	$("#btn_5").on("click",function (){		
+	$("#btn_5").on("click",function () {		
 		var resp = "";		
 		resp =adelante($("#txt_0").val(),"clientes","secuencia.php");		
-		if(resp[0] != false){
+		if(resp[0] != false) {
 			$("#txt_0").val(resp[0][0]);
 			$("#txt_1").val(resp[0][1]);
 			$("#txt_1").trigger("chosen:updated"); 
@@ -252,20 +249,20 @@ function inicio (){
 			$("#txt_13").val(resp[0][11]);		
 			$("#txt_7").val(resp[0][12]);		
 		    documentos("1");
-		    /**/
+		    
 	        var prov = 0;
 	        var pais = 0;
-	        $.ajax({/*obtnengo el id de provincia*/
+	        $.ajax({
 		        type: "POST",		        
 		        url: "../carga_ubicaciones.php?tipo=0&id="+resp[0][7]+"&fun=5",        
 		        success: function(response) {         
 		        	prov = response;
-		        	$.ajax({/*obtnengo el id del pais*/
+		        	$.ajax({
 				        type: "POST",			        
 				        url: "../carga_ubicaciones.php?tipo=0&id="+prov+"&fun=6",        
 				        success: function(response) {         
 				        	pais = response;						        	
-				        	/*cambio los combos*/
+	
 						    $.ajax({        
 						        type: "POST",
 						        dataType: 'json',        
@@ -273,14 +270,14 @@ function inicio (){
 						        success: function(response) {         			        	
 						        	$("#txt_9").html("");
 						            for (var i = 0; i < response.length; i=i+2) {            				            	
-						            	if(response[i] == pais){
+						            	if(response[i] == pais) {
 											$("#txt_9").append("<option value ="+response[i]+" selected>"+response[i+1]+"</option>");            																																
-						            	}
-										else{
+						            	} else {
 											$("#txt_9").append("<option value ="+response[i]+">"+response[i+1]+"</option>");            																																
 										}
 						            }   
 						            $("#txt_9").trigger("chosen:updated"); 
+
 						            $.ajax({        
 								        type: "POST",
 								        dataType: 'json',        
@@ -288,14 +285,14 @@ function inicio (){
 								        success: function(response) {         			        	
 								        	$("#txt_10").html("");
 								            for (var i = 0; i < response.length; i=i+2) {            				            	
-								            	if(response[i] == prov){
+								            	if(response[i] == prov) {
 													$("#txt_10").append("<option value ="+response[i]+" selected>"+response[i+1]+"</option>");            																																
-								            	}
-												else{
+								            	} else {
 													$("#txt_10").append("<option value ="+response[i]+">"+response[i+1]+"</option>");            																																
 												}
 								            }   
 								            $("#txt_10").trigger("chosen:updated"); 
+
 								            $.ajax({        
 										        type: "POST",
 										        dataType: 'json',        
@@ -305,31 +302,27 @@ function inicio (){
 										            for (var i = 0; i < response.length; i=i+2) {            				            	
 										            	if(response[i] == resp[0][7]){
 															$("#txt_11").append("<option value ="+response[i]+" selected>"+response[i+1]+"</option>");            																																
-										            	}
-														else{
+										            	} else {
 															$("#txt_11").append("<option value ="+response[i]+">"+response[i+1]+"</option>");            																																
 														}
 										            }   
-										            $("#txt_11").trigger("chosen:updated"); 
-										                                         
+										            $("#txt_11").trigger("chosen:updated");                               
 										        }
-										    });	      
-								                                         
+										    });                                
 								        }
-								    });/**/		                            
+								    });	                            
 						        }
-						    });/**/							    
+						    });							    
 				        }                   
 				    });
 		        }                   
 		    });	
-		}else{
+		} else {
 			alert("Sin registros superiores");
 		}		
 	    comprobarCamposRequired("form_cliente");		    	            
 	    $("#btn_0").text("");
-	    $("#btn_0").append("<span class='glyphicon glyphicon-log-in'></span> Modificar");     	            
-        /**/
+	    $("#btn_0").append("<span class='glyphicon glyphicon-log-in'></span> Modificar");
 	});
     /*------*/
     jQuery(function($) {
@@ -410,20 +403,19 @@ function inicio (){
 	            $("#txt_13").val(ret.txt_13);	
 	            $("#txt_1").trigger("chosen:updated");  
 	            documentos("1");           	            
-	            /**/
+
 	            var prov = 0;
 	            var pais = 0;
-	            $.ajax({/*obtnengo el id de provincia*/
+	            $.ajax({
 			        type: "POST",			        
 			        url: "../carga_ubicaciones.php?tipo=0&id="+ret.txt_11+"&fun=5",        
 			        success: function(response) {         
 			        	prov = response;
-			        	$.ajax({/*obtnengo el id del pais*/
+			        	$.ajax({
 					        type: "POST",			        
 					        url: "../carga_ubicaciones.php?tipo=0&id="+prov+"&fun=6",        
 					        success: function(response) {         
-					        	pais = response;						        	
-					        	/*cambio los combos*/
+					        	pais = response;
 							    $.ajax({        
 							        type: "POST",
 							        dataType: 'json',        
@@ -431,14 +423,14 @@ function inicio (){
 							        success: function(response) {         			        	
 							        	$("#txt_9").html("");
 							            for (var i = 0; i < response.length; i=i+2) {            				            	
-							            	if(response[i] == pais){
+							            	if(response[i] == pais) {
 												$("#txt_9").append("<option value ="+response[i]+" selected>"+response[i+1]+"</option>");            																																
-							            	}
-											else{
+							            	} else {
 												$("#txt_9").append("<option value ="+response[i]+">"+response[i+1]+"</option>");            																																
 											}
 							            }   
 							            $("#txt_9").trigger("chosen:updated"); 
+
 							            $.ajax({        
 									        type: "POST",
 									        dataType: 'json',        
@@ -446,14 +438,14 @@ function inicio (){
 									        success: function(response) {         			        	
 									        	$("#txt_10").html("");
 									            for (var i = 0; i < response.length; i=i+2) {            				            	
-									            	if(response[i] == prov){
+									            	if(response[i] == prov) {
 														$("#txt_10").append("<option value ="+response[i]+" selected>"+response[i+1]+"</option>");            																																
-									            	}
-													else{
+									            	} else {
 														$("#txt_10").append("<option value ="+response[i]+">"+response[i+1]+"</option>");            																																
 													}
 									            }   
 									            $("#txt_10").trigger("chosen:updated"); 
+
 									            $.ajax({        
 											        type: "POST",
 											        dataType: 'json',        
@@ -461,22 +453,19 @@ function inicio (){
 											        success: function(response) {         			        	
 											        	$("#txt_11").html("");
 											            for (var i = 0; i < response.length; i=i+2) {            				            	
-											            	if(response[i] == ret.txt_11){
+											            	if(response[i] == ret.txt_11) {
 																$("#txt_11").append("<option value ="+response[i]+" selected>"+response[i+1]+"</option>");            																																
-											            	}
-															else{
+											            	} else {
 																$("#txt_11").append("<option value ="+response[i]+">"+response[i+1]+"</option>");            																																
 															}
 											            }   
-											            $("#txt_11").trigger("chosen:updated"); 
-											                                         
+											            $("#txt_11").trigger("chosen:updated");                               
 											        }
-											    });	      
-									                                         
+											    });	                               
 									        }
-									    });/**/		                            
+									    });	                            
 							        }
-							    });/**/							    
+							    });						    
 					        }                   
 					    });
 			        }                   
@@ -638,45 +627,10 @@ function inicio (){
 	        style_edit_form(form);
 	    }
 
-
-
-	    //it causes some flicker when reloading or navigating grid
-	    //it may be possible to have some custom formatter to do this as the grid is being created to prevent this
-	    //or go back to default browser checkbox styles for the grid
-	    function styleCheckbox(table) {
-	        /**
-	                    $(table).find('input:checkbox').addClass('ace')
-	                    .wrap('<label />')
-	                    .after('<span class="lbl align-top" />')
-
-
-	                    $('.ui-jqgrid-labels th[id*="_cb"]:first-child')
-	                    .find('input.cbox[type=checkbox]').addClass('ace')
-	                    .wrap('<label />').after('<span class="lbl align-top" />');
-	         */
-	    }
+	    function styleCheckbox(table) {}
 	    
-
-	    //unlike navButtons icons, action icons in rows seem to be hard-coded
-	    //you can change them like this in here if you want
-	    function updateActionIcons(table) {
-	        /**
-	                    var replacement = 
-	                    {
-	                            'ui-ace-icon fa fa-pencil' : 'ace-icon fa fa-pencil blue',
-	                            'ui-ace-icon fa fa-trash-o' : 'ace-icon fa fa-trash-o red',
-	                            'ui-icon-disk' : 'ace-icon fa fa-check green',
-	                            'ui-icon-cancel' : 'ace-icon fa fa-times red'
-	                    };
-	                    $(table).find('.ui-pg-div span.ui-icon').each(function(){
-	                            var icon = $(this);
-	                            var $class = $.trim(icon.attr('class').replace('ui-icon', ''));
-	                            if($class in replacement) icon.attr('class', 'ui-icon '+replacement[$class]);
-	                    })
-	         */
-	    }
+	    function updateActionIcons(table) {}
 	    
-	    //replace icons with FontAwesome icons like above
 	    function updatePagerIcons(table) {
 	        var replacement = 
 	            {
@@ -698,63 +652,61 @@ function inicio (){
 	        $(table).find('.ui-pg-div').tooltip({container:'body'});
 	    }
 
-	    //var selr = jQuery(grid_selector).jqGrid('getGridParam','selrow');
-
 	    $(document).one('ajaxloadstart.page', function(e) {
 	        $(grid_selector).jqGrid('GridUnload');
 	        $('.ui-jqdialog').remove();
 	    });
 	}); 
 }
-/*Formularios Servicios Administrativos*/
-function guardar_clientes() {
-	var valores = $("#form_cliente").serialize();
-	var texto=($("#btn_0").text()).trim();
+	/*Formularios Servicios Administrativos*/
+	function guardar_clientes() {
+		var valores = $("#form_cliente").serialize();
+		var texto=($("#btn_0").text()).trim();
 
-	if($("#txt_2").val() == "") {
-		alert('Campo Requerido');
-		$("#txt_2").focus();
-	} else {
-		if($("#txt_3").val() == "") {
+		if($("#txt_2").val() == "") {
 			alert('Campo Requerido');
-			$("#txt_3").focus();
+			$("#txt_2").focus();
 		} else {
-			if($("#txt_12").val() == "") {
+			if($("#txt_3").val() == "") {
 				alert('Campo Requerido');
-				$("#txt_12").focus();
+				$("#txt_3").focus();
 			} else {
-				if(texto=="Guardar") {
-					datos_clientes(valores,"g");
+				if($("#txt_12").val() == "") {
+					alert('Campo Requerido');
+					$("#txt_12").focus();
 				} else {
-					datos_clientes(valores,"m");	
-				}
-				
-			}	
+					if(texto=="Guardar") {
+						datos_clientes(valores,"g");
+					} else {
+						datos_clientes(valores,"m");	
+					}
+					
+				}	
+			}
 		}
+		// var resp=comprobarCamposRequired("form_cliente");
+		// if(resp==true){
+		// 	$("#form_cliente").on("submit",function (e){				
+		// 		var valores = $("#form_cliente").serialize();
+		// 		var texto=($("#btn_0").text()).trim();	
+		// 		if(texto=="Guardar"){		
+		// 			if($("#txt_11").val() != null){
+		// 				datos_clientes(valores,"g",e);	
+		// 			}else{
+		// 				alert("Seleccione una ciudad antes de continuar");
+		// 			}				
+		// 		}else{
+		// 			if($("#txt_11").val() != null) {
+		// 				datos_clientes(valores,"m",e);	
+		// 			}else{
+		// 				alert("Seleccione una ciudad antes de continuar");
+		// 			}
+		// 		}
+		// 		e.preventDefault();
+	 //    		$(this).unbind("submit")
+		// 	});
+		// }
 	}
-	// var resp=comprobarCamposRequired("form_cliente");
-	// if(resp==true){
-	// 	$("#form_cliente").on("submit",function (e){				
-	// 		var valores = $("#form_cliente").serialize();
-	// 		var texto=($("#btn_0").text()).trim();	
-	// 		if(texto=="Guardar"){		
-	// 			if($("#txt_11").val() != null){
-	// 				datos_clientes(valores,"g",e);	
-	// 			}else{
-	// 				alert("Seleccione una ciudad antes de continuar");
-	// 			}				
-	// 		}else{
-	// 			if($("#txt_11").val() != null) {
-	// 				datos_clientes(valores,"m",e);	
-	// 			}else{
-	// 				alert("Seleccione una ciudad antes de continuar");
-	// 			}
-	// 		}
-	// 		e.preventDefault();
- //    		$(this).unbind("submit")
-	// 	});
-	// }
-}
 
 
 function datos_clientes(valores,tipo,p){	
@@ -765,11 +717,7 @@ function datos_clientes(valores,tipo,p){
 		url: "clientes.php",			
 	    success: function(data) {	
 	    	if( data == 0 ) {			
-	    		alert('Datos Agregados Correctamente');
-	   //  		setTimeout(function() {
-				//     location.reload(true);
-
-				// }, 3000);	
+	    		alert('Datos Agregados Correctamente');	
 	    		$('#table').trigger('reloadGrid');							
 	    	}else{
 	    		if( data == 1 ){
@@ -785,4 +733,3 @@ function datos_clientes(valores,tipo,p){
 	}); 
 }
 
-/*---------------------------------*/

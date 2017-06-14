@@ -116,21 +116,21 @@
 																						<select class="chosen-select form-control" id="txt_1" name="txt_1" data-placeholder="País">
 																							<option value="Cedula">Cédula</option>	
 																							<option value="RUC">RUC</option>	
-																							<option value="Pasaporte">Pasaporte</option>																				
+																							<option value="Pasaporte">Pasaporte</option>					
 																						</select>						
-																						<input type="hidden" id="txt_0" name="txt_0" />																
+																						<input type="hidden" id="txt_0" name="txt_0" />						
 																					</div>
 																				</div>
 
 																				<div class="form-group has-error">
-																					<label class="col-sm-4 control-label no-padding-right" for="txt_2"> RUC/CI.:</label>
+																					<label class="col-sm-4 control-label no-padding-right" for="txt_2"> RUC/CI.(*):</label>
 																					<div class="col-sm-8">
 																						<input type="text" id="txt_2" name="txt_2"  placeholder="Identificación" class="form-control" data-toggle="tooltip" data-original-title="" required pattern="[0-9]{10,10}" maxlength="10" minlength="10" />
 																					</div>
 																				</div>
 
 																				<div class="form-group has-error">
-																					<label class="col-sm-4 control-label no-padding-right" for="txt_3"> Empresa: </label>
+																					<label class="col-sm-4 control-label no-padding-right" for="txt_3"> Empresa (*): </label>
 																					<div class="col-sm-8">
 																						<input type="text" id="txt_3" name="txt_3" placeholder="Empresa" class="form-control" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9 ]{1,}" data-toggle="tooltip" data-original-title="Empresa"  />
 																					</div>
@@ -140,9 +140,9 @@
 																					<label class="col-sm-4 control-label no-padding-right" for="txt_4"> Teléfono: </label>
 																					<div class="col-sm-8">
 																						<span class="block input-icon input-icon-right">
-					                                                                    	<input type="text" id="txt_4" name="txt_4" placeholder="Teléfono" class="form-control" />
+					                                                                    	<input type="text" id="txt_4" name="txt_4" placeholder="Teléfono" class="form-control" onkeydown="return validarNumeros(event)" maxlength="7" />
 					                                                                    	<i class="ace-icon fa fa-phone fa-flip-horizontal"></i>
-					                                                                    </span>																		
+					                                                                    </span>		
 																					</div>
 																				</div>
 
@@ -150,9 +150,9 @@
 																					<label class="col-sm-4 control-label no-padding-right" for="txt_5"> Celular: </label>
 																					<div class="col-sm-8">	
 																						<span class="block input-icon input-icon-right">
-																							<input type="text" id="txt_5" name="txt_5" placeholder="Celular" class="form-control" />
-																							<i class="ace-icon fa fa-mobile fa-flip-horizontal"></i>					
-																						</span>																																																						
+																							<input type="text" id="txt_5" name="txt_5" placeholder="Celular" class="form-control" onkeydown="return validarNumeros(event)" maxlength="10" />
+																							<i class="ace-icon fa fa-mobile fa-flip-horizontal"></i>		
+																						</span>				
 																					</div>
 																				</div>
 
@@ -175,10 +175,10 @@
 
 																				<div class="form-group">
 																					<label class="col-sm-4 control-label no-padding-right" for="txt_8"> Forma de Pago: </label>
-																					<div class="col-sm-8">																						
-																						<select class="chosen-select form-control" id="txt_8" name="txt_8" data-placeholder="Seleccione una forma de pago">																						
-																						<option value="Contado">CONTADO</option>
-																						<option value="Credito">CRÉDITO</option>																																								
+																					<div class="col-sm-8">								
+																						<select class="chosen-select form-control" id="txt_8" name="txt_8" data-placeholder="Seleccione una forma de pago">			
+																							<option value="Contado">CONTADO</option>
+																							<option value="Credito">CRÉDITO</option>		
 																						</select>
 																					</div>
 																				</div>	
@@ -202,7 +202,7 @@
 																				<div class="form-group">
 																					<label class="col-sm-4 control-label no-padding-right" for="txt_14"> Tipo Proveedor: </label>
 																					<div class="col-sm-8">
-																						<select class="chosen-select form-control" id="txt_14" name="txt_14" data-placeholder="Tipo Proveedor">																			
+																						<select class="chosen-select form-control" id="txt_14" name="txt_14" data-placeholder="Tipo Proveedor">									
 																							<option value="Natural">Natural</option>	
 																							<option value="Juridico">Jurídico</option>	
 																						</select>
@@ -227,7 +227,7 @@
 																					<div class="col-sm-1 btn btn-sm btn-primary" id="" data-toggle="modal" href="#modal_provincia" >...</div>
 																				</div>
 
-																				<div class="form-group">
+																				<div class="form-group has-error">
 																					<label class="col-sm-4 control-label no-padding-right" for="txt_11"> Ciudad: </label>
 																					<div class="col-sm-6">
 																						<select class="chosen-select form-control" id="txt_11" name="txt_11" data-placeholder="Ciudad">
@@ -237,8 +237,7 @@
 																				</div>
 
 																				<div class="form-group has-error">
-																					<label class="col-sm-4 control-label no-padding-right" for="txt_15"> Dirección: </label>
-
+																					<label class="col-sm-4 control-label no-padding-right" for="txt_15"> Dirección (*): </label>
 																					<div class="col-sm-8">
 																						<input type="text" id="txt_15" name="txt_15" placeholder="Dirección" class="form-control"  required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9 ]{1,}" data-toggle="tooltip" data-original-title="Ingrese la dirección del proveedor" />
 																					</div>
@@ -247,9 +246,9 @@
 																				<div class="form-group">
 																					<label class="col-sm-4 control-label no-padding-right" for="txt_16"> Proveedor principal: </label>
 																					<div class="col-sm-8">
-																						<select class="chosen-select form-control" id="txt_16" name="txt_16" data-placeholder="Proveedor principal">																		
-																						<option value="SI">SI</option>
-																						<option value="NO">NO</option>
+																						<select class="chosen-select form-control" id="txt_16" name="txt_16" data-placeholder="Proveedor principal">		
+																							<option value="SI">SI</option>
+																							<option value="NO">NO</option>
 																						</select>
 																					</div>
 																				</div>	
@@ -280,28 +279,27 @@
 																				</div>
 
 																				<div class="form-group">
-																					<label class="col-sm-4 control-label no-padding-right" for="txt_20"> Código Retención Fuente : </label>
+																					<label class="col-sm-4 control-label no-padding-right" for="txt_20"> Código Retención Fuente: </label>
 																					<div class="col-sm-7">
 																						<select class="chosen-select form-control" id="txt_20" name="txt_20" data-placeholder="Código Retención Fuente">
-																						<option value="">  </option>
+																							<option value="">  </option>
 																						</select>
 																					</div>
 																					<div class="btn-group col-sm-1">
-																						<button type="button" class="btn btn-sm btn-primary" id="btn_agr_ret_fuente" data-toggle="modal" href="#modal_retenciones">...</button>																						
+																						<button type="button" class="btn btn-sm btn-primary" id="btn_agr_ret_fuente" data-toggle="modal" href="#modal_retenciones">...</button>						
 																					</div>
-																					
 																				</div>
 
 																				<div class="form-group">
 																					<label class="col-sm-4 control-label no-padding-right" for="txt_21"> Código Retención Iva: </label>
 																					<div class="col-sm-7">
 																						<select class="chosen-select form-control" id="txt_21" name="txt_21" data-placeholder="Código Retención Iva">
-																						<option value="">  </option>
+																							<option value=""></option>
 																						</select>
 																					</div>
 																					<div class="btn-group col-sm-1">
-																						<button type="button" class="btn btn-sm btn-primary" id="btn_ret_iva" data-toggle="modal" href="#modal_retenciones">...</button>																						
-																					</div>																					
+																						<button type="button" class="btn btn-sm btn-primary" id="btn_ret_iva" data-toggle="modal" href="#modal_retenciones">...</button>		
+																					</div>				
 																				</div>
 																			</div>
 
@@ -310,16 +308,16 @@
 																					<label class="col-sm-4 control-label no-padding-right" for="txt_22"> Grupo: </label>
 																					<div class="col-sm-8">
 																						<select class="chosen-select form-control" id="txt_22" name="txt_22" data-placeholder="Grupo Contable">
-																						<option value="">  </option>
+																							<option value=""></option>
 																						</select>	
 																					</div>
 																				</div>
 
 																				<div class="form-group">
 																					<label class="col-sm-4 control-label no-padding-right" for="txt_23"> Sustento Tribuario: </label>
-																					<div class="col-sm-8">																						
+																					<div class="col-sm-8">							
 																						<select class="chosen-select form-control" id="txt_23" name="txt_23" data-placeholder="Sustento Tributario">
-																						<option value="">  </option>
+																							<option value=""></option>
 																						</select>
 																					</div>
 																				</div>
@@ -328,26 +326,26 @@
 																					<label class="col-sm-4 control-label no-padding-right" for="txt_24"> Tipo Comprobante: </label>
 																					<div class="col-sm-8">
 																						<select class="chosen-select form-control" id="txt_24" name="txt_24" data-placeholder="Tipo Comprobante">
-																						<option value="">  </option>	
-																						</select>																						
+																							<option value=""></option>	
+																						</select>							
 																					</div>
 																				</div>
 
 																				<div class="form-group">
 																					<label class="col-sm-4 control-label no-padding-right" for="txt__25"> Código compras: </label>
 																					<div class="col-sm-7">
-																						<select class="chosen-select form-control" id="txt_25" name="txt_25" data-placeholder="Código compras">																							
-																						<option value="">  </option>
-																						</select>																							
+																						<select class="chosen-select form-control" id="txt_25" name="txt_25" data-placeholder="Código compras">									
+																							<option value=""></option>
+																						</select>								
 																					</div>
 																					<div class="btn-group col-sm-1">
-																						<button type="button" class="btn btn-sm btn-primary" id="btn_agr_cod" data-toggle="modal" href="#modal_plan">...</button>																						
-																					</div>																																										
+																						<button type="button" class="btn btn-sm btn-primary" id="btn_agr_cod" data-toggle="modal" href="#modal_plan">...</button>		
+																					</div>							
 																				</div>
 
 																				<div class="form-group">
 																					<label class="col-sm-4 control-label no-padding-right" for="txt_26"> Observacion: </label>
-																					<div class="col-sm-8">																	
+																					<div class="col-sm-8">		
 																						<textarea class="form-control"  id="txt_26" name="txt_26" placeholder="Observacion"></textarea>
 																					</div>
 																				</div>	

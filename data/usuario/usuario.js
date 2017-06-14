@@ -13,8 +13,8 @@ function inicio (){
 	});
 	$("input:not([readonly='readonly']):text:visible:first").focus();   
 	// inicializacion de formato txt_ telefono1
-	$('#txt_3').mask('(999) 999-999');
-	$('#txt_7').mask('(999) 999-9999');
+	// $('#txt_3').mask('(999) 999-999');
+	// $('#txt_7').mask('(999) 999-9999');
 	///////////varias validaciones//////////////}
 		//editables on first profile page
 	$.fn.editable.defaults.mode = 'inline';
@@ -112,10 +112,7 @@ function inicio (){
 			}
 		})
 	}catch(e) {}
-	
-
-	
-////////////////////////////////////////////	
+	////////////////////////////////////////////	
 	
  	/*------------*/	
 	$('.chosen-select').chosen({allow_single_deselect:true,}); 
@@ -144,7 +141,6 @@ function inicio (){
 		})
 	});
 
-
 	$('#btn_guardar_pais').on('click', function() {
 		$.ajax({
 		    url: "usuario.php",
@@ -159,14 +155,14 @@ function inicio (){
 		    		$('#modal_pais').modal('hide');
 		    		carga_ubicaciones("txt_9","txt_10","txt_11");//pais provincia ciudad 
 		    		carga_ubicaciones("cmb_pais");    		
-		    	}else{
-		    		if( data == 1 ) {	    		
+		    	} else {
+		    		if(data == 1) {	    		
 		    			alert('El País ya existe. Ingrese otra')	;
 		    			$("#txt_pais").val("");
 		    			$("#txt_pais").focus();
 		    		}
 		    	}
-			},		
+			}		
 		});
 	});
 
@@ -188,13 +184,13 @@ function inicio (){
 		    		carga_ubicaciones("txt_9","txt_10","txt_11");//pais provincia ciudad
 		    		carga_ubicaciones("cmb_pais2","cmb_provincia");  	    		
 		    	} else {
-		    		if( data == 1 ) {	    		
+		    		if(data == 1) {	    		
 		    			alert('La Provincia ya existe. Ingrese otra')	;
 		    			$("#txt_provincia").val("");
 		    			$("#txt_provincia").focus();
 		    		}
 		    	}
-			},		
+			}		
 		});
 	});
 
@@ -213,23 +209,24 @@ function inicio (){
 		    		$('#modal_ciudad').modal('hide');
 		    		carga_ubicaciones("txt_9","txt_10","txt_11");//pais provincia ciudad 	    		
 		    	} else {
-		    		if( data == 1 ) {	    		
+		    		if(data == 1) {	    		
 		    			alert('La Ciudad ya existe. Ingrese otra')	;
 		    			$("#txt_ciudad").val("");
 		    			$("#txt_ciudad").focus();
 		    		}
 		    	}
-			},		
+			}		
 		});
 	});
 
 	carga_ubicaciones("cmb_pais");
 	carga_ubicaciones("cmb_pais2","cmb_provincia");
+
 	/*-----------------------*/
 	$("input").on("keyup click",function (e){//campos requeridos		
 		comprobarCamposRequired(e.currentTarget.form.id)
-
 	});	
+
 	/*cargar el select de cargos*/
     $.ajax({          
         type: "POST",
@@ -244,38 +241,42 @@ function inicio (){
     }); 
     /*---*/
 	carga_ubicaciones("txt_9","txt_10","txt_11");//pais provincia ciudad
-	$("#txt_9").change(function(){
+	$("#txt_9").change(function() {
 		change_pais("txt_9","txt_10","txt_11");
 	});
-	$("#txt_10").change(function(){
+
+	$("#txt_10").change(function() {
 		change_provincia("txt_9","txt_10","txt_11");
 	});
-	$("#txt_1").on("keyup",function(){		
+
+	$("#txt_1").on("keyup",function() {		
 		if($("#form-field-checkbox").prop("checked"))
 			ci("txt_1","ON");
 		else
 			ci("txt_1","OFF");
 	});	
-	$("#form-field-checkbox").click(function(){
-		if($("#form-field-checkbox").prop("checked")){
+
+	$("#form-field-checkbox").click(function() {
+		if($("#form-field-checkbox").prop("checked")) {
 			$("#txt_1").val("");
 			$("#txt_1").focus();
 			$("#txt_1").prop("maxlength","30");
-		}
-		else{
+		} else {
 			$("#txt_1").val("");
 			$("#txt_1").focus();
 			$("#txt_1").prop("maxlength","10");
 		}
 	})
+
 	/*-----*/
 	$("#btn_0").on("click",guardar);	
 	$("#btn_1").on("click",limpiar_form);
-	$("#btn_2").on("click",actualizar_form);	
-	$("#btn_4").on("click",function (){		
+	$("#btn_2").on("click",actualizar_form);
+
+	$("#btn_4").on("click",function () {		
 		var resp = "";		
 		resp =atras($("#txt_o").val(),"usuario","secuencia.php");		
-		if(resp[0] != false){
+		if(resp[0] != false) {
 			$("#txt_o").val(resp[0][0]);
 			$("#txt_1").val(resp[0][1]);
 			$("#txt_2").val(resp[0][2]);
@@ -285,10 +286,11 @@ function inicio (){
 			$("#txt_8").val(resp[0][8]);
 			$("#txt_13").val(resp[0][9]);		
 			$("#txt_13").val(resp[0][9]);
-			$("#avatar").attr("src","img/"+resp[0][13]);	
-			if(resp[0][14] == "ON"){
+			$("#avatar").attr("src","img/"+resp[0][13]);
+
+			if(resp[0][14] == "ON") {
 		    	$("#form-field-checkbox").prop("checked",true);
-		    }else{
+		    } else {
 		    	$("#form-field-checkbox").prop("checked",false);
 		    }	    
 		    $("#txt_5").val(resp[0][15]);
@@ -316,14 +318,14 @@ function inicio (){
 						        success: function(response) {         			        	
 						        	$("#txt_9").html("");
 						            for (var i = 0; i < response.length; i=i+2) {            				            	
-						            	if(response[i] == pais){
+						            	if(response[i] == pais) {
 											$("#txt_9").append("<option value ="+response[i]+" selected>"+response[i+1]+"</option>");            																																
-						            	}
-										else{
+						            	} else {
 											$("#txt_9").append("<option value ="+response[i]+">"+response[i+1]+"</option>");            																																
 										}
-						            }   
+						            } 
 						            $("#txt_9").trigger("chosen:updated"); 
+
 						            $.ajax({        
 								        type: "POST",
 								        dataType: 'json',        
@@ -333,12 +335,12 @@ function inicio (){
 								            for (var i = 0; i < response.length; i=i+2) {            				            	
 								            	if(response[i] == prov){
 													$("#txt_10").append("<option value ="+response[i]+" selected>"+response[i+1]+"</option>");            																																
-								            	}
-												else{
+								            	} else {
 													$("#txt_10").append("<option value ="+response[i]+">"+response[i+1]+"</option>");            																																
 												}
-								            }   
-								            $("#txt_10").trigger("chosen:updated"); 
+								            }
+								            $("#txt_10").trigger("chosen:updated");
+								             
 								            $.ajax({        
 										        type: "POST",
 										        dataType: 'json',        
@@ -346,26 +348,24 @@ function inicio (){
 										        success: function(response) {         			        	
 										        	$("#txt_11").html("");
 										            for (var i = 0; i < response.length; i=i+2) {            				            	
-										            	if(response[i] == resp[0][5]){
+										            	if(response[i] == resp[0][5]) {
 															$("#txt_11").append("<option value ="+response[i]+" selected>"+response[i+1]+"</option>");            																																
-										            	}
-														else{
+										            	} else {
 															$("#txt_11").append("<option value ="+response[i]+">"+response[i+1]+"</option>");            																																
 														}
 										            }   
 										            $("#txt_11").trigger("chosen:updated");										                                         
 										        }
-										    });	      
-								                                         
+										    });	                                      
 								        }
-								    });/**/		                            
+								    });	                            
 						        }
-						    });/**/							    
+						    });						    
 				        }                   
 				    });
 		        }                   
 		    });	
-		}else{
+		} else {
 			alert("Sin registros anteriores");
 		}		
 	    comprobarCamposRequired("form_usuario");		    	            
@@ -373,7 +373,8 @@ function inicio (){
         $("#btn_0").append("<span class='glyphicon glyphicon-log-in'></span> Modificar");     	            
         /**/
 	});
-	$("#btn_5").on("click",function (){		
+
+	$("#btn_5").on("click",function () {		
 		var resp = "";		
 		resp =adelante($("#txt_o").val(),"usuario","secuencia.php");		
 		if(resp[0] != false){
@@ -387,11 +388,12 @@ function inicio (){
 			$("#txt_13").val(resp[0][9]);		
 			$("#txt_13").val(resp[0][9]);
 			$("#avatar").attr("src","img/"+resp[0][13]);	
-			if(resp[0][14] == "ON"){
+			if(resp[0][14] == "ON") {
 		    	$("#form-field-checkbox").prop("checked",true);
-		    }else{
+		    } else {
 		    	$("#form-field-checkbox").prop("checked",false);
-		    }	    
+		    }
+
 		    $("#txt_5").val(resp[0][15]);
 		    $("#txt_6").val(resp[0][15]);
 		    $("#txt_4").val(resp[0][10]);
@@ -419,11 +421,11 @@ function inicio (){
 						            for (var i = 0; i < response.length; i=i+2) {            				            	
 						            	if(response[i] == pais){
 											$("#txt_9").append("<option value ="+response[i]+" selected>"+response[i+1]+"</option>");            																																
-						            	}
-										else{
+						            	} else {
 											$("#txt_9").append("<option value ="+response[i]+">"+response[i+1]+"</option>");            																																
 										}
-						            }   
+						            } 
+
 						            $("#txt_9").trigger("chosen:updated"); 
 						            $.ajax({        
 								        type: "POST",
@@ -434,12 +436,12 @@ function inicio (){
 								            for (var i = 0; i < response.length; i=i+2) {            				            	
 								            	if(response[i] == prov){
 													$("#txt_10").append("<option value ="+response[i]+" selected>"+response[i+1]+"</option>");            																																
-								            	}
-												else{
+								            	} else {
 													$("#txt_10").append("<option value ="+response[i]+">"+response[i+1]+"</option>");            																																
 												}
 								            }   
-								            $("#txt_10").trigger("chosen:updated"); 
+								            $("#txt_10").trigger("chosen:updated");
+
 								            $.ajax({        
 										        type: "POST",
 										        dataType: 'json',        
@@ -449,34 +451,28 @@ function inicio (){
 										            for (var i = 0; i < response.length; i=i+2) {            				            	
 										            	if(response[i] == resp[0][5]){
 															$("#txt_11").append("<option value ="+response[i]+" selected>"+response[i+1]+"</option>");            																																
-										            	}
-														else{
+										            	} else {
 															$("#txt_11").append("<option value ="+response[i]+">"+response[i+1]+"</option>");            																																
 														}
 										            }   
-										            $("#txt_11").trigger("chosen:updated"); 
-										                                         
+										            $("#txt_11").trigger("chosen:updated");                              
 										        }
-										    });	      
-								                                         
+										    });	                                     
 								        }
-								    });/**/		                            
+								    });	                            
 						        }
-						    });/**/							    
+						    });						    
 				        }                   
 				    });
 		        }                   
 		    });	
-		}else{
+		} else {
 			alert("Sin registros superiores");
 		}		
 	    comprobarCamposRequired("form_usuario");		    	            
 	    $("#btn_0").text("");
         $("#btn_0").append("<span class='glyphicon glyphicon-log-in'></span> Modificar");     	            
-        /**/
-	});
-
-	/*-----*/    
+	});   
 	
     /*jqgrid*/    
 	jQuery(function($) {
@@ -521,8 +517,6 @@ function inicio (){
 	            {name:'imagen',index:'imagen',frozen : true,align:'left',search:false},
 	            {name:'extranjero',index:'extranjero',frozen : true,align:'left',search:false},
 	            {name:'txt_5',index:'txt_5',frozen : true,align:'left',search:false},
-	            
-
 	        ],          
 	        rowNum: 10,       
 	        width:600,
@@ -869,8 +863,11 @@ function inicio (){
     /**/    
 }
 function guardar() {///funcion para guardar datos
-	var texto=($("#btn_0").text()).trim();
-	var valores = $("#form_usuario").serialize();	
+	var texto = ($("#btn_0").text()).trim();
+	var valores = $("#form_usuario").serialize();
+	var cadena = document.getElementById('txt_5').value;
+	var expresionR = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{4,8}$/;
+	var resultado = expresionR.test(cadena);	
 
 	if($("#txt_1").val() == "") {
 		alert('Campo Requerido');
@@ -888,27 +885,32 @@ function guardar() {///funcion para guardar datos
 					alert('Campo Requerido');
 					$("#txt_5").focus();
 				} else {
-					if($("#txt_6").val() == "") {
-						alert('Campo Requerido');
-						$("#txt_6").focus();
+					if(resultado != true) {
+						alert('Error de 4 a 8 caracteres, debe incluir mínimo 1 Mayúscula (A-Z), una Minúscula (a-z) y un Número');
+						$("#txt_5").focus();
 					} else {
-						if($("#txt_5").val() != $("#txt_6").val()){
-							alert("Las Contraseñas no coinciden");
-							$("#txt_6").val("");
-							$("#txt_6").focus();	
+						if($("#txt_6").val() == "") {
+							alert('Campo Requerido');
+							$("#txt_6").focus();
 						} else {
-							if($("#txt_11").val() == "") {
-								alert('Seleccione una ciudad');
+							if($("#txt_5").val() != $("#txt_6").val()){
+								alert("Las Contraseñas no coinciden");
+								$("#txt_6").val("");
+								$("#txt_6").focus();	
 							} else {
-								if($("#txt_12").val() == "") {
-									alert('Campo Requerido');
-									$("#txt_12").val("");
-									$("#txt_12").focus();	
+								if($("#txt_11").val() == "") {
+									alert('Seleccione una ciudad');
 								} else {
-									if(texto=="Guardar") {
-										guardar_datos(valores,"g"); 
-									}
-								}	
+									if($("#txt_12").val() == "") {
+										alert('Campo Requerido');
+										$("#txt_12").val("");
+										$("#txt_12").focus();	
+									} else {
+										if(texto=="Guardar") {
+											guardar_datos(valores,"g"); 
+										}
+									}	
+								}
 							}	
 						}	
 					}
