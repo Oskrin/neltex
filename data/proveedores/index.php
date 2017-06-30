@@ -228,7 +228,7 @@
 																				</div>
 
 																				<div class="form-group has-error">
-																					<label class="col-sm-4 control-label no-padding-right" for="txt_11"> Ciudad: </label>
+																					<label class="col-sm-4 control-label no-padding-right" for="txt_11"> Ciudad (*): </label>
 																					<div class="col-sm-6">
 																						<select class="chosen-select form-control" id="txt_11" name="txt_11" data-placeholder="Ciudad">
 																						</select>
