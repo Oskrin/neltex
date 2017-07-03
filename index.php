@@ -180,8 +180,6 @@ sti
 
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
-			 
-			
 			jQuery(function($) {				
 			 $(document).on('click', '.toolbar a[data-target]', function(e) {
 				e.preventDefault();

@@ -18,6 +18,7 @@
 		<link rel="stylesheet" href="../../dist/css/ui.jqgrid.min.css" />
 		<link rel="stylesheet" href="../../dist/css/bootstrap-editable.min.css" />
 		<link rel="stylesheet" href="../../dist/css/jquery.gritter.min.css" />
+		<link rel="stylesheet" href="../../dist/css/sweetalert.css" />
 		<link rel="stylesheet" href="../../dist/css/style.css" />
 
 		<!-- text fonts -->
@@ -409,6 +410,8 @@
 		<script src="../../dist/js/ace.min.js"></script>
 		<script src="../../dist/js/jqGrid/jquery.jqGrid.min.js"></script>
         <script src="../../dist/js/jqGrid/i18n/grid.locale-en.js"></script>
+        <script src="../../dist/js/jquery.blockUI.js"></script>
+        <script src="../../dist/js/sweetalert.min.js"></script>
 		<script src="usuario.js"></script>
 		<script src="../generales.js"></script>
 	</body>

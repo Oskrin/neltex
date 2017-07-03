@@ -918,7 +918,7 @@ function guardar() {///funcion para guardar datos
 			}	
 		}	
 	}
-	console.log('test');
+	// console.log('test');
 	// var resp=comprobarCamposRequired("form_usuario");	    
 	// if(resp==true){    		
 	// 	$("#form_usuario").on("submit",function (e){				
@@ -955,24 +955,45 @@ function guardar() {///funcion para guardar datos
 		
 	// }				 
 }
-function guardar_datos(valores,tipo,p){		
+function guardar_datos(valores,tipo,p) {		
 	$.ajax({
 	    url: "usuario.php", 	    				    	    
 	    data:  valores + "&img="+$("#avatar")[0].src + "&tipo="+tipo, 	    	    
-	    type: "POST",				
-	    success: function(data){				    
-	    	if( data == 0 ){
-	    		alert('Datos Agregados Correctamente');	
-	    		limpiar_form(p);
-	    		// recargar();	
+	    type: "POST",
+	    beforeSend: function() {
+        	$.blockUI({ 
+        		css: { backgroundColor: 'background: rgba(255,255,255,0.2);', color: '#fff', border:'2px'},
+        		message: '<h3>Enviando información, Por favor espere un momento...'
+                                +'<span class="loader animated fadeIn handle ui-sortable-handle">'
+                                +'<span class="spinner">'
+                                    +'<i class="fa fa-spinner fa-spin"></i>'
+                                +'</span>'
+                                +'</span>'
+                          +'</h3>'
+        	});
+        },				
+	    success: function(data) {				    
+	    	if( data == 0 ) {
+	    		$.unblockUI();
+	    		swal({
+				    title: "Buen trabajo! estimado/a",
+				    text: "Su registro fue exitoso, por favor verifique su correo electrónico para activar su cuenta!",
+				    type: "warning",
+				},function () {
+					$('#form_usuario').each (function() {
+					  this.reset();
+					});
+				});	
 	    		$('#table').trigger('reloadGrid');					
 	    	}else{
-	    		if( data == 1 ){	    		
+	    		if(data == 1 ) {	
+	    			$.unblockUI();    		
 	    			alert('Este usuario ya existe. Ingrese otro')	;
 	    			$("#txt_13").val("");
 	    			$("#txt_13").focus();
 	    		}else{	    			
-	    			if(data == 2){
+	    			if(data == 2) {
+	    				$.unblockUI();
 	    				alert('Este nro de cédula ya existe ingrese otro')	;
 	    				$("#txt_1").val("");
 	    				$("#txt_1").focus();
