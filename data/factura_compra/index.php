@@ -124,11 +124,11 @@
 																				<div class="col-md-12">
 																					<div class="col-md-5">
 																						<div class="form-group">
-																							<label class="col-sm-4 no-padding-right" for="serie3">Numero de serie: <font color="red">*</font></label>																			
+																							<label class="col-sm-4 no-padding-right" for="serie3">Numero de serie: <font color="red">*</font></label>	
 																							<div class="col-sm-8">
-																								<input type="text" id="serie" name="serie" class="form-control" data-toggle="tooltip" data-original-title="" required />																		
-																								<input type="hidden" id="id_factura_compra" name="id_factura_compra" class="form-control" data-toggle="tooltip" data-original-title="" required />																		
-																							</div>																														
+																								<input type="text" id="serie" name="serie" class="form-control" required />					
+																								<input type="hidden" id="id_factura_compra" name="id_factura_compra" class="form-control" required />	
+																							</div>															
 																						</div>
 																					</div>
 
@@ -138,7 +138,7 @@
 																							<div class="col-sm-7">
 																								<select class="chosen-select form-control" id="tipo_comprobante" name="tipo_comprobante" data-placeholder="Tipo de Comprobante">
 							                                                                    </select>
-																							</div>																	
+																							</div>		
 																						</div>
 																					</div>
 																				</div>
@@ -150,23 +150,23 @@
 																						<div class="form-group">
 																							<label class="col-sm-4 no-padding-right" for="txt_nro_identificacion">Cédula de Identidad o Ruc: <font color="red">*</font></label>
 																							<div class="col-sm-8">
-																							<input type="hidden" id="id_proveedor" name="id_proveedor">																				
+																							<input type="hidden" id="id_proveedor" name="id_proveedor">	
 																								<select class="chosen-select form-control" id="txt_nro_identificacion" name="txt_nro_identificacion" data-placeholder="Nro de identifiación">	     
-							                                                                        <option value=""></option>	                                                                        
+							                                                                        <option value=""></option>                               
 							                                                                    </select>
-																							</div>																													
-																						</div>																												
+																							</div>														
+																						</div>												
 																					</div>
 
 																					<div class="col-md-7">
 																						<div class="form-group">
 																							<label class="col-sm-5 control-label no-padding-right" for="txt_nombre_proveedor">Proveedor:<font color="red">*</font></label>
 																							<div class="col-sm-7">
-																								<select class="chosen-select form-control" id="txt_nombre_proveedor" name="txt_nombre_proveedor" data-placeholder="Nombres Completos">	                                                                        
-							                                                                        <option value=""> </option>	                                                                        
+																								<select class="chosen-select form-control" id="txt_nombre_proveedor" name="txt_nombre_proveedor" data-placeholder="Nombres Completos">        
+							                                                                        <option value=""> </option>          
 							                                                                    </select>
-																							</div>																													
-																						</div>																												
+																							</div>														
+																						</div>									
 																					</div>
 																				</div>
 																			</div>	
@@ -183,7 +183,7 @@
 																										<i class="fa fa-calendar bigger-110"></i>
 																									</span>
 																								</div>
-																							</div>																													
+																							</div>														
 																						</div>
 																					</div>
 

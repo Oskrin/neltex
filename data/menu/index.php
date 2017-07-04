@@ -787,17 +787,17 @@ function menu_lateral(){
 			print '</ul>
 		</li>';
 					
-		print '<li ';
-				if ($acus[3]=='empresa') {
-					print('class="hover active"');
-				}else print'class="hover"';
-		print'>
-			<a href="../empresa/">
-				<i class="menu-icon fa fa-caret-right"></i>
-				Empresa
-			</a>
-			<b class="arrow"></b>
-		</li>';	
+		// print '<li ';
+		// 		if ($acus[3]=='empresa') {
+		// 			print('class="hover active"');
+		// 		}else print'class="hover"';
+		// print'>
+		// 	<a href="../empresa/">
+		// 		<i class="menu-icon fa fa-caret-right"></i>
+		// 		Empresa
+		// 	</a>
+		// 	<b class="arrow"></b>
+		// </li>';	
 						
 		print '<li ';
 				if ($acus[3]=='usuario') {
@@ -869,7 +869,7 @@ function menu_lateral(){
 						print('class=" hover active"');
 					}else print('class="hover"');
 				print'>
-					<a href="../inventario/">
+					<a href="../movimientos/">
 						<i class="menu-icon fa fa-caret-right"></i>
 						Inventario
 					</a>

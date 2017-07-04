@@ -1,5 +1,9 @@
 $(document).on("ready",inicio);
 
+function myFunction(id) {
+    var myWindow = window.open("../../reportes/proforma.php?id="+id,'_blank');
+}
+
 function recargar() {
   setTimeout(function() {
     location.reload();
@@ -56,7 +60,7 @@ function guardar_proforma() {
                 data: $("#form_proforma").serialize() + "&campo1=" + string_v1 + "&campo2=" + string_v2 + "&campo3=" + string_v3 + "&campo4=" + string_v4 + "&campo5=" + string_v5,                
                 url: "proforma.php",      
                 success: function(data) { 
-                    if( data == 0 ){
+                    if( data == 0 ) {
                       $.gritter.add({
                           title: 'Información Mensaje',
                           text: '<span class="fa fa-shield"></span>'+ ' ' +'Proforma Agregada Correctamente <span class="text-succes fa fa-spinner fa-spin"></span>'
@@ -1030,13 +1034,14 @@ $(document).on('settings.ace.jqGrid' , function(ev, event_name, collapsed) {
 jQuery(grid_selector).jqGrid({          
   datatype: "xml",
   url: 'xml_proforma.php',        
-  colNames: ['ID','IDENTIFICACIÓN','CLIENTE','MONTO TOTAL','FECHA'],
+  colNames: ['ID','IDENTIFICACIÓN','CLIENTE','MONTO TOTAL','FECHA','ACCIÓN'],
   colModel:[      
         {name: 'id_proforma', index: 'id_proforma', editable: false, search: false, hidden: true, editrules: {edithidden: false}, align: 'center',frozen: true, width: 50},
         {name: 'identificacion', index: 'identificacion', editable: false, search: true, hidden: false, editrules: {edithidden: false}, align: 'center',frozen: true, width: 150},
         {name: 'nombres_completos', index: 'nombres_completos', editable: true, search: true, hidden: false, editrules: {edithidden: false}, align: 'center',frozen: true, width: 200},
         {name: 'monto_total', index: 'monto_total', editable: true, search: false, hidden: false, editrules: {edithidden: false}, align: 'center',frozen: true, width: 100},
         {name: 'fecha_actual', index: 'fecha_actual', editable: true, search: false, hidden: false, editrules: {edithidden: false}, align: 'center',frozen: true, width: 100},
+        {name: 'pdf',index:'pdf',frozen : true,align:'center',search:false, hidden: false,width:70},
       ],          
       rowNum: 10,       
       width: null,
@@ -1060,6 +1065,14 @@ jQuery(grid_selector).jqGrid({
               enableTooltips(table);
           }, 0);
       },
+      gridComplete: function() {
+            var ids = jQuery(grid_selector).jqGrid('getDataIDs');
+            for(var i = 0;i < ids.length;i++) {
+                var id = ids[i];
+                pdf = "<a onclick=myFunction('"+id+"') title='Reporte Proforma'><i class='fa fa-file-pdf-o red2' style='cursor:pointer; cursor: hand'> PDF</i></a>";                    
+                jQuery(grid_selector).jqGrid('setRowData',ids[i],{pdf: pdf});
+            }       
+        },
       ondblClickRow: function(rowid) {                                
         var gsr = jQuery(grid_selector).jqGrid('getGridParam','selrow');                                              
         var ret = jQuery(grid_selector).jqGrid('getRowData',gsr);  

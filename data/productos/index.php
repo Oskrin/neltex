@@ -369,96 +369,97 @@
 		</div>
 
 		<!-- Modal -->
-		  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		    <div class="modal-dialog">
-		      <div class="modal-content">
-		        <div class="modal-header">
-		          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		          <h4 class="modal-title">BUSCAR PRODCUTOS</h4>
-		        </div>
-		        <div class="modal-body">
-		            <table id="table"></table>
-					<div id="pager"></div>
-		        </div>
-		        <div class="modal-footer">
-		          <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
-		        </div>
-		      </div><!-- /.modal-content -->
-		    </div><!-- /.modal-dialog -->
-		  </div><!-- /.modal -->
+		      	<div class="modal-content">
+			        <div class="modal-header">
+			          	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			          	<h4 class="modal-title">BUSCAR PRODCUTOS</h4>
+			        </div>
+			        <div class="modal-body">
+			            <table id="table"></table>
+						<div id="pager"></div>
+			        </div>
+			        <div class="modal-footer">
+			          	<button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+			        </div>
+		      	</div>
+		    </div>
+		</div><!-- modal -->
 		  
 		<!-- Modal categoria-->
-		  <div class="modal fade" id="modal_categoria" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal fade" id="modal_categoria" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		    <div class="modal-dialog">
-		      <div class="modal-content blue">
-		        <div class="modal-header">
-		          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		          <h4 class="modal-title">AGREGAR CATEGORIAS</h4>
-		        </div>
-		        <form class="form-horizontal" role="form" rol="form" action="" method="POST" id="form_categoriasProductos">
-		        	<div class="modal-body">		            
-		            	<div class="form-group has-error">
-							<label class="col-sm-2 control-label no-padding-right" for="txt_categoriaProducto">Descripción:</label>
-							<div class="col-sm-5">
-								<input type="text" id="txt_categoriaProducto" name="txt_categoriaProducto"  placeholder="Ingrese categoria" class="form-control" data-toggle="tooltip" data-original-title="Nuevas categorías" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9 ]{1,}" />
-							</div>
-						</div>								            
-		        	</div>
-		        	<div class="modal-footer">
-			          	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-			         	<button type="submit" class="btn btn-primary" id="guardarCategoriaProducto">Guardar</button>
+			    <div class="modal-content blue">
+			        <div class="modal-header">
+			          	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			          	<h4 class="modal-title">AGREGAR CATEGORIAS</h4>
 			        </div>
-		        </form>
-		      </div><!-- /.modal-content -->
-		    </div><!-- /.modal-dialog -->
-		  </div><!-- /.modal -->
+			        <form class="form-horizontal" role="form" rol="form" action="" method="POST" id="form_categoriasProductos">
+			        	<div class="modal-body">		            
+			            	<div class="form-group has-error">
+								<label class="col-sm-2 control-label no-padding-right" for="txt_categoriaProducto">Descripción:</label>
+								<div class="col-sm-5">
+									<input type="text" id="txt_categoriaProducto" name="txt_categoriaProducto"  placeholder="Ingrese categoria" class="form-control" data-toggle="tooltip" data-original-title="Nuevas categorías" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9 ]{1,}" />
+								</div>
+							</div>								            
+			        	</div>
+			        	<div class="modal-footer">
+				          	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				         	<button type="submit" class="btn btn-primary" id="guardarCategoriaProducto">Guardar</button>
+				        </div>
+			        </form>
+			    </div>
+		    </div>
+		</div><!-- /.modal -->
 
 		<!-- Modal categoria-->
-		  <div class="modal fade" id="modal_asi_a" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal fade" id="modal_asi_a" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		    <div class="modal-dialog">
-		      <div class="modal-content blue">
-		        <div class="modal-header">
-		          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		          <h4 class="modal-title">ASIGNAR A</h4>
-		        </div>
+		      	<div class="modal-content blue">
+			        <div class="modal-header">
+			          	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			          	<h4 class="modal-title">ASIGNAR A</h4>
+			        </div>
 		            <form class="form-horizontal" role="form" rol="form" action="" method="POST" id="form_asignarProducto">
 		        		<div class="modal-body">			        
 			            	<div class="form-group has-error">
 								<label class="col-sm-2 control-label no-padding-right" for="txt_descripcionBodega">Descripción:</label>
 								<div class="col-sm-5">
-									<input type="text" id="txt_descripcionBodega" name="txt_descripcionBodega"  placeholder="Ingrese bodega" class="form-control" data-toggle="tooltip" data-original-title="" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9. ]{1,}" />																																																						
+									<input type="text" id="txt_descripcionBodega" name="txt_descripcionBodega"  placeholder="Ingrese bodega" class="form-control" data-toggle="tooltip" data-original-title="" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9. ]{1,}" />		
 								</div>
-							</div>	
+							</div>
+
 							<div class="form-group has-error">
 								<label class="col-sm-2 control-label no-padding-right" for="txt_ubicacionProducto">Ubicacion:</label>
 								<div class="col-sm-5">
-									<input type="text" id="txt_ubicacionProducto" name="txt_ubicacionProducto"  placeholder="Ingrese ubicación" class="form-control" data-toggle="tooltip" data-original-title="" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9. ]{1,}" />																																																						
+									<input type="text" id="txt_ubicacionProducto" name="txt_ubicacionProducto"  placeholder="Ingrese ubicación" class="form-control" data-toggle="tooltip" data-original-title="" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9. ]{1,}" />	
 								</div>
 							</div>								            
 			        	</div>
 				        <div class="modal-footer">
-				          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-				          <button type="submit" class="btn btn-primary" id="btn_guardarAsignacion">Guardar</button>
+				          	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				          	<button type="submit" class="btn btn-primary" id="btn_guardarAsignacion">Guardar</button>
 				        </div>
 		        	</form>
-		      	</div><!-- /.modal-content -->
-		    </div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->
+		      	</div>
+		    </div>
+		</div><!-- modal -->
 
 		<!-- Modal categoria-->
-		  <div class="modal fade" id="modal_marcas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal fade" id="modal_marcas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		    <div class="modal-dialog">
-		      <div class="modal-content blue">
-		        <div class="modal-header">
-		          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		          <h4 class="modal-title">AGREGAR MARCAS</h4>
-		        </div>
+		      	<div class="modal-content blue">
+			        <div class="modal-header">
+			          	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			          	<h4 class="modal-title">AGREGAR MARCAS</h4>
+			        </div>
 			        <form class="form-horizontal" role="form" rol="form" action="" method="POST" id="form_marcasProducto">
 			        	<div class="modal-body">		            
 			            	<div class="form-group has-error">
 								<label class="col-sm-2 control-label no-padding-right" for="txt_marcaProductos">Descripción:</label>
 								<div class="col-sm-5">
-									<input type="text" id="txt_marcaProductos" name="txt_marcaProductos"  placeholder="Ingrese marca" class="form-control" data-toggle="tooltip" data-original-title="" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9. ]{1,}" />																																																						
+									<input type="text" id="txt_marcaProductos" name="txt_marcaProductos"  placeholder="Ingrese marca" class="form-control" data-toggle="tooltip" data-original-title="" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9. ]{1,}" />					
 								</div>
 							</div>						            
 			        	</div>
@@ -467,47 +468,49 @@
 				         	<button type="submit" class="btn btn-primary" id="btn_guardarMarcaProducto">Guardar</button>
 				        </div>
 			        </form>
-		      </div><!-- /.modal-content -->
-		    </div><!-- /.modal-dialog -->
-		  </div><!-- /.modal -->
+		      	</div>
+		    </div>
+		</div><!-- modal -->
 
 		<!-- Modal unidades-->
-		  <div class="modal fade" id="modal_se-vender_por" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal fade" id="modal_se-vender_por" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		    <div class="modal-dialog">
-		      <div class="modal-content blue">
-		        <div class="modal-header">
-		          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		          <h4 class="modal-title">SE VENDE POR</h4>
-		        </div>
+		      	<div class="modal-content blue">
+			        <div class="modal-header">
+			          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			          <h4 class="modal-title">SE VENDE POR</h4>
+			        </div>
 		        	<form class="form-horizontal" role="form" rol="form" action="" method="POST" id="form_sevende">
 			        	<div class="modal-body">		            
 			            	<div class="form-group has-error">
 								<label class="col-sm-2 control-label no-padding-right" for="txt_descripcionUnidades">Descripción:</label>
 								<div class="col-sm-5">
-									<input type="text" id="txt_descripcionUnidades" name="txt_descripcionUnidades"  placeholder="Ingrese marca" class="form-control" data-toggle="tooltip" data-original-title="" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9. ]{1,}" />																																																						
+									<input type="text" id="txt_descripcionUnidades" name="txt_descripcionUnidades"  placeholder="Ingrese marca" class="form-control" data-toggle="tooltip" data-original-title="" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9. ]{1,}" />		
 								</div>
 							</div>
+
 							<div class="form-group has-error">
 								<label class="col-sm-2 control-label no-padding-right" for="txt_abreviatura">Abreviatura:</label>
 								<div class="col-sm-5">
-									<input type="text" id="txt_abreviatura" name="txt_abreviatura"  placeholder="Ingrese Abreviatura" class="form-control" data-toggle="tooltip" data-original-title="" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9. ]{1,}" />																																																						
+									<input type="text" id="txt_abreviatura" name="txt_abreviatura"  placeholder="Ingrese Abreviatura" class="form-control" data-toggle="tooltip" data-original-title="" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9. ]{1,}" />					
 								</div>
 							</div>
+
 							<div class="form-group has-error">
 								<label class="col-sm-2 control-label no-padding-right" for="txt_cantidadSevende">Cantidad:</label>
 								<div class="col-sm-5">
-									<input type="text" id="txt_cantidadSevende" name="txt_cantidadSevende"  onkeydown="return validarNumeros(event)" placeholder="Ingrese cantidad" class="form-control" data-toggle="tooltip" data-original-title="" required pattern="[0-9]{1,}" />																																																						
+									<input type="text" id="txt_cantidadSevende" name="txt_cantidadSevende"  onkeydown="return validarNumeros(event)" placeholder="Ingrese cantidad" class="form-control" data-toggle="tooltip" data-original-title="" required pattern="[0-9]{1,}" />																											
 								</div>
 							</div>						            
 			        	</div>
 				        <div class="modal-footer">
-				          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-				          <button type="submit" class="btn btn-primary" id="btn_guardarSevende">Guardar</button>
+				          	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				          	<button type="submit" class="btn btn-primary" id="btn_guardarSevende">Guardar</button>
 				        </div>
 			        </form>
-		      </div><!-- /.modal-content -->
-		    </div><!-- /.modal-dialog -->
-		  </div><!-- /.modal -->		   
+		      	</div>
+		    </div>
+		</div><!-- /.modal -->		   
 
 		<script type="text/javascript">
 			window.jQuery || document.write("<script src='../../dist/js/jquery.min.js'>"+"<"+"/script>");

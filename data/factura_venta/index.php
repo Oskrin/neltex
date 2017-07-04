@@ -1,11 +1,12 @@
-<?php include('../menu/index.php'); 
-include '../conexion.php';
-$conexion = conectarse();
+<?php 
+	include('../menu/index.php'); 
+	include '../conexion.php';
+	$conexion = conectarse();
 
-$consulta = pg_query("select numero_serie from factura_venta");
-while ($row = pg_fetch_row($consulta)) {
-    $num_factura = $row[0];
-}
+	$consulta = pg_query("select numero_serie from factura_venta");
+	while ($row = pg_fetch_row($consulta)) {
+	    $num_factura = $row[0];
+	}
 ?>
 
 <!DOCTYPE html>
@@ -100,7 +101,7 @@ while ($row = pg_fetch_row($consulta)) {
 															</li>
 														</ul>
 
-														<form class="form-horizontal" role="form" rol="form" action="" method="POST" id="form_facturaVenta">	
+														<form class="form-horizontal" role="form" rol="form" action="" method="POST" id="form_facturaVenta">
 															<div class="tab-content">
 																<div id="factura" class="tab-pane fade in active">
 																	<div class="row">
@@ -144,11 +145,11 @@ while ($row = pg_fetch_row($consulta)) {
 																		<div class="col-md-12">
 																			<div class="col-md-6">
 																				<div class="form-group">
-																					<label class="col-sm-5 no-padding-right" for="serie3"> Nro factura preimpresa: 001-001</label>																			
+																					<label class="col-sm-5 no-padding-right" for="serie3">Nro factura preimpresa: 001-001</label>						
 																					<div class="col-sm-5">
-																						<input type="text" id="serie3" name="serie3" class="form-control" data-toggle="tooltip" data-original-title="" required />																		
-																						<input type="hidden" id="num_oculto" name="num_oculto" class="form-control" data-toggle="tooltip" data-original-title="" value="<?php echo $num_factura ?>" />																		
-																					</div>																														
+																						<input type="text" id="serie3" name="serie3" class="form-control" required />			
+																						<input type="hidden" id="num_oculto" name="num_oculto" class="form-control" value="<?php echo $num_factura ?>" />			
+																					</div>													
 																				</div>
 																			</div>																	
 																		</div>
@@ -160,53 +161,53 @@ while ($row = pg_fetch_row($consulta)) {
 																				<div class="form-group">
 																					<label class="col-sm-6 no-padding-right" for="txt_nro_identificacion"> Cédula de Identidad o Ruc: <font color="red">*</font></label>
 																					<div class="col-sm-6">
-																					<input type="hidden" id="id_cliente" name="id_cliente">																				
+																					<input type="hidden" id="id_cliente" name="id_cliente">				
 																						<select class="chosen-select form-control" id="txt_nro_identificacion" name="txt_nro_identificacion" data-placeholder="Nro de identifiación">	     
-					                                                                        <option value=""></option>	                                                                        
+					                                                                        <option value=""></option>                                  
 					                                                                    </select>
-																					</div>																													
-																				</div>																												
+																					</div>												
+																				</div>										
 																			</div>
 
 																			<div class="col-md-7">
 																				<div class="form-group">
-																					<label class="col-sm-5 control-label no-padding-right" for="txt_nombre_cliente"> Nombres Completos: <font color="red">*</font></label>
+																					<label class="col-sm-5 control-label no-padding-right" for="txt_nombre_cliente">Nombres Completos: <font color="red">*</font></label>
 																					<div class="col-sm-7">
-																						<select class="chosen-select form-control" id="txt_nombre_cliente" name="txt_nombre_cliente" data-placeholder="Nombres Completos">	                                                                        
-					                                                                        <option value=""> </option>	                                                                        
+																						<select class="chosen-select form-control" id="txt_nombre_cliente" name="txt_nombre_cliente" data-placeholder="Nombres Completos">       
+					                                                                        <option value=""> </option>                                 
 					                                                                    </select>
-																					</div>																													
-																				</div>																												
+																					</div>												
+																				</div>										
 																			</div>
 																		</div>
 																	</div>
 
 																	<div class="row">	
 																		<div class="col-md-12">
-																			<div class="col-md-4">																		
+																			<div class="col-md-4">		
 																				<div class="form-group">
-																					<label class="col-sm-4 no-padding-right" for="form-field-1"> Dirección: </label>
+																					<label class="col-sm-4 no-padding-right" for="lbl_client_direccion"> Dirección: </label>
 																					<div class="col-sm-8">
 																						<input type="text" id="lbl_client_direccion" name="lbl_client_direccion" class="form-control" readonly data-toggle="tooltip"  value="" /> 
-																					</div>																													
-																				</div>																												
+																					</div>												
+																				</div>										
 																			</div>
 
 																			<div class="col-sm-4">
-																				<div class="form-group">																	
+																				<div class="form-group">			
 																					<label class="col-sm-5 control-label no-padding-right" for="lbl_client_telefono"> Teléfono:</label>
 																					<div class="col-sm-7">
 																						<input type="text" id="lbl_client_telefono" name="lbl_client_telefono" class="form-control" data-toggle="tooltip" required readonly /> 
-																					</div>																														
+																					</div>													
 																				</div>
 																			</div>
 
 																			<div class="col-sm-4">
-																				<div class="form-group">																	
+																				<div class="form-group">			
 																					<label class="col-sm-3 control-label no-padding-right" for="lbl_client_correo"> Correo:</label>
 																					<div class="col-sm-9">
 																						<input type="text" id="lbl_client_correo" name="lbl_client_correo" class="form-control" data-toggle="tooltip" required readonly /> 
-																					</div>																														
+																					</div>													
 																				</div>
 																			</div>																
 																		</div>
@@ -224,19 +225,19 @@ while ($row = pg_fetch_row($consulta)) {
 																								<i class="fa fa-calendar bigger-110"></i>
 																							</span>
 																						</div>
-																					</div>																														
+																					</div>													
 																				</div>
 																			</div>
 
 																			<div class="col-sm-4">
-																				<div class="form-group">																	
+																				<div class="form-group">			
 																					<label class="col-sm-5 control-label no-padding-right" for="tipo"> Tipo de precio:</label>
 																					<div class="col-sm-7">
 																						<select class="chosen-select form-control" id="tipo" name="tipo" data-placeholder="Forma de Pago">
 					                                                                        <option value="MINORISTA" selected>MINORISTA</option>
 					                                                                        <option value="MAYORISTA">MAYORISTA</option>
 					                                                                    </select>
-																					</div>																														
+																					</div>													
 																				</div>
 																			</div>
 
@@ -244,9 +245,9 @@ while ($row = pg_fetch_row($consulta)) {
 																				<div class="form-group">
 																					<label class="col-sm-4 control-label no-padding-right" for="formas"> Forma de Pago:</label>
 																					<div class="col-sm-8">
-																						<select class="chosen-select form-control" id="formas" name="formas" data-placeholder="Forma de Pago">			                                                                        
+																						<select class="chosen-select form-control" id="formas" name="formas" data-placeholder="Forma de Pago">                              
 					                                                                    </select>
-																					</div>																														
+																					</div>													
 																				</div>														
 																			</div>
 																		</div>	
@@ -260,13 +261,13 @@ while ($row = pg_fetch_row($consulta)) {
 																					<div class="col-sm-8">
 																						<select class="chosen-select form-control" id="termino_pago" name="termino_pago" data-placeholder="Términos de Pago">			                                                                        
 					                                                                    </select>
-																					</div>																														
+																					</div>													
 																				</div>														
 																			</div>																
 																		</div>
 																	</div>	
 																	
-																	<div class="row ">
+																	<div class="row">
 																		<div class="col-xs-12">
 																			<div class="col-xs-12">
 																				<h3 class="header smaller lighter green">
@@ -290,6 +291,7 @@ while ($row = pg_fetch_row($consulta)) {
 																					</div>
 																				</div>
 																			</div>
+
 																			<div class="col-xs-3">
 																				<div class="row">
 																					<div class="col-xs-12">
@@ -302,6 +304,7 @@ while ($row = pg_fetch_row($consulta)) {
 																					</div>
 																				</div>
 																			</div>
+
 																			<div class="col-xs-4">
 																				<div class="row">
 																					<div class="col-xs-12">
@@ -314,6 +317,7 @@ while ($row = pg_fetch_row($consulta)) {
 																					</div>
 																				</div>
 																			</div>
+
 																			<div class="col-xs-3">
 																				<div class="row">
 																					<div class="col-xs-12">
@@ -349,12 +353,12 @@ while ($row = pg_fetch_row($consulta)) {
 																							</div>
 																							<div class="row">
 																								<div class="col-xs-12">
-																									<input type="number" id="descuento" name="descuento" class="form-control" data-toggle="tooltip" min="1" value="" /> 
-																									<input type="hidden" id="stock" name="stock" class="form-control" data-toggle="tooltip" /> 
-																									<input type="hidden" id="id_productos" name="id_productos" class="form-control" data-toggle="tooltip" /> 
-																									<input type="hidden" id="iva_producto" name="iva_producto" class="form-control" data-toggle="tooltip" /> 
-																									<input type="hidden" id="incluye" name="incluye" class="form-control" data-toggle="tooltip" />
-																									<input type="hidden" id="inventar" name="inventar" class="form-control" data-toggle="tooltip" />  
+																									<input type="number" id="descuento" name="descuento" class="form-control" min="1" value="" /> 
+																									<input type="hidden" id="stock" name="stock" class="form-control" /> 
+																									<input type="hidden" id="id_productos" name="id_productos" class="form-control" /> 
+																									<input type="hidden" id="iva_producto" name="iva_producto" class="form-control" /> 
+																									<input type="hidden" id="incluye" name="incluye" class="form-control" />
+																									<input type="hidden" id="inventar" name="inventar" class="form-control" />  
 																								</div>
 																							</div>
 																						</div>
@@ -379,41 +383,41 @@ while ($row = pg_fetch_row($consulta)) {
 																	<div class="row">
 																		<div class="col-md-12">
 																			<div class="col-md-9"></div>
-																			<div class="col-md-3">																		
+																			<div class="col-md-3">		
 																				<div class="form-group">
 																					<label class="col-sm-4 no-padding-right" for="tarifa0"> Tarifa 0:</label>
 																					<div class="col-sm-8">
 																						<input type="text" id="tarifa0" name="tarifa0" class="form-control" readonly value="0.000" /> 
-																					</div>																													
+																					</div>												
 																				</div>	
 
 																				<div class="form-group">
 																					<label class="col-sm-4 no-padding-right" for="tarifa12"> Tarifa 12:</label>
 																					<div class="col-sm-8">
 																						<input type="text" id="tarifa12" name="tarifa12" class="form-control" readonly value="0.000" /> 
-																					</div>																													
+																					</div>												
 																				</div>
 
 																				<div class="form-group">
 																					<label class="col-sm-4 no-padding-right" for="iva"> 12 % Iva:</label>
 																					<div class="col-sm-8">
 																						<input type="text" id="iva" name="iva" class="form-control" readonly value="0.000" /> 
-																					</div>																													
+																					</div>													
 																				</div>
 
 																				<div class="form-group">
 																					<label class="col-sm-4 no-padding-right" for="descuento_total"> Descuento:</label>
 																					<div class="col-sm-8">
 																						<input type="text" id="descuento_total" name="descuento_total" class="form-control" readonly value="0.000" /> 
-																					</div>																													
+																					</div>													
 																				</div>
 
 																				<div class="form-group">
 																					<label class="col-sm-4 no-padding-right" for="total"> Total:</label>
 																					<div class="col-sm-8">
 																						<input type="text" id="total" name="total" class="form-control" readonly value="0.000" /> 
-																					</div>																													
-																				</div>																											
+																					</div>										
+																				</div>									
 																			</div>																	
 																		</div>
 																	</div>
@@ -492,6 +496,51 @@ while ($row = pg_fetch_row($consulta)) {
 			</a>
 		</div><!-- /.main-container -->
 
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+			  	<div class="modal-content">
+				    <div class="modal-header">
+				      	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				      	<h4 class="modal-title">BUSCAR FACTURAS VENTAS</h4>
+				    </div>
+				    <div class="modal-body">
+				        <table id="table2"></table>
+						<div id="pager2"></div>
+				    </div>
+				    <div class="modal-footer">
+				      	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				    </div>
+			  	</div>
+			</div>
+		</div>
+
+		<!-- Modal Imprimir-->
+		<div id="top-menu" class="modal aside" data-fixed="true" data-placement="top" data-background="true" data-backdrop="invisible" tabindex="-1">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-body container">
+						<div class="row">
+							<div class="col-sm-5 col-sm-offset-1 white">
+								<h3 class="lighter">Factura Ventas</h3>
+							</div>
+
+							<div class="col-sm-5 text-center line-height-2">									
+								&nbsp; &nbsp;
+								<a class="btn btn-app btn-light no-radius" href="#">
+									<i class="ace-icon fa fa-print bigger-230"></i>
+									Imprimir
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<button class="btn btn-inverse btn-app btn-xs ace-settings-btn aside-trigger" data-target="#top-menu" data-toggle="modal" type="button">
+					<i data-icon="fa-chevron-down" data-icon="fa-chevron-up" class="ace-icon fa fa-chevron-down bigger-110 icon-only"></i>
+				</button>
+			</div>
+		</div>
+
 		<script type="text/javascript">
 			window.jQuery || document.write("<script src='../../dist/js/jquery.min.js'>"+"<"+"/script>");
 		</script>
@@ -534,47 +583,4 @@ while ($row = pg_fetch_row($consulta)) {
 	</body>
 </html>  
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-	  <div class="modal-content">
-	    <div class="modal-header">
-	      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	      <h4 class="modal-title">BUSCAR FACTURAS VENTAS</h4>
-	    </div>
-	    <div class="modal-body">
-	        <table id="table2"></table>
-			<div id="pager2"></div>
-	    </div>
-	    <div class="modal-footer">
-	      <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-	    </div>
-	  </div>
-	</div>
-</div>
 
-<!-- Modal Imprimir-->
-<div id="top-menu" class="modal aside" data-fixed="true" data-placement="top" data-background="true" data-backdrop="invisible" tabindex="-1">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-body container">
-				<div class="row">
-					<div class="col-sm-5 col-sm-offset-1 white">
-						<h3 class="lighter">Factura Ventas</h3>
-					</div>
-
-					<div class="col-sm-5 text-center line-height-2">									
-						&nbsp; &nbsp;
-						<a class="btn btn-app btn-light no-radius" href="#">
-							<i class="ace-icon fa fa-print bigger-230"></i>
-							Imprimir
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-		<button class="btn btn-inverse btn-app btn-xs ace-settings-btn aside-trigger" data-target="#top-menu" data-toggle="modal" type="button">
-			<i data-icon="fa-chevron-down" data-icon="fa-chevron-up" class="ace-icon fa fa-chevron-down bigger-110 icon-only"></i>
-		</button>
-	</div>
-</div>

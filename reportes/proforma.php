@@ -1,8 +1,8 @@
 <?php
     require('../fpdf/fpdf.php');
-    include '../procesos/base.php';
+    include '../data/conexion.php';
     include '../procesos/funciones.php';
-    conectarse();    
+    conectarse();     
     date_default_timezone_set('America/Guayaquil'); 
     session_start();
 
@@ -10,7 +10,7 @@
         var $widths;
         var $aligns;       
         function SetWidths($w) {            
-            $this->widths=$w;
+            $this->widths = $w;
         } 
 
         function Header() {                         
@@ -57,28 +57,28 @@
     $pdf->SetX(5);    
     $pdf->SetFont('Amble-Regular','',9); 
 
-    $sql=pg_query("select * from proforma,clientes,usuario,empresa where proforma.id_cliente=clientes.id_cliente and proforma.id_usuario=usuario.id_usuario and proforma.id_empresa=empresa.id_empresa and id_proforma='$_GET[id]'");
-    while($row=pg_fetch_row($sql)){
-        $temp1=$row[8];
-        $temp2=$row[9];
-        $temp3=$row[10];
-        $temp4=$row[11];
-        $temp5=$row[12];
+    $sql = pg_query("SELECT * FROM proforma,cliente,usuario,empresa WHERE proforma.id_cliente=cliente.id_cliente AND proforma.id_usuario=usuario.id_usuario AND proforma.id_empresa = empresa.id_empresa AND id_proforma = '$_GET[id]'");
+    while($row = pg_fetch_row($sql)){
+        $temp1 = $row[6];
+        $temp2 = $row[7];
+        $temp3 = $row[8];
+        $temp4 = $row[9];
+        $temp5 = $row[10];
         $pdf->SetX(1);
         $pdf->Cell(20, 6, utf8_decode('Cliente: '),0,0, 'L',0);    
-        $pdf->Cell(85, 6, maxCaracter(utf8_decode($row[18]),40),0,0, 'L',0);                                                                      
+        $pdf->Cell(85, 6, maxCaracter(utf8_decode($row[17]),40),0,0, 'L',0);                                                                      
         $pdf->Cell(20, 6, utf8_decode('CI/RUC: '),0,0, 'L',0);                                     
-        $pdf->Cell(25, 6, utf8_decode($row[17]),0,0, 'L',0);                                     
-        $pdf->Cell(25, 6, utf8_decode('Nro Factura: '),0,0, 'L',0);  
-        $pdf->Cell(30, 6, utf8_decode($row[0]),0,1, 'L',0);                                                                                                        
+        $pdf->Cell(25, 6, utf8_decode($row[16]),0,1, 'L',0);                                     
+        // $pdf->Cell(25, 6, utf8_decode('Nro Factura: '),0,0, 'L',0);  
+        // $pdf->Cell(30, 6, utf8_decode($row[0]),0,1, 'L',0);                                                                                                        
         $pdf->Ln(1);
         $pdf->SetX(1);
         $pdf->Cell(20, 6, utf8_decode('Dirección:'),0,0, 'L',0);                                     
-        $pdf->Cell(60, 6, maxCaracter(utf8_decode($row[20]),30),0,0, 'L',0);                                             
+        $pdf->Cell(60, 6, maxCaracter(utf8_decode($row[22]),30),0,0, 'L',0);                                             
         $pdf->Cell(20, 6, utf8_decode('Email:'),0,0, 'L',0);                                     
-        $pdf->Cell(60, 6, maxCaracter(utf8_decode($row[25]),30),0,0, 'L',0);  
+        $pdf->Cell(60, 6, maxCaracter(utf8_decode($row[23]),30),0,0, 'L',0);  
         $pdf->Cell(20, 6, utf8_decode('Celular:'),0,0, 'L',0);    
-        $pdf->Cell(25, 6, utf8_decode($row[22]),0,1, 'L',0);                                                                             
+        $pdf->Cell(25, 6, utf8_decode($row[20]),0,1, 'L',0);                                                                             
         $pdf->Ln(1);
         $pdf->SetX(1);
         $pdf->Cell(20, 6, utf8_decode('Responsable:'),0,0, 'L',0);    
@@ -95,19 +95,19 @@
     $pdf->Cell(25, 6, utf8_decode('PVP'),1,0, 'C',0);                                     
     $pdf->Cell(25, 6, utf8_decode('Descuento'),1,0, 'C',0);                                         
     $pdf->Cell(25, 6, utf8_decode('Total'),1,1, 'C',0);    
-    $sql=pg_query("select * from detalle_proforma,productos where id_proforma='$_GET[id]'  and productos.incluye_iva = 'No' and detalle_proforma.cod_productos=productos.cod_productos order by id_detalle_proforma asc;");          
+    $sql = pg_query("SELECT * FROM detalle_proforma,productos WHERE id_proforma='$_GET[id]' AND productos.incluye_iva = 'No' AND detalle_proforma.id_productos=productos.id_productos order by id_detalle_proforma asc");          
     while($row=pg_fetch_row($sql)) {        
         $pdf->SetX(1);
-        $pdf->Cell(40, 6, maxCaracter(utf8_decode($row[9]),15),0,0, 'L',0);                                     
-        $pdf->Cell(65, 6, maxCaracter(utf8_decode($row[11]),30),0,0, 'L',0);                                     
+        $pdf->Cell(40, 6, maxCaracter(utf8_decode($row[10]),15),0,0, 'L',0);                                     
+        $pdf->Cell(65, 6, maxCaracter(utf8_decode($row[12]),30),0,0, 'L',0);                                     
         $pdf->Cell(25, 6, utf8_decode($row[3]),0,0, 'C',0);                                     
         $pdf->Cell(25, 6, utf8_decode($row[4]),0,0, 'C',0);                                     
         $pdf->Cell(25, 6, utf8_decode($row[5]),0,0, 'C',0);                                     
         $pdf->Cell(25, 6, utf8_decode($row[6]),0,1, 'C',0);                                            
     }
     $iva_base = 1.12;
-    $sql=pg_query("select * from detalle_proforma,productos where id_proforma='$_GET[id]' and productos.incluye_iva = 'Si'  and detalle_proforma.cod_productos=productos.cod_productos order by id_detalle_proforma asc;");          
-    while($row=pg_fetch_row($sql)) {       
+    $sql=pg_query("SELECT * FROM detalle_proforma,productos WHERE id_proforma='$_GET[id]' AND productos.incluye_iva = 'Si' AND detalle_proforma.id_productos=productos.id_productos order by id_detalle_proforma asc");          
+    while($row = pg_fetch_row($sql)) {       
         $pdf->SetX(1);
          $total_si = 0;
         $total_sit = 0;
@@ -117,8 +117,8 @@
         $total_si = truncateFloat($total_si,2);
         $total_sit = truncateFloat($total_sit,2);
 
-        $pdf->Cell(40, 6, maxCaracter(utf8_decode($row[9]),15),0,0, 'L',0);                                     
-        $pdf->Cell(65, 6, maxCaracter(utf8_decode($row[11]),30),0,0, 'L',0);                                     
+        $pdf->Cell(40, 6, maxCaracter(utf8_decode($row[10]),15),0,0, 'L',0);                                     
+        $pdf->Cell(65, 6, maxCaracter(utf8_decode($row[12]),30),0,0, 'L',0);                                     
 
         $pdf->Cell(25, 6, utf8_decode($row[3]),0,0, 'C',0);                                     
         $pdf->Cell(25, 6, utf8_decode($total_sit),0,0, 'C',0);                                     
