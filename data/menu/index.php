@@ -783,15 +783,6 @@ function menu_lateral(){
 						Términos de pago
 					</a>
 					<b class="arrow"></b>
-				</li>';
-				print '<li ';if ($acus[3]=='iva') {
-					print('class="active"');
-				}print'>
-					<a href="../iva/">
-						<i class="menu-icon fa fa-caret-right"></i>
-						Porcentaje IVA
-					</a>
-					<b class="arrow"></b>
 				</li>';				
 			print '</ul>
 		</li>';
@@ -1434,6 +1425,16 @@ function menu_lateral(){
 				</a>
 				<b class="arrow"></b>
 			</li>';
+
+			print '<li ';if ($acus[3]=='iva') {
+					print('class="active"');
+				}print'>
+					<a href="../iva/">
+						<i class="menu-icon fa fa-caret-right"></i>
+					Porcentaje IVA
+					</a>
+					<b class="arrow"></b>
+				</li>';
 										
 			print '</ul>			
 		</li>';	
