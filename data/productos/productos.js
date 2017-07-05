@@ -567,13 +567,12 @@ function inicio (){
 	$("#btn_0").on("click",guardar_productos);
 	$("#btn_1").on("click",limpiar_form);
 	$("#btn_2").on("click",actualizar_form);	
-	$("#btn_4").on("click",function (){		
+	$("#btn_4").on("click",function() {		
 		$("#txt_9").attr("readonly",true);
 		$("#txt_12").attr("readonly",true);
 		var resp = "";		
-		resp =atras($("#txt_0").val(),"productos","secuencia.php");	
-		console.log(resp)	
-		if(resp[0] != false){
+		resp = atras($("#txt_0").val(),"productos","secuencia.php");	
+		if(resp[0] != false) {
 			$("#txt_0").val(resp[0][0]);
 			$("#txt_1").val(resp[0][1]);
 			$("#txt_8").val(resp[0][2]);
@@ -595,21 +594,21 @@ function inicio (){
 		    $("#txt_14").val(resp[0][14]);		    
 		    $("#txt_14").trigger("chosen:updated");
 		    $("#txt_15").val(resp[0][15]);		    
-		    if(resp[0][16] == "Si"){
+		    if(resp[0][16] == "Si") {
 		    	$("#sin_existencia").prop("checked",true);
-		    }else{
+		    } else {
 		    	$("#sin_existencia").prop("checked",false);
 		    }
 
 		    $("#txt_16").val(resp[0][17]);		    
 		    $("#txt_17").val(resp[0][18]);	
 
-		    if(resp[0][19] == "Si"){
+		    if(resp[0][19] == "Si") {
 		    	$("#producto_series").prop("checked",true);
 		    }else{
 		    	$("#producto_series").prop("checked",false);
 		    }
-		    if(resp[0][20] == "Si"){
+		    if(resp[0][20] == "Si") {
 		    	$("#expiracion_producto").prop("checked",true);
 		    }else{
 		    	$("#expiracion_producto").prop("checked",false);

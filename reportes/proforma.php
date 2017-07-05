@@ -64,6 +64,11 @@
         $temp3 = $row[8];
         $temp4 = $row[9];
         $temp5 = $row[10];
+
+        $fecha = date('Y-m-j');
+        $nuevafecha = strtotime ( '+1 year' , strtotime ( $fecha ) ) ;
+        $nuevafecha = date ( 'Y-m-j' , $nuevafecha );
+
         $pdf->SetX(1);
         $pdf->Cell(20, 6, utf8_decode('Cliente: '),0,0, 'L',0);    
         $pdf->Cell(85, 6, maxCaracter(utf8_decode($row[17]),40),0,0, 'L',0);                                                                      
@@ -83,8 +88,8 @@
         $pdf->SetX(1);
         $pdf->Cell(20, 6, utf8_decode('Responsable:'),0,0, 'L',0);    
         $pdf->Cell(130, 6, maxCaracter(utf8_decode($row[31].' '.$row[32]),80),0,0, 'L',0); 
-        $pdf->Cell(25, 6, utf8_decode('Celular:'),0,0, 'L',0);    
-        $pdf->Cell(30, 6, utf8_decode($row[35]),0,1, 'L',0);                                                                                         
+        $pdf->Cell(25, 6, utf8_decode('F. Expedición:'),0,0, 'L',0);    
+        $pdf->Cell(30, 6, utf8_decode($nuevafecha),0,1, 'L',0);                                                                                         
     }       
     $pdf->Ln(3);        
     
