@@ -489,13 +489,13 @@ function inicio (){
     	}
   	});
 
-  	$("#precio").on("keypress",function (e){
-    	if(e.keyCode == 13){//tecla del alt para el entrer poner 13
-      		$("#descuento").focus();  
-    	}
-  	});
+  	// $("#precio").on("keypress",function (e){
+   //  	if(e.keyCode == 13){//tecla del alt para el entrer poner 13
+   //    		$("#descuento").focus();  
+   //  	}
+  	// });
 
-  	$("#descuento").on("keypress",function (e){
+  	$("#precio").on("keypress",function(e) {
     	if(e.keyCode == 13){//tecla del alt para el entrer poner 13 
           var subtotal0 = 0;
           var subtotal12 = 0;
@@ -522,7 +522,7 @@ function inicio (){
                           if ($("#descuento").val() !== "") {
                                 desc = $("#descuento").val();
                                 precio = (parseFloat($("#precio").val())).toFixed(3);
-                                multi = (parseFloat($("#cantidad").val()) * parseFloat($("#precio").val())).toFixed(3);
+                                multi = (parseFloat($("#cantidad").val() * $('#txt_unidades').val()) * parseFloat($("#precio").val())).toFixed(3);
                                 descuento = ((multi * parseFloat(desc)) / 100);
                                 flotante = parseFloat(descuento);
                                 resultado = (Math.round(flotante * Math.pow(10,2)) / Math.pow(10,2)).toFixed(3);
@@ -568,7 +568,7 @@ function inicio (){
                               if ($("#descuento").val() !== "") {
                                     desc = $("#descuento").val();
                                     precio = (parseFloat($("#precio").val())).toFixed(3);
-                                    multi = (parseFloat(suma) * parseFloat($("#precio").val())).toFixed(3);
+                                    multi = (parseFloat(suma * $('#txt_unidades').val()) * parseFloat($("#precio").val())).toFixed(3);
                                     descuento = ((multi * parseFloat(desc)) / 100);
                                     flotante = parseFloat(descuento);
                                     resultado = (Math.round(flotante * Math.pow(10,2)) / Math.pow(10,2)).toFixed(3);
@@ -604,7 +604,7 @@ function inicio (){
                                 if ($("#descuento").val() !== "") {
                                     desc = $("#descuento").val();
                                     precio = (parseFloat($("#precio").val())).toFixed(3);
-                                    multi = (parseFloat($("#cantidad").val()) * parseFloat($("#precio").val())).toFixed(3);
+                                    multi = (parseFloat($("#cantidad").val() * $('#txt_unidades').val()) * parseFloat($("#precio").val())).toFixed(3);
                                     descuento = ((multi * parseFloat(desc)) / 100);
                                     flotante = parseFloat(descuento) ;
                                     resultado = (Math.round(flotante * Math.pow(10,2)) / Math.pow(10,2)).toFixed(3);

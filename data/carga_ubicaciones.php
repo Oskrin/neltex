@@ -246,7 +246,7 @@
 																														}else{
 																															if($_GET['fun'] == "31"){//detales de los grupos
 																																if($_GET['tipo'] == "0"){
-																																	$sql = "SELECT id_porcentaje_iva, porcentaje  FROM porcentaje_iva order by porcentaje desc ";
+																																	$sql = "SELECT id_iva, descripcion FROM porcentaje_iva order by descripcion desc ";
 																																	cargarSelect($conexion,$sql);//select de 3 datos
 																																}else{
 																																	
@@ -348,6 +348,16 @@
 
 																																												}
 																																											}else{
+																																												if($_GET['fun'] == "44"){//para la tabla
+																																													if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina
+																																														$sql = "select id_provincia, descripcion from provincia";
+																																														cargarSelect($conexion,$sql);
+																																													}else{
+
+																																													}
+																																												}else{
+																																													
+																																												}
 																																												
 																																											}
 																																										}

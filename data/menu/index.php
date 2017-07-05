@@ -678,7 +678,7 @@ function menu_lateral(){
 		<b class="arrow"></b>
 	</li>';		
 	print '<li ';
-		if ($acus[3]=='categorias' || $acus[3]=='bodegas' || $acus[3]=='clientes' || $acus[3]=='marcas' || $acus[3]=='unidad_medida'|| $acus[3]=='usuario'|| $acus[3]=='empresa'|| $acus[3]=='tipo_producto'|| $acus[3]=='proveedores'|| $acus[3]=='productos'||$acus[3]=='formas_pago'||$acus[3]=='terminos_pago') {
+		if ($acus[3]=='categorias' || $acus[3]=='bodegas' || $acus[3]=='clientes' || $acus[3]=='marcas' || $acus[3]=='unidad_medida'|| $acus[3]=='usuario'|| $acus[3]=='empresa'|| $acus[3]=='tipo_producto'|| $acus[3]=='proveedores'|| $acus[3]=='productos'||$acus[3]=='formas_pago'||$acus[3]=='terminos_pago'||$acus[3]=='iva') {
 		print('class="active hover open"');
 		}else print('class="hover"');
 	print'>
@@ -692,7 +692,7 @@ function menu_lateral(){
 	<b class="arrow"></b>';
 	print'<ul class="submenu">
 		<li ';
-			if ($acus[3]=='bodegas'||$acus[3]=='categorias'||$acus[3]=='marcas'||$acus[3]=='unidad_medida'||$acus[3]=='tipo_producto'||$acus[3]=='formas_pago'||$acus[3]=='terminos_pago') {
+			if ($acus[3]=='bodegas'||$acus[3]=='categorias'||$acus[3]=='marcas'||$acus[3]=='unidad_medida'||$acus[3]=='tipo_producto'||$acus[3]=='formas_pago'||$acus[3]=='terminos_pago'||$acus[3]=='iva') {
 				print('class="hover active open"');
 			}else print(' class="hover"');
 		print'>';			
@@ -781,6 +781,15 @@ function menu_lateral(){
 					<a href="../terminos_pago/">
 						<i class="menu-icon fa fa-caret-right"></i>
 						Términos de pago
+					</a>
+					<b class="arrow"></b>
+				</li>';
+				print '<li ';if ($acus[3]=='iva') {
+					print('class="active"');
+				}print'>
+					<a href="../iva/">
+						<i class="menu-icon fa fa-caret-right"></i>
+						Porcentaje IVA
 					</a>
 					<b class="arrow"></b>
 				</li>';				

@@ -37,6 +37,8 @@ function inicio (){
 		    success: function(data) {	    	
 		    	if(data == 2) {	
 		    		$("#txt_9").html("");
+		    		$("#txt_10").html("");
+		    		$("#txt_11").html("");
 		    		$("#cmb_pais").html("");	        		
 		    		alert('Datos Agregados Correctamente');
 		    		$("#txt_pais").val("");
@@ -70,7 +72,8 @@ function inicio (){
 		    		$("#txt_provincia").val("");
 		    		$('#modal_provincia').modal('hide');
 		    		carga_ubicaciones("txt_9","txt_10","txt_11");//pais provincia ciudad
-		    		carga_ubicaciones("cmb_pais2","cmb_provincia");  	    		
+		    		carga_ubicaciones("cmb_pais2");
+					carga_detalles_productos("cmb_provincia",'44');//provincias   	    		
 		    	} else {
 		    		if(data == 1) {	    		
 		    			alert('La Provincia ya existe. Ingrese otra');
@@ -108,7 +111,8 @@ function inicio (){
 	});
 
 	carga_ubicaciones("cmb_pais");
-	carga_ubicaciones("cmb_pais2","cmb_provincia");
+	carga_ubicaciones("cmb_pais2");
+	carga_detalles_productos("cmb_provincia",'44');//provincias 
 
 	$("input").on("keyup click", function(e) {	
 		comprobarCamposRequired(e.currentTarget.form.id);

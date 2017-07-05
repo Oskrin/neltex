@@ -522,6 +522,7 @@ function inicio (){
 	carga_detalles_productos_1("txt_14",'11');//asignado a y el numero de funcion
     carga_detalles_productos("iva_producto",'31');
     carga_detalles_productos("grupo_contable",'39');//GRUPO  y el numero de funcion
+    carga_detalles_productos("grupo_contable",'45');//iva
   	
 	////////////////////////
 	/*guardar categorias productos*/
