@@ -104,7 +104,7 @@
 																					</div>
 																				</div>
 
-																				<div class="form-group" style="display: none">
+																				<div class="form-group">
 																					<label class="col-sm-4 control-label no-padding-right" for="txt_3"> Utilidad Minorista:</label>
 																					<div class="col-sm-8">													
 																						<input type="text" id="txt_3" name="txt_3" class="form-control" placeholder="Utilidad Minorista" onkeydown="return validarNumeros(event)" data-toggle="tooltip" data-original-title="Utilidad Minorista Porcentaje" value="0" />
@@ -176,7 +176,7 @@
 																					</div>
 																				</div>
 
-																				<div class="form-group" style="display: none">
+																				<div class="form-group">
 																					<label class="col-sm-4 control-label no-padding-right" for="txt_10"> Utilidad Mayorista: </label>
 																					<div class="col-sm-8">
 																						<input type="text" id="txt_10" name="txt_10" class="form-control" placeholder="Utilidad mayorista" onkeydown="return validarNumeros(event)"  data-toggle="tooltip" data-original-title="Utilidad del Mayorista" value="0" />
