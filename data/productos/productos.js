@@ -541,23 +541,23 @@ function inicio (){
 	});
 	$("#btn_guardarSevende").on("click",guardarSevende);
 	/*--------------*/
-	$("#txt_4").on("keypress",function (e){
+	$("#txt_4").on("keypress",function(e) {
     	if(e.keyCode == 13){//tecla del alt para el entrer poner 13
       		var precio_costo = $('#txt_9').val();
       		var precio_minorista = $('#txt_4').val();
       		var resta = parseFloat(precio_minorista-precio_costo);
-      		var multi = parseFloat(resta/precio_costo*100).toFixed(0);
+      		var multi = parseFloat(resta/precio_costo*100).toFixed(2);
       		$('#txt_3').val(multi);
 
     	}
     });
 
-    $("#txt_11").on("keypress",function (e){
+    $("#txt_11").on("keypress",function(e) {
     	if(e.keyCode == 13){//tecla del alt para el entrer poner 13
       		var precio_costo = $('#txt_9').val();
       		var precio_mayorista = $('#txt_11').val();
       		var resta = parseFloat(precio_mayorista-precio_costo);
-      		var multi = parseFloat(resta/precio_costo*100).toFixed(0);
+      		var multi = parseFloat(resta/precio_costo*100).toFixed(2);
       		$('#txt_10').val(multi);
 
     	}
