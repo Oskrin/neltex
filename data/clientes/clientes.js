@@ -49,7 +49,7 @@ function inicio (){
 		    		carga_ubicaciones("cmb_pais2");    		
 		    	} else {
 		    		if( data == 1 ) {	    		
-		    			alert('El País ya existe. Ingrese otra')	;
+		    			alert('El País ya existe. Ingrese otra');
 		    			$("#txt_pais").val("");
 		    			$("#txt_pais").focus();
 		    		}
