@@ -151,12 +151,14 @@ function inicio (){
 		    		$("#txt_9").html("");
 		    		$("#txt_10").html("");
 		    		$("#txt_11").html("");
-		    		$("#cmb_pais").html("");	        		
+		    		$("#cmb_pais").html("");
+		    		$("#cmb_pais2").html("");	        		
 		    		alert('Datos Agregados Correctamente');
 		    		$("#txt_pais").val("");
 		    		$('#modal_pais').modal('hide');
 		    		carga_ubicaciones("txt_9","txt_10","txt_11");//pais provincia ciudad 
-		    		carga_ubicaciones("cmb_pais");    		
+		    		carga_ubicaciones("cmb_pais");
+		    		carga_ubicaciones("cmb_pais2");    		
 		    	} else {
 		    		if(data == 1) {	    		
 		    			alert('El País ya existe. Ingrese otra')	;
@@ -184,8 +186,7 @@ function inicio (){
 		    		$("#txt_provincia").val("");
 		    		$('#modal_provincia').modal('hide');
 		    		carga_ubicaciones("txt_9","txt_10","txt_11");//pais provincia ciudad
-		    		carga_ubicaciones("cmb_pais2");
-					carga_detalles_productos("cmb_provincia",'44');//provincias  	    		
+					carga_ubicaciones("cmb_pais2","cmb_provincia");  	    		
 		    	} else {
 		    		if(data == 1) {	    		
 		    			alert('La Provincia ya existe. Ingrese otra')	;
@@ -206,11 +207,14 @@ function inicio (){
 		    	if( data == 2 ) {  
 		    		$("#txt_9").html("");
 		    		$("#txt_10").html("");
-		    		$("#txt_11").html(""); 	 		
+		    		$("#txt_11").html("");
+		    		$("#cmb_pais2").html("");
+		    		$("#cmb_provincia").html(""); 	 		
 		    		alert('Datos Agregados Correctamente');
 		    		$("#txt_ciudad").val("");
 		    		$('#modal_ciudad').modal('hide');
-		    		carga_ubicaciones("txt_9","txt_10","txt_11");//pais provincia ciudad 	    		
+		    		carga_ubicaciones("txt_9","txt_10","txt_11");//pais provincia ciudad
+					carga_ubicaciones("cmb_pais2","cmb_provincia");  	    		
 		    	} else {
 		    		if(data == 1) {	    		
 		    			alert('La Ciudad ya existe. Ingrese otra')	;
@@ -223,8 +227,11 @@ function inicio (){
 	});
 
 	carga_ubicaciones("cmb_pais");
-	carga_ubicaciones("cmb_pais2");
-	carga_detalles_productos("cmb_provincia",'44');//provincias
+	carga_ubicaciones("cmb_pais2","cmb_provincia");
+
+	$("#cmb_pais2").change(function() {
+		change_pais("cmb_pais2","cmb_provincia");
+	});
 
 	/*-----------------------*/
 	$("input").on("keyup click",function (e){//campos requeridos		
@@ -881,41 +888,46 @@ function guardar() {///funcion para guardar datos
 			alert('Campo Requerido');
 			$("#txt_2").focus();
 		} else {
-			if($("#txt_13").val() == "") {
+			if($("#txt_8").val() == "") {
 				alert('Campo Requerido');
-				$("#txt_13").focus();
+				$("#txt_8").focus();
 			} else {
-				if($("#txt_5").val() == "") {
+				if($("#txt_13").val() == "") {
 					alert('Campo Requerido');
-					$("#txt_5").focus();
+					$("#txt_13").focus();
 				} else {
-					if(resultado != true) {
-						alert('Error de 4 a 8 caracteres, debe incluir mínimo 1 Mayúscula (A-Z), una Minúscula (a-z) y un Número');
+					if($("#txt_5").val() == "") {
+						alert('Campo Requerido');
 						$("#txt_5").focus();
 					} else {
-						if($("#txt_6").val() == "") {
-							alert('Campo Requerido');
-							$("#txt_6").focus();
+						if(resultado != true) {
+							alert('Error de 4 a 8 caracteres, debe incluir mínimo 1 Mayúscula (A-Z), una Minúscula (a-z) y un Número');
+							$("#txt_5").focus();
 						} else {
-							if($("#txt_5").val() != $("#txt_6").val()){
-								alert("Las Contraseñas no coinciden");
-								$("#txt_6").val("");
-								$("#txt_6").focus();	
+							if($("#txt_6").val() == "") {
+								alert('Campo Requerido');
+								$("#txt_6").focus();
 							} else {
-								if($("#txt_11").val() == "") {
-									alert('Seleccione una ciudad');
+								if($("#txt_5").val() != $("#txt_6").val()){
+									alert("Las Contraseñas no coinciden");
+									$("#txt_6").val("");
+									$("#txt_6").focus();	
 								} else {
-									if($("#txt_12").val() == "") {
-										alert('Campo Requerido');
-										$("#txt_12").val("");
-										$("#txt_12").focus();	
+									if($("#txt_11").val() == "") {
+										alert('Seleccione una ciudad');
 									} else {
-										if(texto=="Guardar") {
-											guardar_datos(valores,"g"); 
-										}
-									}	
+										if($("#txt_12").val() == "") {
+											alert('Campo Requerido');
+											$("#txt_12").val("");
+											$("#txt_12").focus();	
+										} else {
+											if(texto=="Guardar") {
+												guardar_datos(valores,"g"); 
+											}
+										}	
+									}
 								}
-							}	
+							}		
 						}	
 					}
 				}	

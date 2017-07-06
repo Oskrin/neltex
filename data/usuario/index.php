@@ -159,8 +159,8 @@
 																	</div>
 																</div>
 
-																<div class="form-group">
-																	<label class="col-sm-3 control-label no-padding-right" for="txt_8"> Correo: </label>
+																<div class="form-group has-error">
+																	<label class="col-sm-3 control-label no-padding-right" for="txt_8"> Correo (*): </label>
 																	<div class="col-sm-9">
 																	  <span class="block input-icon input-icon-right">
 																	  	<input type="mail" id="txt_8" name="txt_8" placeholder="Correo" class="form-control" />
@@ -350,7 +350,7 @@
 		        <form class="form-horizontal" role="form" rol="form" action="" method="POST" id="form_ciudad">
 		        	<div class="modal-body">
 		        		<div class="form-group has-error">
-							<label class="col-sm-3 control-label no-padding-right" for="cmb_pais"> País: </label>
+							<label class="col-sm-3 control-label no-padding-right" for="cmb_pais2"> País: </label>
 							<div class="col-sm-7">
 								<select class="select2" id="cmb_pais2" name="cmb_pais2" data-placeholder="País">
 								</select>																	
@@ -358,7 +358,7 @@
 						</div>
 
 						<div class="form-group has-error">
-							<label class="col-sm-3 control-label no-padding-right" for="cmb_pais"> Provincia: </label>
+							<label class="col-sm-3 control-label no-padding-right" for="cmb_provincia"> Provincia: </label>
 							<div class="col-sm-7">
 								<select class="select2" id="cmb_provincia" name="cmb_provincia" data-placeholder="País">
 								</select>																	
