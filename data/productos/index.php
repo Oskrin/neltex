@@ -85,7 +85,7 @@
 																				<div class="form-group has-error">
 																					<label class="col-sm-4 control-label no-padding-right" for="txt_1"> Código (*):</label>
 																					<div class="col-sm-8">								
-																						<input type="text" id="txt_1" name="txt_1"  placeholder="Código" class="form-control" data-toggle="tooltip" data-original-title="Código del Producto" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9 ]{1,}" />
+																						<input type="text" id="txt_1" name="txt_1"  placeholder="Código" class="form-control" />
 																						<input type="hidden" id="txt_0" name="txt_0">
 																					</div>
 																				</div>
