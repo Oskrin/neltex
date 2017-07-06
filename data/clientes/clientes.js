@@ -142,8 +142,38 @@ function inicio (){
 	$("#txt_10").change(function() {
 		change_provincia("txt_9","txt_10","txt_11");
 	});
+
+	// funcion validar solo numeros
+	function ValidNum() {
+	    if (event.keyCode < 48 || event.keyCode > 57) {
+	        event.returnValue = false;
+	    }
+	    return true;
+	}
+	// fin
+
+	function soloLetras(e){
+       key = e.keyCode || e.which;
+       tecla = String.fromCharCode(key).toLowerCase();
+       letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+       especiales = "8-37-39-46";
+
+       tecla_especial = false
+       for(var i in especiales){
+            if(key == especiales[i]){
+                tecla_especial = true;
+                break;
+            }
+        }
+
+        if(letras.indexOf(tecla)==-1 && !tecla_especial){
+            return false;
+        }
+    }
     
-    /*procesos de guardar buscar modificar limpiar actualizar*/    		
+    /*procesos de guardar buscar modificar limpiar actualizar*/ 
+    $("#txt_2").keypress(ValidNum);
+	$("#txt_3").keypress(soloLetras);   		
 	$("#btn_0").on("click",guardar_clientes);
 	$("#btn_1").on("click",limpiar_form);
 	$("#btn_2").on("click",actualizar_form);

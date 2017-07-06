@@ -279,7 +279,37 @@ function inicio (){
 		}
 	})
 
+	// funcion validar solo numeros
+	function ValidNum() {
+	    if (event.keyCode < 48 || event.keyCode > 57) {
+	        event.returnValue = false;
+	    }
+	    return true;
+	}
+	// fin
+
+	function soloLetras(e){
+       key = e.keyCode || e.which;
+       tecla = String.fromCharCode(key).toLowerCase();
+       letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+       especiales = "8-37-39-46";
+
+       tecla_especial = false
+       for(var i in especiales){
+            if(key == especiales[i]){
+                tecla_especial = true;
+                break;
+            }
+        }
+
+        if(letras.indexOf(tecla)==-1 && !tecla_especial){
+            return false;
+        }
+    }
+
 	/*-----*/
+	$("#txt_1").keypress(ValidNum);
+	$("#txt_2").keypress(soloLetras);
 	$("#btn_0").on("click",guardar);	
 	$("#btn_1").on("click",limpiar_form);
 	$("#btn_2").on("click",actualizar_form);
@@ -878,7 +908,9 @@ function guardar() {///funcion para guardar datos
 	var valores = $("#form_usuario").serialize();
 	var cadena = document.getElementById('txt_5').value;
 	var expresionR = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{4,8}$/;
-	var resultado = expresionR.test(cadena);	
+	var resultado = expresionR.test(cadena);
+	var expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+	var correo = $("#txt_8").val();	
 
 	if($("#txt_1").val() == "") {
 		alert('Campo Requerido');
@@ -888,43 +920,48 @@ function guardar() {///funcion para guardar datos
 			alert('Campo Requerido');
 			$("#txt_2").focus();
 		} else {
-			if($("#txt_8").val() == "") {
+			if(correo == "") {
 				alert('Campo Requerido');
 				$("#txt_8").focus();
 			} else {
-				if($("#txt_13").val() == "") {
-					alert('Campo Requerido');
-					$("#txt_13").focus();
+				if (!expr.test(correo)){
+					alert('Ingrese un correo válido');
+					$("#txt_8").focus();
 				} else {
-					if($("#txt_5").val() == "") {
+					if($("#txt_13").val() == "") {
 						alert('Campo Requerido');
-						$("#txt_5").focus();
+						$("#txt_13").focus();
 					} else {
-						if(resultado != true) {
-							alert('Error de 4 a 8 caracteres, debe incluir mínimo 1 Mayúscula (A-Z), una Minúscula (a-z) y un Número');
+						if($("#txt_5").val() == "") {
+							alert('Campo Requerido');
 							$("#txt_5").focus();
 						} else {
-							if($("#txt_6").val() == "") {
-								alert('Campo Requerido');
-								$("#txt_6").focus();
+							if(resultado != true) {
+								alert('Error de 4 a 8 caracteres, debe incluir mínimo 1 Mayúscula (A-Z), una Minúscula (a-z) y un Número');
+								$("#txt_5").focus();
 							} else {
-								if($("#txt_5").val() != $("#txt_6").val()){
-									alert("Las Contraseñas no coinciden");
-									$("#txt_6").val("");
-									$("#txt_6").focus();	
+								if($("#txt_6").val() == "") {
+									alert('Campo Requerido');
+									$("#txt_6").focus();
 								} else {
-									if($("#txt_11").val() == "") {
-										alert('Seleccione una ciudad');
+									if($("#txt_5").val() != $("#txt_6").val()){
+										alert("Las Contraseñas no coinciden");
+										$("#txt_6").val("");
+										$("#txt_6").focus();	
 									} else {
-										if($("#txt_12").val() == "") {
-											alert('Campo Requerido');
-											$("#txt_12").val("");
-											$("#txt_12").focus();	
+										if($("#txt_11").val() == "") {
+											alert('Seleccione una ciudad');
 										} else {
-											if(texto=="Guardar") {
-												guardar_datos(valores,"g"); 
-											}
-										}	
+											if($("#txt_12").val() == "") {
+												alert('Campo Requerido');
+												$("#txt_12").val("");
+												$("#txt_12").focus();	
+											} else {
+												if(texto=="Guardar") {
+													guardar_datos(valores,"g"); 
+												}
+											}	
+										}
 									}
 								}
 							}		

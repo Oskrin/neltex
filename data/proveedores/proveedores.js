@@ -169,9 +169,42 @@ function inicio () {
 
     $("#btn_ret_iva").on('click',function() {
     	boton_click = "txt_21";
-    });	
+    });
 
-    /*procesos de guardar buscar modificar limpiar actualizar*/    		
+    // funcion validar solo numeros
+	function ValidNum() {
+	    if (event.keyCode < 48 || event.keyCode > 57) {
+	        event.returnValue = false;
+	    }
+	    return true;
+	}
+	// fin
+
+	function soloLetras(e){
+       key = e.keyCode || e.which;
+       tecla = String.fromCharCode(key).toLowerCase();
+       letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+       especiales = "8-37-39-46";
+
+       tecla_especial = false
+       for(var i in especiales){
+            if(key == especiales[i]){
+                tecla_especial = true;
+                break;
+            }
+        }
+
+        if(letras.indexOf(tecla)==-1 && !tecla_especial){
+            return false;
+        }
+    }	
+
+    /*procesos de guardar buscar modificar limpiar actualizar*/ 
+    $("#txt_2").keypress(ValidNum);
+	$("#txt_3").keypress(soloLetras);
+	$("#txt_12").keypress(soloLetras);
+	$("#txt_13").keypress(soloLetras);   		
+	// $("#btn_0").on("click",guardar_clientes);   		
 	$("#btn_0").on("click",guardar_proveedores);
 	$("#btn_1").on("click",limpiar_form);
 	$("#btn_2").on("click",actualizar_form);
