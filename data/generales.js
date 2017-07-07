@@ -83,7 +83,7 @@ function enter(e) {
 function actualizar_form(){    
     setTimeout(function() {
       location.reload();
-    }, 2000);
+    }, 1000);
     
 }
 

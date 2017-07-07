@@ -848,7 +848,7 @@ function guardar_seVende(tipo,p){
 	    		limpiar_form(p);		    		
 	    	}else{
 	    		if( data == 1 ){	    		
-	    			alert('Este dato ya existe. Ingrese otra')	;
+	    			alert('Este dato ya existe. Ingrese otra');
 	    			$("#txt_descripcionUnidades").val("");
 	    			$("#txt_descripcionUnidades").focus();
 	    		}
@@ -856,21 +856,39 @@ function guardar_seVende(tipo,p){
 		},		
 	}); 
 }
-function guardar_productos(){
-	var resp=comprobarCamposRequired("form_productos");
-	if(resp==true){
-		$("#form_productos").on("submit",function (e){				
-			var valores = $("#form_productos").serialize();
-			var texto=($("#btn_0").text()).trim();	
-			if(texto=="Guardar"){						
-				datos_productos(valores,"g",e);					
-			}else{				
-				datos_productos(valores,"m",e);					
+function guardar_productos() {
+	var valores = $("#form_productos").serialize();
+	var texto=($("#btn_0").text()).trim();
+
+	if($("#txt_1").val() == "") {
+		alert('Campo Requerido');
+		$('#txt_1').focus();
+	} else {
+		if ($('#txt_2').val() == '') {
+			alert('Campo Requerido');
+			$('#txt_2').focus();
+		} else {
+			if(texto=="Guardar") {						
+				datos_productos(valores,"g");					
+			} else {				
+				datos_productos(valores,"m");					
 			}
-			e.preventDefault();
-    		$(this).unbind("submit");
-		});
+		}	
 	}
+	// var resp=comprobarCamposRequired("form_productos");
+	// if(resp==true){
+	// 	$("#form_productos").on("button",function (e){				
+	// 		var valores = $("#form_productos").serialize();
+	// 		var texto=($("#btn_0").text()).trim();	
+	// 		if(texto=="Guardar"){						
+	// 			datos_productos(valores,"g");					
+	// 		}else{				
+	// 			datos_productos(valores,"m");					
+	// 		}
+	// 		// e.preventDefault();
+ //   //  		$(this).unbind("submit");
+	// 	});
+	// }
 }
 function datos_productos(valores,tipo,p){	
 	$.ajax({				
@@ -884,8 +902,8 @@ function datos_productos(valores,tipo,p){
     			var di = $("#myTab").next();
     			
     			$('#myTab a:first').tab('show') 
-
-    			limpiar_form(p);		    		
+    			actualizar_form();
+    			// limpiar_form();		    		
     		}else{
     			if( data == 1 ){
 		    		alert('El código del producto esta repetido. Ingrese nuevamente');			
