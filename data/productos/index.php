@@ -325,7 +325,7 @@
 
 													<h3 class="header smaller lighter green"></h3>
 													<div class="center">
-														<button type="submit" class="btn btn-primary" id="btn_0">
+														<button type="button" class="btn btn-primary" id="btn_0">
 															<i class="ace-icon fa fa-floppy-o bigger-120 white"></i>
 															Guardar
 														</button>
