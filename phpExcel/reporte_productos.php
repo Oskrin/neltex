@@ -7,9 +7,12 @@ session_start();
 $objPHPExcel = new PHPExcel();
 $Archivo = "reporte_productos.xls";
 
-include '../procesos/base.php';
-conectarse();
+// include '../procesos/base.php';
+// conectarse();
 
+include '../data/conexion.php';
+include '../procesos/funciones.php';
+conectarse();
 
 // Propiedades de archivo Excel
 $objPHPExcel->getProperties()->setCreator("P&S Systems")
@@ -116,7 +119,7 @@ $objDrawing->setCoordinates('F2');    // pins the top-left corner of the image t
 $objDrawing->setOffsetX(0);                // pins the top left corner of the image at an offset of 10 points horizontally to the right of the top-left corner of the cell
 $objDrawing->setWorksheet($objPHPExcel->getActiveSheet());     
 //DETALLE DE LA CONSULTA
-$sql=pg_query("select codigo,articulo,iva_minorista,iva_mayorista,stock from productos");
+$sql=pg_query("select codigo,descripcion,precio_minorista,precio_mayorista,stock from productos");
 while($row=pg_fetch_row($sql))       
 {
     $y++;

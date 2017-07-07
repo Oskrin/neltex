@@ -1,6 +1,6 @@
 <?php
     require('../fpdf/fpdf.php');
-    include '../procesos/base.php';
+    include '../data/conexion.php';
     include '../procesos/funciones.php';
     conectarse();    
     date_default_timezone_set('America/Guayaquil'); 
@@ -35,7 +35,7 @@
             $this->SetLineWidth(0.4);            
             $this->Line(1,45,210,45);            
             $this->SetFont('Arial','B',12);                                                                            
-            $this->Cell(190, 5, utf8_decode("PAGOS REALIZADOS INTERNOS REALIZADOS POR LA EMPRESA"),0,1, 'C',0);                                                                                                                            
+            $this->Cell(190, 5, utf8_decode("PAGOS REALIZADOS POR LA EMPRESA"),0,1, 'C',0);                                                                                                                            
             $this->SetFont('Amble-Regular','',10);        
             $this->Ln(3);
             $this->SetFillColor(255,255,225);            
@@ -65,7 +65,7 @@
     $ivaT=0;
     $repetido=0;   
     $contador=0; 
-    $consulta=pg_query('select * FROM proveedores order by id_proveedor asc');
+    $consulta=pg_query('select * FROM proveedor order by id_proveedor asc');
     while($row=pg_fetch_row($consulta)) {
         $total=0;
         $sub=0;
@@ -73,7 +73,7 @@
         $repetido=0; 
         $contador=0;   
         $num_fact=0;        
-        $sql1=pg_query("select * from factura_compra where id_proveedor='$row[0]' order by forma_pago asc;");        
+        $sql1=pg_query("select * from factura_compra where id_proveedor='$row[0]' order by id_forma_pago asc;");        
         if(pg_num_rows($sql1)>0){
             while($row1=pg_fetch_row($sql1)) {  
                 if($repetido==0){

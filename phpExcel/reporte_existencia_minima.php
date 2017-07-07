@@ -2,13 +2,18 @@
 
 date_default_timezone_set('America/Guayaquil');
 require_once "PHPExcel.php";
+session_start();
 
 //VARIABLES DE PHP
 $objPHPExcel = new PHPExcel();
 $Archivo = "reporte_productos_existencia_minima.xls";
 
-include '../procesos/base.php';
-session_start();
+// include '../procesos/base.php';
+// session_start();
+// conectarse();
+
+include '../data/conexion.php';
+include '../procesos/funciones.php';
 conectarse();
 
 
@@ -117,7 +122,7 @@ $objDrawing->setCoordinates('G2');    // pins the top-left corner of the image t
 $objDrawing->setOffsetX(20);                // pins the top left 
 $objDrawing->setWorksheet($objPHPExcel->getActiveSheet());     
 //DETALLE DE LA CONSULTA
-$sql=pg_query("select codigo,cod_barras,articulo,iva_minorista,iva_mayorista,stock,stock_minimo from productos where stock::integer  < stock_minimo::integer  order by cod_productos");
+$sql=pg_query("select codigo,codigo_barras,descripcion,precio_minorista,precio_mayorista,stock,cantidad_minima from productos where stock::integer  < cantidad_minima::integer  order by id_productos");
 while($row=pg_fetch_row($sql))       
 {
     $y++;

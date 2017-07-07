@@ -1331,16 +1331,39 @@ function menu_lateral(){
 				print '</ul>
 				</li>';
 
+				print '<li ';
+				print('class="hover"');
+				print'>
+					<a href="" class="dropdown-toggle">
+					<i class="menu-icon fa fa-caret-right"></i>
+					Cartera
+					<b class="arrow fa fa-angle-down"></b>
+					</a>
+					<b class="arrow"></b>
+				<ul class="submenu">';					
+				print '<li ';
+				print('class="hover"');
+				print'>
+					<a href="../../reportes/cobros_realizados_internos.php" target="_blank">
+						<i class="menu-icon fa fa-caret-right"></i>
+						Cobros Realizados
+					</a>
+					<b class="arrow"></b>
+				</li>';
 
 				print '<li ';
 				print('class="hover"');
 				print'>
-					<a href="" id="reporte_utilidad_factura_general">
+					<a href="../../reportes/pagos_realizados_internos.php" target="_blank">
 						<i class="menu-icon fa fa-caret-right"></i>
-						Cartera
+						Pagos Realizados
 					</a>
 					<b class="arrow"></b>
-				</li>';															
+				</li>';
+
+				print '</ul>
+				</li>';
+
 		print '</ul>
 		</li>';
 		

@@ -117,7 +117,7 @@
 														else{
 															if($_GET['fun'] == "15"){//para la busqueda del codigo del producto
 																if($_GET['tipo'] == "0"){
-																	$sql = "select P.id_productos, P.codigo,codigo_barras, P.descripcion, P.precio_minorista, P.stock, I.porcentaje, P.facturar_existencia, P.incluye_iva, P.descuento from productos P , porcentaje_iva I where P.id_porcentaje_iva = I.id_porcentaje_iva and codigo like '%$_GET[val]%'";																	
+																	$sql = "select P.id_productos, P.codigo,codigo_barras, P.descripcion, P.precio_minorista, P.stock, I.descripcion, P.facturar_existencia, P.incluye_iva, P.descuento from productos P , porcentaje_iva I where P.id_porcentaje_iva = I.id_iva and codigo like '%$_GET[val]%'";																	
 																	cargarSelect_10($conexion,$sql);//select de 10 datos
 																}else{
 																	
@@ -125,7 +125,7 @@
 															}else{
 																if($_GET['fun'] == "16"){//para la busqueda del nombre del producto
 																	if($_GET['tipo'] == "0"){
-																		$sql = "select P.id_productos, P.codigo,codigo_barras, P.descripcion, P.precio_minorista, P.stock, I.porcentaje, P.facturar_existencia, P.incluye_iva, P.descuento from productos P , porcentaje_iva I where P.id_porcentaje_iva = I.id_porcentaje_iva and descripcion like '%$_GET[val]%'";
+																		$sql = "select P.id_productos, P.codigo,codigo_barras, P.descripcion, P.precio_minorista, P.stock, I.descripcion, P.facturar_existencia, P.incluye_iva, P.descuento from productos P , porcentaje_iva I where P.id_porcentaje_iva = I.id_iva and descripcion like '%$_GET[val]%'";
 																		cargarSelect_10($conexion,$sql);//select de 10 datos
 																	}else{
 																		

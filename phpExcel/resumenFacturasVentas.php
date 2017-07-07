@@ -2,19 +2,19 @@
 
 date_default_timezone_set('America/Guayaquil');
 require_once "PHPExcel.php";
+session_start();
 
 //VARIABLES DE PHP
 $objPHPExcel = new PHPExcel();
 $Archivo = "reporte_facturas_ventas_clientes.xls";
 
-include '../procesos/base.php';
-session_start();
+include '../data/conexion.php';
+include '../procesos/funciones.php';
 conectarse();
 
-
 // Propiedades de archivo Excel
-$objPHPExcel->getProperties()->setCreator("P&S Systems")
-        ->setLastModifiedBy("P&S Systems")
+$objPHPExcel->getProperties()->setCreator("NELTEX")
+        ->setLastModifiedBy("NELTEX")
         ->setTitle("Reporte XLS")
         ->setSubject("RESUMEN DE FACTURAS VENTAS POR CLIENTES")
         ->setDescription("")
@@ -154,9 +154,9 @@ $sub = 0;
 $desc = 0;
 $ivaT = 0;
 $y = 7;
-$consulta = pg_query('select * from clientes order by id_cliente asc');
+$consulta = pg_query('select * from cliente order by id_cliente asc');
 while ($row = pg_fetch_row($consulta)) {
-    $consulta1 = pg_query("select num_factura,fecha_actual,hora_actual,fecha_cancelacion,tipo_precio,forma_pago,tarifa0,tarifa12,iva_venta,descuento_venta,total_venta,identificacion,nombres_cli,nombre_empresa,id_factura_venta from factura_venta, clientes,empresa,usuario where factura_venta.id_cliente=clientes.id_cliente and factura_venta.id_empresa=empresa.id_empresa and usuario.id_usuario=factura_venta.id_usuario and factura_venta.id_cliente='$row[0]' and fecha_actual between '$_GET[inicio]' and '$_GET[fin]' order by factura_venta.id_factura_venta asc");
+    $consulta1 = pg_query("select numero_serie,fecha_actual,hora_actual,fecha_cancelacion,tipo_precio,id_forma_pago,tarifa0,tarifa12,iva,descuento,total,cliente.identificacion, cliente.nombres_completos,nombre_empresa,id_factura_venta from factura_venta, cliente,empresa,usuario where factura_venta.id_cliente=cliente.id_cliente and factura_venta.id_empresa=empresa.id_empresa and usuario.id_usuario=factura_venta.id_usuario and factura_venta.id_cliente='$row[0]' and fecha_actual between '$_GET[inicio]' and '$_GET[fin]' order by factura_venta.id_factura_venta asc");
     $contador = pg_num_rows($consulta1);
     $total = 0;
     $sub = 0;

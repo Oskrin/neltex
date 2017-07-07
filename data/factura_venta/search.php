@@ -8,7 +8,7 @@
     $arr_data = array();
 
     if ($codigo_barras != "") {
-        $consulta = pg_query("select * from productos P, porcentaje_iva I where P.id_porcentaje_iva = I.id_porcentaje_iva and P.estado = 'Si' and P.codigo_barras = '$codigo_barras'");
+        $consulta = pg_query("select * from productos P, porcentaje_iva I where P.id_porcentaje_iva = I.id_iva and P.estado = 'Si' and P.codigo_barras = '$codigo_barras'");
         while ($row = pg_fetch_row($consulta)) {
             if ($precio == "MINORISTA") {
                 $arr_data[] = $row[0];

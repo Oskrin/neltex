@@ -1,8 +1,8 @@
 <?php
     require('../fpdf/fpdf.php');
-    include '../procesos/base.php';
+    include '../data/conexion.php';
     include '../procesos/funciones.php';
-    conectarse();    
+    conectarse();     
     date_default_timezone_set('America/Guayaquil'); 
     session_start()   ;
     class PDF extends FPDF{   
@@ -33,7 +33,7 @@
             $this->SetLineWidth(0.4);            
             $this->Line(1,45,210,45);            
             $this->SetFont('Arial','B',12);                                                      
-            $this->Cell(190, 5, utf8_decode("COBROS REALIZADOS INTERNOS POR CLIENTE"),0,1, 'C',0);                                                                                                                            
+            $this->Cell(190, 5, utf8_decode("COBROS REALIZADOS POR CLIENTE"),0,1, 'C',0);                                                                                                                            
             $this->SetFont('Amble-Regular','',10);        
             $this->Ln(3);
             $this->SetFillColor(255,255,225);            
@@ -61,7 +61,7 @@
     $ivaT=0;
     $repetido=0;   
     $contador=0;     
-    $consulta=pg_query('select * from clientes order by id_cliente asc');
+    $consulta=pg_query('select * from cliente order by id_cliente asc');
     while($row=pg_fetch_row($consulta)){
         $total=0;
         $sub=0;
@@ -69,7 +69,7 @@
         $repetido=0; 
         $contador=0;   
         $num_fact=0;        
-        $sql1=pg_query("select * from factura_venta where id_cliente='$row[0]' order by forma_pago asc");        
+        $sql1=pg_query("select * from factura_venta where id_cliente='$row[0]' order by id_forma_pago asc");        
         if(pg_num_rows($sql1)>0){
             while($row1=pg_fetch_row($sql1)){  
                 if($repetido==0){
@@ -102,7 +102,7 @@
                     $sub=$sub+$row1[18];
                 }
                 else{
-                    $sql2=pg_query("select comprobante,valor_pagado,fecha_factura,tipo_factura,num_factura,forma_pago,saldo_factura from pagos_cobrar where num_factura='$row1[5]';");
+                    $sql2=pg_query("select id_pagos_cobrar,valor_pagado,fecha_factura,num_factura,forma_pago,saldo_factura from pagos_cobrar where num_factura='$row1[5]';");
                     if(pg_num_rows($sql2)>0){                        
                         while($row2=pg_fetch_row($sql2)){
                             $pdf->Cell(25, 6, utf8_decode($row1[4]),0,0, 'C',0);

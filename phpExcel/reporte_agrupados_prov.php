@@ -2,19 +2,20 @@
 
 date_default_timezone_set('America/Guayaquil');
 require_once "PHPExcel.php";
+session_start();
 
 //VARIABLES DE PHP
 $objPHPExcel = new PHPExcel();
 $Archivo = "reporte_agrupados_prov.xls";
 
-include '../procesos/base.php';
-session_start();
+include '../data/conexion.php';
+include '../procesos/funciones.php';
 conectarse();
 
 
 // Propiedades de archivo Excel
-$objPHPExcel->getProperties()->setCreator("P&S Systems")
-        ->setLastModifiedBy("P&S Systems")
+$objPHPExcel->getProperties()->setCreator("NELTEX")
+        ->setLastModifiedBy("NELTEX")
         ->setTitle("Reporte XLS")
         ->setSubject("Reporte de productos agrupados por proveedor")
         ->setDescription("")
@@ -118,7 +119,7 @@ $objDrawing->setOffsetX(0);                // pins the top left
 $objDrawing->setWorksheet($objPHPExcel->getActiveSheet());
 
 
-$sql = pg_query("select proveedores.id_proveedor, identificacion_pro,empresa_pro from proveedores,factura_compra where proveedores.id_proveedor='$_GET[id]' LIMIT 1");
+$sql = pg_query("select  proveedor.id_proveedor, identificacion,empresa from proveedor,factura_compra where proveedor.id_proveedor='$_GET[id]' LIMIT 1");
 while ($row = pg_fetch_row($sql)) {
     $objPHPExcel->setActiveSheetIndex(0)
             ->setCellValue("B6", 'Proveedor: ' . $row[2]);
@@ -144,11 +145,11 @@ while ($row = pg_fetch_row($sql)) {
             ->setName('Verdana')
             ->setSize(12);
 }
-$sql = pg_query("select proveedores.id_proveedor, identificacion_pro,factura_compra.id_factura_compra from proveedores,factura_compra where proveedores.id_proveedor='$_GET[id]' and factura_compra.id_proveedor=proveedores.id_proveedor");
+$sql = pg_query("select proveedor.id_proveedor, identificacion,factura_compra.id_factura_compra from proveedor,factura_compra where proveedor.id_proveedor='$_GET[id]' and factura_compra.id_proveedor=proveedor.id_proveedor");
 $total = 0;
 while ($row = pg_fetch_row($sql)) {
 
-    $sql1 = pg_query("select detalle_factura_compra.id_detalle_compra,productos.codigo,productos.articulo,productos.iva_minorista,productos.iva_mayorista,productos.stock,detalle_factura_compra.precio_compra,total_compra,cantidad from detalle_factura_compra,productos where detalle_factura_compra.cod_productos=productos.cod_productos and detalle_factura_compra.id_factura_compra='$row[2]'");
+    $sql1 = pg_query("select detalle_factura_compra.id_detalle_factura_compra,productos.codigo,productos.descripcion,productos.precio_minorista,productos.precio_mayorista,productos.stock,detalle_factura_compra.precio,total,cantidad from detalle_factura_compra,productos where detalle_factura_compra.id_productos=productos.id_productos and detalle_factura_compra.id_factura_compra='$row[2]'");
 
     while ($row1 = pg_fetch_row($sql1)) {
         $y++;

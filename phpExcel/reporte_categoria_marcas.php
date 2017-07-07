@@ -1,14 +1,17 @@
 <?php
-
 date_default_timezone_set('America/Guayaquil');
 require_once "PHPExcel.php";
+session_start();
 
 //VARIABLES DE PHP
 $objPHPExcel = new PHPExcel();
 $Archivo = "reporte_productos_marcas_categorias.xls";
 
-include '../procesos/base.php';
-session_start();
+// include '../procesos/base.php';
+// session_start();
+// conectarse();
+include '../data/conexion.php';
+include '../procesos/funciones.php';
 conectarse();
 
 
@@ -120,16 +123,16 @@ $objDrawing->setOffsetX(0);                // pins the top left
 $objDrawing->setWorksheet($objPHPExcel->getActiveSheet());
 
 if ($_GET['marca'] == "" && $_GET['categoria'] == "") {
-    $sql = pg_query("select codigo,cod_barras,articulo,iva_minorista,iva_mayorista,stock,categoria,marca from productos");
+    $sql = pg_query("select codigo,codigo_barras,descripcion,precio_minorista,precio_mayorista,stock,id_categoria,id_marca from productos");
 }
 if ($_GET['marca'] == "" && $_GET['categoria'] != "") {
-    $sql = pg_query("select codigo,cod_barras,articulo,iva_minorista,iva_mayorista,stock,categoria,marca from productos where categoria='$_GET[categoria]'");
+    $sql = pg_query("select codigo,codigo_barras,descripcion,precio_minorista,precio_mayorista,stock,id_categoria,id_marca from productos where id_categoria='$_GET[categoria]'");
 }
 if ($_GET['marca'] != "" && $_GET['categoria'] == "") {
-    $sql = pg_query("select codigo,cod_barras,articulo,iva_minorista,iva_mayorista,stock,categoria,marca from productos where  marca='$_GET[marca]'");
+    $sql = pg_query("select codigo,codigo_barras,descripcion,precio_minorista,precio_mayorista,stock,id_categoria,id_marca from productos where  id_marca='$_GET[marca]'");
 }
 if ($_GET['marca'] != "" && $_GET['categoria'] != "") {
-    $sql = pg_query("select codigo,cod_barras,articulo,iva_minorista,iva_mayorista,stock,categoria,marca from productos where categoria='$_GET[categoria]' and marca='$_GET[marca]'");
+    $sql = pg_query("select codigo,codigo_barras,descripcion,precio_minorista,precio_mayorista,stock,id_categoria,id_marca from productos where id_categoria='$_GET[categoria]' and id_marca='$_GET[marca]'");
 }
 
 while ($row = pg_fetch_row($sql)) {

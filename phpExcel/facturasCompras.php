@@ -2,18 +2,19 @@
 
 date_default_timezone_set('America/Guayaquil');
 require_once "PHPExcel.php";
+session_start();
 
 //VARIABLES DE PHP
 $objPHPExcel = new PHPExcel();
 $Archivo = "reporte_facturas_compras.xls";
 
-include '../procesos/base.php';
-session_start();
+include '../data/conexion.php';
+include '../procesos/funciones.php';
 conectarse();
 
 // Propiedades de archivo Excel
-$objPHPExcel->getProperties()->setCreator("P&S Systems")
-        ->setLastModifiedBy("P&S Systems")
+$objPHPExcel->getProperties()->setCreator("NELTEX")
+        ->setLastModifiedBy("NELTEX")
         ->setTitle("Reporte XLS")
         ->setSubject("RESUMEN DE FACTURAS COMPRAS GENERAL")
         ->setDescription("")
@@ -154,9 +155,9 @@ $desc = 0;
 $ivaT = 0;
 $repetido = 0;
 $y = 7;
-$consulta = pg_query('select * from proveedores order by id_proveedor asc');
+$consulta = pg_query('select * from proveedor order by id_proveedor asc');
 while ($row = pg_fetch_row($consulta)) {
-    $consulta1 = pg_query("select num_serie,fecha_actual,hora_actual,fecha_cancelacion,num_autorizacion,factura_compra.forma_pago,tarifa0,tarifa12,iva_compra,descuento_compra,total_compra,empresa_pro,identificacion_pro,representante_legal,id_factura_compra from factura_compra,proveedores where factura_compra.id_proveedor=proveedores.id_proveedor and factura_compra.id_proveedor='$row[0]' and fecha_actual between '$_GET[inicio]' and '$_GET[fin]' order by factura_compra.id_factura_compra");
+    $consulta1 = pg_query("select numero_serie,fecha_actual,hora_actual,fecha_cancelacion,numero_autorizacion,factura_compra.id_forma_pago,tarifa0,tarifa12,iva,descuento,total,empresa,identificacion,id_factura_compra from factura_compra,proveedor where factura_compra.id_proveedor=proveedor.id_proveedor and factura_compra.id_proveedor='$row[0]' and fecha_actual between '$_GET[inicio]' and '$_GET[fin]' order by factura_compra.id_factura_compra");
     $contador = pg_num_rows($consulta1);
     if ($contador > 0) {
         while ($row1 = pg_fetch_row($consulta1)) {
