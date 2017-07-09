@@ -94,16 +94,16 @@
                     $repetido=1;
                     $contador=1;                    
                 }
-                if($row1[14]=='Contado') {
-                    $pdf->Cell(22, 6, utf8_decode($row1[4]),0,0, 'C',0);                                     
+                if($row1[13]=='1714585525a8625c32d') {
+                    $pdf->Cell(22, 6, '',0,0, 'C',0);                                     
                     $pdf->Cell(27, 6, utf8_decode('Factura'),0,0, 'C',0);                                     
-                    $pdf->Cell(35, 6, substr($row1[11],8,30),0,0, 'C',0);                                         
-                    $pdf->Cell(20, 6, utf8_decode($row1[19]),0,0, 'C',0);                                         
-                    $pdf->Cell(25, 6, utf8_decode($row1[19]),0,0, 'C',0);                                     
+                    $pdf->Cell(35, 6, utf8_decode($row1[9]),0,0, 'C',0);                                         
+                    $pdf->Cell(20, 6, utf8_decode($row1[18]),0,0, 'C',0);                                         
+                    $pdf->Cell(25, 6, utf8_decode($row1[18]),0,0, 'C',0);                                     
                     $pdf->Cell(25, 6, utf8_decode('0.00'),0,0, 'C',0);                                         
                     $pdf->Cell(25, 6, utf8_decode($row1[5]),0,0, 'C',0);
-                    $pdf->Cell(25, 6, utf8_decode($row1[10]),0,1, 'C',0);                                        
-                    $sub=$sub+$row1[19];
+                    $pdf->Cell(25, 6, 'CONTADO',0,1, 'C',0);                                        
+                    $sub=$sub+$row1[18];
                 } else{
                     $sql3=pg_query("select * from pagos_pagar where num_factura='$row1[11]';");
                     if(pg_num_rows($sql3)>0){                        

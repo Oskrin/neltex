@@ -90,31 +90,32 @@
                     $repetido=1;                       
                     $contador=1;                    
                 }
-                if($row1[10]=='Contado'){
-                    $pdf->Cell(25, 6, utf8_decode($row1[4]),0,0, 'C',0);
+                if($row1[10]=='1714585525a8625c32d'){
+                    $pdf->Cell(25, 6, '',0,0, 'C',0);
                     $pdf->Cell(26, 6, utf8_decode("Factura"),0,0, 'C',0);
-                    $pdf->Cell(35, 6, substr($row1[5],8,30),0,0, 'C',0);
-                    $pdf->Cell(20, 6, utf8_decode($row1[18]),0,0, 'C',0);
-                    $pdf->Cell(20, 6, utf8_decode($row1[18]),0,0, 'C',0);
+                    $pdf->Cell(35, 6, $row1[6],0,0, 'C',0);
+                    $pdf->Cell(20, 6, utf8_decode($row1[15]),0,0, 'C',0);
+                    $pdf->Cell(20, 6, utf8_decode($row1[15]),0,0, 'C',0);
                     $pdf->Cell(25, 6, utf8_decode("0.00"),0,0, 'C',0); 
-                    $pdf->Cell(30, 6, utf8_decode($row1[6]),0,0, 'C',0); 
-                    $pdf->Cell(20, 6, utf8_decode($row1[10]),0,1, 'C',0);
-                    $sub=$sub+$row1[18];
-                }
-                else{
-                    $sql2=pg_query("select id_pagos_cobrar,valor_pagado,fecha_factura,num_factura,forma_pago,saldo_factura from pagos_cobrar where num_factura='$row1[5]';");
+                    //$pdf->Cell(30, 6, utf8_decode($row1[15]),0,0, 'C',0); 
+                    $pdf->Cell(30, 6, utf8_decode($row1[4]),0,0, 'C',0);
+                    $pdf->Cell(20, 6, 'CONTADO',0,1, 'C',0);
+                    $sub=$sub+$row1[15];
+                } else {
+                    $sql2=pg_query("select id_pagos_cobrar,valor_pagado,fecha_factura,num_factura,forma_pago,saldo_factura from pagos_cobrar where num_factura='$row1[6]';");
                     if(pg_num_rows($sql2)>0){                        
                         while($row2=pg_fetch_row($sql2)){
-                            $pdf->Cell(25, 6, utf8_decode($row1[4]),0,0, 'C',0);
-                            $pdf->Cell(26, 6, utf8_decode($row2[3]),0,0, 'C',0);
-                            $pdf->Cell(35, 6, substr($row2[4],8,30),0,0, 'C',0);
-                            $pdf->Cell(20, 6, utf8_decode($row2[1] + $row2[6]),0,0, 'C',0);
+                            $pdf->Cell(25, 6, '',0,0, 'C',0);
+                            //$pdf->Cell(26, 6, utf8_decode($row2[3]),0,0, 'C',0);
+                            $pdf->Cell(26, 6, utf8_decode("Factura"),0,0, 'C',0);
+                            $pdf->Cell(35, 6, utf8_decode($row2[3]),0,0, 'C',0);
+                            $pdf->Cell(20, 6, utf8_decode($row2[1] + $row2[5]),0,0, 'C',0);
                             $pdf->Cell(20, 6, utf8_decode($row2[1]),0,0, 'C',0);
-                            $pdf->Cell(25, 6, utf8_decode($row2[6]),0,0, 'C',0); 
+                            $pdf->Cell(25, 6, utf8_decode($row2[5]),0,0, 'C',0); 
                             $pdf->Cell(30, 6, utf8_decode($row2[2]),0,0, 'C',0); 
-                            $pdf->Cell(20, 6, utf8_decode($row2[5]),0,1, 'C',0);
+                            $pdf->Cell(20, 6, 'CREDITO',0,1, 'C',0);
                             $sub=$sub+$row2[1];                            
-                            $saldo=$saldo+$row2[6];     
+                            $saldo=$saldo+$row2[5];     
                             /*$sql3=pg_query("select * from detalles_pagos_internos where id_cuentas_cobrar='$row2[0]'");
                             while($row3=pg_fetch_row($sql3)){
                                 $pdf->Cell(25, 6, utf8_decode(''),0,0, 'C',0);
