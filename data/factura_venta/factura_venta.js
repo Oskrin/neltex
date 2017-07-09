@@ -1,5 +1,9 @@
 $(document).on("ready",inicio);
 
+function myFunction(id) {
+    var myWindow = window.open("../../reportes/factura_venta.php?id="+id,'_blank');
+}
+
 function recargar() {
   setTimeout(function() {
     location.reload();
@@ -1301,7 +1305,7 @@ colModel:[
     jQuery(grid_selector).jqGrid({          
       datatype: "xml",
       url: 'xml_factura_venta.php',        
-      colNames: ['ID','IDENTIFICACIÓN','CLIENTE','FACTURA NRO.','MONTO TOTAL','FECHA'],
+      colNames: ['ID','IDENTIFICACIÓN','CLIENTE','FACTURA NRO.','MONTO TOTAL','FECHA','ACCIÓN'],
       colModel:[      
             {name: 'id_factura_venta', index: 'id_factura_venta', editable: false, search: false, hidden: true, editrules: {edithidden: false}, align: 'center',frozen: true, width: 50},
             {name: 'identificacion', index: 'identificacion', editable: false, search: true, hidden: false, editrules: {edithidden: false}, align: 'center',frozen: true, width: 150},
@@ -1309,6 +1313,7 @@ colModel:[
             {name: 'numero_serie', index: 'numero_serie', editable: true, search: true, hidden: false, editrules: {edithidden: false}, align: 'center',frozen: true, width: 200},
             {name: 'monto_total', index: 'monto_total', editable: true, search: false, hidden: false, editrules: {edithidden: false}, align: 'center',frozen: true, width: 100},
             {name: 'fecha_actual', index: 'fecha_actual', editable: true, search: false, hidden: false, editrules: {edithidden: false}, align: 'center',frozen: true, width: 100},
+            {name: 'pdf',index:'pdf',frozen : true,align:'center',search:false, hidden: false,width:70},
           ],          
           rowNum: 10,       
           width: null,
@@ -1332,6 +1337,14 @@ colModel:[
                   enableTooltips(table);
               }, 0);
           },
+          gridComplete: function() {
+            var ids = jQuery(grid_selector).jqGrid('getDataIDs');
+            for(var i = 0;i < ids.length;i++) {
+                var id = ids[i];
+                pdf = "<a onclick=myFunction('"+id+"') title='Reporte Factura Venta'><i class='fa fa-file-pdf-o red2' style='cursor:pointer; cursor: hand'> PDF</i></a>";                    
+                jQuery(grid_selector).jqGrid('setRowData',ids[i],{pdf: pdf});
+            }       
+        },
           ondblClickRow: function(rowid) {                                
             var gsr = jQuery(grid_selector).jqGrid('getGridParam','selrow');                                              
             var ret = jQuery(grid_selector).jqGrid('getRowData',gsr);  

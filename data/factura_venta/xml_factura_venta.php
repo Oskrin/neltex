@@ -52,6 +52,7 @@
         $s .= "<cell>" . $row[3] . "</cell>";
         $s .= "<cell>" . $row[4] . "</cell>";
         $s .= "<cell>" . $row[5] . "</cell>";
+        $s .= "<cell></cell>";
         $s .= "</row>";
     }
 
