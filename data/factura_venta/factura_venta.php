@@ -145,6 +145,8 @@
             $precio_compra = $row[1];
         }
 
+        $nuevo_stock = $stock - $arreglo2[$i];
+
         $sql_kardex = "select id_kardex from kardex where id_productos ='".$id_prod."'";
 		$id_kardex = id_unique($conexion,$sql_kardex);
 		$id_det_kardex = unique($fecha_larga);
@@ -173,7 +175,8 @@
 
 		$sql_kardex = "insert into detalles_kardex values ('".$id_det_kardex."','".$id_kardex."','".$fecha."','".'Factura venta salida de productos Nro.'.$id."','','','','".$c_e."','".$v_e."','".$t_e."','".$c_t."','".$v_t."','".$t_t."')";		
 		$guardar = guardarSql($conexion, $sql_kardex);                
-        $sql3 = "update productos set stock='".$c_t."', precio = '".$v_t."' where id_productos='".$id_prod."'";								
+        //$sql3 = "update productos set stock='".$c_t."', precio = '".$v_t."' where id_productos='".$id_prod."'";
+        $sql3 = "update productos set stock='".$nuevo_stock."' where id_productos='".$id_prod."'";									
 		$guardar = guardarSql($conexion, $sql3);
 
         // Libro diario

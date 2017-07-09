@@ -86,7 +86,7 @@ if(!isset($_SESSION))
 															<div class="row">
 																<div class="col-sm-12">
 																	<div class="form-group">
-																		<label class="col-sm-4 control-label no-padding-right" for="form-field-1"> Código del Producto:</label>
+																		<label class="col-sm-4 control-label no-padding-right" for="codigo"> Código del Producto:</label>
 																		<div class="col-sm-8">
 																			<input type="hidden"  id="id_producto" name="id_producto" />
 																			<select class="chosen-select form-control" id="codigo" name="codigo" data-placeholder="Código del producto">	                                                                        
@@ -99,7 +99,7 @@ if(!isset($_SESSION))
 															<div class="row">
 																<div class="col-sm-12">
 																	<div class="form-group">
-																		<label class="col-sm-4 control-label no-padding-right" for="form-field-1"> Fecha a Buscar:</label>																		
+																		<label class="col-sm-4 control-label no-padding-right" for="rango_fecha"> Fecha a Buscar:</label>																		
 																		<div class="col-sm-8">
 																			<div class="input-group">
 																				<span class="input-group-addon">
@@ -116,7 +116,7 @@ if(!isset($_SESSION))
 															<div class="row">
 																<div class="col-sm-12">																															
 																	<div class="form-group">
-																		<label class="col-sm-4 control-label no-padding-right" for="form-field-1"> Nombre del Producto:</label>
+																		<label class="col-sm-4 control-label no-padding-right" for="producto"> Nombre del Producto:</label>
 																		<div class="col-sm-8">
 																			<select class="chosen-select form-control" id="producto" name="producto" data-placeholder="Nombre del producto">	                                                                        
 			                                                                    <option value=""></option>	                                                                        
@@ -128,7 +128,7 @@ if(!isset($_SESSION))
 															<div class="row">
 																<div class="col-sm-12">
 																	<div class="form-group">
-																		<label class="col-sm-4 control-label no-padding-right" for="form-field-1"></label>																		
+																		<label class="col-sm-4 control-label no-padding-right"></label>																		
 																		<div class="col-sm-4">
 																			<div class="btn btn-info ice-icon fa fa-search" id="btn_buscar"> Buscar</div>
 																		</div>

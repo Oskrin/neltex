@@ -12,7 +12,7 @@ function inicio(){
           		success: function(data, status) {
             		$('#codigo').html("");         
                 
-            		for (var i = 0; i < data.length; i=i+13) {                                                              
+            		for (var i = 0; i < data.length; i=i+10) {                                                              
               			appendToChosenProducto(data[i],data[i+1],data[i+2],data[i+3],data[i+4],data[i+5],data[i+6],data[i+7],data[i+8],data[i+9],text,"codigo","codigo_chosen");
             		}           
             		$('#producto').html("");
@@ -47,7 +47,7 @@ function inicio(){
     	    	url: "../carga_ubicaciones.php?tipo=0&id=0&fun=16&val="+text,        
         		success: function(data, status) {
           			$('#producto').html("");            
-          			for (var i = 0; i < data.length; i=i+13) {                                                 
+          			for (var i = 0; i < data.length; i=i+10) {                                                 
 	            	  appendToChosenProducto(data[i],data[i+3],data[i+2],data[i+1],data[i+4],data[i+5],data[i+6],data[i+7],data[i+8],data[i+9],text,"producto","producto_chosen");
     	      		}           
         	  		$('#codigo').html("");
