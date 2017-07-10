@@ -517,24 +517,25 @@ function inicio (){
                       var resultado = 0;
                       var repe = 0;
                       var suma = 0;
+                      var unidades = $('#txt_unidades').val();
 
                       if (filas.length == 0) {
-                          if ($("#descuento").val() !== "") {
+                            if (unidades == 1) {
                                 desc = $("#descuento").val();
                                 precio = (parseFloat($("#precio").val())).toFixed(3);
-                                multi = (parseFloat($("#cantidad").val() * $('#txt_unidades').val()) * parseFloat($("#precio").val())).toFixed(3);
+                                multi = (parseFloat(precio) / 12) * parseFloat($("#cantidad").val()).toFixed(3);
                                 descuento = ((multi * parseFloat(desc)) / 100);
                                 flotante = parseFloat(descuento);
                                 resultado = (Math.round(flotante * Math.pow(10,2)) / Math.pow(10,2)).toFixed(3);
                                 total = (multi - resultado).toFixed(3);
                             } else {
-                                desc = 0;
+                                desc = $("#descuento").val();
                                 precio = (parseFloat($("#precio").val())).toFixed(3);
-                                multi = (parseFloat($("#cantidad").val()) * parseFloat($("#precio").val())).toFixed(3);
+                                multi = (parseFloat(precio) * parseFloat($("#cantidad").val())).toFixed(3);
                                 descuento = ((multi * parseFloat(desc)) / 100);
                                 flotante = parseFloat(descuento);
                                 resultado = (Math.round(flotante * Math.pow(10,2)) / Math.pow(10,2)).toFixed(3);
-                                total = (parseFloat($("#cantidad").val()) * precio).toFixed(3);
+                                total = (multi - resultado).toFixed(3);
                             }
                           
                           var datarow = {
@@ -565,22 +566,22 @@ function inicio (){
                           if (repe == 1) {
                               suma = parseInt(can) + parseInt($("#cantidad").val());
 
-                              if ($("#descuento").val() !== "") {
+                                if (unidades == 1) {
                                     desc = $("#descuento").val();
                                     precio = (parseFloat($("#precio").val())).toFixed(3);
-                                    multi = (parseFloat(suma * $('#txt_unidades').val()) * parseFloat($("#precio").val())).toFixed(3);
+                                    multi = (parseFloat(precio) / 12) * parseFloat(suma).toFixed(3);
                                     descuento = ((multi * parseFloat(desc)) / 100);
                                     flotante = parseFloat(descuento);
                                     resultado = (Math.round(flotante * Math.pow(10,2)) / Math.pow(10,2)).toFixed(3);
                                     total = (multi - resultado).toFixed(3);
                                 } else {
-                                    desc = 0;
+                                    desc = $("#descuento").val();
                                     precio = (parseFloat($("#precio").val())).toFixed(3);
-                                    multi = (parseFloat($("#cantidad").val()) * parseFloat($("#precio").val())).toFixed(3);
+                                    multi = (parseFloat(precio) * parseFloat(suma)).toFixed(3);
                                     descuento = ((multi * parseFloat(desc)) / 100);
                                     flotante = parseFloat(descuento);
                                     resultado = (Math.round(flotante * Math.pow(10,2)) / Math.pow(10,2)).toFixed(3);
-                                    total = (parseFloat(suma) * precio).toFixed(3);
+                                    total = (multi - resultado).toFixed(3);
                                 }
                           
                                 datarow = {
@@ -601,22 +602,22 @@ function inicio (){
                             limpiar_input();
                         } else {
                             if(filas.length < 19) {
-                                if ($("#descuento").val() !== "") {
+                                if (unidades == 1) {
                                     desc = $("#descuento").val();
                                     precio = (parseFloat($("#precio").val())).toFixed(3);
-                                    multi = (parseFloat($("#cantidad").val() * $('#txt_unidades').val()) * parseFloat($("#precio").val())).toFixed(3);
+                                    multi = (parseFloat(precio) / 12) * parseFloat($("#cantidad").val()).toFixed(3);
                                     descuento = ((multi * parseFloat(desc)) / 100);
                                     flotante = parseFloat(descuento) ;
                                     resultado = (Math.round(flotante * Math.pow(10,2)) / Math.pow(10,2)).toFixed(3);
                                     total = (multi - resultado).toFixed(3);
                                 } else {
-                                    desc = 0;
+                                    desc = $("#descuento").val();
                                     precio = (parseFloat($("#precio").val())).toFixed(3);
-                                    multi = (parseFloat($("#cantidad").val()) * parseFloat($("#precio").val())).toFixed(3);
+                                    multi = (parseFloat(precio) * parseFloat($("#cantidad").val())).toFixed(3);
                                     descuento = ((multi * parseFloat(desc)) / 100);
                                     flotante = parseFloat(descuento);
                                     resultado = (Math.round(flotante * Math.pow(10,2)) / Math.pow(10,2)).toFixed(3);
-                                    total = (parseFloat($("#cantidad").val()) * precio).toFixed(3);
+                                    total = (multi - resultado).toFixed(3);
                                 }
                             
                                 datarow = {
