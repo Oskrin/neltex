@@ -29,11 +29,8 @@
 
 	<body class="skin-2">
 		<?php menu_arriba(); ?>
-
 		<div class="main-container" id="main-container">
-
 			<?php menu_lateral(); ?>
-
 			 <div class="main-content">
 				<div class="main-content-inner">
 					<div class="page-content">
@@ -42,13 +39,10 @@
 								<div class="widget-box">
 									<div class="widget-header">
 										<h5 class="widget-title">Productos</h5>
-
 										<div class="widget-toolbar">										
-
 											<a href="" data-action="fullscreen" class="orange2">
 												<i class="ace-icon fa fa-expand"></i>
 											</a>
-
 											<a href="" data-action="reload">
 												<i class="ace-icon fa fa-refresh"></i>
 											</a>
@@ -85,7 +79,7 @@
 																				<div class="form-group has-error">
 																					<label class="col-sm-4 control-label no-padding-right" for="txt_1"> Código (*):</label>
 																					<div class="col-sm-8">								
-																						<input type="text" id="txt_1" name="txt_1"  placeholder="Código" class="form-control" />
+																						<input type="text" id="txt_1" name="txt_1" placeholder="Código" class="form-control" />
 																						<input type="hidden" id="txt_0" name="txt_0">
 																					</div>
 																				</div>
@@ -93,7 +87,7 @@
 																				<div class="form-group has-error">
 																					<label class="col-sm-4 control-label no-padding-right" for="txt_2"> Nombre del Producto (*):</label>
 																					<div class="col-sm-8">
-																						<input type="text" id="txt_2" name="txt_2"  placeholder="Nombre del Producto"  class="form-control" />
+																						<input type="text" id="txt_2" name="txt_2" placeholder="Nombre del Producto" class="form-control" />
 																					</div>
 																				</div>
 
