@@ -106,8 +106,8 @@
 														}else{															
 														}
 													}else{
-														if($_GET['fun'] == "14"){//para la busqueda de nombres de proveedor
-															if($_GET['tipo'] == "0"){
+														if($_GET['fun'] == "14") {//para la busqueda de nombres de proveedor
+															if($_GET['tipo'] == "0") {
 																$sql = "select id_proveedor,empresa,identificacion from proveedor where empresa like '%$_GET[val]%'";
 																cargarSelect_1($conexion,$sql);
 															}else{
@@ -116,7 +116,7 @@
 														}
 														else{
 															if($_GET['fun'] == "15"){//para la busqueda del codigo del producto
-																if($_GET['tipo'] == "0"){
+																if($_GET['tipo'] == "0") {
 																	$sql = "select P.id_productos, P.codigo,codigo_barras, P.descripcion, P.precio_minorista, P.stock, I.descripcion, P.facturar_existencia, P.incluye_iva, P.descuento from productos P , porcentaje_iva I where P.id_porcentaje_iva = I.id_iva and codigo like '%$_GET[val]%'";																	
 																	cargarSelect_10($conexion,$sql);//select de 10 datos
 																}else{
@@ -125,14 +125,14 @@
 															}else{
 																if($_GET['fun'] == "16"){//para la busqueda del nombre del producto
 																	if($_GET['tipo'] == "0"){
-																		$sql = "select P.id_productos, P.codigo,codigo_barras, P.descripcion, P.precio_minorista, P.stock, I.descripcion, P.facturar_existencia, P.incluye_iva, P.descuento from productos P , porcentaje_iva I where P.id_porcentaje_iva = I.id_iva and descripcion like '%$_GET[val]%'";
+																		$sql = "select P.id_productos, P.codigo,codigo_barras, P.descripcion, P.precio_minorista, P.stock, I.descripcion, P.facturar_existencia, P.incluye_iva, P.descuento from productos P , porcentaje_iva I where P.id_porcentaje_iva = I.id_iva and P.descripcion like '%$_GET[val]%'";
 																		cargarSelect_10($conexion,$sql);//select de 10 datos
 																	}else{
 																		
 																	}
 																}else{
 																	if($_GET['fun'] == "17"){//para la busqueda del nombre del producto
-																		if($_GET['tipo'] == "0"){
+																		if($_GET['tipo'] == "0") {
 																			$sql = "select productos.id_productos,codigo,descripcion,cantidad,detalle_factura_compra.precio,descuento,total from detalle_factura_compra,productos where detalle_factura_compra.id_productos = productos.id_productos and id_factura_compra = '$_GET[id]'";
 																			
 																			carga_tabla_7($conexion,$sql);//json de 7 datos

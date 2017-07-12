@@ -71,10 +71,10 @@
 									<div class="widget-header">
 										<h5 class="widget-title">Factura Venta</h5>
 										<div class="widget-toolbar">
-											<a href="#" data-action="fullscreen" class="orange2">
+											<a href="" data-action="fullscreen" class="orange2">
 												<i class="ace-icon fa fa-expand"></i>
 											</a>
-											<a href="#" data-action="reload">
+											<a href="" data-action="reload">
 												<i class="ace-icon fa fa-refresh"></i>
 											</a>
 										</div>
@@ -101,7 +101,7 @@
 															</li>
 														</ul>
 
-														<form class="form-horizontal" role="form" rol="form" action="" method="POST" id="form_facturaVenta">
+														<form class="form-horizontal" method="POST" id="form_facturaVenta">
 															<div class="tab-content">
 																<div id="factura" class="tab-pane fade in active">
 																	<div class="row">
@@ -141,6 +141,7 @@
 																	</div>
 																	
 																	<div class="hr"></div>
+
 																	<div class="row">
 																		<div class="col-md-12">
 																			<div class="col-md-6">
@@ -161,9 +162,9 @@
 																				<div class="form-group">
 																					<label class="col-sm-6 no-padding-right" for="txt_nro_identificacion"> Cédula de Identidad o Ruc: <font color="red">*</font></label>
 																					<div class="col-sm-6">
-																					<input type="hidden" id="id_cliente" name="id_cliente">				
+																					<input type="hidden" id="id_cliente" name="id_cliente">
 																						<select class="chosen-select form-control" id="txt_nro_identificacion" name="txt_nro_identificacion" data-placeholder="Nro de identifiación">	     
-					                                                                        <option value=""></option>                                  
+					                                                                        <option value=""></option>       
 					                                                                    </select>
 																					</div>												
 																				</div>										
@@ -174,7 +175,7 @@
 																					<label class="col-sm-5 control-label no-padding-right" for="txt_nombre_cliente">Nombres Completos: <font color="red">*</font></label>
 																					<div class="col-sm-7">
 																						<select class="chosen-select form-control" id="txt_nombre_cliente" name="txt_nombre_cliente" data-placeholder="Nombres Completos">       
-					                                                                        <option value=""> </option>                                 
+					                                                                        <option value=""> </option>     
 					                                                                    </select>
 																					</div>												
 																				</div>										
@@ -188,7 +189,7 @@
 																				<div class="form-group">
 																					<label class="col-sm-4 no-padding-right" for="lbl_client_direccion"> Dirección: </label>
 																					<div class="col-sm-8">
-																						<input type="text" id="lbl_client_direccion" name="lbl_client_direccion" class="form-control" readonly data-toggle="tooltip"  value="" /> 
+																						<input type="text" id="lbl_client_direccion" name="lbl_client_direccion" class="form-control" readonly /> 
 																					</div>												
 																				</div>										
 																			</div>
@@ -197,7 +198,7 @@
 																				<div class="form-group">			
 																					<label class="col-sm-5 control-label no-padding-right" for="lbl_client_telefono"> Teléfono:</label>
 																					<div class="col-sm-7">
-																						<input type="text" id="lbl_client_telefono" name="lbl_client_telefono" class="form-control" data-toggle="tooltip" required readonly /> 
+																						<input type="text" id="lbl_client_telefono" name="lbl_client_telefono" class="form-control" readonly /> 
 																					</div>													
 																				</div>
 																			</div>
@@ -206,7 +207,7 @@
 																				<div class="form-group">			
 																					<label class="col-sm-3 control-label no-padding-right" for="lbl_client_correo"> Correo:</label>
 																					<div class="col-sm-9">
-																						<input type="text" id="lbl_client_correo" name="lbl_client_correo" class="form-control" data-toggle="tooltip" required readonly /> 
+																						<input type="text" id="lbl_client_correo" name="lbl_client_correo" class="form-control" readonly /> 
 																					</div>													
 																				</div>
 																			</div>																
@@ -233,7 +234,7 @@
 																				<div class="form-group">			
 																					<label class="col-sm-5 control-label no-padding-right" for="tipo"> Tipo de precio:</label>
 																					<div class="col-sm-7">
-																						<select class="chosen-select form-control" id="tipo" name="tipo" data-placeholder="Forma de Pago">
+																						<select class="chosen-select form-control" id="tipo" name="tipo" data-placeholder="Tipo de precio">
 					                                                                        <option value="MINORISTA" selected>MINORISTA</option>
 					                                                                        <option value="MAYORISTA">MAYORISTA</option>
 					                                                                    </select>
@@ -256,11 +257,23 @@
 																	<div class="row">
 																		<div class="col-md-12">
 																			<div class="col-md-4">
-																				<div class="form-group">
+																				<div class="form-group" style="display: none;">
 																					<label class="col-sm-4 no-padding-right" for="termino_pago"> Términos de Pago:</label>
 																					<div class="col-sm-8">
-																						<select class="chosen-select form-control" id="termino_pago" name="termino_pago" data-placeholder="Términos de Pago">			                                                                        
+																						<select class="chosen-select form-control" id="termino_pago" name="termino_pago" data-placeholder="Términos de Pago">
 					                                                                    </select>
+																					</div>													
+																				</div>														
+																			</div>
+
+																			<div class="col-md-4">													
+																			</div>
+
+																			<div class="col-sm-4">
+																				<div class="form-group">
+																					<label class="col-sm-4 control-label no-padding-right" for="formas"> Detalle de Pago:</label>
+																					<div class="col-sm-8">
+																						<textarea id="detalle" name="detalle" class="form-control col-sm-12"></textarea>
 																					</div>													
 																				</div>														
 																			</div>																
@@ -287,7 +300,7 @@
 																				</div>
 																				<div class="row">
 																					<div class="col-xs-12">
-																						<input type="text" id="codigo_barras" name="codigo_barras"  class="form-control" data-toggle="tooltip"  /> 
+																						<input type="text" id="codigo_barras" name="codigo_barras"  class="form-control" /> 
 																					</div>
 																				</div>
 																			</div>
@@ -300,7 +313,7 @@
 																				</div>
 																				<div class="row">
 																					<div class="col-xs-12">
-																						<input type="text" id="codigo" name="codigo"  class="form-control" data-toggle="tooltip"  /> 
+																						<input type="text" id="codigo" name="codigo" class="form-control" /> 
 																					</div>
 																				</div>
 																			</div>
@@ -313,7 +326,7 @@
 																				</div>
 																				<div class="row">
 																					<div class="col-xs-12">
-																						<input type="text" id="producto" name="producto"  class="form-control" data-toggle="tooltip"  /> 
+																						<input type="text" id="producto" name="producto" class="form-control" /> 
 																					</div>
 																				</div>
 																			</div>
@@ -329,7 +342,7 @@
 																							</div>
 																							<div class="row">
 																								<div class="col-xs-12">
-																									<input type="text" id="cantidad" name="cantidad" class="form-control" data-toggle="tooltip"  value="" /> 
+																									<input type="text" id="cantidad" name="cantidad" class="form-control" /> 
 																								</div>
 																							</div>
 																						</div>
@@ -341,7 +354,7 @@
 																							</div>
 																							<div class="row">
 																								<div class="col-xs-12">
-																									<input type="text" id="precio" name="precio" value="" class="form-control" data-toggle="tooltip"  /> 
+																									<input type="text" id="precio" name="precio"  class="form-control" /> 
 																								</div>
 																							</div>
 																						</div>
@@ -491,7 +504,7 @@
 
 			<?php footer(); ?>
 
-			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+			<a href="" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
 				<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 			</a>
 		</div><!-- /.main-container -->

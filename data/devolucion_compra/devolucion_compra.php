@@ -3,7 +3,7 @@
 	include '../funciones_generales.php';		
 	$conexion = conectarse();
 	date_default_timezone_set('America/Guayaquil');
-    $fecha=date('Y-m-d H:i:s', time()); 
+    $fecha = date('Y-m-d H:i:s', time()); 
     $fecha_larga = date('His', time());     
 	$sql = "";	
 	$sql2 = "";	
@@ -12,7 +12,7 @@
 	$id = unique($fecha_larga);	
 		
     ///////////////////////guardar factura compra////////////////////
-	$sql = "insert into devolucion_compra values ('$id','$_POST[id_proveedor]','$id_session','$_POST[id_factura_compra]','".$_POST['fecha_actual']."','".$_POST['hora_actual']."','$_POST[tarifa0]','$_POST[tarifa12]','$_POST[iva]','$_POST[descuento_total]','$_POST[total]','','Activo','$fecha')";			
+	$sql = "insert into devolucion_compra values ('$id','$_POST[id_proveedor]','$id_session','$_POST[id_factura_compra]','".$_POST['fecha_actual']."','".$_POST['hora_actual']."','$_POST[tarifa0]','$_POST[tarifa12]','$_POST[iva]','$_POST[descuento_total]','$_POST[total]','$_POST[detalle]','Activo','$fecha')";			
 		
     // /datos detalle factura
 	$campo1 = $_POST['campo1'];

@@ -30,7 +30,6 @@
 
 		<!-- ace styles -->
 		<link rel="stylesheet" href="../../dist/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />															
-		
 		<link type="text/css" rel="stylesheet" id="ace-skins-stylesheet" href="../../dist/css/ace-skins.min.css">
 		<link rel="stylesheet" href="../../dist/css/jquery.gritter.min.css" />				
 		
@@ -68,16 +67,13 @@
 							<div class="col-xs-12 col-sm-12 widget-container-col">
 								<div class="widget-box">
 									<div class="widget-header">
-										<h5 class="widget-title"><i class="ace-icon fa fa-user"></i> Proveedores</h5>
-
+										<h5 class="widget-title"><i class="ace-icon fa fa-user"></i>Proveedores</h5>
 										<div class="widget-toolbar">
-											
-
-											<a href="#" data-action="fullscreen" class="orange2">
+											<a href="" data-action="fullscreen" class="orange2">
 												<i class="ace-icon fa fa-expand"></i>
 											</a>
 
-											<a href="#" data-action="reload">
+											<a href="" data-action="reload">
 												<i class="ace-icon fa fa-refresh"></i>
 											</a>
 										</div>
@@ -86,7 +82,7 @@
 									<div class="widget-body">
 										<div class="widget-main">
 											<div class="row">
-												<form class="form-horizontal" role="form" rol="form" action="" method="POST" id="form_proveedores">												
+												<form class="form-horizontal" name="form_proveedores" id="form_proveedores" autocomplete="off">	
 													<div class="row">
 														<div class="col-xs-12">	
 															<div class="col-sm-12">
@@ -111,33 +107,33 @@
 																		<div id="info_pro" class="tab-pane fade in active">
 																			<div class="col-sm-6">
 																				<div class="form-group">
-																					<label class="col-sm-4 control-label no-padding-right" for="txt_1"> Tipo Documento: </label>
+																					<label class="col-sm-4 control-label no-padding-right" for="txt_1">Tipo Documento:</label>
 																					<div class="col-sm-8">
-																						<select class="chosen-select form-control" id="txt_1" name="txt_1" data-placeholder="País">
+																						<select class="chosen-select form-control" id="txt_1" name="txt_1" data-placeholder="Tipo Documento">
 																							<option value="Cedula">Cédula</option>	
 																							<option value="RUC">RUC</option>	
-																							<option value="Pasaporte">Pasaporte</option>					
+																							<option value="Pasaporte">Pasaporte</option>
 																						</select>						
-																						<input type="hidden" id="txt_0" name="txt_0" />						
+																						<input type="hidden" id="txt_0" name="txt_0" />
 																					</div>
 																				</div>
 
 																				<div class="form-group has-error">
-																					<label class="col-sm-4 control-label no-padding-right" for="txt_2"> RUC/CI.(*):</label>
+																					<label class="col-sm-4 control-label no-padding-right" for="txt_2">RUC/CI.(*):</label>
 																					<div class="col-sm-8">
-																						<input type="text" id="txt_2" name="txt_2"  placeholder="Identificación" class="form-control" data-toggle="tooltip" data-original-title="" required pattern="[0-9]{10,10}" maxlength="10" minlength="10" />
+																						<input type="text" id="txt_2" name="txt_2"  placeholder="Identificación" class="form-control" maxlength="10" />
 																					</div>
 																				</div>
 
 																				<div class="form-group has-error">
-																					<label class="col-sm-4 control-label no-padding-right" for="txt_3"> Empresa (*): </label>
+																					<label class="col-sm-4 control-label no-padding-right" for="txt_3">Empresa (*):</label>
 																					<div class="col-sm-8">
-																						<input type="text" id="txt_3" name="txt_3" placeholder="Empresa" class="form-control" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9 ]{1,}" data-toggle="tooltip" data-original-title="Empresa"  />
+																						<input type="text" id="txt_3" name="txt_3" placeholder="Empresa" class="form-control" />
 																					</div>
 																				</div>	
 
 																				<div class="form-group">
-																					<label class="col-sm-4 control-label no-padding-right" for="txt_4"> Teléfono: </label>
+																					<label class="col-sm-4 control-label no-padding-right" for="txt_4">Teléfono:</label>
 																					<div class="col-sm-8">
 																						<span class="block input-icon input-icon-right">
 					                                                                    	<input type="text" id="txt_4" name="txt_4" placeholder="Teléfono" class="form-control" onkeydown="return validarNumeros(event)" maxlength="7" />
@@ -147,17 +143,17 @@
 																				</div>
 
 																				<div class="form-group">
-																					<label class="col-sm-4 control-label no-padding-right" for="txt_5"> Celular: </label>
+																					<label class="col-sm-4 control-label no-padding-right" for="txt_5">Celular:</label>
 																					<div class="col-sm-8">	
 																						<span class="block input-icon input-icon-right">
 																							<input type="text" id="txt_5" name="txt_5" placeholder="Celular" class="form-control" onkeydown="return validarNumeros(event)" maxlength="10" />
-																							<i class="ace-icon fa fa-mobile fa-flip-horizontal"></i>		
+																							<i class="ace-icon fa fa-mobile fa-flip-horizontal"></i>
 																						</span>				
 																					</div>
 																				</div>
 
 																				<div class="form-group">
-																					<label class="col-sm-4 control-label no-padding-right" for="txt_6"> Correo: </label>
+																					<label class="col-sm-4 control-label no-padding-right" for="txt_6">Correo: </label>
 																					<div class="col-sm-8">
 																					  <span class="block input-icon input-icon-right">
 																					  	<input type="mail" id="txt_6" name="txt_6" placeholder="Correo" class="form-control" />
@@ -167,16 +163,16 @@
 																				</div>	
 
 																				<div class="form-group">
-																					<label class="col-sm-4 control-label no-padding-right" for="txt_7"> Fax: </label>
+																					<label class="col-sm-4 control-label no-padding-right" for="txt_7">Fax:</label>
 																					<div class="col-sm-8">
 																						<input type="text" id="txt_7" name="txt_7" placeholder="Fax:" class="form-control" />
 																					</div>
 																				</div>			
 
 																				<div class="form-group">
-																					<label class="col-sm-4 control-label no-padding-right" for="txt_8"> Forma de Pago: </label>
+																					<label class="col-sm-4 control-label no-padding-right" for="txt_8">Forma de Pago:</label>
 																					<div class="col-sm-8">								
-																						<select class="chosen-select form-control" id="txt_8" name="txt_8" data-placeholder="Seleccione una forma de pago">			
+																						<select class="chosen-select form-control" id="txt_8" name="txt_8" data-placeholder="Seleccione una forma de pago">
 																							<option value="Contado">CONTADO</option>
 																							<option value="Credito">CRÉDITO</option>		
 																						</select>
@@ -185,24 +181,24 @@
 																			</div>
 
 																			<div class="col-sm-6">
-																				<div class="form-group">
-																					<label class="col-sm-4 control-label no-padding-right" for="txt_12"> Representante Legal: </label>
+																				<div class="form-group has-error">
+																					<label class="col-sm-4 control-label no-padding-right" for="txt_12">Representante Legal (*):</label>
 																					<div class="col-sm-8">
 																						<input type="text" id="txt_12" name="txt_12" placeholder="Representante Legal" class="form-control" />
 																					</div>
 																				</div>
 
 																				<div class="form-group">
-																					<label class="col-sm-4 control-label no-padding-right" for="txt_13"> Visitador : </label>
+																					<label class="col-sm-4 control-label no-padding-right" for="txt_13">Visitador:</label>
 																					<div class="col-sm-8">
-																						<input type="text" id="txt_13" name="txt_13" placeholder="Nombre Visitador" class="form-control" data-toggle="tooltip" data-original-title="Visitador"  />
+																						<input type="text" id="txt_13" name="txt_13" placeholder="Nombre Visitador" class="form-control" />
 																					</div>
 																				</div>	
 
 																				<div class="form-group">
-																					<label class="col-sm-4 control-label no-padding-right" for="txt_14"> Tipo Proveedor: </label>
+																					<label class="col-sm-4 control-label no-padding-right" for="txt_14">Tipo Proveedor:</label>
 																					<div class="col-sm-8">
-																						<select class="chosen-select form-control" id="txt_14" name="txt_14" data-placeholder="Tipo Proveedor">									
+																						<select class="chosen-select form-control" id="txt_14" name="txt_14" data-placeholder="Tipo Proveedor">
 																							<option value="Natural">Natural</option>	
 																							<option value="Juridico">Jurídico</option>	
 																						</select>
@@ -210,16 +206,16 @@
 																				</div>	
 
 																				<div class="form-group">
-																					<label class="col-sm-4 control-label no-padding-right" for="txt_9"> País: </label>
+																					<label class="col-sm-4 control-label no-padding-right" for="txt_9">País:</label>
 																					<div class="col-sm-6">						
 																						<select class="chosen-select form-control" id="txt_9" name="txt_9" data-placeholder="País">
-																						</select>																	
+																						</select>		
 																					</div>
 																					<div class="col-sm-1 btn btn-sm btn-primary" id="" data-toggle="modal" href="#modal_pais" >...</div>
 																				</div>
 
 																				<div class="form-group">
-																					<label class="col-sm-4 control-label no-padding-right" for="txt_10"> Provincia: </label>
+																					<label class="col-sm-4 control-label no-padding-right" for="txt_10">Provincia:</label>
 																					<div class="col-sm-6">
 																						<select class="chosen-select form-control" id="txt_10" name="txt_10" data-placeholder="Provincia">
 																						</select>
@@ -228,7 +224,7 @@
 																				</div>
 
 																				<div class="form-group has-error">
-																					<label class="col-sm-4 control-label no-padding-right" for="txt_11"> Ciudad (*): </label>
+																					<label class="col-sm-4 control-label no-padding-right" for="txt_11">Ciudad (*):</label>
 																					<div class="col-sm-6">
 																						<select class="chosen-select form-control" id="txt_11" name="txt_11" data-placeholder="Ciudad">
 																						</select>
@@ -237,14 +233,14 @@
 																				</div>
 
 																				<div class="form-group has-error">
-																					<label class="col-sm-4 control-label no-padding-right" for="txt_15"> Dirección (*): </label>
+																					<label class="col-sm-4 control-label no-padding-right" for="txt_15">Dirección (*):</label>
 																					<div class="col-sm-8">
-																						<input type="text" id="txt_15" name="txt_15" placeholder="Dirección" class="form-control"  required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9 ]{1,}" data-toggle="tooltip" data-original-title="Ingrese la dirección del proveedor" />
+																						<input type="text" id="txt_15" name="txt_15" placeholder="Dirección" class="form-control" />
 																					</div>
 																				</div>
 
 																				<div class="form-group">
-																					<label class="col-sm-4 control-label no-padding-right" for="txt_16"> Proveedor principal: </label>
+																					<label class="col-sm-4 control-label no-padding-right" for="txt_16">Proveedor principal:</label>
 																					<div class="col-sm-8">
 																						<select class="chosen-select form-control" id="txt_16" name="txt_16" data-placeholder="Proveedor principal">		
 																							<option value="SI">SI</option>
@@ -258,7 +254,7 @@
 																		<div id="deta_adici" class="tab-pane fade ">
 																			<div class="col-sm-6">
 																				<div class="form-group">
-																					<label class="col-sm-4 control-label no-padding-right" for="txt_17"> Cupo Crédito: </label>
+																					<label class="col-sm-4 control-label no-padding-right" for="txt_17">Cupo Crédito:</label>
 																					<div class="col-sm-8">
 																						<input type="text" id="txt_17" name="txt_17" placeholder="Cupo Crédito" class="form-control" onkeydown="return validarNumeros(event)" />
 																					</div>
@@ -359,7 +355,7 @@
 												
 													<h3 class="header smaller lighter green"></h3>
 													<div class="center">
-														<button type="submit" class="btn btn-primary" id="btn_0">
+														<button type="button" class="btn btn-primary" id="btn_0">
 															<i class="ace-icon fa fa-floppy-o bigger-120 white"></i>
 															Guardar
 														</button>
@@ -397,168 +393,175 @@
 
 			<?php footer(); ?>
 
-			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+			<a href="" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
 				<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 			</a>
-		</div><!-- /.main-container -->
+		</div>
 
-		<!-- Modal -->
+		<!-- Modal Buscar Proveedores-->
 		<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="myModal">
 		    <div class="modal-dialog modal-lg">
-		      <div class="modal-content">
-		        <div class="modal-header">
-		          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		          <h4 class="modal-title">BUSCAR PROVEEDORES</h4>
-		        </div>
-		        <div class="modal-body">
-		            <table id="table"></table>
-					<div id="pager"></div>
-		        </div>
-		        <div class="modal-footer">
-		          <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
-		        </div>
-		      </div><!-- /.modal-content -->
-		    </div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->
+			    <div class="modal-content">
+			        <div class="modal-header">
+			          	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			          	<h4 class="modal-title">BUSCAR PROVEEDORES</h4>
+			        </div>
+			        <div class="modal-body">
+			            <table id="table"></table>
+						<div id="pager"></div>
+			        </div>
+			        <div class="modal-footer">
+			          	<button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+			        </div>
+			      </div>
+		    </div>
+		</div>
+		<!-- /.modal -->
 
+		<!-- Modal Plan Cuentas-->
 		<div class="modal fade" id="modal_plan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		    <div class="modal-dialog">
-		      <div class="modal-content">
-		        <div class="modal-header">
-		          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		          <h4 class="modal-title">PLAN DE CUENTAS</h4>
-		        </div>
-		        <div class="modal-body">
-		            <table id="table_1"></table>
-					<div id="pager_1"></div>
-		        </div>
-		        <div class="modal-footer">
-		          <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
-		        </div>
-		      </div><!-- /.modal-content -->
-		    </div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->
+			    <div class="modal-content">
+			        <div class="modal-header">
+			          	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			          	<h4 class="modal-title">PLAN DE CUENTAS</h4>
+			        </div>
+			        <div class="modal-body">
+			            <table id="table_1"></table>
+						<div id="pager_1"></div>
+			        </div>
+			        <div class="modal-footer">
+			          	<button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+			        </div>
+			    </div>
+		    </div>
+		</div>
+		<!-- /.modal -->
 
+		<!-- Modal Retenciones-->
 		<div class="modal fade" id="modal_retenciones" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		    <div class="modal-dialog">
-		      <div class="modal-content">
-		        <div class="modal-header">
-		          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		          <h4 class="modal-title">RETENCIONES</h4>
-		        </div>
-		        <div class="modal-body">
-		            <table id="table_2"></table>
-					<div id="pager_2"></div>
-		        </div>
-		        <div class="modal-footer">
-		          <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
-		        </div>
-		      </div><!-- /.modal-content -->
-		    </div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->
-
-		<!-- Modal categoria-->
-		  <div class="modal fade" id="modal_pais" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		    <div class="modal-dialog">
-		      <div class="modal-content blue">
-		        <div class="modal-header">
-		          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		          <h4 class="modal-title">AGREGAR PAÍS</h4>
-		        </div>
-		        <form class="form-horizontal" role="form" rol="form" action="" method="POST" id="form_pais">
-		        	<div class="modal-body">		            
-		            	<div class="form-group has-error">
-							<label class="col-sm-3 control-label no-padding-right" for="txt_pais">Nombre País:</label>
-							<div class="col-sm-7">
-								<input type="text" id="txt_pais" name="txt_pais"  placeholder="Nombre País" class="form-control" />
-							</div>
-						</div>								            
-		        	</div>
-		        	<div class="modal-footer">
-			          	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-			         	<button type="button" class="btn btn-primary" id="btn_guardar_pais">Guardar</button>
+			    <div class="modal-content">
+			        <div class="modal-header">
+			          	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			          	<h4 class="modal-title">RETENCIONES</h4>
 			        </div>
-		        </form>
-		      </div><!-- /.modal-content -->
-		    </div><!-- /.modal-dialog -->
-		  </div><!-- /.modal -->
-
-
-		  <!-- Modal categoria-->
-		  <div class="modal fade" id="modal_provincia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		    <div class="modal-dialog">
-		      <div class="modal-content blue">
-		        <div class="modal-header">
-		          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		          <h4 class="modal-title">AGREGAR PROVINCIA</h4>
-		        </div>
-		        <form class="form-horizontal" role="form" rol="form" action="" method="POST" id="form_provincia">
-		        	<div class="modal-body">
-		        		<div class="form-group has-error">
-							<label class="col-sm-3 control-label no-padding-right" for="cmb_pais"> País: </label>
-							<div class="col-sm-7">
-								<select class="select2" id="cmb_pais" name="cmb_pais" data-placeholder="País">
-								</select>																	
-							</div>
-						</div>
-
-		            	<div class="form-group has-error">
-							<label class="col-sm-3 control-label no-padding-right" for="txt_provincia">Nombre Provincia:</label>
-							<div class="col-sm-7">
-								<input type="text" id="txt_provincia" name="txt_provincia"  placeholder="Nombre Provincia" class="form-control" />
-							</div>
-						</div>								            
-		        	</div>
-		        	<div class="modal-footer">
-			          	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-			         	<button type="button" class="btn btn-primary" id="btn_guardar_provincia">Guardar</button>
+			        <div class="modal-body">
+			            <table id="table_2"></table>
+						<div id="pager_2"></div>
 			        </div>
-		        </form>
-		      </div><!-- /.modal-content -->
-		    </div><!-- /.modal-dialog -->
-		  </div><!-- /.modal -->
-
-		  <!-- Modal ciudad-->
-		  <div class="modal fade" id="modal_ciudad" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		    <div class="modal-dialog">
-		      <div class="modal-content blue">
-		        <div class="modal-header">
-		          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		          <h4 class="modal-title">AGREGAR CIUDAD</h4>
-		        </div>
-		        <form class="form-horizontal" role="form" rol="form" action="" method="POST" id="form_ciudad">
-		        	<div class="modal-body">
-		        		<div class="form-group has-error">
-							<label class="col-sm-3 control-label no-padding-right" for="cmb_pais"> País: </label>
-							<div class="col-sm-7">
-								<select class="select2" id="cmb_pais2" name="cmb_pais2" data-placeholder="País">
-								</select>																	
-							</div>
-						</div>
-
-						<div class="form-group has-error">
-							<label class="col-sm-3 control-label no-padding-right" for="cmb_pais"> Provincia: </label>
-							<div class="col-sm-7">
-								<select class="select2" id="cmb_provincia" name="cmb_provincia" data-placeholder="País">
-								</select>																	
-							</div>
-						</div>
-
-		            	<div class="form-group has-error">
-							<label class="col-sm-3 control-label no-padding-right" for="txt_ciudad">Nombre Ciudad:</label>
-							<div class="col-sm-7">
-								<input type="text" id="txt_ciudad" name="txt_ciudad"  placeholder="Nombre Ciudad" class="form-control" />
-							</div>
-						</div>								            
-		        	</div>
-		        	<div class="modal-footer">
-			          	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-			         	<button type="button" class="btn btn-primary" id="btn_guardar_ciudad">Guardar</button>
+			        <div class="modal-footer">
+			          	<button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
 			        </div>
-		        </form>
-		      </div><!-- /.modal-content -->
-		    </div><!-- /.modal-dialog -->
-		  </div><!-- /.modal -->
+			    </div>
+		    </div>
+		</div>
+		<!-- /.modal -->
+
+		<!-- Modal País-->
+		<div class="modal fade" id="modal_pais" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		    <div class="modal-dialog">
+			    <div class="modal-content blue">
+			        <div class="modal-header">
+			          	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			          	<h4 class="modal-title">AGREGAR PAÍS</h4>
+			        </div>
+			        <form class="form-horizontal" name="form_pais" id="form_pais" autocomplete="off">
+			        	<div class="modal-body">		            
+			            	<div class="form-group has-error">
+								<label class="col-sm-3 control-label no-padding-right" for="txt_pais">Nombre País:</label>
+								<div class="col-sm-7">
+									<input type="text" id="txt_pais" name="txt_pais"  placeholder="Nombre País" class="form-control" />
+								</div>
+							</div>								            
+			        	</div>
+			        	<div class="modal-footer">
+				          	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				         	<button type="button" class="btn btn-primary" id="btn_guardar_pais">Guardar</button>
+				        </div>
+			        </form>
+			    </div>
+		    </div>
+		</div>
+		<!-- /.modal -->
+
+		<!-- Modal Provincia-->
+		<div class="modal fade" id="modal_provincia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		    <div class="modal-dialog">
+			    <div class="modal-content blue">
+			        <div class="modal-header">
+			          	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			          	<h4 class="modal-title">AGREGAR PROVINCIA</h4>
+			        </div>
+			        <form class="form-horizontal" name="form_provincia" id="form_provincia" autocomplete="off">
+			        	<div class="modal-body">
+			        		<div class="form-group has-error">
+								<label class="col-sm-3 control-label no-padding-right" for="cmb_pais"> País: </label>
+								<div class="col-sm-7">
+									<select class="select2" id="cmb_pais" name="cmb_pais" data-placeholder="País">
+									</select>																	
+								</div>
+							</div>
+
+			            	<div class="form-group has-error">
+								<label class="col-sm-3 control-label no-padding-right" for="txt_provincia">Nombre Provincia:</label>
+								<div class="col-sm-7">
+									<input type="text" id="txt_provincia" name="txt_provincia"  placeholder="Nombre Provincia" class="form-control" />
+								</div>
+							</div>								            
+			        	</div>
+			        	<div class="modal-footer">
+				          	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				         	<button type="button" class="btn btn-primary" id="btn_guardar_provincia">Guardar</button>
+				        </div>
+			        </form>
+			    </div>
+		    </div>
+		</div>
+		<!-- /.modal -->
+
+		<!-- Modal Ciudad-->
+		<div class="modal fade" id="modal_ciudad" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		    <div class="modal-dialog">
+			    <div class="modal-content blue">
+			        <div class="modal-header">
+			          	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			          	<h4 class="modal-title">AGREGAR CIUDAD</h4>
+			        </div>
+			        <form class="form-horizontal" name="form_ciudad" id="form_ciudad" autocomplete="off">
+			        	<div class="modal-body">
+			        		<div class="form-group has-error">
+								<label class="col-sm-3 control-label no-padding-right" for="cmb_pais2">País:</label>
+								<div class="col-sm-7">
+									<select class="select2" id="cmb_pais2" name="cmb_pais2" data-placeholder="País">
+									</select>																	
+								</div>
+							</div>
+
+							<div class="form-group has-error">
+								<label class="col-sm-3 control-label no-padding-right" for="cmb_provincia">Provincia:</label>
+								<div class="col-sm-7">
+									<select class="select2" id="cmb_provincia" name="cmb_provincia" data-placeholder="País">
+									</select>																	
+								</div>
+							</div>
+
+			            	<div class="form-group has-error">
+								<label class="col-sm-3 control-label no-padding-right" for="txt_ciudad">Nombre Ciudad:</label>
+								<div class="col-sm-7">
+									<input type="text" id="txt_ciudad" name="txt_ciudad"  placeholder="Nombre Ciudad" class="form-control" />
+								</div>
+							</div>								            
+			        	</div>
+			        	<div class="modal-footer">
+				          	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				         	<button type="button" class="btn btn-primary" id="btn_guardar_ciudad">Guardar</button>
+				        </div>
+			        </form>
+			    </div>
+		    </div>
+		</div>
+		<!-- /.modal -->
 
 		<script type="text/javascript">
 			window.jQuery || document.write("<script src='../../dist/js/jquery.min.js'>"+"<"+"/script>");
@@ -567,7 +570,6 @@
 		<script type="text/javascript">
 			if('ontouchstart' in document.documentElement) document.write("<script src='../../dist/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 		</script>
-
 
 		<script src="../../dist/js/jquery-ui.min.js"></script>
 		<script src="../../dist/js/bootstrap.min.js"></script>

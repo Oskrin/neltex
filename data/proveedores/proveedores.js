@@ -3,8 +3,6 @@ $(document).on("ready",inicio);
 function inicio () {	
 	var boton_click ="";
 	// inicializacion de formato txt_ telefono1
-	// $('#txt_4').mask('(999) 999-999');
-	// $('#txt_5').mask('(999) 999-9999');
 	$(".chosen-select").chosen({allow_single_deselect: true}); // works
 	/*funcion inicial de la imagen y  buscadores del select no topar plz*/	
 	if(!ace.vars['touch']) {
@@ -53,7 +51,7 @@ function inicio () {
 		    data: {guardar_pais:'guardar_pais', txt_pais: $("#txt_pais").val()}, 	    	    	    
 		    type: "POST",				
 		    success: function(data) {	    	
-		    	if( data == 2 ) {	
+		    	if(data == 2) {	
 		    		$("#txt_9").html("");
 		    		$("#txt_10").html("");
 		    		$("#txt_11").html("");
@@ -110,7 +108,7 @@ function inicio () {
 		    data: {guardar_ciudad:'guardar_ciudad', txt_ciudad: $("#txt_ciudad").val(), id: $("#cmb_provincia").val()}, 	    	    	    
 		    type: "POST",				
 		    success: function(data) {	    	
-		    	if( data == 2 ) {  
+		    	if(data == 2) {  
 		    		$("#txt_9").html("");
 		    		$("#txt_10").html("");
 		    		$("#txt_11").html("");
@@ -143,6 +141,7 @@ function inicio () {
 	$("input").on("keyup click",function(e) {//campos requeridos		
 		comprobarCamposRequired(e.currentTarget.form.id);
 	});	
+	
 	/*----procesos ci ruc pass-----*/
 	$("#txt_1").change(function() {
 		documentos("0");
@@ -204,14 +203,13 @@ function inicio () {
 	$("#txt_3").keypress(soloLetras);
 	$("#txt_12").keypress(soloLetras);
 	$("#txt_13").keypress(soloLetras);   		
-	// $("#btn_0").on("click",guardar_clientes);   		
 	$("#btn_0").on("click",guardar_proveedores);
 	$("#btn_1").on("click",limpiar_form);
 	$("#btn_2").on("click",actualizar_form);
 
 	$("#btn_4").on("click",function() {		
 		var resp = "";		
-		resp =atras($("#txt_0").val(),"proveedores","secuencia.php");
+		resp = atras($("#txt_0").val(),"proveedores","secuencia.php");
 		if(resp[0] != false) {			
 			$("#txt_0").val(resp[0][0]);
 			$("#txt_1").val(resp[0][1]);
@@ -222,7 +220,6 @@ function inicio () {
 			$("#txt_14").trigger("chosen:updated"); 			
 			$("#txt_4").val(resp[0][5]);		
 			$("#txt_5").val(resp[0][6]);
-
 			$("#txt_15").val(resp[0][8]);		
 			$("#txt_3").val(resp[0][9]);		
 			$("#txt_13").val(resp[0][10]);		
@@ -254,7 +251,6 @@ function inicio () {
 							$("#txt_24").append("<option value ="+response[i]+">"+response[i+1]+" "+response[i+2]+"</option>");				
 						}     				            	            		
 		            }
-
 		            $("#txt_24").trigger("chosen:updated");                                          
 		        }
 	    	}); 
@@ -1580,7 +1576,8 @@ function inicio () {
 	            $("#txt_24").trigger("chosen:updated");                                          
 	        }
 	    });	   
-    });   
+    });
+
     $.ajax({        
         type: "POST",
         dataType: 'json',        
@@ -1598,9 +1595,10 @@ function inicio () {
     plan_cuentas();
     codigos_retencion();
 }
+
 function guardar_proveedores() {
 	var valores = $("#form_proveedores").serialize();
-	var texto=($("#btn_0").text()).trim();
+	var texto = ($("#btn_0").text()).trim();
 
 	if($("#txt_2").val() == "") {
 		alert('Campo Requerido');
@@ -1614,61 +1612,46 @@ function guardar_proveedores() {
 				alert('Campo Requerido');
 				$("#txt_12").focus();
 			} else {
-				if(texto=="Guardar"){
-					datos_proveedor(valores,"g");		
+				if($("#txt_15").val() == "") {
+					alert('Campo Requerido');
+					$("#txt_15").focus();
 				} else {
-					datos_proveedor(valores,"m");	
+					if(texto == "Guardar") {
+						datos_proveedor(valores,"g");		
+					} else {
+						datos_proveedor(valores,"m");	
+					}
 				}
 			}
 		}
 	}
-	// var resp=comprobarCamposRequired("form_proveedores");
-	// if(resp==true){
-	// 	$("#form_proveedores").on("submit",function (e){				
-	// 		var valores = $("#form_proveedores").serialize();
-	// 		var texto=($("#btn_0").text()).trim();	
-	// 		if(texto=="Guardar"){		
-	// 			if($("#txt_11").val() != null){
-	// 				datos_proveedor(valores,"g",e);	
-	// 			}else{
-	// 				alert("Seleccione una ciudad antes de continuar");
-	// 			}				
-	// 		}else{
-	// 			if($("#txt_11").val() != null){
-	// 				datos_proveedor(valores,"m",e);	
-	// 			}else{
-	// 				alert("Seleccione una ciudad antes de continuar");
-	// 			}
-	// 		}
-	// 		e.preventDefault();
- //    		$(this).unbind("submit")
-	// 	});
-	// }
 }
-function datos_proveedor(valores,tipo,p){	
+
+function datos_proveedor(valores,tipo,p) {	
 	$.ajax({				
 		type: "POST",
 		data: valores+"&tipo="+tipo,		
 		url: "proveedores.php",			
 	    success: function(data) {	
-	    	if( data == 0 ){
+	    	if(data == 0) {
 	    		alert('Datos Agregados Correctamente');			
-	    		limpiar_form(p);
+	    		actualizar_form();
 	    		$('#table').trigger('reloadGrid');				
 	    	}else{
-	    		if( data == 1 ){
+	    		if(data == 1) {
 	    			alert('Este nro de ' +$("#txt_1").val()+  ' ya existe ingrese otro');	
 	    			$("#txt_2").val("");
 	    			$("#txt_2").focus();	    			
-	    		}else{
+	    		} else {
 	    			alert("Error al momento de enviar los datos la página se recargara");	    			
-	    			//actualizar_form();
+	    			actualizar_form();
 	    		}
 	    	}
 		}
 	}); 
 }
-function cargar_plan(){
+
+function cargar_plan() {
 	$.ajax({        
         type: "GET",        
         async: false,      
@@ -1679,7 +1662,8 @@ function cargar_plan(){
     });	
     return plan;	
 }
-function plan_cuentas(){
+
+function plan_cuentas() {
 	$.ajax({        
         type: "POST",
         dataType: 'json',        
@@ -1694,7 +1678,8 @@ function plan_cuentas(){
         }
     });	
 }
-function codigos_retencion(){
+
+function codigos_retencion() {
 	$.ajax({        
         type: "POST",
         dataType: 'json',        

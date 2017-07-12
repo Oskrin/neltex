@@ -12,11 +12,8 @@ function inicio (){
 		actualizar_form();
 	});
 	$("input:not([readonly='readonly']):text:visible:first").focus();   
-	// inicializacion de formato txt_ telefono1
-	// $('#txt_3').mask('(999) 999-999');
-	// $('#txt_7').mask('(999) 999-9999');
 	///////////varias validaciones//////////////}
-		//editables on first profile page
+	//editables on first profile page
 	$.fn.editable.defaults.mode = 'inline';
 	$.fn.editableform.loading = "<div class='editableform-loading'><i class='ace-icon fa fa-spinner fa-spin fa-2x light-blue'></i></div>";
     $.fn.editableform.buttons = '<button type="submit" class="btn btn-info editable-submit"><i class="ace-icon fa fa-check"></i></button>'+
@@ -147,7 +144,7 @@ function inicio (){
 		    data: {guardar_pais:'guardar_pais', txt_pais: $("#txt_pais").val()}, 	    	    	    
 		    type: "POST",				
 		    success: function(data) {	    	
-		    	if( data == 2 ) {	
+		    	if(data == 2) {	
 		    		$("#txt_9").html("");
 		    		$("#txt_10").html("");
 		    		$("#txt_11").html("");
@@ -176,7 +173,7 @@ function inicio (){
 		    data: {guardar_provincia:'guardar_provincia', txt_provincia: $("#txt_provincia").val(), id: $("#cmb_pais").val()}, 	    	    	    
 		    type: "POST",				
 		    success: function(data) {	    	
-		    	if( data == 2 ) {
+		    	if(data == 2) {
 		    		$("#txt_9").html("");
 		    		$("#txt_10").html("");
 		    		$("#txt_11").html("");  
@@ -204,7 +201,7 @@ function inicio (){
 		    data: {guardar_ciudad:'guardar_ciudad', txt_ciudad: $("#txt_ciudad").val(), id: $("#cmb_provincia").val()}, 	    	    	    
 		    type: "POST",				
 		    success: function(data) {	    	
-		    	if( data == 2 ) {  
+		    	if(data == 2) {  
 		    		$("#txt_9").html("");
 		    		$("#txt_10").html("");
 		    		$("#txt_11").html("");
@@ -957,7 +954,7 @@ function guardar() {///funcion para guardar datos
 												$("#txt_12").val("");
 												$("#txt_12").focus();	
 											} else {
-												if(texto=="Guardar") {
+												if(texto == "Guardar") {
 													guardar_datos(valores,"g"); 
 												}
 											}	
@@ -970,44 +967,9 @@ function guardar() {///funcion para guardar datos
 				}	
 			}	
 		}	
-	}
-	// console.log('test');
-	// var resp=comprobarCamposRequired("form_usuario");	    
-	// if(resp==true){    		
-	// 	$("#form_usuario").on("submit",function (e){				
-	// 		var texto=($("#btn_0").text()).trim();															
-	// 		var valores = $("#form_usuario").serialize();
-	// 		if(texto=="Guardar"){ 
-	// 			if($("#txt_11").val() != null){
-	// 				if($("#txt_5").val() == $("#txt_6").val()){
-	// 					guardar_datos(valores,"g",e);		
-	// 				}else{
-	// 					alert("Repita la contraseña correctamente");	
-	// 					$("#txt_6").val("");
-	// 					$("#txt_6").focus();
-	// 				}						
-	// 			}else{
-	// 				alert("Indique una ciudad antes de continuar");
-	// 			}     					                	
-	//         }else{
-	//             if($("#txt_11").val() != null){
-	// 				if($("#txt_5").val() == $("#txt_6").val()){
-	// 					guardar_datos(valores,"m",e);		
-	// 				}else{
-	// 					alert("Repita la contraseña correctamente");	
-	// 					$("#txt_6").val("");
-	// 					$("#txt_6").focus();
-	// 				}						
-	// 			}else{
-	// 				alert("Indique una ciudad antes de continuar");
-	// 			}     		 					                	
-	//         }	
-	//         e.preventDefault();
- //    		$(this).unbind("submit")		    			            			
-	// 	});	
-		
-	// }				 
+	}				 
 }
+
 function guardar_datos(valores,tipo,p) {		
 	$.ajax({
 	    url: "usuario.php", 	    				    	    
@@ -1026,7 +988,7 @@ function guardar_datos(valores,tipo,p) {
         	});
         },				
 	    success: function(data) {				    
-	    	if( data == 0 ) {
+	    	if(data == 0) {
 	    		$.unblockUI();
 	    		swal({
 				    title: "Buen trabajo! estimado/a",
@@ -1038,13 +1000,13 @@ function guardar_datos(valores,tipo,p) {
 					});
 				});	
 	    		$('#table').trigger('reloadGrid');					
-	    	}else{
-	    		if(data == 1 ) {	
+	    	} else {
+	    		if(data == 1) {	
 	    			$.unblockUI();    		
 	    			alert('Este usuario ya existe. Ingrese otro')	;
 	    			$("#txt_13").val("");
 	    			$("#txt_13").focus();
-	    		}else{	    			
+	    		} else {	    			
 	    			if(data == 2) {
 	    				$.unblockUI();
 	    				alert('Este nro de cédula ya existe ingrese otro')	;

@@ -295,8 +295,6 @@ function inicio (){
 		jQuery(grid_selector).jqGrid('hideCol', "expiracion_producto");	
 		jQuery(grid_selector).jqGrid('hideCol', "sin_existencia");	
 
-
-		
 	    $(window).triggerHandler('resize.jqGrid');//cambiar el tamaño para hacer la rejilla conseguir el tamaño correcto
 
 	    function aceSwitch( cellvalue, options, cell ) {
@@ -388,9 +386,6 @@ function inicio (){
 	        form.find('input[name=sdate]').datepicker({format:'yyyy-mm-dd' , autoclose:true})
 	        
 	        form.find('input[name=stock]').addClass('ace ace-switch ace-switch-5').after('<span class="lbl"></span>');
-	        //don't wrap inside a label element, the checkbox value won't be submitted (POST'ed)
-	        //.addClass('ace ace-switch ace-switch-5').wrap('<label class="inline" />').after('<span class="lbl"></span>');
-
 	                
 	        //update buttons classes
 	        var buttons = form.next().find('.EditButton .fm-button');
@@ -441,45 +436,10 @@ function inicio (){
 	        style_edit_form(form);
 	    }
 
-
-
-	    //it causes some flicker when reloading or navigating grid
-	    //it may be possible to have some custom formatter to do this as the grid is being created to prevent this
-	    //or go back to default browser checkbox styles for the grid
-	    function styleCheckbox(table) {
-	        /**
-	                    $(table).find('input:checkbox').addClass('ace')
-	                    .wrap('<label />')
-	                    .after('<span class="lbl align-top" />')
-
-
-	                    $('.ui-jqgrid-labels th[id*="_cb"]:first-child')
-	                    .find('input.cbox[type=checkbox]').addClass('ace')
-	                    .wrap('<label />').after('<span class="lbl align-top" />');
-	         */
-	    }
+	    function styleCheckbox(table) {}
 	    
-
-	    //unlike navButtons icons, action icons in rows seem to be hard-coded
-	    //you can change them like this in here if you want
-	    function updateActionIcons(table) {
-	        /**
-	                    var replacement = 
-	                    {
-	                            'ui-ace-icon fa fa-pencil' : 'ace-icon fa fa-pencil blue',
-	                            'ui-ace-icon fa fa-trash-o' : 'ace-icon fa fa-trash-o red',
-	                            'ui-icon-disk' : 'ace-icon fa fa-check green',
-	                            'ui-icon-cancel' : 'ace-icon fa fa-times red'
-	                    };
-	                    $(table).find('.ui-pg-div span.ui-icon').each(function(){
-	                            var icon = $(this);
-	                            var $class = $.trim(icon.attr('class').replace('ui-icon', ''));
-	                            if($class in replacement) icon.attr('class', 'ui-icon '+replacement[$class]);
-	                    })
-	         */
-	    }
+	    function updateActionIcons(table) {}
 	    
-	    //replace icons with FontAwesome icons like above
 	    function updatePagerIcons(table) {
 	        var replacement = 
 	            {
@@ -500,8 +460,6 @@ function inicio (){
 	        $('.navtable .ui-pg-button').tooltip({container:'body'});
 	        $(table).find('.ui-pg-div').tooltip({container:'body'});
 	    }
-
-	    //var selr = jQuery(grid_selector).jqGrid('getGridParam','selrow');
 
 	    $(document).one('ajaxloadstart.page', function(e) {
 	        $(grid_selector).jqGrid('GridUnload');
@@ -593,7 +551,8 @@ function inicio (){
 		    $("#txt_7").trigger("chosen:updated");
 		    $("#txt_14").val(resp[0][14]);		    
 		    $("#txt_14").trigger("chosen:updated");
-		    $("#txt_15").val(resp[0][15]);		    
+		    $("#txt_15").val(resp[0][15]);
+
 		    if(resp[0][16] == "Si") {
 		    	$("#sin_existencia").prop("checked",true);
 		    } else {
@@ -605,26 +564,26 @@ function inicio (){
 
 		    if(resp[0][19] == "Si") {
 		    	$("#producto_series").prop("checked",true);
-		    }else{
+		    } else {
 		    	$("#producto_series").prop("checked",false);
 		    }
 		    if(resp[0][20] == "Si") {
 		    	$("#expiracion_producto").prop("checked",true);
-		    }else{
+		    } else {
 		    	$("#expiracion_producto").prop("checked",false);
 		    }
 		    $("#txt_18").val(resp[0][21]);		 
 		    $("#avatar").attr("src","img/"+resp[0][22]);		    
 		    if(resp[0][23] == "Si"){
 		    	$("#producto_activo").prop("checked",true);
-		    }else{
+		    } else {
 		    	$("#producto_activo").prop("checked",false);
 		    }
 		    $("#iva_producto").val(resp[0][25]);		    
 		    $("#iva_producto").trigger("chosen:updated");			
 		    if(resp[0][27] == "Si"){
 		    	$("#incluye_iva").prop("checked",true);
-		    }else{
+		    } else {
 		    	$("#incluye_iva").prop("checked",false);
 		    }			
 			$("#descuento").val(resp[0][28]);		 
@@ -632,7 +591,7 @@ function inicio (){
 		    $("#grupo_contable").trigger("chosen:updated");
 				    		    
 		    /**/	        
-		}else{
+		} else {
 			alert("Sin registros anteriores");
 		}		
 	    comprobarCamposRequired("form_productos");		    	            
@@ -644,9 +603,9 @@ function inicio (){
 		var resp = "";	
 		$("#txt_9").attr("readonly",true);
 		$("#txt_12").attr("readonly",true);	
-		resp =adelante($("#txt_0").val(),"productos","secuencia.php");	
+		resp = adelante($("#txt_0").val(),"productos","secuencia.php");	
 		//console.log(resp)	
-		if(resp[0] != false){
+		if(resp[0] != false) {
 			$("#txt_0").val(resp[0][0]);
 			$("#txt_1").val(resp[0][1]);
 			$("#txt_8").val(resp[0][2]);
@@ -670,43 +629,41 @@ function inicio (){
 		    $("#txt_15").val(resp[0][15]);		    
 		    if(resp[0][16] == "Si"){
 		    	$("#sin_existencia").prop("checked",true);
-		    }else{
+		    } else {
 		    	$("#sin_existencia").prop("checked",false);
 		    }
 
 		    $("#txt_16").val(resp[0][17]);		    
 		    $("#txt_17").val(resp[0][18]);	
 
-		    if(resp[0][19] == "Si"){
+		    if(resp[0][19] == "Si") {
 		    	$("#producto_series").prop("checked",true);
-		    }else{
+		    } else {
 		    	$("#producto_series").prop("checked",false);
 		    }
-		    if(resp[0][20] == "Si"){
+		    if(resp[0][20] == "Si") {
 		    	$("#expiracion_producto").prop("checked",true);
-		    }else{
+		    } else {
 		    	$("#expiracion_producto").prop("checked",false);
 		    }
 		    $("#txt_18").val(resp[0][21]);		 
 		    $("#avatar").attr("src","img/"+resp[0][22]);		    
-		    if(resp[0][23] == "Si"){
+		    if(resp[0][23] == "Si") {
 		    	$("#producto_activo").prop("checked",true);
-		    }else{
+		    } else {
 		    	$("#producto_activo").prop("checked",false);
 		    }
 		    $("#iva_producto").val(resp[0][25]);		    
 		    $("#iva_producto").trigger("chosen:updated");			
-		    if(resp[0][27] == "Si"){
+		    if(resp[0][27] == "Si") {
 		    	$("#incluye_iva").prop("checked",true);
-		    }else{
+		    } else {
 		    	$("#incluye_iva").prop("checked",false);
 		    }			
 			$("#descuento").val(resp[0][28]);		 
 			$("#grupo_contable").val(resp[0][29]);		    
-		    $("#grupo_contable").trigger("chosen:updated");
-				    		    
-		    /**/	        
-		}else{
+		    $("#grupo_contable").trigger("chosen:updated");	        
+		} else {
 			alert("Sin registros anteriores");
 		}		
 	    comprobarCamposRequired("form_productos");		    	            
@@ -720,33 +677,33 @@ function inicio (){
 	});	
 }
 
-function guardarCategoriaProducto(){	
-	var resp=comprobarCamposRequired("form_categoriasProductos");	    	
-	if(resp==true){    		
+function guardarCategoriaProducto() {	
+	var resp = comprobarCamposRequired("form_categoriasProductos");	    	
+	if(resp == true) {    		
 		$("#form_categoriasProductos").on("submit",function (e){												
-			var texto=($("#guardarCategoriaProducto").text()).trim();																		
-			if(texto=="Guardar"){ 				
+			var texto = ($("#guardarCategoriaProducto").text()).trim();																		
+			if(texto == "Guardar"){ 				
 				guardar_categoriaProducto("add",e);							  					                	
 	        }
 	        e.preventDefault();
-    		$(this).unbind("submit")		    			            			
+    		$(this).unbind("submit");		    			            			
 		});	
 		
 	}				 
 }
-function guardar_categoriaProducto(tipo,p){		
+function guardar_categoriaProducto(tipo,p) {		
 	$.ajax({
 	    url: "../categorias/categorias.php", 	    				    	    
 	    data:  "nombre_categoria="+$("#txt_categoriaProducto").val() + "&oper="+tipo, 	    	    	    
 	    type: "POST",				
-	    success: function(data){	    	
-	    	if( data == 2 ){		    		
+	    success: function(data) {	    	
+	    	if(data == 2) {		    		
 	    		carga_detalles_productos("txt_6",'8');//categorias y el numero de funcion	    		
 	    		alert('Datos Agregados Correctamente');	
 	    		limpiar_form(p);		    		
-	    	}else{
-	    		if( data == 1 ){	    		
-	    			alert('Esta categoría ya existe. Ingrese otra')	;
+	    	} else {
+	    		if(data == 1) {	    		
+	    			alert('Esta categoría ya existe. Ingrese otra');
 	    			$("#txt_categoriaProducto").val("");
 	    			$("#txt_categoriaProducto").focus();
 	    		}
@@ -754,33 +711,35 @@ function guardar_categoriaProducto(tipo,p){
 		},		
 	}); 
 }
-function guardarAsignacion(){	
-	var resp=comprobarCamposRequired("form_asignarProducto");	    	
-	if(resp==true){    		
-		$("#form_asignarProducto").on("submit",function (e){												
-			var texto=($("#btn_guardarAsignacion").text()).trim();																		
-			if(texto=="Guardar"){ 				
+
+function guardarAsignacion() {	
+	var resp = comprobarCamposRequired("form_asignarProducto");	    	
+	if(resp == true) {    		
+		$("#form_asignarProducto").on("submit",function(e) {												
+			var texto = ($("#btn_guardarAsignacion").text()).trim();																		
+			if(texto == "Guardar") { 				
 				guardar_asignacionProducto("add",e);							  					                	
 	        }
 	        e.preventDefault();
-    		$(this).unbind("submit")		    			            			
+    		$(this).unbind("submit");		    			            			
 		});	
 		
 	}				 
 }
-function guardar_asignacionProducto(tipo,p){		
+
+function guardar_asignacionProducto(tipo,p) {		
 	$.ajax({
 	    url: "../bodegas/bodegas.php", 	    				    	    
 	    data:  "nombre_bodega="+$("#txt_descripcionBodega").val() + "&oper="+tipo+ "&ubicacion_bodega="+$("#txt_ubicacionProducto").val(), 	    	    	    
 	    type: "POST",				
-	    success: function(data){	    	
-	    	if( data == 2 ){		    		
+	    success: function(data) {	    	
+	    	if(data == 2) {		    		
 	    		carga_detalles_productos("txt_7",'9');//categorias y el numero de funcion	    		
 	    		alert('Datos Agregados Correctamente');	
 	    		limpiar_form(p);		    		
-	    	}else{
-	    		if( data == 1 ){	    		
-	    			alert('Esta bodega ya existe. Ingrese otra')	;
+	    	} else {
+	    		if(data == 1) {	    		
+	    			alert('Esta bodega ya existe. Ingrese otra');
 	    			$("#txt_descripcionBodega").val("");
 	    			$("#txt_descripcionBodega").focus();
 	    		}
@@ -788,33 +747,34 @@ function guardar_asignacionProducto(tipo,p){
 		},		
 	}); 
 }
-function guardarMarcaProducto(){	
-	var resp=comprobarCamposRequired("form_marcasProducto");	    	
-	if(resp==true){    		
-		$("#form_marcasProducto").on("submit",function (e){												
-			var texto=($("#btn_guardarMarcaProducto").text()).trim();																		
-			if(texto=="Guardar"){ 				
+function guardarMarcaProducto() {	
+	var resp = comprobarCamposRequired("form_marcasProducto");
+
+	if(resp == true){    		
+		$("#form_marcasProducto").on("submit",function(e) {												
+			var texto = ($("#btn_guardarMarcaProducto").text()).trim();																		
+			if(texto == "Guardar") { 				
 				guardar_marcaProducto("add",e);							  					                	
 	        }
 	        e.preventDefault();
-    		$(this).unbind("submit")		    			            			
+    		$(this).unbind("submit");		    			            			
 		});	
-		
 	}				 
 }
-function guardar_marcaProducto(tipo,p){		
+
+function guardar_marcaProducto(tipo,p) {		
 	$.ajax({
 	    url: "../marcas/marcas.php", 	    				    	    
 	    data:  "nombre_marca="+$("#txt_marcaProductos").val() + "&oper="+tipo, 	    	    	    
 	    type: "POST",				
 	    success: function(data){	    	
-	    	if( data == 2 ){		    		
+	    	if(data == 2) {		    		
 	    		carga_detalles_productos("txt_13",'10');//marcas y el numero de funcion	    		
 	    		alert('Datos Agregados Correctamente');	
 	    		limpiar_form(p);		    		
 	    	}else{
-	    		if( data == 1 ){	    		
-	    			alert('Esta marca ya existe. Ingrese otra')	;
+	    		if(data == 1) {	    		
+	    			alert('Esta marca ya existe. Ingrese otra');
 	    			$("#txt_marcaProductos").val("");
 	    			$("#txt_marcaProductos").focus();
 	    		}
@@ -822,32 +782,34 @@ function guardar_marcaProducto(tipo,p){
 		},		
 	}); 
 }
-function guardarSevende(){	
-	var resp=comprobarCamposRequired("form_sevende");	    	
-	if(resp==true){    		
-		$("#form_sevende").on("submit",function (e){												
-			var texto=($("#btn_guardarSevende").text()).trim();																		
-			if(texto=="Guardar"){ 				
+
+function guardarSevende() {	
+	var resp = comprobarCamposRequired("form_sevende");
+
+	if(resp == true) {    		
+		$("#form_sevende").on("submit",function(e) {												
+			var texto = ($("#btn_guardarSevende").text()).trim();																		
+			if(texto == "Guardar") { 				
 				guardar_seVende("add",e);							  					                	
 	        }
 	        e.preventDefault();
-    		$(this).unbind("submit")		    			            			
+    		$(this).unbind("submit");		    			            			
 		});	
-		
 	}				 
 }
-function guardar_seVende(tipo,p){		
+
+function guardar_seVende(tipo,p) {		
 	$.ajax({
 	    url: "../unidad_medida/unidad_medida.php", 	    				    	    
 	    data:  "descripcion="+$("#txt_descripcionUnidades").val() + "&oper="+tipo+ "&abreviatura="+$("#txt_abreviatura").val()+"&cantidad="+$("#txt_cantidadSevende").val(), 	    	    	    
 	    type: "POST",				
-	    success: function(data){	    	
-	    	if( data == 2 ){		    		
+	    success: function(data) {	    	
+	    	if(data == 2) {		    		
 	    		carga_detalles_productos_1("txt_14",'11');//marcas y el numero de funcion	    		
 	    		alert('Datos Agregados Correctamente');	
 	    		limpiar_form(p);		    		
-	    	}else{
-	    		if( data == 1 ){	    		
+	    	} else {
+	    		if(data == 1) {	    		
 	    			alert('Este dato ya existe. Ingrese otra');
 	    			$("#txt_descripcionUnidades").val("");
 	    			$("#txt_descripcionUnidades").focus();
@@ -858,7 +820,7 @@ function guardar_seVende(tipo,p){
 }
 function guardar_productos() {
 	var valores = $("#form_productos").serialize();
-	var texto=($("#btn_0").text()).trim();
+	var texto = ($("#btn_0").text()).trim();
 
 	if($("#txt_1").val() == "") {
 		alert('Campo Requerido');
@@ -868,29 +830,16 @@ function guardar_productos() {
 			alert('Campo Requerido');
 			$('#txt_2').focus();
 		} else {
-			if(texto=="Guardar") {						
+			if(texto == "Guardar") {						
 				datos_productos(valores,"g");					
 			} else {				
 				datos_productos(valores,"m");					
 			}
 		}	
 	}
-	// var resp=comprobarCamposRequired("form_productos");
-	// if(resp==true){
-	// 	$("#form_productos").on("button",function (e){				
-	// 		var valores = $("#form_productos").serialize();
-	// 		var texto=($("#btn_0").text()).trim();	
-	// 		if(texto=="Guardar"){						
-	// 			datos_productos(valores,"g");					
-	// 		}else{				
-	// 			datos_productos(valores,"m");					
-	// 		}
-	// 		// e.preventDefault();
- //   //  		$(this).unbind("submit");
-	// 	});
-	// }
 }
-function datos_productos(valores,tipo,p){	
+
+function datos_productos(valores,tipo,p) {	
 	$.ajax({				
 		type: "POST",
 		data: valores+"&tipo="+tipo+"&img="+$("#avatar")[0].src,		
@@ -902,8 +851,7 @@ function datos_productos(valores,tipo,p){
     			var di = $("#myTab").next();
     			
     			$('#myTab a:first').tab('show') 
-    			actualizar_form();
-    			// limpiar_form();		    		
+    			actualizar_form();		    		
     		}else{
     			if( data == 1 ){
 		    		alert('El código del producto esta repetido. Ingrese nuevamente');			

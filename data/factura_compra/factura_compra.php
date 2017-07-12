@@ -100,19 +100,44 @@
 		$id_libro  = unique($fecha_larga);		
 		$sql_libro = "insert into libro_diario values ('".$id_libro."','".$fecha."','".($_POST['tarifa12'] + $_POST['tarifa0'])."','','11501155240ac3a0d22','Factura Compra','Ingreso de Mercaderia')";
 		$resp = $guardar = guardarSql($conexion,$sql_libro);
+
 		if($resp == 'true') {
 			$id_libro_2  = unique($fecha_larga);		
 			$sql_libro = "insert into libro_diario values ('".$id_libro_2."','".$fecha."','".$_POST['iva']."','','11501155240ac3a6d69','Factura Compra','Iva Pagado')";
 			$resp = $guardar = guardarSql($conexion,$sql_libro);
 
+			$consulta5 = pg_query("SELECT * FROM movimientos_bancos");
+	        while ($row = pg_fetch_row($consulta5)) {
+	            $saldo = $row[5];
+	        }
+
+	        $cal = $saldo - $_POST['total'];
+
 			if($resp == 'true') {
 				$id_libro_3  = unique($fecha_larga);		
-				if($_POST['formas'] == '110147552550ebaa4df') { //CONTADO NO CAMBIAR EN LA BASE			
+				if($_POST['formas'] == '12143618101560823fcd31766.12828699') { //CONTADO NO CAMBIAR EN LA BASE			
 					$sql_libro = "insert into libro_diario values ('".$id_libro_3."','".$fecha."','','".$_POST['total']."','11501155240ac39d2f0','Factura Compra','Pago Contado Caja')";
-					$guardar = guardarSql($conexion,$sql_libro);	
+					$guardar = guardarSql($conexion,$sql_libro);
+
+					$sql_bancos = "INSERT INTO public.movimientos_bancos(
+		            fecha, detalle, ingreso, egreso, saldo, 
+		            referencia) values ('".$fecha."','".'Pago Factura Compra N°:'.$_POST['serie']."','','".$_POST['total']."','$cal','RETIRO')";
+					$resp = $guardar = guardarSql($conexion,$sql_bancos);	
 				} else {
-					$sql_libro = "insert into libro_diario values ('".$id_libro_3."','".$fecha."','','".$_POST['total']."','11501155240ac3a44f3','Factura Compra','Cuentas por Pagar')";
-					$guardar = guardarSql($conexion,$sql_libro);	
+					if($_POST['formas'] == '121615168685608245f3e51a1.74980590') { 
+						$sql_libro = "insert into libro_diario values ('".$id_libro_3."','".$fecha."','','".$_POST['total']."','11501155240ac3a44f3','Factura Compra','Cuentas por Pagar')";
+						$guardar = guardarSql($conexion,$sql_libro);
+					} else {
+						if($_POST['formas'] == '13233227715564387a42e68c1.70763457') {
+							$sql_libro = "insert into libro_diario values ('".$id_libro_3."','".$fecha."','','".$_POST['total']."','11501155240ac39ee76','Factura Compra','Bancos')";
+							$guardar = guardarSql($conexion,$sql_libro);
+
+							$sql_bancos = "INSERT INTO public.movimientos_bancos(
+				            fecha, detalle, ingreso, egreso, saldo, 
+				            referencia) values ('".$fecha."','".'Pago Factura Compra N°:'.$_POST['serie']."','','".$_POST['total']."','$cal','PAGO CHEQUE')";
+							$resp = $guardar = guardarSql($conexion,$sql_bancos);	
+						}	
+					}	
 				}
 			}
 		}

@@ -35,9 +35,24 @@
     $pdf->AliasNbPages();
     $pdf->AddFont('Amble-Regular','','Amble-Regular.php');
     $pdf->SetFont('Amble-Regular','',10);       
-    $pdf->SetFont('Arial','B',9);   
-    $pdf->SetX(5);    
-    $pdf->SetFont('Amble-Regular','',9);     
+    // $pdf->SetFont('Arial','B',9);   
+    // $pdf->SetX(5);    
+    // $pdf->SetFont('Amble-Regular','',9);
+
+    $fecha = date('Y-m-d', time());
+    $pdf->SetX(1);
+    $pdf->SetY(1);
+    $pdf->Cell(20, 5, $fecha, 0,0, 'C', 0);                         
+    $pdf->Cell(170, 5, "FACTURA VENTA", 0,1, 'R', 0);                                                        
+    $pdf->Cell(190, 8, "EMPRESA: ".$_SESSION['empresa'], 0,1, 'C',0);                                
+    $pdf->Image('../images/logo_empresa.jpg',5,8,45,30);
+    // $pdf->SetFont('Amble-Regular','',10);        
+    $pdf->Cell(190, 5, "PROPIETARIO: ".utf8_decode($_SESSION['propietario']),0,1, 'C',0);                                
+    $pdf->Cell(80, 5, "TEL.: ".utf8_decode($_SESSION['telefono']),0,0, 'R',0);                                
+    $pdf->Cell(80, 5, "CEL.: ".utf8_decode($_SESSION['celular']),0,1, 'C',0);                                
+    $pdf->Cell(180, 5, "DIR.: ".utf8_decode($_SESSION['direccion']),0,1, 'C',0);                                
+    // $pdf->Cell(180, 5, "SLOGAN.: ".utf8_decode($_SESSION['slogan']),0,1, 'C',0);                                
+    $pdf->Cell(180, 5, utf8_decode( $_SESSION['pais_ciudad']),0,1, 'C',0);     
 
     $sql = pg_query("select F.id_factura_venta,F.numero_serie,F.fecha_actual, F.tarifa0,F.tarifa12,F.iva,F.descuento,F.total,C.id_cliente,C.identificacion,C.nombres_completos,C.direccion,C.telefono2,F.estado from factura_venta F,cliente C where id_factura_venta = '$_GET[id]' and F.id_cliente = C.id_cliente");
     while($row = pg_fetch_row($sql)){
@@ -59,11 +74,11 @@
     $pdf->SetFont('Arial','B',10);        
             /////////medio
     $pdf->SetFont('Amble-Regular','',10);       
-    $pdf->Text(30, 42, maxCaracter(utf8_decode($cliente),80),1,0, 'L',0);/////cliente
-	$pdf->Text(30, 48, maxCaracter(utf8_decode($fecha),20),1,0, 'L',0);/////fecha
-    $pdf->Text(30, 53, maxCaracter(utf8_decode($direccion),35),1,0, 'L',0);////direccion
-    $pdf->Text(155, 42, maxCaracter(utf8_decode($ci_ruc),20),1,0, 'L',0);////ruc ci
-    $pdf->Text(155, 48, maxCaracter(utf8_decode($telefono),20),1,0, 'L',0);////telefono
+    $pdf->Text(10, 42, maxCaracter(utf8_decode('Nombres Completos:   '.$cliente),80),1,0, 'L',0);/////cliente
+	$pdf->Text(10, 48, maxCaracter(utf8_decode('Fecha:  '.$fecha),20),1,0, 'L',0);/////fecha
+    $pdf->Text(10, 53, maxCaracter(utf8_decode('Dirección:  '.$direccion),35),1,0, 'L',0);////direccion
+    $pdf->Text(145, 42, maxCaracter(utf8_decode('RUC/CI:  '.$ci_ruc),20),1,0, 'L',0);////ruc ci
+    $pdf->Text(145, 48, maxCaracter(utf8_decode('Teléfono:  '.$telefono),20),1,0, 'L',0);////telefono
         
     if($estado == 'Pasivo') {        
         $pdf->SetTextColor(249,33,33);
@@ -137,11 +152,11 @@
     $total_venta = truncateFloat($total_venta,2);
 
 
-    $pdf->Text(180, 177, maxCaracter($subtotal,5),0,1, 'L',0);    
-    $pdf->Text(180, 182, maxCaracter($iva0,5),0,1, 'L',0);     
-    $pdf->Text(180, 187, maxCaracter($iva_venta,5),0,1, 'L',0);    
+    $pdf->Text(170, 177, 'Subtotal:      '. maxCaracter($subtotal,5),0,1, 'L',0);    
+    $pdf->Text(170, 182, 'Descuento:   '.maxCaracter($iva0,5),0,1, 'L',0);     
+    $pdf->Text(170, 187, 'Iva:                  '.maxCaracter($iva_venta,5),0,1, 'L',0);    
 //    $pdf->Text(180, 192, maxCaracter($descuento_venta,5),0,1, 'L',0);    
-    $pdf->Text(180, 192, maxCaracter($total_venta,10),0,1, 'L',0);    
+    $pdf->Text(170, 192, 'Total:              '.maxCaracter($total_venta,10),0,1, 'L',0);    
 
     $pdf->Output();
 ?>

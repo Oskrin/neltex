@@ -45,11 +45,11 @@
 
 										<div class="widget-toolbar">										
 
-											<a href="#" data-action="fullscreen" class="orange2">
+											<a href="" data-action="fullscreen" class="orange2">
 												<i class="ace-icon fa fa-expand"></i>
 											</a>
 
-											<a href="#" data-action="reload">
+											<a href="" data-action="reload">
 												<i class="ace-icon fa fa-refresh"></i>
 											</a>
 										</div>
@@ -58,7 +58,7 @@
 									<div class="widget-body">
 										<div class="widget-main">
 											<div class="row">
-												<form class="form-horizontal" role="form" rol="form" action="" method="POST" id="form_productos">
+												<form class="form-horizontal" name="form_productos" id="form_productos" autocomplete="off">
 													<div class="row">
 														<div class="col-xs-12">	
 															<div class="col-sm-12">
@@ -100,21 +100,21 @@
 																				<div class="form-group has-error">
 																					<label class="col-sm-4 control-label no-padding-right" for="txt_4"> Precio Minorista (*):</label>
 																					<div class="col-sm-8">
-																						<input type="text" id="txt_4" name="txt_4" class="form-control"  placeholder="Precio Minorista" onkeydown="return validarNumeros(event)" data-toggle="tooltip" data-original-title="Precio Minorista" required pattern="[0-9.]{1,}" value="0.00" />
+																						<input type="text" id="txt_4" name="txt_4" class="form-control"  placeholder="Precio Minorista" onkeydown="return validarNumeros(event)" value="0.00" />
 																					</div>
 																				</div>
 
 																				<div class="form-group">
 																					<label class="col-sm-4 control-label no-padding-right" for="txt_3"> Utilidad Minorista:</label>
-																					<div class="col-sm-8">													
-																						<input type="text" id="txt_3" name="txt_3" class="form-control" placeholder="Utilidad Minorista" onkeydown="return validarNumeros(event)" data-toggle="tooltip" data-original-title="Utilidad Minorista Porcentaje" value="0" />
+																					<div class="col-sm-8">
+																						<input type="text" id="txt_3" name="txt_3" class="form-control" placeholder="Utilidad Minorista" onkeydown="return validarNumeros(event)" value="0" />
 																					</div>
 																				</div>
 
 																				<div class="form-group">
 																					<label class="col-sm-4 control-label no-padding-right" for="txt_5"> El producto es: </label>
 																					<div class="col-sm-8">
-																						<select class="chosen-select form-control" id="txt_5" name="txt_5" data-placeholder="El producto es">							
+																						<select class="chosen-select form-control" id="txt_5" name="txt_5" data-placeholder="El producto es">
 																						</select>													
 																					</div>
 																				</div>
@@ -122,7 +122,7 @@
 																				<div class="form-group">
 																					<label class="col-sm-4 control-label no-padding-right" for="txt_6"> Categoria: </label>
 																					<div class="col-sm-7">
-																						<select class="chosen-select form-control" id="txt_6" name="txt_6" data-placeholder="Categoria">										
+																						<select class="chosen-select form-control" id="txt_6" name="txt_6" data-placeholder="Categoria">
 																							<option value=""></option>
 																						</select>													
 																					</div>
@@ -132,7 +132,7 @@
 																				<div class="form-group">
 																					<label class="col-sm-4 control-label no-padding-right" for="txt_7"> Asignado a: </label>
 																					<div class="col-sm-7">
-																						<select class="chosen-select form-control" id="txt_7" name="txt_7" data-placeholder="Asignado a">								
+																						<select class="chosen-select form-control" id="txt_7" name="txt_7" data-placeholder="Asignado a">
 																						</select>													
 																					</div>
 																					<div class="col-sm-1 btn btn-sm btn-primary" id="btn_asi_a" data-toggle="modal" href="#modal_asi_a">...</div>
@@ -156,44 +156,44 @@
 
 																			<div class="col-sm-6">
 																				<div class="form-group">
-																					<label class="col-sm-4 control-label no-padding-right" for="txt_8"> Código Barras: </label>
+																					<label class="col-sm-4 control-label no-padding-right" for="txt_8">Código Barras:</label>
 																					<div class="col-sm-8">
-																						<input type="text" id="txt_8" name="txt_8"  placeholder="Código Barras" class="form-control" data-toggle="tooltip" data-original-title="" />
+																						<input type="text" id="txt_8" name="txt_8" placeholder="Código Barras" class="form-control" />
 																					</div>
 																				</div>
 
 																				<div class="form-group has-error">
-																					<label class="col-sm-4 control-label no-padding-right" for="txt_9"> Precio Producto (*): </label>
+																					<label class="col-sm-4 control-label no-padding-right" for="txt_9">Precio Producto (*):</label>
 																					<div class="col-sm-8">
-																						<input type="text" id="txt_9" name="txt_9" class="form-control" placeholder="Precio del Producto" onkeydown="return validarNumeros(event)" data-toggle="tooltip" data-original-title="Precio del Producto" required pattern="[0-9.]{1,}" value="0.00"  />					
+																						<input type="text" id="txt_9" name="txt_9" class="form-control" placeholder="Precio del Producto" onkeydown="return validarNumeros(event)" value="0.00" />
 																					</div>
 																				</div>
 
 																				<div class="form-group has-error">
 																					<label class="col-sm-4 control-label no-padding-right" for="txt_11"> Precio Mayorista (*):</label>
 																					<div class="col-sm-8">
-																						<input type="text" id="txt_11" name="txt_11"  class="form-control" placeholder="Precio mayorista" onkeydown="return validarNumeros(event)"  data-toggle="tooltip" data-original-title="Precio del Mayorista" required pattern="[0-9.]{1,}" value="0.00" />									
+																						<input type="text" id="txt_11" name="txt_11" class="form-control" placeholder="Precio mayorista" onkeydown="return validarNumeros(event)" value="0.00" />
 																					</div>
 																				</div>
 
 																				<div class="form-group">
 																					<label class="col-sm-4 control-label no-padding-right" for="txt_10"> Utilidad Mayorista: </label>
 																					<div class="col-sm-8">
-																						<input type="text" id="txt_10" name="txt_10" class="form-control" placeholder="Utilidad mayorista" onkeydown="return validarNumeros(event)"  data-toggle="tooltip" data-original-title="Utilidad del Mayorista" value="0" />
+																						<input type="text" id="txt_10" name="txt_10" class="form-control" placeholder="Utilidad mayorista" onkeydown="return validarNumeros(event)" value="0" />
 																					</div>
 																				</div>
 
 																				<div class="form-group">
 																					<label class="col-sm-4 control-label no-padding-right" for="txt_12"> Cantidad Inicial:</label>
 																					<div class="col-sm-8">
-																						<input type="text" id="txt_12" name="txt_12"  placeholder="Cantidad Inicial" class="ui-spinner-input col-sm-12" onkeydown="return validarNumeros(event)" data-toggle="tooltip" data-original-title="" role="spinbutton" />										
+																						<input type="text" id="txt_12" name="txt_12"  placeholder="" class="ui-spinner-input col-sm-12" onkeydown="return validarNumeros(event)" role="spinbutton" />
 																					</div>
 																				</div>
 
 																				<div class="form-group">
 																					<label class="col-sm-4 control-label no-padding-right" for="txt_13"> Marcas: </label>
 																					<div class="col-sm-7">
-																						<select class="chosen-select form-control" id="txt_13" name="txt_13" data-placeholder="Marcas">											
+																						<select class="chosen-select form-control" id="txt_13" name="txt_13" data-placeholder="Marcas">
 																							<option value=""></option>
 																						</select>													
 																					</div>
@@ -203,7 +203,7 @@
 																				<div class="form-group">
 																					<label class="col-sm-4 control-label no-padding-right" for="txt_14"> Se vender por: </label>
 																					<div class="col-sm-7">
-																						<select class="chosen-select form-control" id="txt_14" name="txt_14" data-placeholder="Se vender por">								
+																						<select class="chosen-select form-control" id="txt_14" name="txt_14" data-placeholder="Se vender por">
 																						</select>						
 																					</div>
 																					<div class="col-sm-1 btn btn-sm btn-primary" id="btn_se-ven_por" data-toggle="modal" href="#modal_se-vender_por">...</div>
@@ -212,7 +212,7 @@
 																				<div class="form-group">
 																					<label class="col-sm-4 control-label no-padding-right" for="txt_15">y contiene:</label>
 																					<div class="col-sm-6">
-																						<input type="text" readonly id="txt_15" name="txt_15"  class="form-control" data-toggle="tooltip" data-original-title="" />		
+																						<input type="text" readonly id="txt_15" name="txt_15" class="form-control" />		
 																					</div>
 																					<label class="col-sm-1 control-label no-padding-right" for="txt_15">Unid(s)</label>
 																				</div>
@@ -238,19 +238,19 @@
 																						<div class="form-group">
 																							<label class="col-sm-5 control-label no-padding-right" for="txt_16"> Cantidad Mínima:</label>
 																							<div class="col-sm-7">
-																								<input type="text" id="txt_16" name="txt_16"  placeholder="Cantidad Mínima" class="form-control" data-toggle="tooltip" data-original-title="" />																						
+																								<input type="text" id="txt_16" name="txt_16"  placeholder="Cantidad Mínima" class="form-control"  />																						
 																							</div>
 																						</div>
 																						<div class="form-group">
 																							<label class="col-sm-5 control-label no-padding-right" for="descuento"> Descuento:</label>
 																							<div class="col-sm-7">
-																								<input type="text" id="descuento" name="descuento"  placeholder="" class="form-control" data-toggle="tooltip" data-original-title="" />										
+																								<input type="text" id="descuento" name="descuento"  placeholder="" class="form-control" />										
 																							</div>
 																						</div>
 
 																						<div class="form-group">
 																							<label class="col-sm-5 control-label no-padding-right" for="incluye_iva"> Incluye Iva: </label>
-																							<div class="col-sm-7">											
+																							<div class="col-sm-7">
 																								<label>
 																									<input name="incluye_iva" id="incluye_iva" class="ace ace-switch ace-switch-5" type="checkbox" checked>
 																									<span class="lbl"></span>
@@ -283,7 +283,7 @@
 																						<div class="form-group">
 																							<label class="col-sm-5 control-label no-padding-right" for="txt_17"> Cantidad Máxima:</label>
 																							<div class="col-sm-7">
-																								<input type="text" id="txt_17" name="txt_17"  placeholder="Cantidad Máxima" class="form-control" data-toggle="tooltip" data-original-title="" />
+																								<input type="text" id="txt_17" name="txt_17"  placeholder="Cantidad Máxima" class="form-control" />
 																							</div>
 																						</div>
 
@@ -314,8 +314,8 @@
 																							</div>
 																						</div>
 																					</div>
-																				</div>																		
-																			</div>																			
+																				</div>	
+																			</div>
 																		</div>
 																	</div>
 																</div>
@@ -363,12 +363,12 @@
 
 		<?php footer(); ?>
 
-		<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+		<a href="" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
 			<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 		</a>
 		</div>
 
-		<!-- Modal -->
+		<!-- Modal Buscar Productos-->
 		<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="myModal">
 		    <div class="modal-dialog modal-lg">
 		      	<div class="modal-content">
@@ -385,9 +385,10 @@
 			        </div>
 		      	</div>
 		    </div>
-		</div><!-- modal -->
+		</div>
+		<!-- modal -->
 		  
-		<!-- Modal categoria-->
+		<!-- Modal Categoria-->
 		<div class="modal fade" id="modal_categoria" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		    <div class="modal-dialog">
 			    <div class="modal-content blue">
@@ -411,9 +412,10 @@
 			        </form>
 			    </div>
 		    </div>
-		</div><!-- /.modal -->
+		</div>
+		<!-- /.modal -->
 
-		<!-- Modal categoria-->
+		<!-- Modal Asignar a-->
 		<div class="modal fade" id="modal_asi_a" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		    <div class="modal-dialog">
 		      	<div class="modal-content blue">
@@ -444,7 +446,8 @@
 		        	</form>
 		      	</div>
 		    </div>
-		</div><!-- modal -->
+		</div>
+		<!-- modal -->
 
 		<!-- Modal categoria-->
 		<div class="modal fade" id="modal_marcas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -470,7 +473,8 @@
 			        </form>
 		      	</div>
 		    </div>
-		</div><!-- modal -->
+		</div>
+		<!-- modal -->
 
 		<!-- Modal unidades-->
 		<div class="modal fade" id="modal_se-vender_por" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -510,7 +514,8 @@
 			        </form>
 		      	</div>
 		    </div>
-		</div><!-- /.modal -->		   
+		</div>
+		<!-- /.modal -->		   
 
 		<script type="text/javascript">
 			window.jQuery || document.write("<script src='../../dist/js/jquery.min.js'>"+"<"+"/script>");

@@ -49,10 +49,10 @@
 											<div class="widget-header">
 												<h5 class="widget-title">Factura Compra</h5>
 												<div class="widget-toolbar">
-													<a href="#" data-action="fullscreen" class="orange2">
+													<a href="" data-action="fullscreen" class="orange2">
 														<i class="ace-icon fa fa-expand"></i>
 													</a>
-													<a href="#" data-action="reload">
+													<a href="" data-action="reload">
 														<i class="ace-icon fa fa-refresh"></i>
 													</a>
 												</div>
@@ -126,8 +126,8 @@
 																						<div class="form-group">
 																							<label class="col-sm-4 no-padding-right" for="serie3">Numero de serie: <font color="red">*</font></label>	
 																							<div class="col-sm-8">
-																								<input type="text" id="serie" name="serie" class="form-control" required />					
-																								<input type="hidden" id="id_factura_compra" name="id_factura_compra" class="form-control" required />	
+																								<input type="text" id="serie" name="serie" class="form-control" />					
+																								<input type="hidden" id="id_factura_compra" name="id_factura_compra" class="form-control" />	
 																							</div>															
 																						</div>
 																					</div>
@@ -152,9 +152,9 @@
 																							<div class="col-sm-8">
 																							<input type="hidden" id="id_proveedor" name="id_proveedor">	
 																								<select class="chosen-select form-control" id="txt_nro_identificacion" name="txt_nro_identificacion" data-placeholder="Nro de identifiación">	     
-							                                                                        <option value=""></option>                               
+							                                                                        <option value=""></option>     
 							                                                                    </select>
-																							</div>														
+																							</div>
 																						</div>												
 																					</div>
 
@@ -165,7 +165,7 @@
 																								<select class="chosen-select form-control" id="txt_nombre_proveedor" name="txt_nombre_proveedor" data-placeholder="Nombres Completos">        
 							                                                                        <option value=""> </option>          
 							                                                                    </select>
-																							</div>														
+																							</div>
 																						</div>									
 																					</div>
 																				</div>
@@ -183,12 +183,12 @@
 																										<i class="fa fa-calendar bigger-110"></i>
 																									</span>
 																								</div>
-																							</div>														
+																							</div>
 																						</div>
 																					</div>
 
 																					<div class="col-sm-4">
-																						<div class="form-group">																	
+																						<div class="form-group">	
 																							<label class="col-sm-5 control-label no-padding-right" for="fecha_emision">Fecha Emisión:</label>
 																							<div class="col-sm-7">
 																								<div class="input-group">
@@ -197,7 +197,7 @@
 																										<i class="fa fa-calendar bigger-110"></i>
 																									</span>
 																								</div>
-																							</div>																														
+																							</div>		
 																						</div>
 																					</div>
 
@@ -211,7 +211,7 @@
 																										<i class="fa fa-calendar bigger-110"></i>
 																									</span>
 																								</div>
-																							</div>																	
+																							</div>		
 																						</div>
 																					</div>															
 																				</div>
@@ -229,16 +229,16 @@
 																										<i class="fa fa-calendar bigger-110"></i>
 																									</span>
 																								</div>
-																							</div>																														
+																							</div>		
 																						</div>
 																					</div>
 
 																					<div class="col-sm-4">
-																						<div class="form-group">																	
+																						<div class="form-group">	
 																							<label class="col-sm-5 control-label no-padding-right" for="autorizacion">Nro de Autorización: <font color="red">*</font></label>
 																							<div class="col-sm-7">
-																								<input type="text" id="autorizacion" name="autorizacion" class="form-control" data-toggle="tooltip" maxlength="30" required /> 
-																							</div>																														
+																								<input type="text" id="autorizacion" name="autorizacion" class="form-control" maxlength="30" /> 
+																							</div>	
 																						</div>
 																					</div>
 
@@ -246,23 +246,23 @@
 																						<div class="form-group">
 																							<label class="col-sm-5 control-label no-padding-right" for="formas">Forma de Pago:</label>
 																							<div class="col-sm-7">
-																								<select class="chosen-select form-control" id="formas" name="formas" data-placeholder="Forma de Pago">                                                                        
+																								<select class="chosen-select form-control" id="formas" name="formas" data-placeholder="Forma de Pago">                   
 							                                                                    </select>
-																							</div>																														
+																							</div>		
 																						</div>														
 																					</div>
 																				</div>
 																			</div>
 
 																			<div class="row">
-																				<div class="col-md-12">																													
+																				<div class="col-md-12">												
 																					<div class="col-sm-4">
-																						<div class="form-group">
+																						<div class="form-group" style="display: none;">
 																							<label class="col-sm-5 no-padding-right" for="termino_pago"> Términos de Pago:</label>
 																							<div class="col-sm-7">
 																								<select class="chosen-select form-control" id="termino_pago" name="termino_pago" data-placeholder="Términos de Pago">
 							                                                                    </select>
-																							</div>																														
+																							</div>		
 																						</div>
 																					</div>
 																				</div>
@@ -283,36 +283,36 @@
 																					<div class="col-xs-2">
 																						<div class="row">
 																							<div class="col-xs-12">
-																								<label> Codigo de Barra:</label>
+																								<label>Codigo Barra:</label>
 																							</div>
 																						</div>
 																						<div class="row">
 																							<div class="col-xs-12">
-																								<input type="text" id="codigo_barras" name="codigo_barras"  class="form-control" data-toggle="tooltip"  /> 																					
+																								<input type="text" id="codigo_barras" name="codigo_barras"  class="form-control" />				
 																							</div>
 																						</div>
 																					</div>
 																					<div class="col-xs-3">
 																						<div class="row">
 																							<div class="col-xs-12">
-																								<label> Código:</label>
+																								<label>Código:</label>
 																							</div>
 																						</div>
 																						<div class="row">
 																							<div class="col-xs-12">
-																								<input type="text" id="codigo" name="codigo"  class="form-control" data-toggle="tooltip"  /> 																		
+																								<input type="text" id="codigo" name="codigo"  class="form-control" />	
 																							</div>
 																						</div>
 																					</div>
 																					<div class="col-xs-4">
 																						<div class="row">
 																							<div class="col-xs-12">
-																								<label> Producto:</label>
+																								<label>Producto:</label>
 																							</div>
 																						</div>
 																						<div class="row">
 																							<div class="col-xs-12">
-																								<input type="text" id="producto" name="producto"  class="form-control" data-toggle="tooltip"  /> 																																				
+																								<input type="text" id="producto" name="producto"  class="form-control" />
 																							</div>
 																						</div>
 																					</div>
@@ -328,7 +328,7 @@
 																									</div>
 																									<div class="row">
 																										<div class="col-xs-12">
-																											<input type="text" id="cantidad" name="cantidad" class="form-control" data-toggle="tooltip"  value="" /> 
+																											<input type="text" id="cantidad" name="cantidad" class="form-control" /> 
 																										</div>
 																									</div>
 																								</div>
@@ -340,7 +340,7 @@
 																									</div>
 																									<div class="row">
 																										<div class="col-xs-12">
-																											<input type="text" id="precio" name="precio" onkeydown="return validarNumeros(event)" value="0.00" class="form-control" data-toggle="tooltip"  /> 
+																											<input type="text" id="precio" name="precio" onkeydown="return validarNumeros(event)" value="0.00" class="form-control" /> 
 																										</div>
 																									</div>
 																								</div>
@@ -352,12 +352,12 @@
 																									</div>
 																									<div class="row">
 																										<div class="col-xs-12">
-																											<input type="number" id="descuento" name="descuento" class="form-control" data-toggle="tooltip" value="0" min="0" maxlength="3" /> 
-																											<input type="hidden" id="stock" name="stock" class="form-control" data-toggle="tooltip" /> 
-																											<input type="hidden" id="id_productos" name="id_productos" class="form-control" data-toggle="tooltip" /> 
-																											<input type="hidden" id="iva_producto" name="iva_producto" class="form-control" data-toggle="tooltip" /> 
-																											<input type="hidden" id="incluye" name="incluye" class="form-control" data-toggle="tooltip" />
-																											<input type="hidden" id="inventar" name="inventar" class="form-control" data-toggle="tooltip" />  
+																											<input type="number" id="descuento" name="descuento" class="form-control" value="0" min="0" maxlength="3" /> 
+																											<input type="hidden" id="stock" name="stock" class="form-control" /> 
+																											<input type="hidden" id="id_productos" name="id_productos" class="form-control" /> 
+																											<input type="hidden" id="iva_producto" name="iva_producto" class="form-control" /> 
+																											<input type="hidden" id="incluye" name="incluye" class="form-control" />
+																											<input type="hidden" id="inventar" name="inventar" class="form-control" />  
 																										</div>
 																									</div>
 																								</div>
@@ -384,48 +384,45 @@
 													                        <div class="row">
 																				<div class="col-md-12">
 																					<div class="col-md-9"></div>
-																					<div class="col-md-3">																		
+																					<div class="col-md-3">	
 																						<div class="form-group">
 																							<label class="col-sm-4 no-padding-right" for="tarifa0"> Tarifa 0:</label>
 																							<div class="col-sm-8">
 																								<input type="text" id="tarifa0" name="tarifa0" class="form-control" readonly value="0.000" /> 
-																							</div>																													
+																							</div>	
 																						</div>	
 
 																						<div class="form-group">
 																							<label class="col-sm-4 no-padding-right" for="tarifa12"> Tarifa 12:</label>
 																							<div class="col-sm-8">
 																								<input type="text" id="tarifa12" name="tarifa12" class="form-control" readonly value="0.000" /> 
-																							</div>																													
+																							</div>	
 																						</div>
 
 																						<div class="form-group">
 																							<label class="col-sm-4 no-padding-right" for="iva"> 12 % Iva:</label>
 																							<div class="col-sm-8">
 																								<input type="text" id="iva" name="iva" class="form-control" readonly value="0.000" /> 
-																							</div>																													
+																							</div>	
 																						</div>
 
 																						<div class="form-group">
 																							<label class="col-sm-4 no-padding-right" for="descuento_total"> Descuento:</label>
 																							<div class="col-sm-8">
 																								<input type="text" id="descuento_total" name="descuento_total" class="form-control" readonly value="0.000" /> 
-																							</div>																													
+																							</div>	
 																						</div>
 
 																						<div class="form-group">
 																							<label class="col-sm-4 no-padding-right" for="total"> Total:</label>
 																							<div class="col-sm-8">
 																								<input type="text" id="total" name="total" class="form-control" readonly value="0.000" /> 
-																							</div>																													
-																						</div>																											
-																					</div>																	
+																							</div>	
+																						</div>												
+																					</div>	
 																				</div>
 																			</div>
 																		</div>
-
-																		<!-- <div id="detalle" class="tab-pane fade">
-																		</div> -->
 																	</div>
 																</form>
 
@@ -468,7 +465,7 @@
 			</div>
 		<?php footer(); ?>
 
-		<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+		<a href="" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
 			<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 		</a>
 		</div>
@@ -516,19 +513,19 @@
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
-	  <div class="modal-content">
-	    <div class="modal-header">
-	      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	      <h4 class="modal-title">BUSCAR FACTURAS COMPRAS</h4>
-	    </div>
-	    <div class="modal-body">
-	        <table id="table2"></table>
-			<div id="pager2"></div>
-	    </div>
-	    <div class="modal-footer">
-	      <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-	    </div>
-	  </div>
+		<div class="modal-content">
+		    <div class="modal-header">
+		      	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		      	<h4 class="modal-title">BUSCAR FACTURAS COMPRAS</h4>
+		    </div>
+		    <div class="modal-body">
+		        <table id="table2"></table>
+				<div id="pager2"></div>
+		    </div>
+		    <div class="modal-footer">
+		      	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+		    </div>
+		</div>
 	</div>
 </div>
 

@@ -180,14 +180,38 @@
 		$guardar = guardarSql($conexion, $sql3);
 
         // Libro diario
-		$id_libro  = unique($fecha_larga);	
+		$id_libro  = unique($fecha_larga);
+
+		$consulta5 = pg_query("SELECT * FROM movimientos_bancos");
+        while ($row = pg_fetch_row($consulta5)) {
+            $saldo = $row[5];
+        }
+
+        $cal = $saldo + $_POST['total'];	
 		
 		if($_POST['formas'] == '121615168685608245f3e51a1.74980590') {//CONTADO NO CAMBIAR EN LA BASE
 			$sql_libro = "insert into libro_diario values ('".$id_libro."','".$fecha."','".$_POST['total']."','','11501155240ac39f4e6','Factura Venta','Cuentas por Cobrar')";
 			$resp = $guardar = guardarSql($conexion,$sql_libro);				
-		} else {			
-			$sql_libro = "insert into libro_diario values ('".$id_libro."','".$fecha."','".$_POST['total']."','','11501155240ac39d2f0','Factura Venta','Cobro Contado Caja')";
-			$resp = $guardar = guardarSql($conexion,$sql_libro);	
+		} else {
+			if($_POST['formas'] == '12143618101560823fcd31766.12828699') {			
+				$sql_libro = "insert into libro_diario values ('".$id_libro."','".$fecha."','".$_POST['total']."','','11501155240ac39d2f0','Factura Venta','Cobro Contado Caja')";
+				$resp = $guardar = guardarSql($conexion,$sql_libro);
+
+				$sql_bancos = "INSERT INTO public.movimientos_bancos(
+		        fecha, detalle, ingreso, egreso, saldo, 
+		            referencia) values ('".$fecha."','".'Cobro Factura Venta N°:'.$_POST['serie3']."','".$_POST['total']."','','$cal','".$_POST['detalle']."')";
+				$resp = $guardar = guardarSql($conexion,$sql_bancos);
+			} else {
+				if($_POST['formas'] == '13233227715564387a42e68c1.70763457') {
+					$sql_libro = "insert into libro_diario values ('".$id_libro."','".$fecha."','".$_POST['total']."','','11501155240ac39d2f0','Factura Venta','Cobro Cheque Caja')";
+					$resp = $guardar = guardarSql($conexion,$sql_libro);
+
+					$sql_bancos = "INSERT INTO public.movimientos_bancos(
+		            fecha, detalle, ingreso, egreso, saldo, 
+		            referencia) values ('".$fecha."','".'Cobro Factura Venta N°:'.$_POST['serie3']."','".$_POST['total']."','','$cal','".$_POST['detalle']."')";
+		            $resp = $guardar = guardarSql($conexion,$sql_bancos);	
+				}	
+			}	
 		}
 
 		if($resp == 'true') {

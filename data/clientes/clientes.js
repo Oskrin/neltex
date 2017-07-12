@@ -699,73 +699,51 @@ function inicio (){
 	    });
 	}); 
 }
-	/*Formularios Servicios Administrativos*/
-	function guardar_clientes() {
-		var valores = $("#form_cliente").serialize();
-		var texto=($("#btn_0").text()).trim();
+/*Formularios Clientes*/
+function guardar_clientes() {
+	var valores = $("#form_cliente").serialize();
+	var texto=($("#btn_0").text()).trim();
 
-		if($("#txt_2").val() == "") {
+	if($("#txt_2").val() == "") {
+		alert('Campo Requerido');
+		$("#txt_2").focus();
+	} else {
+		if($("#txt_3").val() == "") {
 			alert('Campo Requerido');
-			$("#txt_2").focus();
+			$("#txt_3").focus();
 		} else {
-			if($("#txt_3").val() == "") {
+			if($("#txt_12").val() == "") {
 				alert('Campo Requerido');
-				$("#txt_3").focus();
+				$("#txt_12").focus();
 			} else {
-				if($("#txt_12").val() == "") {
-					alert('Campo Requerido');
-					$("#txt_12").focus();
+				if(texto == "Guardar") {
+					datos_clientes(valores,"g");
 				} else {
-					if(texto=="Guardar") {
-						datos_clientes(valores,"g");
-					} else {
-						datos_clientes(valores,"m");	
-					}
-					
-				}	
-			}
+					datos_clientes(valores,"m");	
+				}
+				
+			}	
 		}
-		// var resp=comprobarCamposRequired("form_cliente");
-		// if(resp==true){
-		// 	$("#form_cliente").on("submit",function (e){				
-		// 		var valores = $("#form_cliente").serialize();
-		// 		var texto=($("#btn_0").text()).trim();	
-		// 		if(texto=="Guardar"){		
-		// 			if($("#txt_11").val() != null){
-		// 				datos_clientes(valores,"g",e);	
-		// 			}else{
-		// 				alert("Seleccione una ciudad antes de continuar");
-		// 			}				
-		// 		}else{
-		// 			if($("#txt_11").val() != null) {
-		// 				datos_clientes(valores,"m",e);	
-		// 			}else{
-		// 				alert("Seleccione una ciudad antes de continuar");
-		// 			}
-		// 		}
-		// 		e.preventDefault();
-	 //    		$(this).unbind("submit")
-		// 	});
-		// }
 	}
+}
 
 
 function datos_clientes(valores,tipo,p){	
 	$.ajax({				
 		type: "POST",
 		data: valores+"&tipo="+tipo,
-		//contentType: "application/x-www-form-urlencoded;charset=ISO-8859-15",
 		url: "clientes.php",			
 	    success: function(data) {	
 	    	if( data == 0 ) {			
 	    		alert('Datos Agregados Correctamente');	
-	    		$('#table').trigger('reloadGrid');							
-	    	}else{
-	    		if( data == 1 ){
+	    		$('#table').trigger('reloadGrid');
+	    		actualizar_form();							
+	    	} else {
+	    		if( data == 1 ) {
 	    			alert('Este nro de ' +$("#txt_1").val()+  ' ya existe ingrese otro');	
 	    			$("#txt_2").val("");
 	    			$("#txt_2").focus();	    			
-	    		}else{
+	    		} else {
 	    			alert("Error al momento de enviar los datos la página se recargara");	    			
 	    			actualizar_form();
 	    		}

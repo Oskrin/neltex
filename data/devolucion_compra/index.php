@@ -61,10 +61,10 @@
 									<div class="widget-header">
 										<h5 class="widget-title">Devolución Compra</h5>
 										<div class="widget-toolbar">
-											<a href="#" data-action="fullscreen" class="orange2">
+											<a href="" data-action="fullscreen" class="orange2">
 												<i class="ace-icon fa fa-expand"></i>
 											</a>
-											<a href="#" data-action="reload">
+											<a href="" data-action="reload">
 												<i class="ace-icon fa fa-refresh"></i>
 											</a>
 										</div>
@@ -72,9 +72,8 @@
 
 									<div class="widget-body">
 										<div class="widget-main">
-
 											<div class="row">
-												<form class="form-horizontal" role="form" rol="form" action="" method="POST" id="form_devolucionCompra">	
+												<form class="form-horizontal" rol="form" method="POST" id="form_devolucionCompra">	
 													<div class="row">
 														<div class="col-md-12 pull-right">
 															<div class="col-md-4">
@@ -119,35 +118,45 @@
 																	<label class="col-sm-6 control-label no-padding-right" for="txt_nro_identificacion">Nro de Identificación:</label>
 																	<div class="col-sm-6">
 																	<input type="hidden" id="id_proveedor" name="id_proveedor">
-																		<select class="chosen-select form-control" id="txt_nro_identificacion" name="txt_nro_identificacion" data-placeholder="Buscar...." >	                                                                        
-	                                                                        <option value=""> </option>	                                                                        
+																		<select class="chosen-select form-control" id="txt_nro_identificacion" name="txt_nro_identificacion" data-placeholder="Buscar...." >             
+	                                                                        <option value=""> </option>                                          
 	                                                                    </select>
 																	</div>	
 																</div>
+
+																<div class="form-group">
+																	<label class="col-sm-4 control-label no-padding-right" for="formas"> Detalle Devolución:</label>
+																	<div class="col-sm-8">
+																		<textarea id="detalle" name="detalle" placeholder="" class="form-control col-sm-12"></textarea>
+																	</div>													
+																</div>
 															</div>
+
 															<div class="col-sm-4">
 																<div class="form-group">
 																	<label class="col-sm-5 control-label no-padding-right" for="txt_nombre_proveedor">Proveedor: </label>
 																	<div class="col-sm-7">
-																		<select class="chosen-select form-control" id="txt_nombre_proveedor" name="txt_nombre_proveedor" data-placeholder="Buscar....">	                                                                        
-	                                                                        <option value=""> </option>	                                                                        
+																		<select class="chosen-select form-control" id="txt_nombre_proveedor" name="txt_nombre_proveedor" data-placeholder="Buscar....">                  
+	                                                                        <option value=""> </option>                                           
 	                                                                    </select>
 																	</div>
 																</div>
-															</div>														
+															</div>
+
 															<div class="col-sm-4">
 																<div class="form-group">
 																	<label class="col-sm-5 control-label no-padding-right" for="txt_nro_factura">Nro. Factura:</label>
 																	<div class="col-sm-7">
 																		<input type="hidden" id="id_factura_compra" name="id_factura_compra" />
-																		<select class="chosen-select form-control" id="txt_nro_factura" name="txt_nro_factura" data-placeholder="Buscar....">	                                                                        
-	                                                                        <option value=""> </option>	                                                                        
+																		<select class="chosen-select form-control" id="txt_nro_factura" name="txt_nro_factura" data-placeholder="Buscar....">                     
+	                                                                        <option value=""> </option>                                          
 	                                                                    </select>
-																	</div>																											
+																	</div>								
 																</div>
 															</div>													
 														</div>
-													</div>	
+													</div>
+
 													<div class="row ">
 														<div class="col-xs-12">
 															<div class="col-xs-12">
@@ -163,36 +172,36 @@
 															<div class="col-xs-2">
 																<div class="row">
 																	<div class="col-xs-12">
-																		<label> Codigo de Barra:</label>
+																		<label>Codigo de Barra:</label>
 																	</div>
 																</div>
 																<div class="row">
 																	<div class="col-xs-12">
-																		<input type="text" id="codigo_barras" name="codigo_barras"  class="form-control" data-toggle="tooltip"  /> 																					
+																		<input type="text" id="codigo_barras" name="codigo_barras" class="form-control" /> 																					
 																	</div>
 																</div>
 															</div>
 															<div class="col-xs-3">
 																<div class="row">
 																	<div class="col-xs-12">
-																		<label> Código:</label>
+																		<label>Código:</label>
 																	</div>
 																</div>
 																<div class="row">
 																	<div class="col-xs-12">
-																		<input type="text" id="codigo" name="codigo"  class="form-control" data-toggle="tooltip"  /> 																		
+																		<input type="text" id="codigo" name="codigo" class="form-control" />
 																	</div>
 																</div>
 															</div>
 															<div class="col-xs-4">
 																<div class="row">
 																	<div class="col-xs-12">
-																		<label> Producto:</label>
+																		<label>Producto:</label>
 																	</div>
 																</div>
 																<div class="row">
 																	<div class="col-xs-12">
-																		<input type="text" id="producto" name="producto"  class="form-control" data-toggle="tooltip"  /> 																																				
+																		<input type="text" id="producto" name="producto" class="form-control" />
 																	</div>
 																</div>
 															</div>
@@ -203,24 +212,24 @@
 																		<div class="col-sm-4">
 																			<div class="row">
 																				<div class="col-xs-12">
-																					<label> Cantidad:</label>
+																					<label>Cantidad:</label>
 																				</div>
 																			</div>
 																			<div class="row">
 																				<div class="col-xs-12">
-																					<input type="text" id="cantidad" name="cantidad" class="form-control" data-toggle="tooltip"  value="" /> 
+																					<input type="text" id="cantidad" name="cantidad" class="form-control" /> 
 																				</div>
 																			</div>
 																		</div>
 																		<div class="col-sm-4">
 																			<div class="row">
 																				<div class="col-xs-12">
-																					<label> Precio:</label>
+																					<label>Precio:</label>
 																				</div>
 																			</div>
 																			<div class="row">
 																				<div class="col-xs-12">
-																					<input type="text" id="precio" name="precio" onkeydown="return validarNumeros(event)" value="0.00" class="form-control" data-toggle="tooltip"  /> 
+																					<input type="text" id="precio" name="precio" onkeydown="return validarNumeros(event)" value="0.00" class="form-control"   /> 
 																				</div>
 																			</div>
 																		</div>
@@ -232,12 +241,12 @@
 																			</div>
 																			<div class="row">
 																				<div class="col-xs-12">
-																					<input type="text" readonly id="descuento" name="descuento" class="form-control" data-toggle="tooltip" value="0" min="0" maxlength="3" /> 
-																					<input type="hidden" id="stock" name="stock" class="form-control" data-toggle="tooltip" /> 
-																					<input type="hidden" id="id_productos" name="id_productos" class="form-control" data-toggle="tooltip" /> 
-																					<input type="hidden" id="iva_producto" name="iva_producto" class="form-control" data-toggle="tooltip" /> 
-																					<input type="hidden" id="incluye" name="incluye" class="form-control" data-toggle="tooltip" />
-																					<input type="hidden" id="inventar" name="inventar" class="form-control" data-toggle="tooltip" />  
+																					<input type="text" readonly id="descuento" name="descuento" class="form-control" value="0" /> 
+																					<input type="hidden" id="stock" name="stock" class="form-control" /> 
+																					<input type="hidden" id="id_productos" name="id_productos" class="form-control" /> 
+																					<input type="hidden" id="iva_producto" name="iva_producto" class="form-control" /> 
+																					<input type="hidden" id="incluye" name="incluye" class="form-control" />
+																					<input type="hidden" id="inventar" name="inventar" class="form-control" />  
 																				</div>
 																			</div>
 																		</div>
@@ -339,7 +348,7 @@
 			</div>
 		<?php footer(); ?>
 
-		<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+		<a href="" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
 			<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 		</a>
 		</div>
@@ -386,19 +395,19 @@
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
-	  <div class="modal-content">
-	    <div class="modal-header">
-	      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	      <h4 class="modal-title">BUSCAR DEVOLUCIÓN COMPRA</h4>
-	    </div>
-	    <div class="modal-body">
-	        <table id="table2"></table>
-			<div id="pager2"></div>
-	    </div>
-	    <div class="modal-footer">
-	      <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-	    </div>
-	  </div>
+		<div class="modal-content">
+		    <div class="modal-header">
+		      	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		      	<h4 class="modal-title">BUSCAR DEVOLUCIÓN COMPRA</h4>
+		    </div>
+		    <div class="modal-body">
+		        <table id="table2"></table>
+				<div id="pager2"></div>
+		    </div>
+		    <div class="modal-footer">
+		      	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+		    </div>
+		</div>
 	</div>
 </div>
 

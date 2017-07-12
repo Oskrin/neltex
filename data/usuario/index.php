@@ -62,14 +62,13 @@
 							<div class="col-xs-12 col-sm-12 widget-container-col">
 								<div class="widget-box">
 									<div class="widget-header">
-										<h5 class="widget-title"><i class="ace-icon fa fa-user"></i> Usuarios</h5>
-
+										<h5 class="widget-title"><i class="ace-icon fa fa-user"></i>Usuarios</h5>
 										<div class="widget-toolbar">
-											<a href="#" data-action="fullscreen" class="orange2">
+											<a href="" data-action="fullscreen" class="orange2">
 												<i class="ace-icon fa fa-expand"></i>
 											</a>
 
-											<a href="#" id="reload" data-action="reload">
+											<a href="" id="reload" data-action="reload">
 												<i class="ace-icon fa fa-refresh"></i>
 											</a>
 										</div>
@@ -78,13 +77,13 @@
 									<div class="widget-body">
 										<div class="widget-main">
 											<div class="row">
-												<form class="form-horizontal" role="form" rol="form" action="" method="POST" id="form_usuario">												
+												<form class="form-horizontal" name="form_usuario" id="form_usuario" autocomplete="off">		
 													<div class="row">
 														<div class="col-xs-12">
 															<div class="col-xs-2">
 																<div class="form-group">
 																	<div class="col-xs-12">
-																		<div class="col-xs-12">																									
+																		<div class="col-xs-12">				
 																			<span class="profile-picture">
 																				<img id="avatar" name="avatar" class="editable img-responsive" alt="Empresa x" src="img/defaul.png" accept="image/*"/>
 																			</span>
@@ -95,11 +94,11 @@
 
 															<div class="col-sm-5">
 																<div class="form-group has-error">
-																	<label class="col-sm-3 control-label no-padding-right" for="txt_1"> C.I./RUC (*):</label>
+																	<label class="col-sm-3 control-label no-padding-right" for="txt_1">C.I./RUC (*):</label>
 																	<div class="col-sm-9">
-																		<input type="text" id="txt_1" name="txt_1"  placeholder="Identificación" class="col-xs-10 col-sm-5" data-toggle="tooltip" data-original-title="Agregue el nro de CI en caso de ser extranjero seleccione la casilla Extranjero" required pattern="[0-9]{1,}" maxlength="10" />
+																		<input type="text" id="txt_1" name="txt_1"  placeholder="Identificación" class="col-xs-10 col-sm-5" maxlength="10" />
 																		<input type="hidden" id="txt_o" name="txt_o" />
-																		<span class="help-inline col-xs-12 col-sm-7">																			
+																		<span class="help-inline col-xs-12 col-sm-7">				
 																			<div class="checkbox">
 																				<label class="block">
 																					<input name="form-field-checkbox" id="form-field-checkbox" type="checkbox" class="ace input-lg" />
@@ -111,9 +110,9 @@
 																</div>
 
 																<div class="form-group has-error">
-																	<label class="col-sm-3 control-label no-padding-right" for="txt_2"> Nombres y Apellidos (*): </label>
+																	<label class="col-sm-3 control-label no-padding-right" for="txt_2">Nombres y Apellidos (*): </label>
 																	<div class="col-sm-9">
-																		<input type="text" id="txt_2" name="txt_2" placeholder="Nombres Completo" class="form-control" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9 ]{1,}" data-toggle="tooltip" data-original-title="Nombres completos"  />
+																		<input type="text" id="txt_2" name="txt_2" placeholder="Nombres Completo" class="form-control" />
 																	</div>
 																</div>																								
 																<div class="form-group">
@@ -127,23 +126,23 @@
 																</div>
 
 																<div class="form-group has-error">
-																	<label class="col-sm-3 control-label no-padding-right" for="txt_13"> Usuario (*): </label>
+																	<label class="col-sm-3 control-label no-padding-right" for="txt_13">Usuario (*): </label>
 																	<div class="col-sm-9">
-																		<input type="text" id="txt_13" name="txt_13" placeholder="Nombre de usuario" class="form-control" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9]{1,}" data-toggle="tooltip" data-original-title="Nombres de usuario"  />
+																		<input type="text" id="txt_13" name="txt_13" placeholder="Nombre de usuario" class="form-control" />
 																	</div>
 																</div>	
 
 																<div class="form-group has-error">
-																	<label class="col-sm-3 control-label no-padding-right" for="txt_5"> Contraseña (*): </label>
+																	<label class="col-sm-3 control-label no-padding-right" for="txt_5">Contraseña (*): </label>
 																	<div class="col-sm-9">
-																		<input type="password" id="txt_5" name="txt_5" placeholder="Contraseña" class="form-control" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9]{6,}" data-toggle="tooltip" data-original-title="Digite la contraseña del usuario mínimo 5 carácteres"/>
+																		<input type="password" id="txt_5" name="txt_5" placeholder="Contraseña" class="form-control" />
 																	</div>
 																</div>
 
 																<div class="form-group has-error">
 																	<label class="col-sm-3 control-label no-padding-right" for="txt_6"> Confirmar Contraseña (*): </label>
 																	<div class="col-sm-9">
-																		<input type="password" id="txt_6" name="txt_6" placeholder="Confirmar Contraseña" class="form-control" data-toggle="tooltip" data-original-title="Repita la contraseña ingresada"/>
+																		<input type="password" id="txt_6" name="txt_6" placeholder="Confirmar Contraseña" class="form-control" />
 																	</div>
 																</div>
 															</div>
@@ -172,7 +171,7 @@
 																<div class="form-group">
 																	<label class="col-sm-3 control-label no-padding-right" for="txt_4"> Cargo: </label>
 																	<div class="col-sm-9">
-																		<select class="chosen-select form-control" id="txt_4" name="txt_4" data-placeholder="Cargo">																			
+																		<select class="chosen-select form-control" id="txt_4" name="txt_4" data-placeholder="Cargo">	
 																		</select>
 																	</div>
 																</div>	
@@ -254,132 +253,135 @@
 
 			<?php footer(); ?>
 
-			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+			<a href="" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
 				<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 			</a>
 		</div><!-- /.main-container -->
 
-		<!-- Modal -->
+		<!-- Modal Buscar Usuarios-->
 		<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="myModal">
 		    <div class="modal-dialog modal-lg">
-		      <div class="modal-content">
-		        <div class="modal-header">
-		          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		          <h4 class="modal-title">BUSCAR USUARIOS</h4>
-		        </div>
-		        <div class="modal-body">
-		            <table id="table"></table>
-					<div id="pager"></div>
-		        </div>
-		        <div class="modal-footer">
-		          <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
-		        </div>
-		      </div><!-- /.modal-content -->
-		    </div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->
-
-		<!-- Modal categoria-->
-		  <div class="modal fade" id="modal_pais" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		    <div class="modal-dialog">
-		      <div class="modal-content blue">
-		        <div class="modal-header">
-		          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		          <h4 class="modal-title">AGREGAR PAÍS</h4>
-		        </div>
-		        <form class="form-horizontal" role="form" rol="form" action="" method="POST" id="form_pais">
-		        	<div class="modal-body">		            
-		            	<div class="form-group has-error">
-							<label class="col-sm-3 control-label no-padding-right" for="txt_pais">Nombre País:</label>
-							<div class="col-sm-7">
-								<input type="text" id="txt_pais" name="txt_pais"  placeholder="Nombre País" class="form-control" />
-							</div>
-						</div>								            
-		        	</div>
-		        	<div class="modal-footer">
-			          	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-			         	<button type="button" class="btn btn-primary" id="btn_guardar_pais">Guardar</button>
+			    <div class="modal-content">
+			        <div class="modal-header">
+			          	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			          	<h4 class="modal-title">BUSCAR USUARIOS</h4>
 			        </div>
-		        </form>
-		      </div><!-- /.modal-content -->
-		    </div><!-- /.modal-dialog -->
-		  </div><!-- /.modal -->
-
-
-		  <!-- Modal categoria-->
-		  <div class="modal fade" id="modal_provincia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		    <div class="modal-dialog">
-		      <div class="modal-content blue">
-		        <div class="modal-header">
-		          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		          <h4 class="modal-title">AGREGAR PROVINCIA</h4>
-		        </div>
-		        <form class="form-horizontal" role="form" rol="form" action="" method="POST" id="form_provincia">
-		        	<div class="modal-body">
-		        		<div class="form-group has-error">
-							<label class="col-sm-3 control-label no-padding-right" for="cmb_pais"> País: </label>
-							<div class="col-sm-7">
-								<select class="select2" id="cmb_pais" name="cmb_pais" data-placeholder="País">
-								</select>																	
-							</div>
-						</div>
-
-		            	<div class="form-group has-error">
-							<label class="col-sm-3 control-label no-padding-right" for="txt_provincia">Nombre Provincia:</label>
-							<div class="col-sm-7">
-								<input type="text" id="txt_provincia" name="txt_provincia"  placeholder="Nombre Provincia" class="form-control" />
-							</div>
-						</div>								            
-		        	</div>
-		        	<div class="modal-footer">
-			          	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-			         	<button type="button" class="btn btn-primary" id="btn_guardar_provincia">Guardar</button>
+			        <div class="modal-body">
+			            <table id="table"></table>
+						<div id="pager"></div>
 			        </div>
-		        </form>
-		      </div><!-- /.modal-content -->
-		    </div><!-- /.modal-dialog -->
-		  </div><!-- /.modal -->
-
-		  <!-- Modal ciudad-->
-		  <div class="modal fade" id="modal_ciudad" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		    <div class="modal-dialog">
-		      <div class="modal-content blue">
-		        <div class="modal-header">
-		          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		          <h4 class="modal-title">AGREGAR CIUDAD</h4>
-		        </div>
-		        <form class="form-horizontal" role="form" rol="form" action="" method="POST" id="form_ciudad">
-		        	<div class="modal-body">
-		        		<div class="form-group has-error">
-							<label class="col-sm-3 control-label no-padding-right" for="cmb_pais2"> País: </label>
-							<div class="col-sm-7">
-								<select class="select2" id="cmb_pais2" name="cmb_pais2" data-placeholder="País">
-								</select>																	
-							</div>
-						</div>
-
-						<div class="form-group has-error">
-							<label class="col-sm-3 control-label no-padding-right" for="cmb_provincia"> Provincia: </label>
-							<div class="col-sm-7">
-								<select class="select2" id="cmb_provincia" name="cmb_provincia" data-placeholder="País">
-								</select>																	
-							</div>
-						</div>
-
-		            	<div class="form-group has-error">
-							<label class="col-sm-3 control-label no-padding-right" for="txt_ciudad">Nombre Ciudad:</label>
-							<div class="col-sm-7">
-								<input type="text" id="txt_ciudad" name="txt_ciudad"  placeholder="Nombre Ciudad" class="form-control" />
-							</div>
-						</div>								            
-		        	</div>
-		        	<div class="modal-footer">
-			          	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-			         	<button type="button" class="btn btn-primary" id="btn_guardar_ciudad">Guardar</button>
+			        <div class="modal-footer">
+			          	<button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
 			        </div>
-		        </form>
-		      </div><!-- /.modal-content -->
-		    </div><!-- /.modal-dialog -->
-		  </div><!-- /.modal -->
+			    </div>
+		    </div>
+		</div>
+		<!-- /.modal -->
+
+		<!-- Modal País-->
+		<div class="modal fade" id="modal_pais" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		    <div class="modal-dialog">
+			    <div class="modal-content blue">
+			        <div class="modal-header">
+			          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			          <h4 class="modal-title">AGREGAR PAÍS</h4>
+			        </div>
+			        <form class="form-horizontal" name="form_pais" id="form_pais" autocomplete="off">
+			        	<div class="modal-body">		            
+			            	<div class="form-group has-error">
+								<label class="col-sm-3 control-label no-padding-right" for="txt_pais">Nombre País:</label>
+								<div class="col-sm-7">
+									<input type="text" id="txt_pais" name="txt_pais"  placeholder="Nombre País" class="form-control" />
+								</div>
+							</div>								            
+			        	</div>
+			        	<div class="modal-footer">
+				          	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				         	<button type="button" class="btn btn-primary" id="btn_guardar_pais">Guardar</button>
+				        </div>
+			        </form>
+			    </div>
+		    </div>
+		</div>
+		<!-- /.modal -->
+
+		<!-- Modal Provincia-->
+		<div class="modal fade" id="modal_provincia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		    <div class="modal-dialog">
+			    <div class="modal-content blue">
+			        <div class="modal-header">
+			          	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			          	<h4 class="modal-title">AGREGAR PROVINCIA</h4>
+			        </div>
+			        <form class="form-horizontal" name="form_provincia" id="form_provincia" autocomplete="off">
+			        	<div class="modal-body">
+			        		<div class="form-group has-error">
+								<label class="col-sm-3 control-label no-padding-right" for="cmb_pais"> País: </label>
+								<div class="col-sm-7">
+									<select class="select2" id="cmb_pais" name="cmb_pais" data-placeholder="País">
+									</select>																	
+								</div>
+							</div>
+
+			            	<div class="form-group has-error">
+								<label class="col-sm-3 control-label no-padding-right" for="txt_provincia">Nombre Provincia:</label>
+								<div class="col-sm-7">
+									<input type="text" id="txt_provincia" name="txt_provincia"  placeholder="Nombre Provincia" class="form-control" />
+								</div>
+							</div>								            
+			        	</div>
+			        	<div class="modal-footer">
+				          	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				         	<button type="button" class="btn btn-primary" id="btn_guardar_provincia">Guardar</button>
+				        </div>
+			        </form>
+			    </div>
+		    </div>
+		</div>
+		<!-- /.modal -->
+
+		<!-- Modal ciudad-->
+		<div class="modal fade" id="modal_ciudad" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		    <div class="modal-dialog">
+			    <div class="modal-content blue">
+			        <div class="modal-header">
+			          	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			          	<h4 class="modal-title">AGREGAR CIUDAD</h4>
+			        </div>
+			        <form class="form-horizontal" name="form_ciudad" id="form_ciudad" autocomplete="off">
+			        	<div class="modal-body">
+			        		<div class="form-group has-error">
+								<label class="col-sm-3 control-label no-padding-right" for="cmb_pais2"> País: </label>
+								<div class="col-sm-7">
+									<select class="select2" id="cmb_pais2" name="cmb_pais2" data-placeholder="País">
+									</select>																	
+								</div>
+							</div>
+
+							<div class="form-group has-error">
+								<label class="col-sm-3 control-label no-padding-right" for="cmb_provincia">Provincia:</label>
+								<div class="col-sm-7">
+									<select class="select2" id="cmb_provincia" name="cmb_provincia" data-placeholder="Provincia">
+									</select>																	
+								</div>
+							</div>
+
+			            	<div class="form-group has-error">
+								<label class="col-sm-3 control-label no-padding-right" for="txt_ciudad">Nombre Ciudad:</label>
+								<div class="col-sm-7">
+									<input type="text" id="txt_ciudad" name="txt_ciudad"  placeholder="Nombre Ciudad" class="form-control" />
+								</div>
+							</div>								            
+			        	</div>
+			        	<div class="modal-footer">
+				          	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				         	<button type="button" class="btn btn-primary" id="btn_guardar_ciudad">Guardar</button>
+				        </div>
+			        </form>
+			    </div>
+		    </div>
+		</div>
+		<!-- /.modal -->
 
 		<script type="text/javascript">
 			window.jQuery || document.write("<script src='../../dist/js/jquery.min.js'>"+"<"+"/script>");
