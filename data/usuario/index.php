@@ -34,12 +34,8 @@
 
 	<body class="skin-2">
 		<?php menu_arriba(); ?>
-
 		<div class="main-container" id="main-container">
-			
-
 			<?php menu_lateral(); ?>
-
 			<div class="main-content">
 				<div class="main-content-inner">
 					<div class="breadcrumbs" id="breadcrumbs">
@@ -54,7 +50,6 @@
                             </li>
                             <li class="active">Ingresos</li>
                             <li class="active">Usuario</li>
-                            
                         </ul>
                     </div>
 					<div class="page-content">
@@ -153,7 +148,7 @@
 																	<div class="col-sm-9">	
 																		<span class="block input-icon input-icon-right">
 																			<input type="text" id="txt_7" name="txt_7" placeholder="Celular" class="form-control" onkeydown="return validarNumeros(event)" maxlength="10" />
-																			<i class="ace-icon fa fa-mobile fa-flip-horizontal"></i>					
+																			<i class="ace-icon fa fa-mobile fa-flip-horizontal"></i>
 																		</span>													
 																	</div>
 																</div>
