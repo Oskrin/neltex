@@ -142,31 +142,31 @@ $conexion = conectarse();
 
 													<div class="row">	
 														<div class="col-md-12">
-															<div class="col-md-4">
+															<div class="col-md-4">																		
 																<div class="form-group">
 																	<label class="col-sm-4 no-padding-right" for="form-field-1"> Dirección: </label>
 																	<div class="col-sm-8">
 																		<input type="text" id="lbl_client_direccion" name="lbl_client_direccion" class="form-control" readonly data-toggle="tooltip"  value="" /> 
-																	</div>								
-																</div>						
+																	</div>																													
+																</div>																												
 															</div>
 
-															<div class="col-md-4">
+															<div class="col-md-4">																		
 																<div class="form-group">
 																	<label class="col-sm-4 no-padding-right" for="form-field-1"> Teléfono:</label>
 																	<div class="col-sm-8">
 																	    <input type="text" id="lbl_client_telefono" name="lbl_client_telefono" class="form-control" readonly data-toggle="tooltip"  value="" /> 
-																	</div>								
-																</div>						
+																	</div>																													
+																</div>																												
 															</div>
 
-															<div class="col-md-4">
+															<div class="col-md-4">																		
 																<div class="form-group">
 																	<label class="col-sm-3 no-padding-right" for="form-field-1"> Correo:</label>
 																	<div class="col-sm-9">
 																		<input type="text" id="lbl_client_correo" name="lbl_client_correo" class="form-control" readonly data-toggle="tooltip"  value="" /> 
-																	</div>								
-																</div>							
+																	</div>																													
+																</div>																												
 															</div>																
 														</div>
 													</div>
@@ -179,21 +179,21 @@ $conexion = conectarse();
 																	<div class="col-sm-8">
 																		<select class="chosen-select form-control" id="formas" name="formas" data-placeholder="Formas de Pago">
 	                                                                    </select>
-																	</div>									
+																	</div>																														
 																</div>														 
 															</div>																
 														</div>
 													</div>	
 													
-													<!-- <div class="row ">
+													<div class="row ">
 														<div class="col-xs-12">
 															<div class="col-xs-12">
 																<h3 class="header smaller lighter green"></h3>
 															</div>
 														</div>
-													</div> -->
+													</div>
 													
-													<!-- <div class="row">
+													<div class="row">
 														<div class="col-xs-12">
 															<div class="col-xs-3">
 																<div class="row">
@@ -259,7 +259,7 @@ $conexion = conectarse();
 																</div>
 															</div>
 														</div>
-													</div> -->
+													</div>
 													
 													<div class="row">
 														<div class="col-md-12">
@@ -268,12 +268,7 @@ $conexion = conectarse();
 													</div>
 
 													<div class="col-xs-12">
-														
 														<div class="tabbable">
-															<table id="table5"></table>
-															<div id="pager5"></div>	
-														</div>
-														<!-- <div class="tabbable">
 															<ul class="nav nav-tabs" id="myTab">
 																<li class="active">
 																	<a data-toggle="tab" href="#pagos">
@@ -320,10 +315,10 @@ $conexion = conectarse();
 										                            </row>    
 											                    </div>
 										                    </div>    
-									                    </div>   -->  
+									                    </div>    
 								                    </div>    
 
-													<!-- <div class="row">
+													<div class="row">
 														<div class="col-md-12">
 															<div class="col-md-5">
 																<div class="form-group">
@@ -336,7 +331,7 @@ $conexion = conectarse();
 															<div class="col-md-7">																		
 															</div>																	
 														</div>
-													</div> -->
+													</div>
 
 													<div class="row">
 														<div class="col-md-12">
@@ -351,30 +346,30 @@ $conexion = conectarse();
 															<i class="ace-icon fa fa-floppy-o bigger-120 write"></i>
 															Buscar Facturas
 														</button>													 
-														<!-- <button type="button" class="btn btn-primary" id="btn_0">
+														<button type="button" class="btn btn-primary" id="btn_0">
 															<i class="ace-icon fa fa-floppy-o bigger-120 write"></i>
 															Guardar
-														</button> -->
-														<!-- <button type="button" id="btn_1" class="btn btn-primary">
+														</button>
+														<button type="button" id="btn_1" class="btn btn-primary">
 															<i class="ace-icon fa fa-file-o bigger-120 write"></i>
 															Limpiar
-														</button> -->
+														</button>
 														<button type="button" id="btn_2" class="btn btn-primary">
 															<i class="ace-icon fa fa-refresh bigger-120 write"></i>
 															Actualizar
 														</button>														
-														<!-- <button data-toggle="modal" href="#myModal" type="button" id="btn_3" class="btn btn-primary">
+														<button data-toggle="modal" href="#myModal" type="button" id="btn_3" class="btn btn-primary">
 															<i class="ace-icon fa fa-search bigger-120 write"></i>
 															Buscar
-														</button> -->
-														<!-- <button type="button" id="btn_4" class="btn btn-primary">
+														</button>
+														<button type="button" id="btn_4" class="btn btn-primary">
 															<i class="ace-icon fa fa-arrow-circle-left bigger-120 write"></i>
 															Atras
 														</button>
 														<button type="button" id="btn_5" class="btn btn-primary">
 															<i class="ace-icon fa fa fa-arrow-circle-right bigger-120 write"></i>
 															Adelante
-														</button> -->
+														</button>
 													</div>
 												</div>
 

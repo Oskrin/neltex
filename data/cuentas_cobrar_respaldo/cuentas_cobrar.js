@@ -1,18 +1,5 @@
 $(document).on("ready",inicio);
 
-function myFunction(id) {
-  $.ajax({
-      url: "cuentas_cobrar.php",
-      data: {guardar_cuentas:'guardar_cuentas', id: id},                   
-      type: "POST",       
-      success: function(data) { 
-      var myWindow = window.open("../../reportes/comprobante_pago.php?id="+data,'_blank');      
-      recargar();
-    },    
-  });
-    // var myWindow = window.open("../../reportes/proforma.php?id="+id,'_blank');
-}
-
 function recargar() {
   setTimeout(function() {
     location.reload();
@@ -380,34 +367,32 @@ colModel:[
             },
             ondblClickRow: function(rowid) {                                    
                 var gsr = jQuery(grid_selector).jqGrid('getGridParam','selrow');                                              
-                var ret = jQuery(grid_selector).jqGrid('getRowData',gsr);
+                var ret = jQuery(grid_selector).jqGrid('getRowData',gsr); 
 
-                jQuery("#table5").jqGrid('setGridParam',{url:"xml_detalle_pagos.php?id_pagos_venta="+ret.id_pagos_venta,page:1}).trigger("reloadGrid");
+                $("#id_pagos_venta").val(ret.id_pagos_venta);
+                $("#num_factura").val(ret.num_factura);
+                $("#fecha_factura").val(ret.fecha_factura);
+                $("#totalcxc").val(ret.totalcxc);
+                $("#saldo2").val(ret.saldo); 
 
-               //  $("#id_pagos_venta").val(ret.id_pagos_venta);
-               //  $("#num_factura").val(ret.num_factura);
-               //  $("#fecha_factura").val(ret.fecha_factura);
-               //  $("#totalcxc").val(ret.totalcxc);
-               //  $("#saldo2").val(ret.saldo); 
+                $("#tablaNuevo tbody").empty(); 
 
-               //  $("#tablaNuevo tbody").empty(); 
-
-               //  $.ajax({
-               //      type: "POST",
-               //      url: "buscar_pagos.php",    
-               //      data: "id=" + ret.id_pagos_venta,
-               //      dataType: 'json',
-               //      success: function(response) {
-               //      $("#tablaNuevo").css('display','inline-table');
-               //      for (var i = 0; i < response.length; i=i+3) {
-               //              $("#tablaNuevo tbody").append( "<tr>" +
-               //              "<td align=center >" + response[i+0] + "</td>" +
-               //              "<td align=center>" + response[i+1] + "</td>" +             
-               //              "<td align=center>" + response[i+2] + "</td>" +                         
-               //             "<tr>");                    
-               //          }
-               //     }                    
-               // });
+                $.ajax({
+                    type: "POST",
+                    url: "buscar_pagos.php",    
+                    data: "id=" + ret.id_pagos_venta,
+                    dataType: 'json',
+                    success: function(response) {
+                    $("#tablaNuevo").css('display','inline-table');
+                    for (var i = 0; i < response.length; i=i+3) {
+                            $("#tablaNuevo tbody").append( "<tr>" +
+                            "<td align=center >" + response[i+0] + "</td>" +
+                            "<td align=center>" + response[i+1] + "</td>" +             
+                            "<td align=center>" + response[i+2] + "</td>" +                         
+                           "<tr>");                    
+                        }
+                   }                    
+               });
                 $('#modal_facturas').modal('hide');                 
             }
         });
@@ -592,233 +577,5 @@ colModel:[
 jQuery(window).bind('resize', function () {
 jQuery("#list").setGridWidth(jQuery('#grid_container').width(), true);
 }).trigger('resize');
-
-
-
-    // ----------------------detalles pagos-------------------------
-      var grid_selector5 = "#table5";
-      var pager_selector5 = "#pager5";
-      
-      $(window).on('resize.jqGrid', function () {
-      $(grid_selector5).jqGrid( 'setGridWidth', $(".tabbable").width()-800);
-      }).trigger('resize');  
-
-      var parent_column = $(grid_selector5).closest('[class*="col-"]');
-    $(document).on('settings.ace.jqGrid' , function(ev, event_name, collapsed) {
-      if( event_name === 'sidebar_collapsed' || event_name === 'main_container_fixed' ) {
-        //setTimeout is for webkit only to give time for DOM changes and then redraw!!!
-        setTimeout(function() {
-          $(grid_selector5).jqGrid( 'setGridWidth', parent_column.width() );
-        }, 0);
-      }
-      })
-
-      // buscador notas
-      jQuery(grid_selector5).jqGrid({  
-        datatype: "xml",
-        // url: 'xml_detalle_pagos.php',     
-          autoencode: false,
-          colNames: ['Id','Id_pagos','Fecha Pagos','Cuota','Saldo','Estado','Acción'],
-                colModel: [
-                {name: 'id_detalles_pagos_venta', index: 'id_detalles_pagos_venta', editable: false, search: false, hidden: true, editrules: {edithidden: false}, align: 'center',frozen: true, width: 50},
-                {name: 'id_pagos_venta', index: 'id_pagos_venta', editable: false, search: false, hidden: true, editrules: {edithidden: false}, align: 'center',frozen: true, width: 50},
-                {name: 'fecha_pagos', index: 'fecha_pagos', editable: false, search: false, hidden: false, editrules: {edithidden: false}, align: 'center', frozen: true, width: 180},
-                {name: 'cuota', index: 'cuota', editable: true, frozen: true, hidden: false, editrules: {required: true}, align: 'center', width: 150},
-                {name: 'saldo', index: 'saldo', editable: true, search: false, frozen: true, hidden: false, editrules: {required: true}, align: 'center', width: 110},
-                {name: 'estado', index: 'estado', editable: true, frozen: true, hidden: false, editrules: {required: true}, align: 'center', width: 120},
-                {name: 'accion', index: 'accion', editable: true, frozen: true, hidden: false, editrules: {required: true}, align: 'center', width: 120}
-            ],         
-          rowNum: 10,       
-          width:600,
-          shrinkToFit: false,
-          height:330,
-          rowList: [10,20,30],
-          pager: pager_selector5,        
-          sortname: 'id_detalles_pagos_venta',
-          sortorder: 'asc',
-          altRows: true,
-          multiselect: false,
-          viewrecords : true,
-          loadComplete : function() {
-              var table = this;
-              setTimeout(function(){
-                  styleCheckbox(table);
-                  updateActionIcons(table);
-                  updatePagerIcons(table);
-                  enableTooltips(table);
-              }, 0);
-          },
-          gridComplete: function() {
-            var ids = jQuery(grid_selector5).jqGrid('getDataIDs');
-            for(var i = 0;i < ids.length;i++) {
-                var id = ids[i];
-                cancelar = "<a onclick=myFunction('"+id+"') title='Cancelar Pago' style='cursor:pointer; cursor: hand'> CANCELAR</a>";                    
-                jQuery(grid_selector5).jqGrid('setRowData',ids[i],{accion: cancelar});
-            }       
-        },
-          ondblClickRow: function(rowid) {                                   
-          },
-          caption: "LISTA PAGOS"
-      });
-
-      $(window).triggerHandler('resize.jqGrid');//cambiar el tamaño para hacer la rejilla conseguir el tamaño correcto
-
-      function aceSwitch( cellvalue, options, cell ) {
-          setTimeout(function(){
-              $(cell) .find('input[type=checkbox]')
-              .addClass('ace ace-switch ace-switch-5')
-              .after('<span class="lbl"></span>');
-          }, 0);
-      }          
-
-      jQuery(grid_selector5).jqGrid('navGrid',pager_selector5,
-      {   //navbar options
-          edit: false,
-          editicon : 'ace-icon fa fa-pencil blue',
-          add: false,
-          addicon : 'ace-icon fa fa-plus-circle purple',
-          del: false,
-          delicon : 'ace-icon fa fa-trash-o red',
-          search: false,
-          searchicon : 'ace-icon fa fa-search orange',
-          refresh: true,
-          refreshicon : 'ace-icon fa fa-refresh green',
-          view: false,
-          viewicon : 'ace-icon fa fa-search-plus grey'
-      },
-      {         
-          recreateForm: true,
-          beforeShowForm : function(e) {
-              var form = $(e[0]);
-              form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
-              style_edit_form(form);
-          }
-      },
-      {
-          closeAfterAdd: true,
-          recreateForm: true,
-          viewPagerButtons: false,
-          beforeShowForm : function(e) {
-              var form = $(e[0]);
-              form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar')
-              .wrapInner('<div class="widget-header" />')
-              style_edit_form(form);
-          }
-      },
-      {
-          recreateForm: true,
-          beforeShowForm : function(e) {
-              var form = $(e[0]);
-              if(form.data('styled')) return false;      
-              form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
-              style_delete_form(form); 
-              form.data('styled', true);
-          },
-          onClick : function(e) {}
-      },
-      {
-          recreateForm: true,
-          afterShowSearch: function(e){
-              var form = $(e[0]);
-              form.closest('.ui-jqdialog').find('.ui-jqdialog-title').wrap('<div class="widget-header" />')
-              style_search_form(form);
-          },
-          afterRedraw: function(){
-              style_search_filters($(this));
-          },
-
-          //multipleSearch: true
-          overlay: false,
-          sopt: ['cn', 'eq'],
-          defaultSearch: 'cn',                  
-        },
-      {
-          //view record form
-          recreateForm: true,
-          beforeShowForm: function(e){
-              var form = $(e[0]);
-              form.closest('.ui-jqdialog').find('.ui-jqdialog-title').wrap('<div class="widget-header" />')
-          }
-      })      
-      function style_edit_form(form) {
-          form.find('input[name=sdate]').datepicker({format:'yyyy-mm-dd' , autoclose:true})
-          form.find('input[name=stock]').addClass('ace ace-switch ace-switch-5').after('<span class="lbl"></span>');
-
-          //update buttons classes
-          var buttons = form.next().find('.EditButton .fm-button');
-          buttons.addClass('btn btn-sm').find('[class*="-icon"]').hide();//ui-icon, s-icon
-          buttons.eq(0).addClass('btn-primary').prepend('<i class="ace-icon fa fa-check"></i>');
-          buttons.eq(1).prepend('<i class="ace-icon fa fa-times"></i>')
-          
-          buttons = form.next().find('.navButton a');
-          buttons.find('.ui-icon').hide();
-          buttons.eq(0).append('<i class="ace-icon fa fa-chevron-left"></i>');
-          buttons.eq(1).append('<i class="ace-icon fa fa-chevron-right"></i>');       
-      }
-
-      function style_delete_form(form) {
-          var buttons = form.next().find('.EditButton .fm-button');
-          buttons.addClass('btn btn-sm btn-white btn-round').find('[class*="-icon"]').hide();//ui-icon, s-icon
-          buttons.eq(0).addClass('btn-danger').prepend('<i class="ace-icon fa fa-trash-o"></i>');
-          buttons.eq(1).addClass('btn-default').prepend('<i class="ace-icon fa fa-times"></i>')
-      }
-      
-      function style_search_filters(form) {
-          form.find('.delete-rule').val('X');
-          form.find('.add-rule').addClass('btn btn-xs btn-primary');
-          form.find('.add-group').addClass('btn btn-xs btn-success');
-          form.find('.delete-group').addClass('btn btn-xs btn-danger');
-      }
-      function style_search_form(form) {
-          var dialog = form.closest('.ui-jqdialog');
-          var buttons = dialog.find('.EditTable')
-          buttons.find('.EditButton a[id*="_reset"]').addClass('btn btn-sm btn-info').find('.ui-icon').attr('class', 'ace-icon fa fa-retweet');
-          buttons.find('.EditButton a[id*="_query"]').addClass('btn btn-sm btn-inverse').find('.ui-icon').attr('class', 'ace-icon fa fa-comment-o');
-          buttons.find('.EditButton a[id*="_search"]').addClass('btn btn-sm btn-purple').find('.ui-icon').attr('class', 'ace-icon fa fa-search');
-      }
-      
-      function beforeDeleteCallback(e) {
-          var form = $(e[0]);
-          if(form.data('styled')) return false; 
-          form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
-          style_delete_form(form);
-          form.data('styled', true);
-      }
-      
-      function beforeEditCallback(e) {
-          var form = $(e[0]);
-          form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
-          style_edit_form(form);
-      }
-
-      function styleCheckbox(table) {}
-      
-
-      function updateActionIcons(table) {}
-      
-      function updatePagerIcons(table) {
-          var replacement = 
-              {
-              'ui-icon-seek-first' : 'ace-icon fa fa-angle-double-left bigger-140',
-              'ui-icon-seek-prev' : 'ace-icon fa fa-angle-left bigger-140',
-              'ui-icon-seek-next' : 'ace-icon fa fa-angle-right bigger-140',
-              'ui-icon-seek-end' : 'ace-icon fa fa-angle-double-right bigger-140'
-          };
-          $('.ui-pg-table:not(.navtable) > tbody > tr > .ui-pg-button > .ui-icon').each(function(){
-              var icon = $(this);
-              var $class = $.trim(icon.attr('class').replace('ui-icon', ''));
-              if($class in replacement) icon.attr('class', 'ui-icon '+replacement[$class]);
-          })
-      }
-
-      function enableTooltips(table) {
-          $('.navtable .ui-pg-button').tooltip({container:'body'});
-          $(table).find('.ui-pg-div').tooltip({container:'body'});
-      }
-
-      $(document).one('ajaxloadstart.page', function(e) {
-          $(grid_selector5).jqGrid('GridUnload');
-          $('.ui-jqdialog').remove();
-      });
 
 }
