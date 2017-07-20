@@ -1,14 +1,14 @@
 $(document).on("ready",inicio);
 
 /*--*/
-function inicio (){
+function inicio () {
 	function recargar() {
 	  setTimeout(function() {
 	    location.reload();
 	  }, 2000);  
 	}
 
-	$("#reload").click(function (){
+	$("#reload").click(function() {
 		actualizar_form();
 	});
 	$("input:not([readonly='readonly']):text:visible:first").focus();   
@@ -20,10 +20,7 @@ function inicio (){
                                 '<button type="button" class="btn editable-cancel"><i class="ace-icon fa fa-times"></i></button>';    				
 	
 	// *** editable avatar *** //
-	try {//ie8 throws some harmless exceptions, so let's catch'em
-
-		//first let's add a fake appendChild method for Image element for browsers that have a problem with this
-		//because editable plugin calls appendChild, and it causes errors on IE at unpredicted points
+	try {
 		try {
 			document.createElement('IMG').appendChild(document.createElement('B'));
 		} catch(e) {
@@ -66,10 +63,6 @@ function inicio (){
 				}
 			},
 		    url: function(params) {
-				// ***UPDATE AVATAR HERE*** //
-				//for a working upload example you can replace the contents of this function with 
-				//examples/profile-avatar-update.js
-
 				var deferred = new $.Deferred
 
 				var value = $('#avatar').next().find('input[type=hidden]:eq(0)').val();
@@ -79,13 +72,11 @@ function inicio (){
 					return deferred.promise();
 				}
 
-
 				//dummy upload
 				setTimeout(function(){
 					if("FileReader" in window) {
 						//for browsers that have a thumbnail of selected image						
 						var thumb = $('#avatar').next().find('img').data('thumb');
-
 						if(thumb) $('#avatar').get(0).src = thumb;
 					}
 					
@@ -229,11 +220,6 @@ function inicio (){
 	$("#cmb_pais2").change(function() {
 		change_pais("cmb_pais2","cmb_provincia");
 	});
-
-	/*-----------------------*/
-	$("input").on("keyup click",function (e){//campos requeridos		
-		comprobarCamposRequired(e.currentTarget.form.id)
-	});	
 
 	/*cargar el select de cargos*/
     $.ajax({          
@@ -405,8 +391,7 @@ function inicio (){
 		    });	
 		} else {
 			alert("Sin registros anteriores");
-		}		
-	    comprobarCamposRequired("form_usuario");		    	            
+		}				    	            
 	    $("#btn_0").text("");
         $("#btn_0").append("<span class='glyphicon glyphicon-log-in'></span> Modificar");     	            
         /**/
@@ -506,8 +491,7 @@ function inicio (){
 		    });	
 		} else {
 			alert("Sin registros superiores");
-		}		
-	    comprobarCamposRequired("form_usuario");		    	            
+		}				    	            
 	    $("#btn_0").text("");
         $("#btn_0").append("<span class='glyphicon glyphicon-log-in'></span> Modificar");     	            
 	});   
@@ -672,8 +656,7 @@ function inicio (){
 			        }                   
 			    });			    	            
 	            /**/
-	            $('#myModal').modal('hide');
-	            comprobarCamposRequired("form_usuario");  
+	            $('#myModal').modal('hide'); 
 	            $("#btn_0").text("");
 	            $("#btn_0").append("<span class='glyphicon glyphicon-log-in'></span> Modificar");     	            
 	        },

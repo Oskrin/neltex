@@ -29,6 +29,7 @@ function inicio (){
 	});
 	// fin
 
+	// agregar pais
 	$('#btn_guardar_pais').on('click', function() {
 		$.ajax({
 		    url: "clientes.php",
@@ -57,7 +58,9 @@ function inicio (){
 			}		
 		});
 	});
+	// fin
 
+	// agregar provincia
 	$('#btn_guardar_provincia').on('click', function() {
 		$.ajax({
 		    url: "clientes.php",
@@ -85,7 +88,9 @@ function inicio (){
 			},		
 		});
 	});
+	// fin
 
+	// agregar ciudad
 	$('#btn_guardar_ciudad').on('click', function() {
 		$.ajax({
 		    url: "clientes.php",
@@ -113,6 +118,7 @@ function inicio (){
 			},		
 		});
 	});
+	// fin
 
 	carga_ubicaciones("cmb_pais");
 	carga_ubicaciones("cmb_pais2","cmb_provincia");
@@ -120,10 +126,6 @@ function inicio (){
 	$("#cmb_pais2").change(function() {
 		change_pais("cmb_pais2","cmb_provincia");
 	});
-
-	$("input").on("keyup click", function(e) {	
-		comprobarCamposRequired(e.currentTarget.form.id);
-	});	
 
 	$("#txt_1").change(function() {
 		documentos("0");
@@ -266,8 +268,7 @@ function inicio (){
 		    });	
 		} else {
 			alert("Sin registros anteriores");
-		}		
-	    comprobarCamposRequired("form_cliente");		    	            
+		}				    	            
 	    $("#btn_0").text("");
 	    $("#btn_0").append("<span class='glyphicon glyphicon-log-in'></span> Modificar");     	            
 	});
@@ -360,8 +361,7 @@ function inicio (){
 		    });	
 		} else {
 			alert("Sin registros superiores");
-		}		
-	    comprobarCamposRequired("form_cliente");		    	            
+		}				    	            
 	    $("#btn_0").text("");
 	    $("#btn_0").append("<span class='glyphicon glyphicon-log-in'></span> Modificar");
 	});
@@ -512,8 +512,7 @@ function inicio (){
 			        }                   
 			    });			    	            
 	            /**/
-	            $('#myModal').modal('hide');
-	            comprobarCamposRequired("form_cliente");  
+	            $('#myModal').modal('hide'); 
 	            $("#btn_0").text("");
 	            $("#btn_0").append("<span class='glyphicon glyphicon-log-in'></span> Modificar");     	            
 	        },
@@ -613,11 +612,7 @@ function inicio (){
 	    function style_edit_form(form) {
 	        //enable datepicker on "sdate" field and switches for "stock" field
 	        form.find('input[name=sdate]').datepicker({format:'yyyy-mm-dd' , autoclose:true})
-	        
 	        form.find('input[name=stock]').addClass('ace ace-switch ace-switch-5').after('<span class="lbl"></span>');
-	        //don't wrap inside a label element, the checkbox value won't be submitted (POST'ed)
-	        //.addClass('ace ace-switch ace-switch-5').wrap('<label class="inline" />').after('<span class="lbl"></span>');
-
 	                
 	        //update buttons classes
 	        var buttons = form.next().find('.EditButton .fm-button');
@@ -655,7 +650,6 @@ function inicio (){
 	    function beforeDeleteCallback(e) {
 	        var form = $(e[0]);
 	        if(form.data('styled')) return false;
-	        
 	        form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
 	        style_delete_form(form);
 	        
@@ -702,7 +696,7 @@ function inicio (){
 /*Formularios Clientes*/
 function guardar_clientes() {
 	var valores = $("#form_cliente").serialize();
-	var texto=($("#btn_0").text()).trim();
+	var texto = ($("#btn_0").text()).trim();
 
 	if($("#txt_2").val() == "") {
 		alert('Campo Requerido');
@@ -721,25 +715,23 @@ function guardar_clientes() {
 				} else {
 					datos_clientes(valores,"m");	
 				}
-				
 			}	
 		}
 	}
 }
+// fin
 
-
-function datos_clientes(valores,tipo,p){	
+function datos_clientes(valores,tipo,p) {	
 	$.ajax({				
 		type: "POST",
 		data: valores+"&tipo="+tipo,
 		url: "clientes.php",			
 	    success: function(data) {	
-	    	if( data == 0 ) {			
+	    	if(data == 0) {			
 	    		alert('Datos Agregados Correctamente');	
-	    		$('#table').trigger('reloadGrid');
 	    		actualizar_form();							
 	    	} else {
-	    		if( data == 1 ) {
+	    		if(data == 1) {
 	    			alert('Este nro de ' +$("#txt_1").val()+  ' ya existe ingrese otro');	
 	    			$("#txt_2").val("");
 	    			$("#txt_2").focus();	    			

@@ -136,11 +136,6 @@ function inicio () {
 	$("#cmb_pais2").change(function() {
 		change_pais("cmb_pais2","cmb_provincia");
 	});
-
-	/*-----------------------*/
-	$("input").on("keyup click",function(e) {//campos requeridos		
-		comprobarCamposRequired(e.currentTarget.form.id);
-	});	
 	
 	/*----procesos ci ruc pass-----*/
 	$("#txt_1").change(function() {
@@ -332,8 +327,7 @@ function inicio () {
 		    });	
 		} else {
 			alert("Sin registros anteriores");
-		}		
-	    comprobarCamposRequired("form_proveedores");		    	            
+		}			    	            
 	    $("#btn_0").text("");
         $("#btn_0").append("<span class='glyphicon glyphicon-log-in'></span> Modificar");
 	});
@@ -464,8 +458,7 @@ function inicio () {
 		    });	
 		} else {
 			alert("Sin registros superiores");
-		}		
-	    comprobarCamposRequired("form_proveedores");		    	            
+		}		    	            
 	    $("#btn_0").text("");
 	    $("#btn_0").append("<span class='glyphicon glyphicon-log-in'></span> Modificar");     	            
         /**/
@@ -677,8 +670,7 @@ function inicio () {
 					    });
 			        }                   
 			    });			    	            
-	            $('#myModal').modal('hide');
-	            comprobarCamposRequired("form_proveedores");  
+	            $('#myModal').modal('hide'); 
 	            $("#btn_0").text("");
 	            $("#btn_0").append("<span class='glyphicon glyphicon-log-in'></span> Modificar");     	            
 	        },
@@ -759,7 +751,7 @@ function inicio () {
 	        }
 	    },
 	    {
-	         recreateForm: true,
+	        recreateForm: true,
 	        afterShowSearch: function(e){
 	            var form = $(e[0]);
 	            form.closest('.ui-jqdialog').find('.ui-jqdialog-title').wrap('<div class="widget-header" />')
@@ -767,8 +759,7 @@ function inicio () {
 	        },
 	        afterRedraw: function(){
 	            style_search_filters($(this));
-	        }
-	        ,
+	        },
 	        //multipleSearch: true
 	        overlay: false,
 	        sopt: ['eq', 'cn'],
@@ -785,7 +776,6 @@ function inicio () {
 	    function style_edit_form(form) {
 	        //enable datepicker on "sdate" field and switches for "stock" field
 	        form.find('input[name=sdate]').datepicker({format:'yyyy-mm-dd' , autoclose:true})
-	        
 	        form.find('input[name=stock]').addClass('ace ace-switch ace-switch-5').after('<span class="lbl"></span>');
 	                
 	        //update buttons classes
@@ -901,12 +891,12 @@ function inicio () {
             	{name:'id_plan',index:'id_plan',frozen:true,align:'left',search:false,editable_1: true},            	
             	{name:'codigo_cuenta',index:'codigo_cuenta',frozen:true,align:'left',search:true,editable: true, editrules: {required: true},editoptions:{
             		dataInit:function (element,response){
-            			$(element).keyup(function(){            				            				
+            			$(element).keyup(function() {            				            				
             				var pattern = new RegExp("^[0-9.]{1,}[.]{1}$");        
-					        if($(this).val() != '' && pattern.test($(this).val())){            					        	
+					        if($(this).val() != '' && pattern.test($(this).val())) {            					        	
 					            $("#FormError").css("display","none");
 					            $("#FormError").children().text("");
-					        }else{					            					            
+					        } else {					            					            
 					        	$("#FormError").css("display","table-row");
 					            $("#FormError").children().text("Formato Requerido: 1.");
 					        }  
@@ -915,8 +905,6 @@ function inicio () {
             	}},
             	{name:'nombre_cuenta',index:'nombre_cuenta',frozen:true,align:'left',search:true,editable: true,editrules: {required: true}},            	            	
             	{name:'grupo_cuenta',index:'grupo_cuenta', width:90, editable: true,edittype:"select",editoptions:{value:"G:Grupo;M:Movimiento"}},
-            	
-
             ],
            	rowNum: 10,       
 	        width:600,
@@ -928,12 +916,11 @@ function inicio () {
 	        sortorder: 'asc',
 	        caption: 'Lista de Grupos',	        
 	        editurl:'../plan_cuentas/plan_grid.php',
-	        
 	        altRows: true,
 	        multiselect: false,
 	        multiboxonly: true,
-	        viewrecords : true,
-	        loadComplete : function() {
+	        viewrecords: true,
+	        loadComplete: function() {
 	            var table = this;
 	            setTimeout(function(){
 	                styleCheckbox(table);
@@ -988,17 +975,16 @@ function inicio () {
 				form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
 				style_edit_form(form);
 			},
-	        afterSubmit: function (response){
-	        	if(response.responseText == 0){
+	        afterSubmit: function (response) {
+	        	if(response.responseText == 0) {
 	        		$.gritter.add({
 						title: 'Mensaje',
 						text: 'Registro Guardado correctamente <i class="ace-icon fa fa-spinner fa-spin green bigger-125"></i>',
 						time: 1000				
 					});
 	        		return [true,"",""];
-
-	        	}else{
-	        		if(response.responseText == 1){	
+	        	} else {
+	        		if(response.responseText == 1) {	
 	        			$("#codigo_cuenta").val("");
 	        			return [false,"Error.. Este código ya existe"];
 		        	}	
@@ -1022,8 +1008,8 @@ function inicio () {
 	            .wrapInner('<div class="widget-header" />')
 	            style_edit_form(form);	            
 	        },	    
-	        afterSubmit: function (response){
-	        	if(response.responseText == 0){
+	        afterSubmit: function (response) {
+	        	if(response.responseText == 0) {
 	        		$.gritter.add({
 						title: 'Mensaje',
 						text: 'Registro Guardado correctamente <i class="ace-icon fa fa-spinner fa-spin green bigger-125"></i>',
@@ -1031,8 +1017,8 @@ function inicio () {
 					});
 	        		plan_cuentas();	        		
 	        		return true;
-	        	}else{
-	        		if(response.responseText == 1){	
+	        	} else {
+	        		if(response.responseText == 1) {	
 	        			$("#codigo_cuenta").val("");
 	        			return [false,"Error.. Este código ya existe"];
 		        	}	
@@ -1075,7 +1061,7 @@ function inicio () {
 	    {
 	        //view record form
 	        recreateForm: true,
-	        beforeShowForm: function(e){
+	        beforeShowForm: function(e) {
 	            var form = $(e[0]);	            
 	            form.closest('.ui-jqdialog').find('.ui-jqdialog-title').wrap('<div class="widget-header" />')
 	        }
@@ -1135,43 +1121,9 @@ function inicio () {
 	        style_edit_form(form);
 	    }
 
-
-
-	    //it causes some flicker when reloading or navigating grid
-	    //it may be possible to have some custom formatter to do this as the grid is being created to prevent this
-	    //or go back to default browser checkbox styles for the grid
-	    function styleCheckbox(table) {
-	        /**
-	                    $(table).find('input:checkbox').addClass('ace')
-	                    .wrap('<label />')
-	                    .after('<span class="lbl align-top" />')
-
-
-	                    $('.ui-jqgrid-labels th[id*="_cb"]:first-child')
-	                    .find('input.cbox[type=checkbox]').addClass('ace')
-	                    .wrap('<label />').after('<span class="lbl align-top" />');
-	         */
-	    }
+	    function styleCheckbox(table) { }
 	    
-
-	    //unlike navButtons icons, action icons in rows seem to be hard-coded
-	    //you can change them like this in here if you want
-	    function updateActionIcons(table) {
-	        /**
-	                    var replacement = 
-	                    {
-	                            'ui-ace-icon fa fa-pencil' : 'ace-icon fa fa-pencil blue',
-	                            'ui-ace-icon fa fa-trash-o' : 'ace-icon fa fa-trash-o red',
-	                            'ui-icon-disk' : 'ace-icon fa fa-check green',
-	                            'ui-icon-cancel' : 'ace-icon fa fa-times red'
-	                    };
-	                    $(table).find('.ui-pg-div span.ui-icon').each(function(){
-	                            var icon = $(this);
-	                            var $class = $.trim(icon.attr('class').replace('ui-icon', ''));
-	                            if($class in replacement) icon.attr('class', 'ui-icon '+replacement[$class]);
-	                    })
-	         */
-	    }
+	    function updateActionIcons(table) { }
 	    
 	    //replace icons with FontAwesome icons like above
 	    function updatePagerIcons(table) {
@@ -1234,7 +1186,6 @@ function inicio () {
             	{name:'formulario_103',index:'formulario_103',frozen:true,align:'left',search:true,editable: true,editrules: {required: true}},
             	{name:'porcentaje',index:'porcentaje',frozen:true,align:'left',search:true,editable: true,editrules: {required: true}},
             	{name:'descripcion',index:'descripcion',frozen:true,align:'left',search:true,editable: true,editrules: {required: true}},
-            	
             	{name:'id_plan',index:'id_plan',width:170, editable:true,sortable:true,edittype:'select',editoptions:{value:cargar_plan(),dataInit: function(elem) {
         			$(elem).width(170);  
     			}}},
@@ -1243,7 +1194,6 @@ function inicio () {
 			],
            	rowNum: 10,       
 	        width:600,
-	        
 	        height:200,
 	        rowList: [10,20,30],
 	        pager: pager_selector,        
@@ -1251,7 +1201,6 @@ function inicio () {
 	        sortorder: 'asc',
 	        caption: 'Lista de Rentenciones',	        
 	        editurl:'../retencion_fuente/retenciones_grid.php',
-	        
 	        altRows: true,
 	        multiselect: false,
 	        multiboxonly: true,
@@ -1269,10 +1218,10 @@ function inicio () {
 	            var gsr = jQuery(grid_selector).jqGrid('getGridParam','selrow');
             	var ret = jQuery(grid_selector).jqGrid('getRowData',gsr);
             	
-            	if(boton_click == 'txt_20'){
+            	if(boton_click == 'txt_20') {
             		$("#txt_20").val(ret.id_retencion);
             		$("#txt_20").trigger("chosen:updated");                                                      		
-            	}else{
+            	} else {
             		$("#txt_21").val(ret.id_retencion);
             		$("#txt_21").trigger("chosen:updated");       	
             	}            	            	
@@ -1321,17 +1270,16 @@ function inicio () {
 				form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
 				style_edit_form(form);
 			},
-	        afterSubmit: function (response){
-	        	if(response.responseText == 0){
+	        afterSubmit: function (response) {
+	        	if(response.responseText == 0) {
 	        		$.gritter.add({
 						title: 'Mensaje',
 						text: 'Registro Guardado correctamente <i class="ace-icon fa fa-spinner fa-spin green bigger-125"></i>',
 						time: 1000				
 					});
 	        		return [true,"",""];
-
-	        	}else{
-	        		if(response.responseText == 1){	
+	        	} else {
+	        		if(response.responseText == 1) {	
 	        			$("#codigo_cuenta").val("");
 	        			return [false,"Error.. Este código ya existe"];
 		        	}	
@@ -1355,8 +1303,8 @@ function inicio () {
 	            .wrapInner('<div class="widget-header" />')
 	            style_edit_form(form);	            
 	        },	    
-	        afterSubmit: function (response){
-	        	if(response.responseText == 0){
+	        afterSubmit: function (response) {
+	        	if(response.responseText == 0) {
 	        		$.gritter.add({
 						title: 'Mensaje',
 						text: 'Registro Guardado correctamente <i class="ace-icon fa fa-spinner fa-spin green bigger-125"></i>',
@@ -1364,8 +1312,8 @@ function inicio () {
 					});
 	        		codigos_retencion();	        		
 	        		return true;
-	        	}else{
-	        		if(response.responseText == 1){	
+	        	} else {
+	        		if(response.responseText == 1) {	
 	        			$("#codigo_anexo").val("");
 	        			return [false,"Error.. Este código ya existe"];
 		        	}	
@@ -1468,43 +1416,9 @@ function inicio () {
 	        style_edit_form(form);
 	    }
 
-
-
-	    //it causes some flicker when reloading or navigating grid
-	    //it may be possible to have some custom formatter to do this as the grid is being created to prevent this
-	    //or go back to default browser checkbox styles for the grid
-	    function styleCheckbox(table) {
-	        /**
-	                    $(table).find('input:checkbox').addClass('ace')
-	                    .wrap('<label />')
-	                    .after('<span class="lbl align-top" />')
-
-
-	                    $('.ui-jqgrid-labels th[id*="_cb"]:first-child')
-	                    .find('input.cbox[type=checkbox]').addClass('ace')
-	                    .wrap('<label />').after('<span class="lbl align-top" />');
-	         */
-	    }
+	    function styleCheckbox(table) { }
 	    
-
-	    //unlike navButtons icons, action icons in rows seem to be hard-coded
-	    //you can change them like this in here if you want
-	    function updateActionIcons(table) {
-	        /**
-	                    var replacement = 
-	                    {
-	                            'ui-ace-icon fa fa-pencil' : 'ace-icon fa fa-pencil blue',
-	                            'ui-ace-icon fa fa-trash-o' : 'ace-icon fa fa-trash-o red',
-	                            'ui-icon-disk' : 'ace-icon fa fa-check green',
-	                            'ui-icon-cancel' : 'ace-icon fa fa-times red'
-	                    };
-	                    $(table).find('.ui-pg-div span.ui-icon').each(function(){
-	                            var icon = $(this);
-	                            var $class = $.trim(icon.attr('class').replace('ui-icon', ''));
-	                            if($class in replacement) icon.attr('class', 'ui-icon '+replacement[$class]);
-	                    })
-	         */
-	    }
+	    function updateActionIcons(table) { }
 	    
 	    //replace icons with FontAwesome icons like above
 	    function updatePagerIcons(table) {
@@ -1542,12 +1456,13 @@ function inicio () {
 		.off('resize.chosen')
 		.on('resize.chosen', function() {
 			$('.chosen-select').each(function() {
-				 var $this = $(this);
-				 $this.next().css({'width': $this.parent().width()});
+				var $this = $(this);
+				$this.next().css({'width': $this.parent().width()});
 			});		
 			$("#txt_17").css({'width': $("#txt_18").parent().width() - 22});
 		}).trigger('resize.chosen');
 	});	
+
 	//////////////sustentos comprobantes
 	$.ajax({        
         type: "POST",
@@ -1561,8 +1476,9 @@ function inicio () {
             }   
             $("#txt_23").trigger("chosen:updated");                                          
         }
-    });	 
-    $("#txt_23").on('change',function(){        
+    });
+
+    $("#txt_23").on('change',function() {        
     	$.ajax({        
 	        type: "POST",
 	        dataType: 'json',        
@@ -1635,9 +1551,8 @@ function datos_proveedor(valores,tipo,p) {
 	    success: function(data) {	
 	    	if(data == 0) {
 	    		alert('Datos Agregados Correctamente');			
-	    		actualizar_form();
-	    		$('#table').trigger('reloadGrid');				
-	    	}else{
+	    		actualizar_form();				
+	    	} else {
 	    		if(data == 1) {
 	    			alert('Este nro de ' +$("#txt_1").val()+  ' ya existe ingrese otro');	
 	    			$("#txt_2").val("");

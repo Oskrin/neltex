@@ -4,7 +4,7 @@
     conectarse();
     $texto = $_GET['term'];
     $tipo = $_GET['tipo_precio'];
-    $consulta = pg_query("select * from productos P, porcentaje_iva I where P.id_porcentaje_iva = I.id_iva and P.estado = 'Si' and P.codigo like '%$texto%'");
+    $consulta = pg_query("SELECT * FROM productos P, porcentaje_iva I WHERE P.id_porcentaje_iva = I.id_iva AND P.estado = 'Si' AND P.codigo like '%$texto%'");
 
     while ($row = pg_fetch_row($consulta)) {
         if ($tipo == "MINORISTA") {

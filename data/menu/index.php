@@ -678,7 +678,7 @@ function menu_lateral(){
 		<b class="arrow"></b>
 	</li>';		
 	print '<li ';
-		if ($acus[3]=='categorias' || $acus[3]=='bodegas' || $acus[3]=='clientes' || $acus[3]=='marcas' || $acus[3]=='unidad_medida'|| $acus[3]=='usuario'|| $acus[3]=='empresa'|| $acus[3]=='tipo_producto'|| $acus[3]=='proveedores'|| $acus[3]=='productos'||$acus[3]=='formas_pago'||$acus[3]=='terminos_pago'||$acus[3]=='iva') {
+		if ($acus[3]=='categorias' || $acus[3]=='bodegas' || $acus[3]=='clientes' || $acus[3]=='marcas' || $acus[3]=='unidad_medida'|| $acus[3]=='usuario'|| $acus[3]=='empresa'|| $acus[3]=='tipo_producto'|| $acus[3]=='proveedores'|| $acus[3]=='empleados'|| $acus[3]=='productos'||$acus[3]=='formas_pago'||$acus[3]=='terminos_pago'||$acus[3]=='iva') {
 		print('class="active hover open"');
 		}else print('class="hover"');
 	print'>
@@ -832,6 +832,18 @@ function menu_lateral(){
 			<a href="../proveedores/">
 				<i class="menu-icon fa fa-caret-right"></i>
 				Proveedores
+			</a>
+			<b class="arrow"></b>
+		</li>';
+
+		print '<li ';
+				if ($acus[3]=='empleados') {
+					print('class="hover active"');
+				}else print'class="hover"';
+		print'>
+			<a href="../empleados/">
+				<i class="menu-icon fa fa-caret-right"></i>
+				Empleados
 			</a>
 			<b class="arrow"></b>
 		</li>';
@@ -991,17 +1003,17 @@ function menu_lateral(){
 				print '</ul>
 				</li>';
 
-				print '<li ';
-				if ($acus[3]=='nomina') {
-					print('class=" hover active"');
-				}else print('class="hover"');
-				print'>
-				<a href="../nomina/">
-					<i class="menu-icon fa fa-caret-right"></i>
-					Nómina
-				</a>
-				<b class="arrow"></b>
-				</li>';
+				// print '<li ';
+				// if ($acus[3]=='nomina') {
+				// 	print('class=" hover active"');
+				// }else print('class="hover"');
+				// print'>
+				// <a href="../nomina/">
+				// 	<i class="menu-icon fa fa-caret-right"></i>
+				// 	Nómina
+				// </a>
+				// <b class="arrow"></b>
+				// </li>';
 
 				print '<li ';
 				if ($acus[3]=='pagos') {
@@ -1010,7 +1022,7 @@ function menu_lateral(){
 				print'>
 				<a href="../pagos/">
 					<i class="menu-icon fa fa-caret-right"></i>
-					Pagos
+					Nómina
 				</a>
 				<b class="arrow"></b>
 				</li>';

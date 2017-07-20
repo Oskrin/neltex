@@ -10,7 +10,7 @@ $search = $_GET['_search'];
 
 if (!$sidx)
     $sidx = 1;
-$result = pg_query("SELECT COUNT(*) AS count from nomina, ciudad where nomina.ciudad = ciudad.id_ciudad");
+$result = pg_query("SELECT COUNT(*) AS count FROM nomina");
 $row = pg_fetch_row($result);
 $count = $row[0];
 if ($count > 0 && $limit > 0) {
@@ -24,15 +24,15 @@ $start = $limit * $page - $limit;
 if ($start < 0)
     $start = 0;
 if ($search == 'false') {
-    $SQL = "SELECT id_nomina,identificacion,nombres_completos,telefono1,telefono2,ciudad,descripcion,direccion,correo,comentario,sueldo from nomina, ciudad where nomina.ciudad = ciudad.id_ciudad ORDER BY  $sidx $sord offset $start limit $limit";
+    $SQL = "SELECT N.id_nomina, E.identificacion, E.nombres_completos, N.fecha_nomina, N.mes_nomina, N.neto_pagar FROM nomina N, empleado E WHERE N.id_empleado = E.id_empleado ORDER BY  $sidx $sord offset $start limit $limit";
 } else {
     $campo = $_GET['searchField'];
   
     if ($_GET['searchOper'] == 'eq') {
-        $SQL = "SELECT id_nomina,identificacion,nombres_completos,telefono1,telefono2,ciudad,descripcion,direccion,correo,comentario,sueldo from nomina, ciudad where nomina.ciudad = ciudad.id_ciudad and $campo = '$_GET[searchString]' ORDER BY $sidx $sord offset $start limit $limit";
+        $SQL = "SELECT N.id_nomina, E.identificacion, E.nombres_completos, N.fecha_nomina, N.mes_nomina, N.neto_pagar FROM nomina N, empleado E WHERE N.id_empleado = E.id_empleado and $campo = '$_GET[searchString]' ORDER BY $sidx $sord offset $start limit $limit";
     }         
     if ($_GET['searchOper'] == 'cn') {
-        $SQL = "SELECT id_nomina,identificacion,nombres_completos,telefono1,telefono2,ciudad,descripcion,direccion,correo,comentario,sueldo from nomina, ciudad where nomina.ciudad = ciudad.id_ciudad and $campo like '%$_GET[searchString]%' ORDER BY $sidx $sord offset $start limit $limit";
+        $SQL = "SELECT N.id_nomina, E.identificacion, E.nombres_completos, N.fecha_nomina, N.mes_nomina, N.neto_pagar FROM nomina N, empleado E WHERE N.id_empleado = E.id_empleado and $campo like '%$_GET[searchString]%' ORDER BY $sidx $sord offset $start limit $limit";
     }
 }
 
@@ -51,11 +51,7 @@ while ($row = pg_fetch_row($result)) {
     $s .= "<cell>" . $row[3] . "</cell>";
     $s .= "<cell>" . $row[4] . "</cell>";
     $s .= "<cell>" . $row[5] . "</cell>";
-    $s .= "<cell>" . $row[6] . "</cell>";
-    $s .= "<cell>" . $row[7] . "</cell>";
-    $s .= "<cell>" . $row[8] . "</cell>";
-    $s .= "<cell>" . $row[9] . "</cell>";
-    $s .= "<cell>" . $row[10] . "</cell>";   
+    $s .= "<cell></cell>";
     $s .= "</row>";
 }
 $s .= "</rows>";

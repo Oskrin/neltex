@@ -29,6 +29,7 @@ $conexion = conectarse();
 		<link rel="stylesheet" href="../../dist/css/jquery-ui.custom.min.css" type="text/css"/>
 		<link rel="stylesheet" href="../../dist/css/jquery.gritter.min.css" />
 		<link rel="stylesheet" href="../../dist/css/style.css"  />
+		<link rel="stylesheet" href="../../dist/css/fileinput.css" media="all" type="text/css" />
 
 		<!-- ace styles -->
 		<link rel="stylesheet" href="../../dist/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
@@ -75,11 +76,11 @@ $conexion = conectarse();
 									<div class="widget-body">
 										<div class="widget-main">
 											<div class="row">
-												<form class="form-horizontal" role="form" rol="form" action="" method="POST" id="form_pagosVenta">	
+												<form class="form-horizontal" name="form_nomina" id="form_nomina" autocomplete="off">	
 													<div class="row">
 														<div class="col-md-12 pull-right">
 															<div class="col-md-4">
-																<label class="col-sm-4 control-label" for="fecha_actual">Fecha Actual:</label>
+																<label class="col-sm-4 control-label" for="fecha_actual">Fecha Nómina:</label>
 																<div class="col-sm-8">
 																	<div class="input-group">
 																		<input class="form-control date-picker" id="fecha_actual" name="fecha_actual" type="text" readonly data-date-format="yyyy-mm-dd" />
@@ -91,7 +92,7 @@ $conexion = conectarse();
 															</div>
 
 															<div class="col-md-4">
-																<label class="col-sm-4 control-label" for="hora_actual">Hora Actual:</label>
+																<label class="col-sm-4 control-label" for="hora_actual">Hora Nómina:</label>
 																<div class="col-sm-8">
 																	<div class="input-group">
 																		<input class="form-control" type="text" id="hora_actual" name="hora_actual"  readonly />
@@ -119,50 +120,160 @@ $conexion = conectarse();
 
 													<div class="row">	
 														<div class="col-md-12">
-															<div class="col-md-4">																		
+															<div class="col-md-4">
 																<div class="form-group">
-																	<label class="col-sm-4 control-label" for="txt_3">Nombres Empleado: </label>
-																	<div class="col-sm-8">
-																		<input type="text" id="txt_3" name="txt_3" class="form-control" readonly data-toggle="tooltip"  value="" /> 
+																	<label class="col-sm-6 control-label" for="txt_2">Identificación: </label>
+																	<div class="col-sm-6">
+																		<input type="text" id="txt_2" name="txt_2" class="form-control" readonly   value="" /> 
 																		<input type="hidden" id="txt_0" name="txt_0" />
-																	</div>																													
-																</div>																												
-															</div>
+																	</div>									
+																</div>
 
-															<div class="col-md-4">																		
-																<div class="form-group">
-																	<label class="col-sm-4 control-label" for="txt_4">Teléfono:</label>
-																	<div class="col-sm-8">
-																	    <input type="text" id="txt_4" name="txt_4" class="form-control" readonly data-toggle="tooltip"  value="" /> 
-																	</div>																													
-																</div>																												
-															</div>
+																<div class="form-group">			
+																	<label class="col-sm-6 control-label no-padding-right" for="mes"> Mes:</label>
+																	<div class="col-sm-6">
+																		<select class="chosen-select form-control" id="mes" name="mes" data-placeholder="Tipo de precio">
+	                                                                        <option value="ENERO">ENERO</option>
+	                                                                        <option value="FEBRERO">FEBRERO</option>
+	                                                                        <option value="MARZO">MARZO</option>
+	                                                                        <option value="ABRIL">ABRIL</option>
+	                                                                        <option value="MAYO">MAYO</option>
+	                                                                        <option value="JUNIO">JUNIO</option>
+	                                                                        <option value="JULIO">JULIO</option>
+	                                                                        <option value="AGOSTO">AGOSTO</option>
+	                                                                        <option value="SEPTIEMBRE">SEPTIEMBRE</option>
+	                                                                        <option value="OCTUBRE">OCTUBRE</option>
+	                                                                        <option value="NOVIEMBRE">NOVIEMBRE</option>
+	                                                                        <option value="DICIEMBRE">DICIEMBRE</option>
+	                                                                    </select>
+																	</div>													
+																</div>
 
-															<div class="col-md-4">																		
 																<div class="form-group">
-																	<label class="col-sm-4 control-label" for="txt_12">Dirección:</label>
-																	<div class="col-sm-8">
-																		<input type="text" id="txt_12" name="txt_12" class="form-control" readonly data-toggle="tooltip"  value="" /> 
-																	</div>																													
-																</div>																												
-															</div>
+																	<label class="col-sm-6 control-label no-padding-right" for="dias_laborados">Días Laborados:</label>
+																	<div class="col-sm-6">
+																		<input type="text" name="dias_laborados" id="dias_laborados" class="form-control" value="0" />
+																	</div>
+																</div>
 
-															<div class="col-md-4">																		
 																<div class="form-group">
-																	<label class="col-sm-4 control-label" for="txt_7">Pagar Neto: </label>
-																	<div class="col-sm-8">
-																		<input type="text" id="txt_7" name="txt_7" class="form-control" data-toggle="tooltip"  value="" /> 
-																	</div>																													
-																</div>																												
+																	<label class="col-sm-6 control-label no-padding-right" for="decimo_tercero">Décimo Tercero:</label>
+																	<div class="col-sm-6">
+																		<span class="input-icon">
+																			<input type="text" id="decimo_tercero" name="decimo_tercero" class="form-control" value="0.00" />
+																			<i class="ace-icon fa fa fa-usd orange"></i>
+																		</span>
+																	</div>
+																</div>
+
+																<div class="form-group">
+																	<label class="col-sm-6 control-label no-padding-right" for="descuento_faltas">Descuento Faltas:</label>
+																	<div class="col-sm-6">
+																		<span class="input-icon">
+																			<input type="text" id="descuento_faltas" name="descuento_faltas" class="form-control" value="0.000" />
+																			<i class="ace-icon fa fa fa-usd orange"></i>
+																		</span>
+																	</div>
+																</div>						
 															</div>
 
 															<div class="col-md-4">
 																<div class="form-group">
-																	<label class="col-sm-4 control-label" for="observaciones"> Observaciones: </label>
-																	<div class="col-sm-8">	
-																		<textarea id="observaciones" name="observaciones" placeholder="" class="col-sm-12"></textarea>
+																	<label class="col-sm-4 control-label" for="txt_3">Nombres Empleado: </label>
+																	<div class="col-sm-8">
+																		<input type="text" id="txt_3" name="txt_3" class="form-control" readonly   value="" />
+																	</div>									
+																</div>
+
+																<div class="form-group">
+																	<label class="col-sm-4 control-label no-padding-right" for="acumulable">Acumulable:</label>
+																	<div class="col-sm-8">
+																		<label>
+																			<input name="acumulable" id="acumulable" class="ace ace-switch ace-switch-5" type="checkbox" checked>
+																			<span class="lbl"></span>
+																		</label>
 																	</div>
 																</div>
+
+																<div class="form-group">
+																	<label class="col-sm-4 control-label no-padding-right" for="no_laborado">Días no Laborados:</label>
+																	<div class="col-sm-6">
+																		<input type="text" name="no_laborado" id="no_laborado" class="form-control" value="0" />
+																	</div>	
+																</div>
+
+																<div class="form-group">
+																	<label class="col-sm-4 control-label no-padding-right" for="decimo_cuarto">Décimo Cuarto:</label>
+																	<div class="col-sm-6">
+																		<span class="input-icon">
+																			<input type="text" id="decimo_cuarto" name="decimo_cuarto" class="form-control" value="0.000" />
+																			<i class="ace-icon fa fa fa-usd orange"></i>
+																		</span>
+																	</div>
+																</div>
+
+																<div class="form-group">
+																	<label class="col-sm-4 control-label no-padding-right" for=""></label>
+																	<div class="col-sm-6">
+																		<!-- <span class="input-icon">
+																			<input type="text" id="descuentos_varios" name="descuentos_varios" class="form-control" value="0.00" />
+																			<i class="ace-icon fa fa fa-usd orange"></i>
+																		</span> -->
+																	</div>
+																</div>
+
+																<div class="form-group">
+																	<label class="col-sm-4 control-label no-padding-right" for="neto_pagar">Neto a Pagar:</label>
+																	<div class="col-sm-6">
+																		<span class="input-icon">
+																			<input type="text" id="neto_pagar" name="neto_pagar" class="form-control" value="0.00" />
+																			<i class="ace-icon fa fa fa-usd orange"></i>
+																		</span>
+																	</div>
+																</div>						
+															</div>
+
+															<div class="col-md-4">
+																<div class="form-group">
+																	<label class="col-sm-5 control-label" for="txt_4">Sueldo:</label>
+																	<div class="col-sm-6">
+																		<input type="text" id="txt_4" name="txt_4" readonly class="form-control" value="0.00" /> 
+																	</div>								
+																</div>
+
+																<div class="form-group">
+																	<label class="col-sm-5 control-label no-padding-right"></label>
+																	<div class="col-sm-6">
+																		<button type="button" name="btn_importar" id="btn_importar" class="btn btn-white btn-primary btn-bold" data-toggle="tooltip" title="Importar archivo CSV"><i class="fa fa-file-excel-o bigger-110 green"></i> Importar</button>
+																	</div>
+																</div>
+
+																<div class="form-group">
+																	<label class="col-sm-5 control-label no-padding-right"></label>
+																	<div class="col-sm-6">
+																	<button type="button" name="btn_calcular" id="btn_calcular" class="btn btn-white btn-primary btn-bold" data-toggle="tooltip" title="Calcular"> Calcular</button>
+																	</div>	
+																</div>
+
+																<div class="form-group">
+																	<label class="col-sm-4 control-label no-padding-right" for="total_ingresos">Total Ingresos:</label>
+																	<div class="col-sm-6">
+																		<span class="input-icon">
+																			<input type="text" id="total_ingresos" name="total_ingresos" class="form-control" value="0.00" />
+																			<i class="ace-icon fa fa fa-usd orange"></i>
+																		</span>
+																	</div>
+																</div>
+
+																<div class="form-group">
+																	<label class="col-sm-4 control-label no-padding-right" for="total_descuentos">Total Descuentos:</label>
+																	<div class="col-sm-6">
+																		<span class="input-icon">
+																			<input type="text" id="total_descuentos" name="total_descuentos" class="form-control" value="0.000" />
+																			<i class="ace-icon fa fa fa-usd orange"></i>
+																		</span>
+																	</div>
+																</div>					
 															</div>
 														</div>
 													</div>
@@ -178,11 +289,15 @@ $conexion = conectarse();
 													<div class="center">
 														<button data-toggle="modal" href="#myModal" type="button" id="btn_3" class="btn btn-primary">
 															<i class="ace-icon fa fa-floppy-o bigger-120 write"></i>
-															Buscar Pagos
+															Buscar Empleado
 														</button>													 
 														<button type="button" class="btn btn-primary" id="btn_0">
 															<i class="ace-icon fa fa-floppy-o bigger-120 write"></i>
-															Guardar Pagos
+															Guardar
+														</button>
+														<button data-toggle="modal" href="#myModal2" type="button" id="btn_4" class="btn btn-primary">
+															<i class="ace-icon fa fa-floppy-o bigger-120 write"></i>
+															Buscar Nónima
 														</button>
 														<button type="button" id="btn_1" class="btn btn-primary">
 															<i class="ace-icon fa fa-file-o bigger-120 write"></i>
@@ -194,26 +309,6 @@ $conexion = conectarse();
 														</button>
 													</div>
 												</div>
-
-												<!-- Modal -->
-												<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-												    <div class="modal-dialog">
-												        <div class="modal-content">
-													        <div class="modal-header">
-													          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-													          <h4 class="modal-title">BUSCAR NÓMINA</h4>
-													        </div>
-
-													        <div class="modal-body">
-													            <table id="table"></table>
-																<div id="pager"></div>
-													        </div>
-													        <div class="modal-footer">
-													          <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
-													        </div>
-												        </div><!-- /.modal-content -->
-												    </div><!-- /.modal-dialog -->
-												</div><!-- /.modal -->
 											</div>
 										</div>
 									</div>
@@ -231,8 +326,100 @@ $conexion = conectarse();
 			</a>
 		</div><!-- /.main-container -->
 
+		<!-- Modal Empleados-->
+		<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="myModal">
+		    <div class="modal-dialog modal-lg">
+		        <div class="modal-content">
+			        <div class="modal-header">
+			          	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			          	<h4 class="modal-title">BUSCAR EMPLEADOS</h4>
+			        </div>
+			        <div class="modal-body">
+			            <table id="table"></table>
+						<div id="pager"></div>
+			        </div>
+			        <div class="modal-footer">
+			          	<button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+			        </div>
+		        </div>
+		    </div>
+		</div>
+		<!-- /.modal -->
+
+		<!-- Modal Empleados-->
+		<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="myModal2">
+		    <div class="modal-dialog modal-lg">
+		        <div class="modal-content">
+			        <div class="modal-header">
+			          	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			          	<h4 class="modal-title">BUSCAR NÓMINA</h4>
+			        </div>
+			        <div class="modal-body">
+			            <table id="table2"></table>
+						<div id="pager2"></div>
+			        </div>
+			        <div class="modal-footer">
+			          	<button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+			        </div>
+		        </div>
+		    </div>
+		</div>
+		<!-- /.modal -->
+
+		<div id="modal-importar" class="modal fade" tabindex="-1">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<form class="form-horizontal" name="form_excel" id="form_excel" autocomplete="off">
+						<div class="modal-header no-padding">
+							<div class="table-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+									<span class="white">&times;</span>
+								</button>
+								Agregar Archivo CSV
+							</div>
+						</div>
+
+						<div class="modal-body">
+							<div class="row center">
+								<div class="col-sm-12">
+									<div class="form-group">
+										<!-- <div class="form-group"> -->
+						                  <input type="file" name="archivo_excel" id="archivo_excel" class="file" />
+						                <!-- </div> -->
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<!-- <div class="modal-body">
+							<div class="row">
+								<div class="col-sm-12">
+									<div class="form-group">
+										<div class="form-group">
+						                  <input type="file" name="archivo_excel" id="archivo_excel" class="file" />
+						                </div>
+									</div>
+								</div>
+							</div>
+						</div> -->
+						
+						<div class="modal-footer no-margin-top">
+							<button type="button" class="btn btn-sm btn-danger pull-left" data-dismiss="modal" data-toggle="tooltip" title="Cerrar ventana">
+								<i class="ace-icon fa fa-times"></i>
+								Cerrar
+							</button>
+							<button type="button" name="btn_excel" id="btn_excel" class="btn btn-sm btn-primary pull-right" data-toggle="tooltip" title="Cargar Excel">
+								<i class="ace-icon fa fa-check"></i>
+								Cargar
+							</button>
+						</div>
+					</form>	
+				</div>
+			</div>
+		</div>
+
 		<!-- Modal -->
-		<div id="top-menu" class="modal aside" data-fixed="true" data-placement="top" data-background="true" data-backdrop="invisible" tabindex="-1">
+		<!-- <div id="top-menu" class="modal aside" data-fixed="true" data-placement="top" data-background="true" data-backdrop="invisible" tabindex="-1">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-body container">
@@ -255,7 +442,7 @@ $conexion = conectarse();
 					<i data-icon="fa-chevron-down" data-icon="fa-chevron-up" class="ace-icon fa fa-chevron-down bigger-110 icon-only"></i>
 				</button>
 			</div>
-		</div>
+		</div> -->
 
 		<script type="text/javascript">
 			window.jQuery || document.write("<script src='../../dist/js/jquery.min.js'>"+"<"+"/script>");
@@ -279,6 +466,7 @@ $conexion = conectarse();
 		<script src="../../dist/js/date-time/bootstrap-timepicker.min.js"></script>
 		<script src="../../dist/js/date-time/daterangepicker.min.js"></script>
 		<script src="../../dist/js/date-time/moment.min.js"></script>
+		<script src="../../dist/js/fileinput.js" type="text/javascript"></script>
 				
 		<!-- ace scripts -->
 		<script src="../../dist/js/ace-elements.min.js"></script>
@@ -292,7 +480,7 @@ $conexion = conectarse();
         <script src="../../dist/js/bootstrap-multiselect.min.js"></script>
 		
 		<script src="../generales.js"></script>
-		<script src="pagos.js"></script>
+		<script src="nomina.js"></script>
 		<script src="../../dist/js/validCampoFranz.js" ></script>
 		<script src="../../dist/js/jquery.gritter.min.js"></script>
 		<script src="../../dist/js/ventana_reporte.js" type="text/javascript"></script>
