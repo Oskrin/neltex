@@ -1,5 +1,10 @@
 $(document).on("ready",inicio);
 
+function myFunction(id) {
+    var myWindow = window.open("../../reportes/rol_pagos.php?id="+id,'_blank');
+}
+
+
 function recargar() {
   setTimeout(function() {
     location.reload();
@@ -470,6 +475,14 @@ function inicio() {
                   enableTooltips(table);
               }, 0);
           },
+          gridComplete: function() {
+            var ids = jQuery(grid_selector2).jqGrid('getDataIDs');
+            for(var i = 0;i < ids.length;i++) {
+                var id = ids[i];
+                pdf = "<a onclick=myFunction('"+id+"') title='Reporte Rol Pagos'><i class='fa fa-file-pdf-o red2' style='cursor:pointer; cursor: hand'> PDF</i></a>";                    
+                jQuery(grid_selector2).jqGrid('setRowData',ids[i],{pdf: pdf});
+            }       
+        },
           ondblClickRow: function(rowid) {                                
               var gsr = jQuery(grid_selector2).jqGrid('getGridParam','selrow');                                              
               var ret = jQuery(grid_selector2).jqGrid('getRowData',gsr);                                      

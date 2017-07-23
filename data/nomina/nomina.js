@@ -1,5 +1,9 @@
 $(document).on("ready",inicio);
-function inicio (){	
+function inicio (){
+	function myFunction(id) {
+	    var myWindow = window.open("../../reportes/rol_pagos.php?id="+id,'_blank');
+	}
+
 	/*funcion inicial de la imagen y  buscadores del select no topar plz*/	
 	$('#txt_4').mask('(999) 999-999');
 	$('#txt_5').mask('(999) 999-9999');
