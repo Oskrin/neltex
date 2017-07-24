@@ -1,7 +1,20 @@
 $(document).on("ready",inicio);
 
 function myFunction(id) {
-    var myWindow = window.open("../../reportes/factura_venta.php?id="+id,'_blank');
+    $.ajax({
+        url: "verificar.php",
+        data: {verificar:'verificar', id: id},                        
+        type: "POST",               
+        success: function(data) {           
+            console.log(data);
+            if (data == 1) {
+                alert('El Cliente Tiene un Crédito')
+            } else {
+                var myWindow = window.open("../../reportes/factura_venta.php?id="+id,'_blank');    
+            }
+        }       
+    });    
+    
 }
 
 function recargar() {
