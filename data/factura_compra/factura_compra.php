@@ -90,7 +90,7 @@
 		$v_t = $t_t / $c_t;
 
 		$v_t = number_format($v_t, 3, '.', '');
-		$sql_kardex = "insert into detalles_kardex values ('".$id_det_kardex."','".$id_kardex."','".$fecha."','".'Factura compra Ingreso productos Nro.'.$id."','".$c_e."','".$v_e."','".$t_e."','','','','".$c_t."','".$v_t."','".$t_t."')";		
+		$sql_kardex = "insert into detalles_kardex values ('".$id_det_kardex."','".$id_kardex."','".$fecha."','".'Factura compra Ingreso productos Nro.'.$id."','".$c_e."','".$v_e."','".$t_e."','0','','','".$c_t."','".$v_t."','".$t_t."')";		
 		$guardar = guardarSql($conexion, $sql_kardex);        
         
         $sql3 = "update productos set stock='".$c_t."', precio = '".$v_t."' where id_productos='".$id_prod."'";								

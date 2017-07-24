@@ -68,7 +68,7 @@
 			$sql_kardex = "insert into kardex values ('".$id_kardex."','".$id."','".$fecha."')";
 			$guardar = guardarSql($conexion,$sql_kardex);
 			$id_det_kardex = unique($fecha_larga);	
-			$sql_kardex = "insert into detalles_kardex values ('".$id_det_kardex."','".$id_kardex."','".$fecha."','Creacion de productos','".$_POST['txt_12']."','".$_POST['txt_9']."','".$temp."','','','','".$_POST['txt_12']."','".$_POST['txt_9']."','".$temp."')";
+			$sql_kardex = "insert into detalles_kardex values ('".$id_det_kardex."','".$id_kardex."','".$fecha."','Creacion de productos','".$_POST['txt_12']."','".$_POST['txt_9']."','".$temp."','0','','','".$_POST['txt_12']."','".$_POST['txt_9']."','".$temp."')";
 			$guardar = guardarSql($conexion,$sql_kardex);
 
 			/////////LIBRO DIARIOS//////////

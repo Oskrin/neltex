@@ -173,7 +173,7 @@
 		    $v_t = '0';
 		}  
 
-		$sql_kardex = "insert into detalles_kardex values ('".$id_det_kardex."','".$id_kardex."','".$fecha."','".'Factura venta salida de productos Nro.'.$id."','','','','".$c_e."','".$v_e."','".$t_e."','".$c_t."','".$v_t."','".$t_t."')";		
+		$sql_kardex = "insert into detalles_kardex values ('".$id_det_kardex."','".$id_kardex."','".$fecha."','".'Factura venta salida de productos Nro.'.$id."','0','','','".$c_e."','".$v_e."','".$t_e."','".$c_t."','".$v_t."','".$t_t."')";		
 		$guardar = guardarSql($conexion, $sql_kardex);                
         //$sql3 = "update productos set stock='".$c_t."', precio = '".$v_t."' where id_productos='".$id_prod."'";
         $sql3 = "update productos set stock='".$nuevo_stock."' where id_productos='".$id_prod."'";									

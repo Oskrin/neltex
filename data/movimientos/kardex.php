@@ -1,48 +1,24 @@
 <?php
 include '../conexion.php';
-include '../funciones_generales.php';		
+include '../funciones_generales.php';       
 $conexion = conectarse();
-// $f=split(' - ', $_POST['fecha']);
-// $id_kardex = '';
-// $sql = pg_query("SELECT id_kardex from kardex where id_productos = '".$_POST['id']."'");
-// while ($row = pg_fetch_row($sql)) {
-// 	$id_kardex = $row[0];
-// }
 
-// $consulta = pg_query("select id_detalle_kardex,fecha,detalle,c_e,v_e,t_e,c_s,v_s,t_s,c_t,v_t,t_t from detalles_kardex where id_kardex = '".$id_kardex."' and fecha between '".$f[0].' 00:00:00'."' and '".$f[1].' 23:59:59'."' order by fecha asc");
-// while ($row = pg_fetch_row($consulta)) {
-//     $lista[] = $row[0];
-//     $lista[] = $row[1];
-//     $lista[] = $row[2];
-//     $lista[] = $row[3];
-//     $lista[] = $row[4];
-//     $lista[] = $row[5];
-//     $lista[] = $row[6];
-//     $lista[] = $row[7];
-//     $lista[] = $row[8];
-//     $lista[] = $row[9];
-//     $lista[] = $row[10];
-//     $lista[] = $row[11];
-// }
-// echo $lista = json_encode($lista);
-
-$consulta = pg_query("SELECT P.codigo, P.descripcion, P.stock, SUM(CAST(F.cantidad AS INT)) total FROM detalle_factura_venta F, productos P WHERE F.id_productos = P.id_productos AND F.id_productos = '".$_POST['id']."' group by P.codigo, P.descripcion, P.stock");
-while ($row = pg_fetch_row($consulta)) {
-    $entrada = $row[2] + $row[3]; 
-    $lista[] = $row[0];
-    $lista[] = $row[1];
-    $lista[] = $entrada;
-    $lista[] = $row[3];
-    $lista[] = $row[2];
-
-    // $lista[] = $row[4];
-    // $lista[] = $row[5];
-    // $lista[] = $row[6];
-    // $lista[] = $row[7];
-    // $lista[] = $row[8];
-    // $lista[] = $row[9];
-    // $lista[] = $row[10];
-    // $lista[] = $row[11];
+$sql = pg_query("SELECT P.codigo, P .descripcion, P.stock, K.id_kardex from kardex k, productos P where P.id_productos = K.id_productos AND K.id_productos = '".$_POST['id']."'");
+while ($row = pg_fetch_row($sql)) {
+    $codigo = $row[0];
+    $descripcion = $row[1];
+    $stock = $row[2];
+    $id_kardex = $row[3];
 }
+
+$consulta = pg_query("SELECT SUM(CAST(c_e AS INT)) cantidad_entrada, SUM(CAST(c_s AS INT)) cantidad_salida FROM detalles_kardex WHERE id_kardex = '".$id_kardex."'");
+while ($row = pg_fetch_row($consulta)) {
+    $cantidad_entrada = $row[0];
+    $cantidad_salida = $row[1];
+}
+$lista = array('codigo' => $codigo, 'descripcion' => $descripcion, 'cantidad_entrada' => $cantidad_entrada, 'cantidad_salida' => $cantidad_salida, 'stock' => $stock);
+
+
+
 echo $lista = json_encode($lista);
 ?>

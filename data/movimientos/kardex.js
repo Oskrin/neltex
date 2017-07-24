@@ -84,24 +84,14 @@ function inicio(){
         url: "kardex.php",  
         data:{id:$('#id_producto').val()},
         dataType: 'json',
-        success: function(response) {         
-          for (var i = 0; i < response.length; i=i+5) {            
-              $('#td_kardex').dataTable().fnAddData([
-                response[i+0],
-                response[i+1],
-                response[i+2],
-                response[i+3],
-                response[i+4],
-                // response[i+5],                                           
-                // response[i+6],
-                // response[i+7],
-                // response[i+8],
-                // response[i+9],
-                // response[i+10],
-                // response[i+11],
-              ]);                                
-          }
-          //$("#dynamic-table tbody").html(acu);
+        success: function(response) {
+          $('#td_kardex').dataTable().fnAddData([
+                response.codigo,
+                response.descripcion,
+                response.cantidad_entrada,
+                response.cantidad_salida,
+                response.stock,
+              ]);
          }                    
       });       
       
