@@ -26,8 +26,13 @@
 
             $cal = $row[8] - $monto;
             $format_numero = number_format($cal, 2, '.', '');
-            pg_query("Update pagos_venta Set saldo='" . $format_numero . "' where id_pagos_venta='" . $id_pagos_venta . "'");
-            pg_query("Update detalle_pagos_venta Set estado ='Cancelado' where id_detalles_pagos_venta='" . $_POST['id'] . "'");
+            if ($format_numero == '0.00') {
+               pg_query("Update pagos_venta Set saldo='" . $format_numero . "', estado = 'Cancelado' where id_pagos_venta='" . $id_pagos_venta . "'");
+               pg_query("Update detalle_pagos_venta Set estado ='Cancelado' where id_detalles_pagos_venta='" . $_POST['id'] . "'");
+            } else {
+                pg_query("Update pagos_venta Set saldo='" . $format_numero . "' where id_pagos_venta='" . $id_pagos_venta . "'");
+                pg_query("Update detalle_pagos_venta Set estado ='Cancelado' where id_detalles_pagos_venta='" . $_POST['id'] . "'");
+            }
         }
     }
     // fin
