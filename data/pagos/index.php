@@ -18,7 +18,8 @@ $conexion = conectarse();
 		<link rel="stylesheet" href="../../dist/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="../../dist/css/font-awesome.min.css" />
 		<!-- Select -->
-		<link rel="stylesheet" href="../../dist/css/chosen.min.css" />				
+		<link rel="stylesheet" href="../../dist/css/chosen.min.css" />
+		<link rel="stylesheet" href="../../dist/css/select2.min.css" />				
 		<link rel="stylesheet" href="../../dist/css/ui.jqgrid.min.css" />
 		<link rel="stylesheet" href="../../dist/css/bootstrap-datetimepicker.min.css" />
 		<link rel="stylesheet" href="../../dist/css/datepicker.min.css" />
@@ -132,19 +133,7 @@ $conexion = conectarse();
 																<div class="form-group">			
 																	<label class="col-sm-6 control-label no-padding-right" for="mes"> Mes:</label>
 																	<div class="col-sm-6">
-																		<select class="chosen-select form-control" id="mes" name="mes" data-placeholder="Tipo de precio">
-	                                                                        <option value="ENERO">ENERO</option>
-	                                                                        <option value="FEBRERO">FEBRERO</option>
-	                                                                        <option value="MARZO">MARZO</option>
-	                                                                        <option value="ABRIL">ABRIL</option>
-	                                                                        <option value="MAYO">MAYO</option>
-	                                                                        <option value="JUNIO">JUNIO</option>
-	                                                                        <option value="JULIO">JULIO</option>
-	                                                                        <option value="AGOSTO">AGOSTO</option>
-	                                                                        <option value="SEPTIEMBRE">SEPTIEMBRE</option>
-	                                                                        <option value="OCTUBRE">OCTUBRE</option>
-	                                                                        <option value="NOVIEMBRE">NOVIEMBRE</option>
-	                                                                        <option value="DICIEMBRE">DICIEMBRE</option>
+																		<select class="select2" id="mes" name="mes" data-placeholder="Mes">
 	                                                                    </select>
 																	</div>													
 																</div>
@@ -170,7 +159,7 @@ $conexion = conectarse();
 																	<label class="col-sm-6 control-label no-padding-right" for="descuento_faltas">Descuento Faltas:</label>
 																	<div class="col-sm-6">
 																		<span class="input-icon">
-																			<input type="text" id="descuento_faltas" name="descuento_faltas" class="form-control" value="0.000" />
+																			<input type="text" id="descuento_faltas" name="descuento_faltas" class="form-control" value="0.00" />
 																			<i class="ace-icon fa fa fa-usd orange"></i>
 																		</span>
 																	</div>
@@ -206,7 +195,7 @@ $conexion = conectarse();
 																	<label class="col-sm-4 control-label no-padding-right" for="decimo_cuarto">Décimo Cuarto:</label>
 																	<div class="col-sm-6">
 																		<span class="input-icon">
-																			<input type="text" id="decimo_cuarto" name="decimo_cuarto" class="form-control" value="0.000" />
+																			<input type="text" id="decimo_cuarto" name="decimo_cuarto" class="form-control" value="0.00" />
 																			<i class="ace-icon fa fa fa-usd orange"></i>
 																		</span>
 																	</div>
@@ -215,10 +204,6 @@ $conexion = conectarse();
 																<div class="form-group">
 																	<label class="col-sm-4 control-label no-padding-right" for=""></label>
 																	<div class="col-sm-6">
-																		<!-- <span class="input-icon">
-																			<input type="text" id="descuentos_varios" name="descuentos_varios" class="form-control" value="0.00" />
-																			<i class="ace-icon fa fa fa-usd orange"></i>
-																		</span> -->
 																	</div>
 																</div>
 

@@ -51,6 +51,52 @@ function guardar_nomina() {
 
 function inicio() {	
   show();
+  function mes_actual() {
+    console.log('test');
+    $.ajax({
+      type: "POST",
+      url: "mes.php",
+      data: {cargar_mes:'cargar_mes'},
+      success: function(data) {
+        $('#mes').html(data).trigger("change");
+          // var val = data;
+          // if (val == 0) {
+          //     $.gritter.add({
+          //       title: 'Información Mensaje',
+          //       text: ' <span class="fa fa-shield"></span>' + ' ' +'Nómina Guardada Correctamente <span class="text-succes fa fa-spinner fa-spin"></span>'
+          //           ,
+          //       sticky: false,
+          //       time: 1000,                       
+          //     });
+          //     recargar(); 
+          // }
+      }
+  });
+    // var meses = new Array ("ENERO","FEBRERO","MARZO","ABRIL","MAYO","JUNIO","JULIO","AGOSTO","SEPTIEMBRE","OCTUBRE","NOVIEMBRE","DICIEMBRE");
+    // var f = new Date();
+
+    // var mes_actual = meses[f.getMonth()];
+    // console.log(mes_actual);
+
+    // // return mes_actual;
+  }
+
+  mes_actual();
+
+  // stilo select2
+    $(".select2").css({
+        'width': '100%',
+        allow_single_deselect: true,
+        no_results_text: "No se encontraron resultados",
+        allowClear: true,
+    });
+    // fin
+
+    // limpiar select2
+    $("#mes").select2({
+        // allowClear: true
+    });
+    // fin
 
   // tooltips 
     $('[data-rel=tooltip]').tooltip();
