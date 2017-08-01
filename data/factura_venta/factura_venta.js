@@ -28,9 +28,11 @@ function actualizar () {
 }
 
 function guardar_factura() {
-  var tam = jQuery("#list").jqGrid("getRowData");
+    var tam = jQuery("#list").jqGrid("getRowData");
+    var formulario = $("#form_facturaVenta").serialize();
+    var modal = $("#form_chequera").serialize();
 
-  if($("#id_cliente").val() == "") {
+    if($("#id_cliente").val() == "") {
       $("#txt_nro_identificacion").trigger("chosen:open");    
       alert("Seleccione un cliente");
     } else {
@@ -82,10 +84,10 @@ function guardar_factura() {
                 $("#serie3").val(a + "" + $("#serie3").val());
                 $.ajax({        
                     type: "POST",
-                    data: $("#form_facturaVenta").serialize() + "&campo1=" + string_v1 + "&campo2=" + string_v2 + "&campo3=" + string_v3 + "&campo4=" + string_v4 + "&campo5=" + string_v5+ "&campo6=" + string_v6,                
+                    data: formulario + "&" + modal +  "&campo1=" + string_v1 + "&campo2=" + string_v2 + "&campo3=" + string_v3 + "&campo4=" + string_v4 + "&campo5=" + string_v5+ "&campo6=" + string_v6,                
                     url: "factura_venta.php",      
                     success: function(data) { 
-                        if( data == 0 ){
+                        if( data == 0 ) {
                             $.gritter.add({
                               title: 'Información Mensaje',
                               text: ' <span class="fa fa-shield"></span>' + ' ' +'Factura Agregada Correctamente <span class="text-succes fa fa-spinner fa-spin"></span>'
@@ -133,9 +135,19 @@ function limpiar_campo2() {
 } 
 
 function inicio () {	
-  show();	  
-  carga_forma_pago("formas");
-  carga_termino_pago("termino_pago");
+    show();	  
+    carga_forma_pago("formas");
+    carga_termino_pago("termino_pago");
+
+    //selectores tipo comprobantes
+    $("#formas").change(function () {
+        id = $(this).val();
+
+        if (id == '13233227715564387a42e68c1.70763457') {
+           $('#modal_chequera').modal('show');
+        }
+    });
+    // fin
 
   if ($("#num_oculto").val() == "") {
         $("#serie3").val("");
@@ -179,6 +191,8 @@ function inicio () {
 
  	////////////////validaciones/////////////////
  	$("#cantidad").validCampoFranz("0123456789");
+    $("#num_cheque").validCampoFranz("0123456789");
+    $("#monto").on("keypress",punto);
  	$("#serie3").validCampoFranz("0123456789");
  	$("#descuento").validCampoFranz("0123456789");
  	$("#serie3").attr("maxlength", "9");
@@ -523,19 +537,19 @@ function inicio () {
     // 
 
   	/*---agregar a la tabla---*/
-  	$("#cantidad").on("keypress",function (e){
+  	$("#cantidad").on("keypress",function(e) {
     	if(e.keyCode == 13){//tecla del alt para el entrer poner 13
       		$("#precio").focus();  
     	}
   	});
 
-    $("#precio").on("keypress",function (e){
+    $("#precio").on("keypress",function(e) {
     	if(e.keyCode == 13){//tecla del alt para el entrer poner 13
       		$("#descuento").focus();  
     	}
     });
 
-    $("#descuento").on("keypress",function (e){
+    $("#descuento").on("keypress",function(e) {
 	if(e.keyCode == 13) {//tecla del alt para el entrer poner 13 
       var subtotal0 = 0;
       var subtotal12 = 0;
@@ -990,6 +1004,9 @@ function inicio () {
 /*-----guardar factura venta--*/
 $("#btn_0").on("click", guardar_factura);
 $("#btn_1").on("click", actualizar);
+$("#btn_confirmar").on("click", function(){
+    $('#modal_chequera').modal('hide');
+})
 
 $("#btn_2").on("click",function () { 
      $.ajax({

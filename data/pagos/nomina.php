@@ -18,7 +18,7 @@
 		$acumulable = "SI";
 
 	// guardar pagos
-	pg_query("insert into nomina values('$id','".$_POST['txt_0']."', '".$_POST['fecha_actual']."','".$_POST['mes']."','".$acumulable."','','".$_POST['dias_laborados']."','".$_POST['no_laborado']."','".$_POST['txt_4']."','".$_POST['decimo_tercero']."','".$_POST['decimo_cuarto']."'
+	pg_query("insert into nomina values('$id','".$_POST['txt_0']."', '".$_POST['fecha_actual']."','".$_POST['mes']."','".$_POST['acumula']."','','".$_POST['horas_extras']."','".$_POST['dias_laborados']."','".$_POST['no_laborado']."','".$_POST['txt_4']."','".$_POST['total_extras']."','".$_POST['tercero']."','".$_POST['cuarto']."'
 		,'".$_POST['total_ingresos']."','".$_POST['descuento_faltas']."','','".$_POST['total_descuentos']."','".$_POST['neto_pagar']."','Activo','$fecha')");
 	// fin
 

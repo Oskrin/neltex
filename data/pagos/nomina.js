@@ -1,9 +1,8 @@
 $(document).on("ready",inicio);
 
 function myFunction(id) {
-    var myWindow = window.open("../../reportes/rol_pagos.php?id="+id,'_blank');
+  var myWindow = window.open("../../reportes/rol_pagos.php?id="+id,'_blank');
 }
-
 
 function recargar() {
   setTimeout(function() {
@@ -11,8 +10,13 @@ function recargar() {
   }, 1000);  
 }
 
-
 function guardar_nomina() {
+    var formulario = $("#form_nomina").serialize();
+    var sueldo = $('#txt_4').val();
+
+    var decimo_tercero = (parseFloat(375)/12).toFixed(2);
+    var decimo_cuarto = (parseFloat(sueldo) / 12).toFixed(2);  
+
 
   if($("#txt_0").val() == "") {
        alert("Seleccione un registro");
@@ -29,7 +33,7 @@ function guardar_nomina() {
           $.ajax({
               type: "POST",
               url: "nomina.php",
-              data: $("#form_nomina").serialize(),
+              data: formulario + "&tercero=" + decimo_tercero + "&cuarto=" + decimo_cuarto ,
               success: function(data) {
                   var val = data;
                   if (val == 0) {
@@ -59,26 +63,8 @@ function inicio() {
       data: {cargar_mes:'cargar_mes'},
       success: function(data) {
         $('#mes').html(data).trigger("change");
-          // var val = data;
-          // if (val == 0) {
-          //     $.gritter.add({
-          //       title: 'Información Mensaje',
-          //       text: ' <span class="fa fa-shield"></span>' + ' ' +'Nómina Guardada Correctamente <span class="text-succes fa fa-spinner fa-spin"></span>'
-          //           ,
-          //       sticky: false,
-          //       time: 1000,                       
-          //     });
-          //     recargar(); 
-          // }
       }
   });
-    // var meses = new Array ("ENERO","FEBRERO","MARZO","ABRIL","MAYO","JUNIO","JULIO","AGOSTO","SEPTIEMBRE","OCTUBRE","NOVIEMBRE","DICIEMBRE");
-    // var f = new Date();
-
-    // var mes_actual = meses[f.getMonth()];
-    // console.log(mes_actual);
-
-    // // return mes_actual;
   }
 
   mes_actual();
@@ -187,19 +173,30 @@ function inicio() {
        alert("Seleccione un registro");
     } else {
       var sueldo = $('#txt_4').val();
+      var acumula = $('#acumula').val();
       var dias_laborados = $('#dias_laborados').val();
       var no_laborados = $('#no_laborado').val();
-      var decimo_tercero = (parseFloat(375)/12).toFixed(2);
-      var decimo_cuarto = (parseFloat(sueldo) / 12).toFixed(2);
+      var extras = $('#horas_extras').val();
 
-      var total_ingresos = (parseFloat(decimo_tercero) + parseFloat(decimo_cuarto) + parseFloat(sueldo)).toFixed(2);
+      var horas_extras = (parseFloat(sueldo/15)/8 * parseFloat(extras)).toFixed(2);
+
+      if (acumula == 'NO') {
+        var decimo_tercero = (parseFloat(375)/12).toFixed(2);
+        var decimo_cuarto = (parseFloat(sueldo) / 12).toFixed(2);  
+      } else {
+          var decimo_tercero = '0.00';
+          var decimo_cuarto = '0.00';  
+      }
+      
+      var total_ingresos = (parseFloat(decimo_tercero) + parseFloat(decimo_cuarto) + parseFloat(sueldo) + parseFloat(horas_extras)).toFixed(2);
       // var sueldo_basico = ((parseFloat(sueldo/30)/8) * parseFloat(dias_laborados)).toFixed(2);
       var descuento_faltas = ((parseFloat(sueldo/30)) * parseFloat(no_laborados)).toFixed(2);
       var total_descuentos = parseFloat(descuento_faltas).toFixed(2);
-      var neto_pagar = total_ingresos - total_descuentos;
+      var neto_pagar = (total_ingresos - total_descuentos).toFixed(2);
 
       $('#decimo_tercero').val(decimo_tercero);
       $('#decimo_cuarto').val(decimo_cuarto);
+      $('#total_extras').val(horas_extras);
       $('#total_ingresos').val(total_ingresos);
       $('#descuento_faltas').val(descuento_faltas);
       $('#total_descuentos').val(total_descuentos);
@@ -238,7 +235,7 @@ function inicio() {
       jQuery(grid_selector).jqGrid({          
           datatype: "xml",
           url: 'xml_empleados.php',        
-          colNames: ['ID','IDENTIFICACIÓN','NOMBRES','TELÉFONO','CELULAR','id_ciudad','CIUDAD','DIRECCIÓN','CORREO','COMENTARIO','SUELDO'],
+          colNames: ['ID','IDENTIFICACIÓN','NOMBRES','TELÉFONO','CELULAR','id_ciudad','CIUDAD','DIRECCIÓN','CORREO','COMENTARIO','SUELDO','ACUMULA'],
           colModel:[      
               {name:'txt_0',index:'id_empleado',frozen:true,align:'left',search:false},
               {name:'txt_2',index:'identificacion',frozen : true,align:'left',search:true},
@@ -251,6 +248,7 @@ function inicio() {
               {name:'txt_6',index:'correo',frozen : true,align:'left',search:true},
               {name:'txt_13',index:'comentario',frozen : true,align:'left',search:false},
               {name:'txt_7',index:'sueldo',frozen : true,align:'left',search:false},
+              {name:'acumula',index:'acumula',frozen : true,align:'left',search:false},
           ],          
           rowNum: 10,       
           width:600,
@@ -282,6 +280,7 @@ function inicio() {
               $("#txt_2").val(ret.txt_2);
               $("#txt_3").val(ret.txt_3);
               $("#txt_4").val(ret.txt_7);
+              $("#acumula").val(ret.acumula);
               $('#myModal').modal('hide');                  
           },
           
@@ -355,7 +354,7 @@ function inicio() {
       },
       {
             recreateForm: true,
-          afterShowSearch: function(e){
+          afterShowSearch: function(e) {
               var form = $(e[0]);
               form.closest('.ui-jqdialog').find('.ui-jqdialog-title').wrap('<div class="widget-header" />')
               style_search_form(form);
@@ -372,7 +371,7 @@ function inicio() {
       {
           //view record form
           recreateForm: true,
-          beforeShowForm: function(e){
+          beforeShowForm: function(e) {
               var form = $(e[0]);
               form.closest('.ui-jqdialog').find('.ui-jqdialog-title').wrap('<div class="widget-header" />')
           }

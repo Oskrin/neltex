@@ -139,9 +139,9 @@ $conexion = conectarse();
 																</div>
 
 																<div class="form-group">
-																	<label class="col-sm-6 control-label no-padding-right" for="dias_laborados">Días Laborados:</label>
+																	<label class="col-sm-6 control-label no-padding-right" for="horas_extras">Horas Extras:</label>
 																	<div class="col-sm-6">
-																		<input type="text" name="dias_laborados" id="dias_laborados" class="form-control" value="0" />
+																		<input type="number" id="horas_extras" name="horas_extras" class="form-control" value="0" />
 																	</div>
 																</div>
 
@@ -150,20 +150,21 @@ $conexion = conectarse();
 																	<div class="col-sm-6">
 																		<span class="input-icon">
 																			<input type="text" id="decimo_tercero" name="decimo_tercero" class="form-control" value="0.00" />
+																			<input type="hidden" id="acumula" name="acumula" class="form-control" value="" />
 																			<i class="ace-icon fa fa fa-usd orange"></i>
 																		</span>
 																	</div>
 																</div>
 
 																<div class="form-group">
-																	<label class="col-sm-6 control-label no-padding-right" for="descuento_faltas">Descuento Faltas:</label>
+																	<label class="col-sm-6 control-label no-padding-right" for="total_ingresos">Total Ingresos:</label>
 																	<div class="col-sm-6">
 																		<span class="input-icon">
-																			<input type="text" id="descuento_faltas" name="descuento_faltas" class="form-control" value="0.00" />
+																			<input type="text" id="total_ingresos" name="total_ingresos" class="form-control" value="0.00" />
 																			<i class="ace-icon fa fa fa-usd orange"></i>
 																		</span>
 																	</div>
-																</div>						
+																</div>					
 															</div>
 
 															<div class="col-md-4">
@@ -175,20 +176,17 @@ $conexion = conectarse();
 																</div>
 
 																<div class="form-group">
-																	<label class="col-sm-4 control-label no-padding-right" for="acumulable">Acumulable:</label>
-																	<div class="col-sm-8">
-																		<label>
-																			<input name="acumulable" id="acumulable" class="ace ace-switch ace-switch-5" type="checkbox" checked>
-																			<span class="lbl"></span>
-																		</label>
+																	<label class="col-sm-4 control-label no-padding-right" for="dias_laborados">Días Laborados:</label>
+																	<div class="col-sm-6">
+																		<input type="text" name="dias_laborados" id="dias_laborados" class="form-control" value="0" />
 																	</div>
 																</div>
 
 																<div class="form-group">
-																	<label class="col-sm-4 control-label no-padding-right" for="no_laborado">Días no Laborados:</label>
+																	<label class="col-sm-4 control-label no-padding-right"></label>
 																	<div class="col-sm-6">
-																		<input type="text" name="no_laborado" id="no_laborado" class="form-control" value="0" />
-																	</div>	
+																		<button type="button" name="btn_importar" id="btn_importar" class="btn btn-white btn-primary btn-bold" data-toggle="tooltip" title="Importar archivo CSV"><i class="fa fa-file-excel-o bigger-110 green"></i> Importar</button>
+																	</div>
 																</div>
 
 																<div class="form-group">
@@ -196,6 +194,16 @@ $conexion = conectarse();
 																	<div class="col-sm-6">
 																		<span class="input-icon">
 																			<input type="text" id="decimo_cuarto" name="decimo_cuarto" class="form-control" value="0.00" />
+																			<i class="ace-icon fa fa fa-usd orange"></i>
+																		</span>
+																	</div>
+																</div>
+
+																<div class="form-group">
+																	<label class="col-sm-4 control-label no-padding-right" for="descuento_faltas">Descuento Faltas:</label>
+																	<div class="col-sm-6">
+																		<span class="input-icon">
+																			<input type="text" id="descuento_faltas" name="descuento_faltas" class="form-control" value="0.00" />
 																			<i class="ace-icon fa fa fa-usd orange"></i>
 																		</span>
 																	</div>
@@ -227,10 +235,10 @@ $conexion = conectarse();
 																</div>
 
 																<div class="form-group">
-																	<label class="col-sm-5 control-label no-padding-right"></label>
+																	<label class="col-sm-5 control-label no-padding-right" for="no_laborado">Días no Laborados:</label>
 																	<div class="col-sm-6">
-																		<button type="button" name="btn_importar" id="btn_importar" class="btn btn-white btn-primary btn-bold" data-toggle="tooltip" title="Importar archivo CSV"><i class="fa fa-file-excel-o bigger-110 green"></i> Importar</button>
-																	</div>
+																		<input type="text" name="no_laborado" id="no_laborado" class="form-control" value="0" />
+																	</div>	
 																</div>
 
 																<div class="form-group">
@@ -241,17 +249,17 @@ $conexion = conectarse();
 																</div>
 
 																<div class="form-group">
-																	<label class="col-sm-4 control-label no-padding-right" for="total_ingresos">Total Ingresos:</label>
+																	<label class="col-sm-5 control-label no-padding-right" for="total_extras">Total Extras:</label>
 																	<div class="col-sm-6">
 																		<span class="input-icon">
-																			<input type="text" id="total_ingresos" name="total_ingresos" class="form-control" value="0.00" />
+																			<input type="text" id="total_extras" name="total_extras" class="form-control" value="0.00" />
 																			<i class="ace-icon fa fa fa-usd orange"></i>
 																		</span>
 																	</div>
 																</div>
 
 																<div class="form-group">
-																	<label class="col-sm-4 control-label no-padding-right" for="total_descuentos">Total Descuentos:</label>
+																	<label class="col-sm-5 control-label no-padding-right" for="total_descuentos">Total Descuentos:</label>
 																	<div class="col-sm-6">
 																		<span class="input-icon">
 																			<input type="text" id="total_descuentos" name="total_descuentos" class="form-control" value="0.000" />

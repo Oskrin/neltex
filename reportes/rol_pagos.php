@@ -56,20 +56,22 @@
 
     $sql = pg_query("SELECT * FROM nomina N, empleado E WHERE N.id_empleado = E.id_empleado AND N.id_nomina = '$_GET[id]'");
     while($row = pg_fetch_row($sql)){
-        $cedula = $row[19];
-        $nombres = $row[20];
+        $cedula = $row[21];
+        $nombres = $row[22];
         $fecha = $row[2];
         $mes = $row[3];
         $acumulable = $row[4];
-        $laborados = $row[6];
-        $no_laborados = $row[7];
-        $sueldo = $row[8];
-        $decimo_tercero = $row[9];
-        $decimo_cuarto = $row[10];
-        $total_ingresos = $row[11];
-        $descuento = $row[12];
-        $total_descuentos = $row[14];
-        $pagar = $row[15];
+        $horas_extras = $row[6];
+        $laborados = $row[7];
+        $no_laborados = $row[8];
+        $sueldo = $row[9];
+        $total_extras = $row[10];
+        $decimo_tercero = $row[11];
+        $decimo_cuarto = $row[12];
+        $total_ingresos = $row[13];
+        $descuento = $row[14];
+        $total_descuentos = $row[16];
+        $pagar = $row[17];
     }        
     /////////header   
     $pdf->SetFont('Arial','B',10);        
@@ -80,19 +82,22 @@
     $pdf->Text(10, 53, maxCaracter(utf8_decode('Sueldo:  '.$sueldo),35),1,0, 'L',0);////direccion
     $pdf->Text(145, 42, maxCaracter(utf8_decode('CI:  '.$cedula),20),1,0, 'L',0);////ruc ci
     $pdf->Text(145, 48, maxCaracter(utf8_decode('Mes:  '.$mes),20),1,0, 'L',0);////telefono
+    $pdf->Text(145, 53, maxCaracter(utf8_decode('Horas Extras:  '.$horas_extras),35),1,0, 'L',0);////direccion
 
     $pdf->Text(10, 58, utf8_decode('Dias Laborados:  '.$laborados),1,0, 'L',0);////telefono
     if ($acumulable == 'SI') {
-        $pdf->Text(10, 63, utf8_decode('Decimo Tercero:  0.00'),1,0, 'L',0);////telefono
-        $pdf->Text(10, 68, utf8_decode('Decimo Cuarto:  0.00'),1,0, 'L',0);////telefono
-        $ingresos = $total_ingresos - $decimo_tercero - $decimo_cuarto;
-        $pdf->Text(10, 73, utf8_decode('Total Ingresos:  '.$ingresos),1,0, 'L',0);////telefono
-        $neto_pagar = $ingresos - $descuento;
-        $pdf->Text(80,83, utf8_decode('Neto Pagar:  '.$neto_pagar),1,0, 'L',0);////telefono  
+        $pdf->Text(10, 63, utf8_decode('Total Extas:  '.$total_extras),1,0, 'L',0);////telefono
+        $pdf->Text(10, 68, utf8_decode('Decimo Tercero:  0.00'),1,0, 'L',0);////telefono
+        $pdf->Text(10, 73, utf8_decode('Decimo Cuarto:  0.00'),1,0, 'L',0);////telefono
+        // $ingresos = $total_ingresos - $decimo_tercero - $decimo_cuarto;
+        $pdf->Text(10, 78, utf8_decode('Total Ingresos:  '.$total_ingresos),1,0, 'L',0);////telefono
+        // $neto_pagar = $ingresos - $descuento;
+        $pdf->Text(80,83, utf8_decode('Neto Pagar:  '.$pagar),1,0, 'L',0);////telefono  
     } else {
-        $pdf->Text(10, 63, utf8_decode('Decimo Tercero:  '.$decimo_tercero),1,0, 'L',0);////telefono
-        $pdf->Text(10, 68, utf8_decode('Decimo Cuarto:  '.$decimo_cuarto),1,0, 'L',0);////telefono
-        $pdf->Text(10, 73, utf8_decode('Total Ingresos:  '.$total_ingresos),1,0, 'L',0);////telefono
+        $pdf->Text(10, 63, utf8_decode('Total Extas:  '.$total_extras),1,0, 'L',0);////telefono
+        $pdf->Text(10, 68, utf8_decode('Decimo Tercero:  '.$decimo_tercero),1,0, 'L',0);////telefono
+        $pdf->Text(10, 73, utf8_decode('Decimo Cuarto:  '.$decimo_cuarto),1,0, 'L',0);////telefono
+        $pdf->Text(10, 78, utf8_decode('Total Ingresos:  '.$total_ingresos),1,0, 'L',0);////telefono
         $pdf->Text(80,83, utf8_decode('Neto Pagar:  '.$pagar),1,0, 'L',0);////telefono 
     }
     
@@ -100,7 +105,7 @@
 
     $pdf->Text(130, 58, utf8_decode('Dias no Laborados:  '.$no_laborados),1,0, 'L',0);////telefono
     $pdf->Text(130,63, utf8_decode('Descuentos:  '.$descuento),1,0, 'L',0);////telefono
-    $pdf->Text(130,73, utf8_decode('Total Descuentos:  '.$total_descuentos),1,0, 'L',0);////telefono
+    $pdf->Text(130,78, utf8_decode('Total Descuentos:  '.$total_descuentos),1,0, 'L',0);////telefono
 
           
 

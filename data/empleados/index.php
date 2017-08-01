@@ -174,6 +174,16 @@
 																</div>
 
 																<div class="form-group">
+																	<label class="col-sm-4 control-label no-padding-right" for="acumulable">Acumulable:</label>
+																	<div class="col-sm-8">
+																		<label>
+																			<input name="acumulable" id="acumulable" class="ace ace-switch ace-switch-5" type="checkbox" checked>
+																			<span class="lbl"></span>
+																		</label>
+																	</div>
+																</div>
+
+																<div class="form-group">
 																	<label class="col-sm-4 control-label no-padding-right" for="txt_13">Otros:</label>
 																	<div class="col-sm-8">	
 																		<textarea id="txt_13" name="txt_13" placeholder="Otros" class="col-sm-12"></textarea>

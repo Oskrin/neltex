@@ -1342,6 +1342,16 @@ function menu_lateral(){
 					<b class="arrow"></b>
 				</li>';
 
+				print '<li ';
+				print('class="hover"');
+				print'>
+					<a href="../../reportes/morosos.php" target="_blank">
+						<i class="menu-icon fa fa-caret-right"></i>
+						Deudores
+					</a>
+					<b class="arrow"></b>
+				</li>';
+
 				// print '<li ';
 				// print('class="hover"');
 				// print'>
@@ -1474,14 +1484,24 @@ function menu_lateral(){
 			</li>';
 
 			print '<li ';if ($acus[3]=='iva') {
-					print('class="active"');
-				}print'>
-					<a href="../iva/">
-						<i class="menu-icon fa fa-caret-right"></i>
-					Porcentaje IVA
-					</a>
-					<b class="arrow"></b>
-				</li>';
+				print('class="active"');
+			}print'>
+				<a href="../iva/">
+					<i class="menu-icon fa fa-caret-right"></i>
+				Porcentaje IVA
+				</a>
+				<b class="arrow"></b>
+			</li>';
+
+			print '<li ';if ($acus[3]=='auditoria') {
+				print('class="active"');
+			}print'>
+				<a href="../auditoria/">
+					<i class="menu-icon fa fa-caret-right"></i>
+				Auditoria
+				</a>
+				<b class="arrow"></b>
+			</li>';
 										
 			print '</ul>			
 		</li>';	

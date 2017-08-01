@@ -24,15 +24,15 @@ $start = $limit * $page - $limit;
 if ($start < 0)
     $start = 0;
 if ($search == 'false') {
-    $SQL = "SELECT id_empleado,identificacion,nombres_completos,telefono1,telefono2,ciudad,descripcion,direccion,correo,comentario,sueldo from empleado, ciudad where empleado.ciudad = ciudad.id_ciudad ORDER BY  $sidx $sord offset $start limit $limit";
+    $SQL = "SELECT id_empleado,identificacion,nombres_completos,telefono1,telefono2,ciudad,descripcion,direccion,correo,comentario,sueldo, acumulable from empleado, ciudad where empleado.ciudad = ciudad.id_ciudad ORDER BY  $sidx $sord offset $start limit $limit";
 } else {
     $campo = $_GET['searchField'];
   
     if ($_GET['searchOper'] == 'eq') {
-        $SQL = "SELECT id_empleado,identificacion,nombres_completos,telefono1,telefono2,ciudad,descripcion,direccion,correo,comentario,sueldo from empleado, ciudad where empleado.ciudad = ciudad.id_ciudad and $campo = '$_GET[searchString]' ORDER BY $sidx $sord offset $start limit $limit";
+        $SQL = "SELECT id_empleado,identificacion,nombres_completos,telefono1,telefono2,ciudad,descripcion,direccion,correo,comentario,sueldo, acumulable from empleado, ciudad where empleado.ciudad = ciudad.id_ciudad and $campo = '$_GET[searchString]' ORDER BY $sidx $sord offset $start limit $limit";
     }         
     if ($_GET['searchOper'] == 'cn') {
-        $SQL = "SELECT id_empleado,identificacion,nombres_completos,telefono1,telefono2,ciudad,descripcion,direccion,correo,comentario,sueldo from empleado, ciudad where empleado.ciudad = ciudad.id_ciudad and $campo like '%$_GET[searchString]%' ORDER BY $sidx $sord offset $start limit $limit";
+        $SQL = "SELECT id_empleado,identificacion,nombres_completos,telefono1,telefono2,ciudad,descripcion,direccion,correo,comentario,sueldo, acumulable from empleado, ciudad where empleado.ciudad = ciudad.id_ciudad and $campo like '%$_GET[searchString]%' ORDER BY $sidx $sord offset $start limit $limit";
     }
 }
 
@@ -56,6 +56,7 @@ while ($row = pg_fetch_row($result)) {
     $s .= "<cell>" . $row[8] . "</cell>";
     $s .= "<cell>" . $row[9] . "</cell>";
     $s .= "<cell>" . $row[10] . "</cell>";   
+    $s .= "<cell>" . $row[11] . "</cell>";
     $s .= "</row>";
 }
 $s .= "</rows>";

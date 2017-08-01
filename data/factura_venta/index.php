@@ -160,7 +160,7 @@
 																		<div class="col-md-12">
 																			<div class="col-md-5">
 																				<div class="form-group">
-																					<label class="col-sm-6 no-padding-right" for="txt_nro_identificacion"> Cédula de Identidad o Ruc: <font color="red">*</font></label>
+																					<label class="col-sm-6 no-padding-right" for="txt_nro_identificacion">Cédula de Identidad o Ruc: <font color="red">*</font></label>
 																					<div class="col-sm-6">
 																					<input type="hidden" id="id_cliente" name="id_cliente">
 																						<select class="chosen-select form-control" id="txt_nro_identificacion" name="txt_nro_identificacion" data-placeholder="Nro de identifiación">	     
@@ -187,7 +187,7 @@
 																		<div class="col-md-12">
 																			<div class="col-md-4">		
 																				<div class="form-group">
-																					<label class="col-sm-4 no-padding-right" for="lbl_client_direccion"> Dirección: </label>
+																					<label class="col-sm-4 no-padding-right" for="lbl_client_direccion">Dirección: </label>
 																					<div class="col-sm-8">
 																						<input type="text" id="lbl_client_direccion" name="lbl_client_direccion" class="form-control" readonly /> 
 																					</div>												
@@ -196,7 +196,7 @@
 
 																			<div class="col-sm-4">
 																				<div class="form-group">			
-																					<label class="col-sm-5 control-label no-padding-right" for="lbl_client_telefono"> Teléfono:</label>
+																					<label class="col-sm-5 control-label no-padding-right" for="lbl_client_telefono">Teléfono:</label>
 																					<div class="col-sm-7">
 																						<input type="text" id="lbl_client_telefono" name="lbl_client_telefono" class="form-control" readonly /> 
 																					</div>													
@@ -205,7 +205,7 @@
 
 																			<div class="col-sm-4">
 																				<div class="form-group">			
-																					<label class="col-sm-3 control-label no-padding-right" for="lbl_client_correo"> Correo:</label>
+																					<label class="col-sm-3 control-label no-padding-right" for="lbl_client_correo">Correo:</label>
 																					<div class="col-sm-9">
 																						<input type="text" id="lbl_client_correo" name="lbl_client_correo" class="form-control" readonly /> 
 																					</div>													
@@ -218,7 +218,7 @@
 																		<div class="col-md-12">
 																			<div class="col-sm-4">
 																				<div class="form-group">
-																					<label class="col-sm-4 no-padding-right" for="fecha_cancelacion"> Fecha cancelación:</label>
+																					<label class="col-sm-4 no-padding-right" for="fecha_cancelacion">Fecha cancelación:</label>
 																					<div class="col-sm-8">
 																						<div class="input-group">
 																							<input class="form-control date-picker" id="fecha_cancelacion" name="fecha_cancelacion" type="text" readonly/>
@@ -232,7 +232,7 @@
 
 																			<div class="col-sm-4">
 																				<div class="form-group">			
-																					<label class="col-sm-5 control-label no-padding-right" for="tipo"> Tipo de precio:</label>
+																					<label class="col-sm-5 control-label no-padding-right" for="tipo">Tipo de precio:</label>
 																					<div class="col-sm-7">
 																						<select class="chosen-select form-control" id="tipo" name="tipo" data-placeholder="Tipo de precio">
 					                                                                        <option value="MINORISTA" selected>MINORISTA</option>
@@ -244,9 +244,9 @@
 
 																			<div class="col-sm-4">
 																				<div class="form-group">
-																					<label class="col-sm-4 control-label no-padding-right" for="formas"> Forma de Pago:</label>
+																					<label class="col-sm-4 control-label no-padding-right" for="formas">Forma de Pago:</label>
 																					<div class="col-sm-8">
-																						<select class="chosen-select form-control" id="formas" name="formas" data-placeholder="Forma de Pago">                              
+																						<select class="chosen-select form-control" id="formas" name="formas" data-placeholder="Forma de Pago">
 					                                                                    </select>
 																					</div>													
 																				</div>														
@@ -264,19 +264,7 @@
 					                                                                    </select>
 																					</div>													
 																				</div>														
-																			</div>
-
-																			<div class="col-md-4">													
-																			</div>
-
-																			<div class="col-sm-4">
-																				<div class="form-group">
-																					<label class="col-sm-4 control-label no-padding-right" for="formas"> Detalle de Pago:</label>
-																					<div class="col-sm-8">
-																						<textarea id="detalle" name="detalle" class="form-control col-sm-12"></textarea>
-																					</div>													
-																				</div>														
-																			</div>																
+																			</div>															
 																		</div>
 																	</div>	
 																	
@@ -443,7 +431,7 @@
 																				<label class="col-sm-4 no-padding-right" for="adelanto">Adelanto:</label>
 																				<div class="col-sm-8">
 																					<div class="input-group">
-																						<input type="text"  id="adelanto" name="adelanto" placeholder="0.00" class="form-control"/>
+																						<input type="text"  id="adelanto" name="adelanto" class="form-control" value="0.00"/>
 																						<span class="input-group-addon">
 																							<i class="fa fa-usd bigger-110"></i>
 																						</span>
@@ -454,7 +442,7 @@
 																			<div class="col-md-4">
 																				<label class="col-sm-4 no-padding-right" for="meses">Meses:</label>
 																				<div class="col-sm-8">
-																					<input class="form-control" type="number" id="meses" name="meses" min="1" max="3" value="1" />
+																					<input class="form-control" type="number" id="meses" name="meses" min="1" max="3" value="0" />
 																				</div>
 																			</div>
 
@@ -553,6 +541,60 @@
 				</button>
 			</div>
 		</div>
+
+		<!-- Modal País-->
+		<div class="modal fade" id="modal_chequera" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		    <div class="modal-dialog">
+			    <div class="modal-content blue">
+			        <div class="modal-header">
+			          	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			          	<h4 class="modal-title">AGREGAR CHEQUERA</h4>
+			        </div>
+
+			        <form class="form-horizontal" name="form_chequera" id="form_chequera" autocomplete="off">
+			        	<div class="modal-body">		            
+			            	<div class="form-group has-error">
+								<label class="col-sm-3 control-label no-padding-right" for="num_cheque">Número Cheque:</label>
+								<div class="col-sm-7">
+									<input type="text" id="num_cheque" name="num_cheque"  placeholder="Número Cheque" class="form-control" />
+								</div>
+							</div>
+
+							<div class="form-group has-error">
+								<label class="col-sm-3 control-label no-padding-right" for="banco">Banco:</label>
+								<div class="col-sm-7">
+									<input type="text" id="banco" name="banco"  placeholder="Banco" class="form-control" />
+								</div>
+							</div>
+
+							<div class="form-group has-error">
+								<label class="col-sm-3 control-label no-padding-right" for="monto">Monto:</label>
+								<div class="col-sm-7">
+									<input type="text" id="monto" name="monto" placeholder="Monto" class="form-control" value="0.00" />
+								</div>
+							</div>
+
+							<div class="form-group has-error">
+								<label class="col-sm-3 control-label no-padding-right" for="fecha_cheque">Fecha Cheque:</label>
+								<div class="col-sm-7">
+									<div class="input-group">
+										<input type="text" id="fecha_cheque" name="fecha_cheque" class="form-control date-picker" />
+										<span class="input-group-addon">
+											<i class="fa fa-calendar bigger-110"></i>
+										</span>
+									</div>
+								</div>
+							</div>								            
+			        	</div>
+			        	<div class="modal-footer">
+				          	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				         	<button type="button" class="btn btn-primary" id="btn_confirmar">Confirmar</button>
+				        </div>
+			        </form>
+			    </div>
+		    </div>
+		</div>
+		<!-- /.modal -->
 
 		<script type="text/javascript">
 			window.jQuery || document.write("<script src='../../dist/js/jquery.min.js'>"+"<"+"/script>");

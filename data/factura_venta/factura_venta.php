@@ -203,12 +203,19 @@
 				$resp = $guardar = guardarSql($conexion,$sql_bancos);
 			} else {
 				if($_POST['formas'] == '13233227715564387a42e68c1.70763457') {
+					$id_cheque  = unique($fecha_larga);
+
 					$sql_libro = "insert into libro_diario values ('".$id_libro."','".$fecha."','".$_POST['total']."','','11501155240ac39d2f0','Factura Venta','Cobro Cheque Caja')";
 					$resp = $guardar = guardarSql($conexion,$sql_libro);
 
+					$sql_chequera = "insert into cheques values ('".$id_cheque."','".$_POST['num_cheque']."','".$_POST['banco']."','".$_POST['monto']."','".$_POST['fecha_cheque']."','$id','Activo','$fecha')";
+					$resp = $guardar = guardarSql($conexion,$sql_chequera);
+
+					$cadena = 'N°-'.$_POST['num_cheque'] . '   Banco:' . $_POST['banco'] . '    Monto $' . $_POST['monto'] . '       Fecha:' . $_POST['fecha_cheque'];
+
 					$sql_bancos = "INSERT INTO public.movimientos_bancos(
 		            fecha, detalle, ingreso, egreso, saldo, 
-		            referencia) values ('".$fecha."','".'Cobro Factura Venta N°:'.$_POST['serie3']."','".$_POST['total']."','','$cal','".$_POST['detalle']."')";
+		            referencia) values ('".$fecha."','".'Cobro Factura Venta N°:'.$_POST['serie3']."','".$_POST['total']."','','$cal','$cadena')";
 		            $resp = $guardar = guardarSql($conexion,$sql_bancos);	
 				}	
 			}	
@@ -223,8 +230,7 @@
 				$id_libro_3  = unique($fecha_larga);	
 				
 				$sql_libro = "insert into libro_diario values ('".$id_libro_3."','".$fecha."','','".($_POST['iva'])."','11501155240ac3a138e','Factura Ventas','Iva Cobrado')";
-				$resp = $guardar = guardarSql($conexion,$sql_libro);			
-				
+				$resp = $guardar = guardarSql($conexion,$sql_libro);
 			}			
 		}	
 	}
