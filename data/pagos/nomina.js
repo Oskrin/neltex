@@ -56,7 +56,6 @@ function guardar_nomina() {
 function inicio() {	
   show();
   function mes_actual() {
-    console.log('test');
     $.ajax({
       type: "POST",
       url: "mes.php",
@@ -64,10 +63,29 @@ function inicio() {
       success: function(data) {
         $('#mes').html(data).trigger("change");
       }
-  });
+    });
+  }
+
+  function fechas_nomina() {
+    $.ajax({
+      type: "POST",
+      url: "mes.php",
+      data: {cargar_fechas:'cargar_fechas'},
+      success: function(data) {
+        // console.log(data);
+        if (data == 27 || data == 28) {
+        } else {
+          location.href = "../inicio"
+          // alert('No puede ingresar no esta en días Habiles');
+            
+        }
+      }
+    });
   }
 
   mes_actual();
+  // fechas_pagos();
+  fechas_nomina();
 
   // stilo select2
     $(".select2").css({

@@ -40,4 +40,36 @@
     $data = $_POST['id']; /// error al guardar
 
     echo $data;
+
+    if (isset($_POST['cargar_pagos'])) {
+        $sql = pg_query("SELECT * FROM detalle_pagos_venta WHERE CAST(fecha_pagos AS DATE) > NOW() AND CAST(fecha_pagos AS DATE)  < NOW() + CAST('2 days' AS INTERVAL) AND  estado = 'Activo';");
+        while($row = pg_fetch_row($sql)) {
+            $id_pagos_venta = $row[1];
+            $cuota = $row[3];
+
+            $sql2 = pg_query("SELECT id_factura_venta FROM pagos_venta WHERE id_pagos_venta = '$id_pagos_venta'");
+            while($row2 = pg_fetch_row($sql2)) {
+                $id_factura_venta = $row2[0];
+
+                $sql3 = pg_query("SELECT id_cliente FROM factura_venta WHERE id_factura_venta = '$id_factura_venta'");
+                while($row3 = pg_fetch_row($sql3)) {
+                    $id_cliente = $row3[0];
+
+                    $sql4 = pg_query("SELECT identificacion, nombres_completos, telefono2, direccion FROM cliente WHERE id_cliente ='$id_cliente'");
+                    while($row4 = pg_fetch_row($sql4)) {
+                        $identificacion = $row4[0];
+                        $nombres_completos = $row4[1];
+                        $telefono2 = $row4[2];
+
+                        $data[] = array('identificacion' => $identificacion, 'nombres_completos' => $nombres_completos, 'telefono2' => $telefono2, 'cuota' => $cuota);
+
+                        // print $direccion;
+                    } 
+                } 
+            }    
+        }
+        echo $data = json_encode($data); 
+
+        // print $identificacion;
+    }
 ?>

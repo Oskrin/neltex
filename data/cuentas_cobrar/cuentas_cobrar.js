@@ -19,7 +19,7 @@ function recargar() {
   }, 1000);  
 }
 
-function cargar_facturas(){
+function cargar_facturas() {
     var id = $("#id_cliente").val();
     if (id == "") {
 
@@ -99,8 +99,28 @@ function guardar_pago() {
     }
 }
 
-function inicio (){	
+function inicio () {	
   show();
+
+  function fechas_pagos() {
+    $.ajax({
+      type: "POST",
+      url: "cuentas_cobrar.php",
+      data: {cargar_pagos:'cargar_pagos'},
+      dataType: 'json',
+      success: function(data) {
+        if (data != null) {
+          for (var i = 0; i < data.length; i++) {
+            var mensaje = 'El Cliente ' + data[i].nombres_completos + ' debe cancelar el dia de Mañana el monto de: $' + data[i].cuota + ' Telf: ' + data[i].telefono2; 
+            alert(mensaje);
+          }    
+        }
+        
+      }
+    });
+  }
+
+  fechas_pagos();
 
   carga_forma_pago("formas");
 

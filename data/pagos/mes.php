@@ -5,6 +5,12 @@
  		$nombre = strftime("%B",mktime(0, 0, 0, $mes, 1, 2000)); 
 		// echo strtoupper($nombre);
 		print '<option value="'.strtoupper($nombre).'">'.strtoupper($nombre).'</option>';	
+	}
+
+	if (isset($_POST['cargar_fechas'])) {
+		$mes = date("d"); // Mes actual
+		
+		echo $mes;	
 	} 
 	
 
