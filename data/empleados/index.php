@@ -99,7 +99,7 @@
 																	<label class="col-sm-4 control-label no-padding-right" for="txt_4">Teléfono:</label>
 																	<div class="col-sm-8">
 																		<span class="block input-icon input-icon-right">
-																			<input type="text" id="txt_4" name="txt_4" placeholder="Teléfono" class="form-control" onkeydown="return validarNumeros(event)" />
+																			<input type="text" id="txt_4" name="txt_4" placeholder="Teléfono" class="form-control" onkeydown="return validarNumeros(event)" maxlength="7" />
 																			<i class="ace-icon fa fa-phone fa-flip-horizontal"></i>
 	                                                                    </span>
 																	</div>
@@ -109,7 +109,7 @@
 																	<label class="col-sm-4 control-label no-padding-right" for="txt_5">Celular:</label>																	
 																	<div class="col-sm-8">
 																		<span class="block input-icon input-icon-right">
-																			<input type="text" id="txt_5" name="txt_5" placeholder="Celular" class="form-control" onkeydown="return validarNumeros(event)"/>
+																			<input type="text" id="txt_5" name="txt_5" placeholder="Celular" class="form-control" onkeydown="return validarNumeros(event)" maxlength="10" />
 																			<i class="ace-icon fa fa-mobile fa-flip-horizontal"></i>
 	                                                                    </span>
 																	</div>
