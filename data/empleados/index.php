@@ -174,7 +174,7 @@
 																</div>
 
 																<div class="form-group">
-																	<label class="col-sm-4 control-label no-padding-right" for="acumulable">Acumulable:</label>
+																	<label class="col-sm-4 control-label no-padding-right" for="acumulable">Décimos Acumulable:</label>
 																	<div class="col-sm-8">
 																		<label>
 																			<input name="acumulable" id="acumulable" class="ace ace-switch ace-switch-5" type="checkbox" checked>

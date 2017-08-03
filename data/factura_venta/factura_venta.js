@@ -139,12 +139,32 @@ function inicio () {
     carga_forma_pago("formas");
     carga_termino_pago("termino_pago");
 
+    function fechas_pagos() {
+        $.ajax({
+          type: "POST",
+          url: "cheques.php",
+          data: {cargar_pagos:'cargar_pagos'},
+          dataType: 'json',
+          success: function(data) {
+            console.log(data);
+            if (data != null) {
+              for (var i = 0; i < data.length; i++) {
+                var mensaje = 'Tiene un Cheque Pendiente de Depositar del Banco:' + data[i].banco + ' con el monto de: $' + data[i].monto; 
+                alert(mensaje);
+              }    
+            }
+            
+          }
+        });
+    }
+
     //selectores tipo comprobantes
     $("#formas").change(function () {
         id = $(this).val();
 
         if (id == '13233227715564387a42e68c1.70763457') {
            $('#modal_chequera').modal('show');
+           fechas_pagos();
         }
     });
     // fin
