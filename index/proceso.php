@@ -10,12 +10,12 @@ $conexion = conectarse();
 		$user = $_POST['txt_1'];
 		$pass = $_POST['txt_2'];		
 		$acu=0;				
-		$result = pg_query("SELECT * FROM USUARIO U, CLAVES C WHERE U.ID_USUARIO=C.ID_USUARIO AND U.USUARIO='$user' AND C.CLAVE=md5('$pass');");
+		$result = pg_query("SELECT * FROM USUARIO U, CLAVES C WHERE U.ID_USUARIO=C.ID_USUARIO AND U.USUARIO = '$user' AND C.CLAVE = md5('$pass') AND U.estado = '0';");
 		while ($row = pg_fetch_row($result)) {			
-			$_SESSION['iddow']=$row[0];
-			$_SESSION['niveldow']=$row[9];
-			$_SESSION['nombrescompletosdow']=$row[2];
-			$_SESSION['usuariodow']=$row[8];
+			$_SESSION['iddow'] = $row[0];
+			$_SESSION['niveldow'] = $row[9];
+			$_SESSION['nombrescompletosdow'] = $row[2];
+			$_SESSION['usuariodow'] = $row[8];
 			$consulta2 = pg_query("select * from empresa");
 		    while ($row = pg_fetch_row($consulta2)) {
 		    	$_SESSION['id'] = $row[0];

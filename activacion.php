@@ -56,54 +56,41 @@
         <!-- inline scripts related to this page -->
         <script type="text/javascript">
             $(function(){
-                swal({
-                    title: "Buen Trabajo!",
-                    text: "Su cuenta se ha activado con éxito.!",
-                    type: "success",
-                },function (){
-                    window.location.href = "../neltex";
-                });
-                // var fullname=window.location.search;    
-                // if (fullname!='') {
-                //     $.ajax({
-                //         url: 'app.php',
-                //         type: 'post',
-                //         dataType:'json',
-                //         data: {proceso_activacion:'',id:fullname},
-                //         success: function (data) {
-                //             swal({
-                //                 title: "Buen Trabajo!",
-                //                 text: "Su cuenta se ha activado con éxito.!",
-                //                 type: "success",
-                //             },function (){
-                //                 window.location.href = "../";
-                //             });
-                //             // if (data[0]==0) {
-                //             //     swal({
-                //             //         title: "Buen Trabajo!",
-                //             //         text: "Su cuenta se ha activado con éxito.!",
-                //             //         type: "success",
-                //             //     },function (){
-                //             //         window.location.href = "../";
-                //             //     });
-                //             // }else{
-                //             //     swal({
-                //             //         title: "Lo sentimos!",
-                //             //         text: "No se ha podido procesar su petición intente mas tarde.!",
-                //             //         type: "warning",
-                //             //     },function (){
-                //             //         window.location.href = "../";
-                //             //     });
-                //             // }
-                //         }
-                //     });
-                // }else{
-                //      swal({
-                //         title: "Lo sentimos!",
-                //         text: "Proceso no realizado.!",
-                //         type: "info",
-                //     });
-                // }
+                var fullname = window.location.search;
+                var getString = fullname.split('?id=')[1]; 
+                if (fullname!='') {
+                    $.ajax({
+                        url: 'app.php',
+                        type: 'post',
+                        dataType:'json',
+                        data: {proceso_activacion:'',id:getString},
+                        success: function (data) {
+                            if (data == 0) {
+                                swal({
+                                    title: "Buen Trabajo!",
+                                    text: "Su cuenta se ha activado con éxito.!",
+                                    type: "success",
+                                },function (){
+                                    window.location.href = "../neltex";
+                                });
+                            } else {
+                                swal({
+                                    title: "Lo sentimos!",
+                                    text: "No se ha podido procesar su petición intente mas tarde.!",
+                                    type: "warning",
+                                },function () {
+                                    window.location.href = "../";
+                                });
+                            }
+                        }
+                    });
+                }else{
+                     swal({
+                        title: "Lo sentimos!",
+                        text: "Proceso no realizado.!",
+                        type: "info",
+                    });
+                }
                 
             });
         </script>
