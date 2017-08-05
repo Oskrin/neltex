@@ -84,7 +84,6 @@ function inicio() {
   }
 
   mes_actual();
-  // fechas_pagos();
   fechas_nomina();
 
   // stilo select2
