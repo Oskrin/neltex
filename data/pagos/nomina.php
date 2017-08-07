@@ -29,7 +29,7 @@
 	// $guardar = guardarSql($conexion,$sql_libro);
 
 	$id_libro  = unique($fecha_larga);
-	$sql_libro = "insert into libro_diario values ('".$id_libro."','".$fecha."','".$_POST['txt_7']."','','11501155240ac39f4e6','Tabla Pagos Nómina','Cuentas por pagar')";///cuentas por cobrar
+	$sql_libro = "insert into libro_diario values ('".$id_libro."','".$fecha."','".$_POST['neto_pagar']."','','11501155240ac39f4e6','Tabla Pagos Nómina','Cuentas por pagar')";///cuentas por cobrar
 	$guardar = guardarSql($conexion,$sql_libro);	
 	// fin
 
