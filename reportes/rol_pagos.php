@@ -89,19 +89,21 @@
     $pdf->Text(10, 58, utf8_decode('Dias Laborados:  '.$laborados),1,0, 'L',0);////telefono
     if ($acumulable == 'SI') {
         if ($mes_dia == '08') {
+            $tercero = '275.00';
             $pdf->Text(10, 63, utf8_decode('Total Extas:  '.$total_extras),1,0, 'L',0);////telefono
-            $pdf->Text(10, 68, utf8_decode('Decimo Tercero: '.$decimo_tercero),1,0, 'L',0);////telefono
+            $pdf->Text(10, 68, utf8_decode('Decimo Tercero: '.$tercero),1,0, 'L',0);////telefono
             $pdf->Text(10, 73, utf8_decode('Decimo Cuarto:  0.00'),1,0, 'L',0);////telefono
             $pdf->Text(10, 78, utf8_decode('Total Ingresos:  '.$total_ingresos),1,0, 'L',0);////telefono
-            $neto = $sueldo + $total_extras + $decimo_tercero - $total_descuentos;
-            $pdf->Text(80,83, utf8_decode('Neto Pagar:  '.$neto),1,0, 'L',0);////telefono    
+            $neto = $sueldo + $total_extras + $tercero - $total_descuentos;
+            $pdf->Text(80,83, utf8_decode('Neto Pagar:  '.number_format($neto, 2, '.', '')),1,0, 'L',0);////telefono    
         } else {
             if ($mes_dia == '12') {
+                $cuarto = $sueldo;
                 $pdf->Text(10, 63, utf8_decode('Total Extas:  '.$total_extras),1,0, 'L',0);////telefono
                 $pdf->Text(10, 68, utf8_decode('Decimo Tercero:  0.00'),1,0, 'L',0);////telefono
-                $pdf->Text(10, 73, utf8_decode('Decimo Cuarto:  '.$decimo_cuarto),1,0, 'L',0);////telefono
+                $pdf->Text(10, 73, utf8_decode('Decimo Cuarto:  '.$cuarto),1,0, 'L',0);////telefono
                 $pdf->Text(10, 78, utf8_decode('Total Ingresos:  '.$total_ingresos),1,0, 'L',0);////telefono
-                $neto = $sueldo + $total_extras + $decimo_cuarto - $total_descuentos;
+                $neto = $sueldo + $total_extras + $cuarto - $total_descuentos;
                 $pdf->Text(80,83, utf8_decode('Neto Pagar:  '.$neto),1,0, 'L',0);////telefono
             } else {
                 $pdf->Text(10, 63, utf8_decode('Total Extas:  '.$total_extras),1,0, 'L',0);
