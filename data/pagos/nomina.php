@@ -12,6 +12,7 @@
 	$fecha_larga = date('His', time());
 	$id = unique($fecha_larga);
 	$id_session = sesion_activa();///datos session
+	$id_user = sesion_activa();
 
 	$acumulable = "NO";
 	if(isset($_POST["acumulable"]))
@@ -32,6 +33,10 @@
 	$sql_libro = "insert into libro_diario values ('".$id_libro."','".$fecha."','".$_POST['neto_pagar']."','','11501155240ac39f4e6','Tabla Pagos Nómina','Cuentas por pagar')";///cuentas por cobrar
 	$guardar = guardarSql($conexion,$sql_libro);	
 	// fin
+
+	$sql_nuevo = "select (id_nomina) from nomina where id_nomina = '$id'";
+	$sql_nuevo = sql_array($conexion,$sql_nuevo);
+	auditoria_sistema($conexion,'nomina',$id_user,'Insert',$id,$fecha_larga,$fecha,$sql_nuevo,'');
 
 
 	$data = 0; /// error al guardar

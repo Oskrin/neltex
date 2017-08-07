@@ -1,6 +1,8 @@
 <?php
 	include '../conexion.php';
-	include '../funciones_generales.php';		
+	include '../funciones_generales.php';
+	error_reporting(0);
+
 	$conexion = conectarse();
 	date_default_timezone_set('America/Guayaquil');
     $fecha=date('Y-m-d H:i:s', time()); 
@@ -11,12 +13,17 @@
 	$sql3 = "";	
 	$sql4 = "";
 	$id_session = sesion_activa();///datos session
-	$id = unique($fecha_larga);	
+	$id = unique($fecha_larga);
+	$id_user = sesion_activa();	
 		
     // guardar factura compra
 	$sql = "insert into factura_compra values ('$id','".$_POST['id_proveedor']."','$id_session','".$_POST['fecha_actual']."','".$_POST['hora_actual']."','".$_POST['fecha_registro']."','".$_POST['fecha_emision']."','".$_POST['fecha_caducidad']."','".$_POST['tipo_comprobante']."','".$_POST['serie']."','".$_POST['autorizacion']."','".$_POST['fecha_cancelacion']."','".$_POST['formas']."','".$_POST['termino_pago']."','".$_POST['tarifa0']."','".$_POST['tarifa12']."','".$_POST['iva']."','".$_POST['descuento_total']."','".$_POST['total']."','$fecha','Activo','".$_SESSION['id']."')";
 
 	$guardar = guardarSql($conexion,$sql);
+
+	$sql_nuevo = "select (id_factura_compra,id_proveedor,id_usuario,estado) from factura_compra where id_factura_compra = '$id'";
+	$sql_nuevo = sql_array($conexion,$sql_nuevo);
+	auditoria_sistema($conexion,'factura_compra',$id_user,'Insert',$id,$fecha_larga,$fecha,$sql_nuevo,'');
 		
     // /datos detalle factura
 	$campo1 = $_POST['campo1'];
@@ -39,6 +46,10 @@
 		 // guardar pagos venta
         $id2 = unique($fecha_larga);
         pg_query("insert into pagos_compra values('$id2','".$_POST['id_proveedor']."', '$id','".$id_session."','".$_POST['fecha_actual']."','".$_POST['total']."','".$_POST['total']."','Activo','$fecha')");
+        
+        $sql_nuevo = "select (id_factura_compra,id_proveedor,id_usuario,estado) from factura_compra where id_factura_compra = '$id'";
+		$sql_nuevo = sql_array($conexion,$sql_nuevo);
+        auditoria_sistema($conexion,'pagos_compra',$id_user,'Insert',$id,$fecha_larga,$fecha,$sql_nuevo,'');
 	}// fin credito
 
 	for ($i = 1; $i < $nelem; $i++) {		
@@ -48,7 +59,10 @@
 		// guardar detalle_factura
         $sql2 = "insert into detalle_factura_compra values ('$id3','$id','".$arreglo1[$i]."','".$arreglo2[$i]."','".$arreglo3[$i]."','".$arreglo4[$i]."','".$arreglo5[$i]."','$fecha','Activo')";       
 		$guardar = guardarSql($conexion,$sql2);
-		// fin  
+		// fin
+		$sql_nuevo = "select (id_factura_compra,id_proveedor,id_usuario,estado) from factura_compra where id_factura_compra = '$id'";
+		$sql_nuevo = sql_array($conexion,$sql_nuevo);
+		auditoria_sistema($conexion,'detalle_factura_compra',$id_user,'Insert',$id,$fecha_larga,$fecha,$sql_nuevo,'');  
 
 		$sql_kardex = "select id_productos from productos where id_productos ='".$arreglo1[$i]."'";		
 		

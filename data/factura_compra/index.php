@@ -470,6 +470,25 @@
 		</a>
 		</div>
 
+		<!-- Modal -->
+		<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="myModal">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+				    <div class="modal-header">
+				      	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				      	<h4 class="modal-title">BUSCAR FACTURAS COMPRAS</h4>
+				    </div>
+				    <div class="modal-body">
+				        <table id="table2"></table>
+						<div id="pager2"></div>
+				    </div>
+				    <div class="modal-footer">
+				      	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				    </div>
+				</div>
+			</div>
+		</div>
+
 		<script type="text/javascript">
 			window.jQuery || document.write("<script src='../../dist/js/jquery.min.js'>"+"<"+"/script>");
 		</script>
@@ -509,25 +528,6 @@
 		<script src="../../dist/js/ventana_reporte.js" type="text/javascript"></script>
 	</body>
 </html>  
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-		    <div class="modal-header">
-		      	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		      	<h4 class="modal-title">BUSCAR FACTURAS COMPRAS</h4>
-		    </div>
-		    <div class="modal-body">
-		        <table id="table2"></table>
-				<div id="pager2"></div>
-		    </div>
-		    <div class="modal-footer">
-		      	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-		    </div>
-		</div>
-	</div>
-</div>
 
 <!-- Modal imprimir-->
 <div id="top-menu" class="modal aside" data-fixed="true" data-placement="top" data-background="true" data-backdrop="invisible" tabindex="-1">
