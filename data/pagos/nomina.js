@@ -84,7 +84,7 @@ function inicio() {
   }
 
   mes_actual();
-  // fechas_nomina();
+  fechas_nomina();
 
   // stilo select2
     $(".select2").css({
