@@ -12,6 +12,8 @@ function actualizar () {
 
 function guardar_factura() {
   var tam = jQuery("#list").jqGrid("getRowData");
+  var formulario = $("#form_facturaCompra").serialize();
+  var modal = $("#form_chequera").serialize();
 
   if($("#serie").val() == "") {  
       $("#serie").focus();
@@ -61,7 +63,7 @@ function guardar_factura() {
 
                   $.ajax({        
                     type: "POST",
-                    data: $("#form_facturaCompra").serialize()+"&campo1="+string_v1+"&campo2="+string_v2+"&campo3="+string_v3+"&campo4="+string_v4+"&campo5="+string_v5,                
+                    data: formulario + "&" + modal +"&campo1="+string_v1+"&campo2="+string_v2+"&campo3="+string_v3+"&campo4="+string_v4+"&campo5="+string_v5,                
                     url: "factura_compra.php",      
                     success: function(data) { 
                         if( data == 0 ){
@@ -114,6 +116,36 @@ function limpiar_campo2() {
 
 function inicio () {		
   show();
+
+  function fechas_pagos() {
+    $.ajax({
+      type: "POST",
+      url: "cheques.php",
+      data: {cargar_pagos:'cargar_pagos'},
+      dataType: 'json',
+      success: function(data) {
+        console.log(data);
+        if (data != null) {
+          for (var i = 0; i < data.length; i++) {
+            var mensaje = 'Tiene un Cheque Pendiente de Depositar del Banco:' + data[i].banco + ' con el monto de: $' + data[i].monto; 
+            alert(mensaje);
+          }    
+        }
+        
+      }
+    });
+  }
+
+  //selectores tipo comprobantes
+  $("#formas").change(function () {
+      id = $(this).val();
+
+      if (id == '13233227715564387a42e68c1.70763457') {
+         $('#modal_chequera').modal('show');
+         fechas_pagos();
+      }
+  });
+  // fin
 
   // mask
   $('#serie').mask('999-999-999999999');
@@ -587,6 +619,9 @@ function inicio () {
   $("#btn_0").on("click",guardar_factura);
   /*-----limpiar factura compra--*/
   $("#btn_1").on("click", actualizar);
+  $("#btn_confirmar").on("click", function() {
+    $('#modal_chequera').modal('hide');
+  });
 
   $("#btn_2").on("click",function () { 
      $.ajax({

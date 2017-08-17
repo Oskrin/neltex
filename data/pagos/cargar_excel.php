@@ -29,7 +29,7 @@
 				// $lista[] = $objCelda['D'];
 				// $lista[] = $objCelda['E'];
 				$lista[] = $objCelda['F'];
-				// $lista[] = $objCelda['G'];
+				$lista[] = $objCelda['G'];
 				// $lista[] = $objCelda['H'];
 				// $lista[] = $objCelda['I'];
 				// $lista[] = $objCelda['J'];

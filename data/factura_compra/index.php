@@ -79,7 +79,7 @@
 																	</li>
 																</ul>
 
-																<form class="form-horizontal" rol="form" action="" method="POST" id="form_facturaCompra">
+																<form class="form-horizontal" id="form_facturaCompra" name="form_facturaCompra">
 																	<div class="tab-content">
 																		<div id="factura" class="tab-pane fade in active">
 																			<div class="row">
@@ -489,6 +489,60 @@
 			</div>
 		</div>
 
+		<!-- Modal País-->
+		<div class="modal fade" id="modal_chequera" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		    <div class="modal-dialog">
+			    <div class="modal-content blue">
+			        <div class="modal-header">
+			          	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			          	<h4 class="modal-title">AGREGAR CHEQUERA</h4>
+			        </div>
+
+			        <form class="form-horizontal" name="form_chequera" id="form_chequera" autocomplete="off">
+			        	<div class="modal-body">		            
+			            	<div class="form-group has-error">
+								<label class="col-sm-3 control-label no-padding-right" for="num_cheque">Número Cheque:</label>
+								<div class="col-sm-7">
+									<input type="text" id="num_cheque" name="num_cheque"  placeholder="Número Cheque" class="form-control" />
+								</div>
+							</div>
+
+							<div class="form-group has-error">
+								<label class="col-sm-3 control-label no-padding-right" for="banco">Banco:</label>
+								<div class="col-sm-7">
+									<input type="text" id="banco" name="banco"  placeholder="Banco" class="form-control" />
+								</div>
+							</div>
+
+							<div class="form-group has-error">
+								<label class="col-sm-3 control-label no-padding-right" for="monto">Monto:</label>
+								<div class="col-sm-7">
+									<input type="text" id="monto" name="monto" placeholder="Monto" class="form-control" value="0.00" />
+								</div>
+							</div>
+
+							<div class="form-group has-error">
+								<label class="col-sm-3 control-label no-padding-right" for="fecha_cheque">Fecha Cheque:</label>
+								<div class="col-sm-7">
+									<div class="input-group">
+										<input type="text" id="fecha_cheque" name="fecha_cheque" class="form-control date-picker" />
+										<span class="input-group-addon">
+											<i class="fa fa-calendar bigger-110"></i>
+										</span>
+									</div>
+								</div>
+							</div>								            
+			        	</div>
+			        	<div class="modal-footer">
+				          	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				         	<button type="button" class="btn btn-primary" id="btn_confirmar">Confirmar</button>
+				        </div>
+			        </form>
+			    </div>
+		    </div>
+		</div>
+		<!-- /.modal -->
+
 		<script type="text/javascript">
 			window.jQuery || document.write("<script src='../../dist/js/jquery.min.js'>"+"<"+"/script>");
 		</script>
@@ -530,7 +584,7 @@
 </html>  
 
 <!-- Modal imprimir-->
-<div id="top-menu" class="modal aside" data-fixed="true" data-placement="top" data-background="true" data-backdrop="invisible" tabindex="-1">
+<!-- <div id="top-menu" class="modal aside" data-fixed="true" data-placement="top" data-background="true" data-backdrop="invisible" tabindex="-1">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-body container">
@@ -555,4 +609,4 @@
 		</button>
 	</div>
 </div>
-
+ -->
