@@ -185,7 +185,8 @@ $conexion = conectarse();
 																<div class="form-group">
 																	<label class="col-sm-4 control-label no-padding-right"></label>
 																	<div class="col-sm-6">
-																		<button type="button" name="btn_importar" id="btn_importar" class="btn btn-white btn-primary btn-bold" data-toggle="tooltip" title="Importar archivo CSV"><i class="fa fa-file-excel-o bigger-110 green"></i> Importar</button>
+																		<button type="button" name="btn_importar" id="btn_importar" class="btn btn-white btn-primary btn-bold" data-toggle="tooltip" title="Importar archivo CSV"><i class="fa fa-file-excel-o bigger-110 green"></i> Importar Días</button>
+																		<button type="button" name="btn_importar2" id="btn_importar2" class="btn btn-white btn-primary btn-bold" data-toggle="tooltip" title="Importar archivo CSV"><i class="fa fa-file-excel-o bigger-110 green"></i> Importar Horas</button>
 																	</div>
 																</div>
 
@@ -359,6 +360,7 @@ $conexion = conectarse();
 		</div>
 		<!-- /.modal -->
 
+		<!-- Modal Importar Días-->
 		<div id="modal-importar" class="modal fade" tabindex="-1">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -376,25 +378,11 @@ $conexion = conectarse();
 							<div class="row center">
 								<div class="col-sm-12">
 									<div class="form-group">
-										<!-- <div class="form-group"> -->
-						                  <input type="file" name="archivo_excel" id="archivo_excel" class="file" />
-						                <!-- </div> -->
+						                <input type="file" name="archivo_excel" id="archivo_excel" class="file" />
 									</div>
 								</div>
 							</div>
 						</div>
-						
-						<!-- <div class="modal-body">
-							<div class="row">
-								<div class="col-sm-12">
-									<div class="form-group">
-										<div class="form-group">
-						                  <input type="file" name="archivo_excel" id="archivo_excel" class="file" />
-						                </div>
-									</div>
-								</div>
-							</div>
-						</div> -->
 						
 						<div class="modal-footer no-margin-top">
 							<button type="button" class="btn btn-sm btn-danger pull-left" data-dismiss="modal" data-toggle="tooltip" title="Cerrar ventana">
@@ -410,32 +398,47 @@ $conexion = conectarse();
 				</div>
 			</div>
 		</div>
+		<!-- /.modal -->
 
-		<!-- Modal -->
-		<!-- <div id="top-menu" class="modal aside" data-fixed="true" data-placement="top" data-background="true" data-backdrop="invisible" tabindex="-1">
+		<!-- Modal Importar Extras-->
+		<div id="modal-importar2" class="modal fade" tabindex="-1">
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<div class="modal-body container">
-						<div class="row">
-							<div class="col-sm-5 col-sm-offset-1 white">
-								<h3 class="lighter">Imprimir &amp; PAGO</h3>
-							</div>
-
-							<div class="col-sm-5 text-center line-height-2">									
-								&nbsp; &nbsp;
-								<a class="btn btn-app btn-light no-radius" href="#">
-									<i class="ace-icon fa fa-print bigger-230"></i>
-									Imprimir
-								</a>
+					<form class="form-horizontal" name="form_excel2" id="form_excel2" autocomplete="off">
+						<div class="modal-header no-padding">
+							<div class="table-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+									<span class="white">&times;</span>
+								</button>
+								Agregar Archivo CSV
 							</div>
 						</div>
-					</div>
+
+						<div class="modal-body">
+							<div class="row center">
+								<div class="col-sm-12">
+									<div class="form-group">
+						                <input type="file" name="archivo_excel" id="archivo_excel" class="file" />
+									</div>
+								</div>
+							</div>
+						</div>
+											
+						<div class="modal-footer no-margin-top">
+							<button type="button" class="btn btn-sm btn-danger pull-left" data-dismiss="modal" data-toggle="tooltip" title="Cerrar ventana">
+								<i class="ace-icon fa fa-times"></i>
+								Cerrar
+							</button>
+							<button type="button" name="btn_excel2" id="btn_excel2" class="btn btn-sm btn-primary pull-right" data-toggle="tooltip" title="Cargar Excel">
+								<i class="ace-icon fa fa-check"></i>
+								Cargar
+							</button>
+						</div>
+					</form>	
 				</div>
-				<button class="btn btn-inverse btn-app btn-xs ace-settings-btn aside-trigger" data-target="#top-menu" data-toggle="modal" type="button">
-					<i data-icon="fa-chevron-down" data-icon="fa-chevron-up" class="ace-icon fa fa-chevron-down bigger-110 icon-only"></i>
-				</button>
 			</div>
-		</div> -->
+		</div>
+		<!-- Modal -->
 
 		<script type="text/javascript">
 			window.jQuery || document.write("<script src='../../dist/js/jquery.min.js'>"+"<"+"/script>");

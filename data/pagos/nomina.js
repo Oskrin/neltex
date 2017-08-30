@@ -134,6 +134,12 @@ function inicio() {
     });
     // fin
 
+    // ventana emergente importar
+    $('#btn_importar2').click(function() {
+      $('#modal-importar2').modal('show');
+    });
+    // fin
+
     // formato archivo excel
     $('#archivo_excel').fileinput({
           uploadUrl: '#',
@@ -178,6 +184,42 @@ function inicio() {
           $('#no_laborado').val(count);
 
           $('#modal-importar').modal('hide');
+        }         
+      });
+    });
+    // fin
+
+    // cargar horarios de entrada
+    $('#btn_excel2').click(function() {
+      var formObj = document.getElementById("form_excel2");
+      var formData = new FormData(formObj);
+      var inicioMinutos = 0;
+      var inicioHoras = 0;
+      var transcurridoMinutos = 0;
+      var transcurridoHoras = 0;
+
+      $.ajax({
+        url: "cargar_excel2.php",
+        type: "POST",
+        data:  formData,
+        mimeType:"multipart/form-data",
+        dataType: 'json',
+        contentType: false,
+        cache: false, 
+        processData:false,
+        success: function(data, textStatus, jqXHR) {
+          var count = 0;
+          for (var i = 0; i < data.length; i++) {
+            if (data[i] != "null") {
+              count = count + data[i];
+            }
+          }
+
+          console.log(count);
+
+          $('#horas_extras').val(count);
+
+          $('#modal-importar2').modal('hide');
         }         
       });
     });

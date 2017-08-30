@@ -23,7 +23,7 @@
 		$cont = 0;
 		foreach ($objHoja as $iIndice=>$objCelda) {
 			if($cont >= 3) {
-				$lista[] = $objCelda['F'];
+				$lista[] = $objCelda['G'];
 			}
 			$cont++;
 		}	
