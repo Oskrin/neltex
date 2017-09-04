@@ -907,7 +907,7 @@ function menu_lateral(){
 				print'>
 					<a href="#" class="dropdown-toggle">
 					<i class="menu-icon fa fa-caret-right"></i>
-					Compras
+					Adquisición
 					<b class="arrow fa fa-angle-down"></b>
 					</a>
 					<b class="arrow"></b>
@@ -1391,6 +1391,39 @@ function menu_lateral(){
 					<a href="../../reportes/pagos_realizados_internos.php" target="_blank">
 						<i class="menu-icon fa fa-caret-right"></i>
 						Pagos Realizados
+					</a>
+					<b class="arrow"></b>
+				</li>';
+
+				print '</ul>
+				</li>';
+
+				print '<li ';
+				print('class="hover"');
+				print'>
+					<a href="" class="dropdown-toggle">
+					<i class="menu-icon fa fa-caret-right"></i>
+					Cheques
+					<b class="arrow fa fa-angle-down"></b>
+					</a>
+					<b class="arrow"></b>
+				<ul class="submenu">';					
+				print '<li ';
+				print('class="hover"');
+				print'>
+					<a href="../../reportes/cheques_pagar.php" target="_blank">
+						<i class="menu-icon fa fa-caret-right"></i>
+						Cheques Pagar
+					</a>
+					<b class="arrow"></b>
+				</li>';
+
+				print '<li ';
+				print('class="hover"');
+				print'>
+					<a href="../../reportes/cheques_cobrar.php" target="_blank">
+						<i class="menu-icon fa fa-caret-right"></i>
+						Cheques Cobrar
 					</a>
 					<b class="arrow"></b>
 				</li>';
